@@ -4,6 +4,8 @@
 
 // 34. Find First and Last Position of Element in Sorted Array
 int* searchRange(int* nums, int numsSize, int target, int* returnSize);
+// 35. Search Insert Position
+int searchInsert(int* nums, int numsSize, int target);
 // 704. Binary Search
 int search(int* nums, int numsSize, int target);
 

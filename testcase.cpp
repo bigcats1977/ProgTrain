@@ -1,5 +1,49 @@
 #include "testcase.h"
 
+#define CallCase(num) TestCase_##num()
+
+void TestCase(unsigned int caseno)
+{
+    cout << "Run TestCase: " << caseno << "." << endl;
+    switch (caseno)
+    {
+    case 34:
+        CallCase(34);
+        break;
+    case 35:
+        CallCase(35);
+        break;
+    case 704:
+        CallCase(704);
+        break;
+    default:
+        cout << "Problem " << caseno << " to be continue..." << endl;
+    }
+}
+
+void TestCase_35()
+{
+    vector<int> nums;
+    int target;
+    int expect;
+    int output;
+
+    nums = { 1,3,5,6 };
+    target = 5;
+    expect = 2;
+    COMPVALUE(expect, searchInsert(nums.data(), nums.size(), target));
+
+    nums = { 1,3,5,6 };
+    target = 2;
+    expect = 1;
+    COMPVALUE(expect, searchInsert(nums.data(), nums.size(), target));
+
+    nums = { 1,3,5,6 };
+    target = 7;
+    expect = 4;
+    COMPVALUE(expect, searchInsert(nums.data(), nums.size(), target));
+}
+
 void TestCase_34()
 {
     vector<int> nums;
@@ -48,21 +92,4 @@ void TestCase_704()
 }
 
 
-#define CallCase(num) TestCase_##num()
-
-void TestCase(unsigned int caseno)
-{
-    cout << "Run TestCase: " << caseno << "." << endl;
-    switch (caseno)
-    {
-    case 34:
-        CallCase(34);
-        break;
-    case 704:
-        CallCase(704);
-        break;
-    default:
-        cout << "Problem " << caseno << " to be continue..." << endl;
-    }
-}
 

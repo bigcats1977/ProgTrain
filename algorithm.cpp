@@ -36,6 +36,26 @@ int* searchRange(int* nums, int numsSize, int target, int* returnSize)
 
     return result;
 }
+
+// 35. Search Insert Position
+int searchInsert(int* nums, int numsSize, int target)
+{
+    int left = 0, right = numsSize - 1;
+    int mid;
+
+    while (left <= right) {
+        mid = left + (right - left) / 2;
+        if (nums[mid] == target) {
+            return mid;
+        }
+        if (nums[mid] > target)
+            right = mid - 1;
+        else
+            left = mid + 1;
+    }
+    return left;
+}
+
 // 704. Binary Search
 int search(int* nums, int numsSize, int target) {
     int left = 0;
