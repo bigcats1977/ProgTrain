@@ -5,5 +5,8 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    int caseno;
+    printf("please input test case no:");
+    scanf_s("%d", &caseno);
+    TestCase(caseno);
 }
