@@ -18,20 +18,21 @@ int* searchRange(int* nums, int numsSize, int target, int* returnSize)
         else
             right = mid - 1;
     }
-    if (left <= right) {
-        left = right = mid;
-        for (left = mid; left >= 0; left--) {
-            if (nums[left] < target)
-                break;
-        }
-        for (right = mid; right < numsSize; right++) {
-            if (nums[right] > target)
-                break;
-        }
+    if (left > right)
+        return result;
 
-        result[0] = (int)fmin(left+1,mid);
-        result[1] = (int)fmax(right-1,mid);
+
+    for (left = mid-1; left >= 0; left--) {
+        if (nums[left] < target)
+            break;
     }
+    for (right = mid+1; right < numsSize; right++) {
+        if (nums[right] > target)
+            break;
+    }
+
+    result[0] = left + 1;
+    result[1] = right - 1;
 
     return result;
 }
