@@ -16,12 +16,22 @@ void TestCase(unsigned int caseno)
     case 69:
         CallCase(69);
         break;
+    case 367:
+        CallCase(367);
+        break;
     case 704:
         CallCase(704);
         break;
     default:
         cout << "Problem " << caseno << " to be continue..." << endl;
     }
+}
+
+void TestCase_367()
+{
+    COMPVALUE(true, isPerfectSquare(1));
+    COMPVALUE(true, isPerfectSquare(16));
+    COMPVALUE(false, isPerfectSquare(14));
 }
 
 void TestCase_69()
