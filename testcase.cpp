@@ -13,6 +13,9 @@ void TestCase(unsigned int caseno)
     case 35:
         CallCase(35);
         break;
+    case 69:
+        CallCase(69);
+        break;
     case 704:
         CallCase(704);
         break;
@@ -21,12 +24,20 @@ void TestCase(unsigned int caseno)
     }
 }
 
+void TestCase_69()
+{
+    COMPVALUE(6, mySqrt(36));
+    COMPVALUE(1, mySqrt(1));
+    COMPVALUE(1, mySqrt(3));
+    COMPVALUE(2, mySqrt(8));
+    COMPVALUE(2, mySqrt(4));
+}
+
 void TestCase_35()
 {
     vector<int> nums;
     int target;
     int expect;
-    int output;
 
     nums = { 1,3,5,6 };
     target = 5;

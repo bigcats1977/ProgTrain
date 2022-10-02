@@ -56,6 +56,26 @@ int searchInsert(int* nums, int numsSize, int target)
     return left;
 }
 
+// 69. Sqrt(x)
+int mySqrt(int x)
+{
+    int left= 1, right = x;
+    int mid = 0, val;
+    if (x <= 0)
+        return 0;
+    while (left <= right) {
+        mid = left + (right - left) / 2;
+        val = x / mid;
+        if (val == mid)
+            return mid;
+        if (val > mid)
+            left = mid + 1;
+        else
+            right = mid - 1;
+    }
+    return right;
+}
+
 // 704. Binary Search
 int search(int* nums, int numsSize, int target) {
     int left = 0;
