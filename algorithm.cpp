@@ -1,5 +1,18 @@
 #include "algorithm.h"
 
+// 26. Remove Duplicates from Sorted Array
+int removeDuplicates(int* nums, int numsSize)
+{
+    int fast = 0 , slow = 0;
+
+    for (fast = 0; fast < numsSize; fast++) {
+        if (nums[fast] != nums[slow]) {
+            nums[++slow] = nums[fast];
+        }
+    }
+    return slow+1;
+}
+
 // 27. Remove Element
 int removeElement(int* nums, int numsSize, int val)
 {

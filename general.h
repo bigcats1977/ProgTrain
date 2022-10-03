@@ -6,8 +6,7 @@
 using namespace std;
 
 #define COMPVALUE(exp, out)     {                                               \
-    if((exp) == (out)) cout << "TestCase PASS!" << endl;                        \
-    else cout << "Test Fail!! Expect is " << exp << ", out is " << out << endl; \
+    cout << "Expect result: " << exp << ", output result: " << out << endl;     \
 }
 
 #define COUTARRAY(array, num)  {                                                \

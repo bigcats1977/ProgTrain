@@ -7,6 +7,9 @@ void TestCase(unsigned int caseno)
     cout << "Run TestCase: " << caseno << "." << endl;
     switch (caseno)
     {
+    case 26:
+        CallCase(26);
+        break;
     case 27:
         CallCase(27);
         break;
@@ -29,6 +32,25 @@ void TestCase(unsigned int caseno)
         cout << "Problem " << caseno << " to be continue..." << endl;
     }
 }
+
+void TestCase_26()
+{
+    vector<int> nums;
+    int expect;
+
+    nums = { 1,1,2 };
+    expect = 2;
+    COMPVALUE(expect, removeDuplicates(nums.data(), nums.size()));
+
+    nums = { 1 };
+    expect = 1;
+    COMPVALUE(expect, removeDuplicates(nums.data(), nums.size()));
+
+    nums = { 0,0,1,1,1,2,2,3,3,4 };
+    expect = 5;
+    COMPVALUE(expect, removeDuplicates(nums.data(), nums.size()));
+}
+
 
 void TestCase_27()
 {

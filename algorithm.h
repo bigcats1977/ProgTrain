@@ -1,6 +1,9 @@
 #pragma once
 
 #include "general.h"
+
+// 26. Remove Duplicates from Sorted Array
+int removeDuplicates(int* nums, int numsSize);
 // 27. Remove Element
 int removeElement(int* nums, int numsSize, int val);
 // 34. Find First and Last Position of Element in Sorted Array

@@ -5,8 +5,11 @@
 
 int main()
 {
-    int caseno;
-    printf("please input test case no:");
-    scanf_s("%d", &caseno);
-    TestCase(caseno);
+    int caseno = 0;
+    do {
+        printf("please input test case no(0 is exit):");
+        scanf_s("%d", &caseno);
+        if( caseno != 0)
+            TestCase(caseno);
+    } while (caseno != 0);
 }
