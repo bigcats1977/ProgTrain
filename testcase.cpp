@@ -22,6 +22,9 @@ void TestCase(unsigned int caseno)
     case 69:
         CallCase(69);
         break;
+    case 283:
+        CallCase(283);
+        break;
     case 367:
         CallCase(367);
         break;
@@ -32,6 +35,23 @@ void TestCase(unsigned int caseno)
         cout << "Problem " << caseno << " to be continue..." << endl;
     }
 }
+
+void TestCase_283()
+{
+    vector<int> nums;
+    int expect;
+
+    nums = { 0,1,0,3,12 };
+    COUTARRAY(nums.data(), nums.size());
+    moveZeroes(nums.data(), nums.size());
+    COUTARRAY(nums.data(), nums.size());
+
+    nums = { 0 };
+    COUTARRAY(nums.data(), nums.size());
+    moveZeroes(nums.data(), nums.size());
+    COUTARRAY(nums.data(), nums.size());
+}
+
 
 void TestCase_26()
 {

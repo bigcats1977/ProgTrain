@@ -10,7 +10,7 @@ using namespace std;
 }
 
 #define COUTARRAY(array, num)  {                                                \
-    for(int kkk=0; kkk<num; kkk++)    {                                         \
+    for(int kkk=0; kkk<(int)num; kkk++)    {                                    \
         cout << array[kkk] <<" ";                                               \
     }                                                                           \
     cout<<endl;                                                                 \

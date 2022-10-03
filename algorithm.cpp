@@ -103,6 +103,18 @@ int mySqrt(int x)
     return right;
 }
 
+// 283. Move Zeroes
+void moveZeroes(int* nums, int numsSize)
+{
+    int slow = 0, fast = 0;
+    for (fast = 0; fast < numsSize; fast++) {
+        if (nums[fast] != 0)
+            nums[slow++] = nums[fast];
+    }
+    for (; slow < numsSize; slow++)
+        nums[slow] = 0;
+}
+
 // 367. Valid Perfect Square
 bool isPerfectSquare(int num)
 {
