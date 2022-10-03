@@ -33,9 +33,35 @@ void TestCase(unsigned int caseno)
         break;
     case 844:
         CallCase(844);
+        break;
+    case 977:
+        CallCase(977);
+        break;
     default:
         cout << "Problem " << caseno << " to be continue..." << endl;
     }
+}
+
+void TestCase_977()
+{
+    vector<int> nums;
+    vector<int> expect;
+    int * output;
+    int retsize = 0;
+
+    nums = { -4,-1,0,3,10 };
+    expect = { 0,1,9,16,100 };
+    COUTARRAY(expect.data(), expect.size());
+    output = sortedSquares(nums.data(), (int)nums.size(), &retsize);
+    COUTARRAY(output, retsize);
+    free(output);
+
+    nums = { -7,-3,2,3,11 };
+    expect = { 4,9,9,49,121 };
+    COUTARRAY(expect.data(), expect.size());
+    output = sortedSquares(nums.data(), (int)nums.size(), &retsize);
+    COUTARRAY(output, retsize);
+    free(output);
 }
 
 void TestCase_844()
@@ -78,7 +104,6 @@ void TestCase_283()
     COUTARRAY(nums.data(), nums.size());
 }
 
-
 void TestCase_26()
 {
     vector<int> nums;
@@ -96,7 +121,6 @@ void TestCase_26()
     expect = 5;
     COMPVALUE(expect, removeDuplicates(nums.data(), (int)nums.size()));
 }
-
 
 void TestCase_27()
 {

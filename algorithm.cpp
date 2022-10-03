@@ -202,3 +202,28 @@ bool backspaceCompare(char* s, char* t)
     
     return true;
 }
+
+// 977. Squares of a Sorted Array
+int* sortedSquares(int* nums, int numsSize, int* returnSize) {
+    int left = 0, right = numsSize - 1;
+    int sql, sqr;
+    int* result = (int*)malloc(numsSize * sizeof(int));
+
+    *returnSize = numsSize;
+    memset(result, 0, numsSize * sizeof(int));
+
+    for (int i = numsSize-1; i >= 0; i--) {
+        sql = nums[left] * nums[left];
+        sqr = nums[right] * nums[right];
+        if (sql >= sqr) {
+            result[i] = sql;
+            left++;
+        }
+        else {
+            result[i] = sqr;
+            right--;
+        }
+    }
+
+    return result;
+}

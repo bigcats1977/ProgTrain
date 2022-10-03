@@ -11,6 +11,7 @@ void TestCase_283();
 void TestCase_367();
 void TestCase_704();
 void TestCase_844();
+void TestCase_977();
 void TestCase(unsigned int caseno);
 
 
