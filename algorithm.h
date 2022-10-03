@@ -1,7 +1,8 @@
 #pragma once
 
 #include "general.h"
-
+// 27. Remove Element
+int removeElement(int* nums, int numsSize, int val);
 // 34. Find First and Last Position of Element in Sorted Array
 int* searchRange(int* nums, int numsSize, int target, int* returnSize);
 // 35. Search Insert Position

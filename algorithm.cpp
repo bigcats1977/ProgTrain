@@ -1,5 +1,19 @@
 #include "algorithm.h"
 
+// 27. Remove Element
+int removeElement(int* nums, int numsSize, int val)
+{
+    int i = 0, pos = 0;
+
+    for (i = 0; i < numsSize; i++) {
+        if (nums[i] != val) {
+            nums[pos++] = nums[i];
+        }
+    }
+
+    return pos;
+}
+
 // 34. Find First and Last Position of Element in Sorted Array
 int* searchRange(int* nums, int numsSize, int target, int* returnSize)
 {
