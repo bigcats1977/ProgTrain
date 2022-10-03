@@ -71,14 +71,14 @@ int searchInsert(int* nums, int numsSize, int target)
     int mid;
 
     while (left <= right) {
-        mid = left + (right - left) / 2;
-        if (nums[mid] == target) {
-            return mid;
-        }
-        if (nums[mid] > target)
-            right = mid - 1;
-        else
-            left = mid + 1;
+mid = left + (right - left) / 2;
+if (nums[mid] == target) {
+    return mid;
+}
+if (nums[mid] > target)
+right = mid - 1;
+else
+left = mid + 1;
     }
     return left;
 }
@@ -86,7 +86,7 @@ int searchInsert(int* nums, int numsSize, int target)
 // 69. Sqrt(x)
 int mySqrt(int x)
 {
-    int left= 1, right = x;
+    int left = 1, right = x;
     int mid = 0, val;
     if (x <= 0)
         return 0;
@@ -126,7 +126,7 @@ bool isPerfectSquare(int num)
         mid = left + (right - left) / 2;
         val = num / mid;
         if (val == mid) {
-            if(mid*mid == num)
+            if (mid * mid == num)
                 return true;
             right = mid - 1;
         }
@@ -161,4 +161,44 @@ int search(int* nums, int numsSize, int target) {
     }
 
     return -1;
+}
+
+// 844. Backspace String Compare
+void procBS(char* s, int* pos)
+{
+    int bsNum = 0;
+    if (*pos < 0)
+        return;
+    while (*pos >= 0 && (s[*pos] == '#' || bsNum > 0)) {
+        if (s[*pos] == '#') {
+            bsNum++;
+            (*pos)--;
+            continue;
+        }
+        if (bsNum > 0) {
+            (*pos)--;
+            bsNum--;
+        }
+    }
+}
+bool backspaceCompare(char* s, char* t)
+{
+    int fast1 = (int)strlen(s)-1, fast2 = (int)strlen(t) - 1;
+
+    while (fast1 >= 0 || fast2 >= 0) {
+        procBS(s, &fast1);
+        procBS(t, &fast2);
+        if (fast1 < 0 || fast2 < 0)
+            break;
+        if (s[fast1] != t[fast2])
+            return false;
+        fast1--;
+        fast2--;
+    }
+    procBS(s, &fast1);
+    procBS(t, &fast2);
+    if (fast1 >= 0 || fast2 >= 0)
+        return false;
+    
+    return true;
 }

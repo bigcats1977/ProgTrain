@@ -18,4 +18,5 @@ void moveZeroes(int* nums, int numsSize);
 bool isPerfectSquare(int num);
 // 704. Binary Search
 int search(int* nums, int numsSize, int target);
-
+// 844. Backspace String Compare
+bool backspaceCompare(char* s, char* t);
