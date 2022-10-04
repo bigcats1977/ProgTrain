@@ -226,6 +226,47 @@ bool backspaceCompare(char* s, char* t)
     return true;
 }
 
+// 904. Fruit Into Baskets
+int addFruitIntoBasket(int curtype, int *type, int *nums)
+{
+    int total = 0;
+    bool bIns = false;
+    for (int i = 0; i < 2; i++) {
+        if (type[i] == -1) {
+
+            type[i] = curtype;
+            nums[i] = 1;
+            bIns = true;
+        }
+        else if (type[i] == curtype) {
+            nums[i]++;
+            bIns = true;
+        }
+    }
+    if (!bIns)
+    {
+        type[0] = type[1];
+        nums[0] = nums[1];
+        type[1] = curtype;
+        nums[1] = 1;
+    }
+
+    return nums[0] + nums[1];
+}
+int totalFruit(int* fruits, int fruitsSize)
+{
+    int type[2] = { -1,-1 };
+    int nums[2] = { 0, 0 };
+    int result = 0;
+    int total = 0;
+
+    for (int i = 0; i < fruitsSize; i++) {
+        total = addFruitIntoBasket(fruits[i], &type[0], &nums[0]);
+        if (result < total)
+            result = total;
+    }
+    return result;
+}
 // 977. Squares of a Sorted Array
 int* sortedSquares(int* nums, int numsSize, int* returnSize) {
     int left = 0, right = numsSize - 1;

@@ -37,12 +37,33 @@ void TestCase(unsigned int caseno)
     case 844:
         CallCase(844);
         break;
+    case 904:
+        CallCase(904);
+        break;
     case 977:
         CallCase(977);
         break;
     default:
         cout << "Problem " << caseno << " to be continue..." << endl;
     }
+}
+
+void TestCase_904()
+{
+    vector<int> nums;
+    int expect;
+
+    nums = { 1,2,1 };
+    expect = 3;
+    COMPVALUE(expect, totalFruit(nums.data(), (int)nums.size()));
+
+    nums = { 0,1,2,2 };
+    expect = 3;
+    COMPVALUE(expect, totalFruit(nums.data(), (int)nums.size()));
+
+    nums = { 1,2,3,2,2 };
+    expect = 4;
+    COMPVALUE(expect, totalFruit(nums.data(), (int)nums.size()));
 }
 
 void TestCase_209()

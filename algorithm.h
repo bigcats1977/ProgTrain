@@ -22,5 +22,7 @@ bool isPerfectSquare(int num);
 int search(int* nums, int numsSize, int target);
 // 844. Backspace String Compare
 bool backspaceCompare(char* s, char* t);
+// 904. Fruit Into Baskets
+int totalFruit(int* fruits, int fruitsSize);
 // 977. Squares of a Sorted Array
 int* sortedSquares(int* nums, int numsSize, int* returnSize);
