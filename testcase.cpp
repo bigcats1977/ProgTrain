@@ -22,6 +22,9 @@ void TestCase(unsigned int caseno)
     case 69:
         CallCase(69);
         break;
+    case 209:
+        CallCase(209);
+        break;
     case 283:
         CallCase(283);
         break;
@@ -40,6 +43,28 @@ void TestCase(unsigned int caseno)
     default:
         cout << "Problem " << caseno << " to be continue..." << endl;
     }
+}
+
+void TestCase_209()
+{
+    vector<int> nums;
+    int target;
+    int expect;
+
+    nums = { 2,3,1,2,4,3 };
+    target = 7;
+    expect = 2;
+    COMPVALUE(expect, minSubArrayLen(target, nums.data(), (int)nums.size()));
+
+    nums = { 1,4,4 };
+    target = 4;
+    expect = 1;
+    COMPVALUE(expect, minSubArrayLen(target, nums.data(), (int)nums.size()));
+
+    nums = { 1,1,1,1,1,1,1,1 };
+    target = 11;
+    expect = 0;
+    COMPVALUE(expect, minSubArrayLen(target, nums.data(), (int)nums.size()));
 }
 
 void TestCase_977()

@@ -12,6 +12,8 @@ int* searchRange(int* nums, int numsSize, int target, int* returnSize);
 int searchInsert(int* nums, int numsSize, int target);
 // 69. Sqrt(x)
 int mySqrt(int x);
+// 209. Minimum Size Subarray Sum
+int minSubArrayLen(int target, int* nums, int numsSize);
 // 283. Move Zeroes
 void moveZeroes(int* nums, int numsSize);
 // 367. Valid Perfect Square

@@ -103,6 +103,29 @@ int mySqrt(int x)
     return right;
 }
 
+// 209. Minimum Size Subarray Sum
+int minSubArrayLen(int target, int* nums, int numsSize)
+{
+    int fast = 0, slow = 0; 
+    int sum = 0, len = INT_MAX;
+    for (fast = 0; fast < numsSize; fast++)
+    {
+        sum += nums[fast];
+        while(sum >= target)
+        {
+            if (fast - slow + 1 < len) {
+                len = fast - slow + 1;
+            }
+
+            sum -= nums[slow];
+            slow++;
+        }
+    }
+    if (len == INT_MAX)
+        return 0;
+    return len;
+}
+
 // 283. Move Zeroes
 void moveZeroes(int* nums, int numsSize)
 {
