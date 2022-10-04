@@ -53,6 +53,14 @@ void TestCase_904()
     vector<int> nums;
     int expect;
 
+    nums = { 1, 0, 1, 4, 1, 4, 1, 2, 3 };
+    expect = 5;
+    COMPVALUE(expect, totalFruit(nums.data(), (int)nums.size()));
+
+    nums = { 3, 3, 3, 1, 2, 1, 1, 2, 3, 3, 4 };
+    expect = 5;
+    COMPVALUE(expect, totalFruit(nums.data(), (int)nums.size()));
+
     nums = { 1,2,1 };
     expect = 3;
     COMPVALUE(expect, totalFruit(nums.data(), (int)nums.size()));

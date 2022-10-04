@@ -237,10 +237,12 @@ int addFruitIntoBasket(int curtype, int *type, int *nums)
             type[i] = curtype;
             nums[i] = 1;
             bIns = true;
+            break;
         }
         else if (type[i] == curtype) {
             nums[i]++;
             bIns = true;
+            break;
         }
     }
     if (!bIns)
@@ -255,13 +257,31 @@ int addFruitIntoBasket(int curtype, int *type, int *nums)
 }
 int totalFruit(int* fruits, int fruitsSize)
 {
-    int type[2] = { -1,-1 };
-    int nums[2] = { 0, 0 };
-    int result = 0;
+    int prior = -1, slow = fruits[0];
+    int nums[2] = { 0, 1 };
+    int result = 1;
     int total = 0;
+    bool bSwap = false;
 
-    for (int i = 0; i < fruitsSize; i++) {
-        total = addFruitIntoBasket(fruits[i], &type[0], &nums[0]);
+    for (int i = 1; i < fruitsSize; i++) {
+        bSwap = true;
+        if (fruits[i] == slow) {
+            nums[1] ++;
+            bSwap = false;
+        }
+
+        if (fruits[i] == prior) {
+            nums[0] ++;
+        }
+        else {
+            prior = fruits[i];
+            nums[0] = 1;
+        }
+        if (bSwap) {
+            swap(prior, slow);
+            swap(nums[0], nums[1]);
+        }
+        total = nums[0] + nums[1];
         if (result < total)
             result = total;
     }
