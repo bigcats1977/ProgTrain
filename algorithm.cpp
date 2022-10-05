@@ -106,7 +106,31 @@ int mySqrt(int x)
 // 76. Minimum Window Substring
 char* minWindow(char* s, char* t)
 {
-    return NULL;
+    int tChar['z'+1] = {0};
+    int count = 0;
+    char* p = s, * q = s;
+    int minlen = INT_MAX;
+
+    while (t[count]) {
+        tChar[t[count++]]++;
+    }
+
+    while (*q) {
+        if (--tChar[*q++] >= 0) {
+            count--;
+        }
+        while(tChar[*p] < 0)
+            tChar[*p++]++;
+        if (count == 0 && q - p < minlen) {
+            minlen = (int)(q - p);
+            s = p;
+        }
+    }
+    if (minlen == INT_MAX)
+        minlen = 0;
+    s[minlen] = '\0';
+
+    return s;
 }
 
 // 209. Minimum Size Subarray Sum

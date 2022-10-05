@@ -60,14 +60,14 @@ void TestCase_76()
     char expect0[] = "BANC";
     output = minWindow(s0, t0);
     COMPSTRING(expect0, output);
-    FREEMEM(output);
+    //FREEMEM(output);
 
     char s1[] = "a";
     char t1[] = "a";
     char expect1[] = "a";
     output = minWindow(s1, t1);
     COMPSTRING(expect1, output);
-    FREEMEM(output);
+    //FREEMEM(output);
 
 
     char s2[] = "a";
@@ -75,7 +75,7 @@ void TestCase_76()
     char expect2[] = "";
     output = minWindow(s2, t2);
     COMPSTRING(expect2, output);
-    FREEMEM(output);
+    //FREEMEM(output);
 }
 
 void TestCase_904()
