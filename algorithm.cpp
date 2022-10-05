@@ -227,63 +227,30 @@ bool backspaceCompare(char* s, char* t)
 }
 
 // 904. Fruit Into Baskets
-int addFruitIntoBasket(int curtype, int *type, int *nums)
-{
-    int total = 0;
-    bool bIns = false;
-    for (int i = 0; i < 2; i++) {
-        if (type[i] == -1) {
-
-            type[i] = curtype;
-            nums[i] = 1;
-            bIns = true;
-            break;
-        }
-        else if (type[i] == curtype) {
-            nums[i]++;
-            bIns = true;
-            break;
-        }
-    }
-    if (!bIns)
-    {
-        type[0] = type[1];
-        nums[0] = nums[1];
-        type[1] = curtype;
-        nums[1] = 1;
-    }
-
-    return nums[0] + nums[1];
-}
 int totalFruit(int* fruits, int fruitsSize)
 {
-    int prior = -1, slow = fruits[0];
-    int nums[2] = { 0, 1 };
+    int slow = 0;
     int result = 1;
-    int total = 0;
-    bool bSwap = false;
-
-    for (int i = 1; i < fruitsSize; i++) {
-        bSwap = true;
-        if (fruits[i] == slow) {
-            nums[1] ++;
-            bSwap = false;
+    int other = -1;
+    int len = 0;
+    for (int i=1; i < fruitsSize; i++) {
+        if (fruits[i] != other && fruits[i] != fruits[slow]) {
+            if (other == -1) {
+                other = fruits[i];
+            }
+            // change type
+            else {
+                other = fruits[i];
+                slow = i - 1;
+                for (int j = slow-1; j >= 0; j--) {
+                    if (fruits[j] != fruits[i - 1])
+                        break;
+                    slow = j;
+                }
+            }
         }
-
-        if (fruits[i] == prior) {
-            nums[0] ++;
-        }
-        else {
-            prior = fruits[i];
-            nums[0] = 1;
-        }
-        if (bSwap) {
-            swap(prior, slow);
-            swap(nums[0], nums[1]);
-        }
-        total = nums[0] + nums[1];
-        if (result < total)
-            result = total;
+        len = i - slow + 1;
+        result = len > result ? len : result;
     }
     return result;
 }
