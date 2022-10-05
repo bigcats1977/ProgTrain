@@ -103,6 +103,12 @@ int mySqrt(int x)
     return right;
 }
 
+// 76. Minimum Window Substring
+char* minWindow(char* s, char* t)
+{
+    return NULL;
+}
+
 // 209. Minimum Size Subarray Sum
 int minSubArrayLen(int target, int* nums, int numsSize)
 {

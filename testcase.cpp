@@ -22,6 +22,9 @@ void TestCase(unsigned int caseno)
     case 69:
         CallCase(69);
         break;
+    case 76:
+        CallCase(76);
+        break;
     case 209:
         CallCase(209);
         break;
@@ -46,6 +49,33 @@ void TestCase(unsigned int caseno)
     default:
         cout << "Problem " << caseno << " to be continue..." << endl;
     }
+}
+
+void TestCase_76()
+{
+    char* output;
+
+    char s0[] = "ADOBECODEBANC";
+    char t0[] = "ABC";
+    char expect0[] = "BANC";
+    output = minWindow(s0, t0);
+    COMPSTRING(expect0, output);
+    FREEMEM(output);
+
+    char s1[] = "a";
+    char t1[] = "a";
+    char expect1[] = "a";
+    output = minWindow(s1, t1);
+    COMPSTRING(expect1, output);
+    FREEMEM(output);
+
+
+    char s2[] = "a";
+    char t2[] = "aa";
+    char expect2[] = "";
+    output = minWindow(s2, t2);
+    COMPSTRING(expect2, output);
+    FREEMEM(output);
 }
 
 void TestCase_904()
@@ -112,14 +142,14 @@ void TestCase_977()
     COUTARRAY(expect.data(), expect.size());
     output = sortedSquares(nums.data(), (int)nums.size(), &retsize);
     COUTARRAY(output, retsize);
-    free(output);
+    FREEMEM(output);
 
     nums = { -7,-3,2,3,11 };
     expect = { 4,9,9,49,121 };
     COUTARRAY(expect.data(), expect.size());
     output = sortedSquares(nums.data(), (int)nums.size(), &retsize);
     COUTARRAY(output, retsize);
-    free(output);
+    FREEMEM(output);
 }
 
 void TestCase_844()
@@ -248,21 +278,21 @@ void TestCase_34()
     expect = { 3, 4 };
     output = searchRange(nums.data(), (int)nums.size(), target, &retsize);
     COMPARRAY(expect.data(), (int)expect.size(), output, retsize);
-    free(output);
+    FREEMEM(output);
 
     nums = { 5,7,7,8,8,10 };
     target = 6;
     expect = { -1, -1 };
     output = searchRange(nums.data(), (int)nums.size(), target, &retsize);
     COMPARRAY(expect.data(), (int)expect.size(), output, retsize);
-    free(output);
+    FREEMEM(output);
 
     nums = {  };
     target = 0;
     expect = { -1, -1 };
     output = searchRange(nums.data(), (int)nums.size(), target, &retsize);
     COMPARRAY(expect.data(), (int)expect.size(), output, retsize);
-    free(output);
+    FREEMEM(output);
 }
 
 void TestCase_704()
