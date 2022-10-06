@@ -1,4 +1,5 @@
 #include "testcase.h"
+#include "MyLinkedList.h"
 
 #define CallCase(num) TestCase_##num()
 
@@ -40,6 +41,9 @@ void TestCase(unsigned int caseno)
     case 704:
         CallCase(704);
         break;
+    case 707:
+        CallCase(707);
+        break;
     case 844:
         CallCase(844);
         break;
@@ -52,6 +56,29 @@ void TestCase(unsigned int caseno)
     default:
         cout << "Problem " << caseno << " to be continue..." << endl;
     }
+}
+
+void TestCase_707()
+{
+    int index = 1;
+    int val = 0;
+    int param;
+    MyLinkedList* obj = myLinkedListCreate();
+
+    myLinkedListAddAtHead(obj, 3);
+    myLinkedListAddAtHead(obj, 1);
+
+    myLinkedListAddAtTail(obj, 4);
+
+    myLinkedListAddAtIndex(obj, 1, 2);
+
+    param = myLinkedListGet(obj, 1);
+
+    myLinkedListDeleteAtIndex(obj, 1);
+
+    param = myLinkedListGet(obj, 1);
+
+    myLinkedListFree(obj);
 }
 
 void TestCase_203()
