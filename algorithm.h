@@ -15,7 +15,7 @@ int mySqrt(int x);
 // 76. Minimum Window Substring
 char* minWindow(char* s, char* t);
 // 203. Remove Linked List Elements
-struct ListNode* removeElements(struct ListNode* head, int val);
+ListNode* removeElements(ListNode* head, int val);
 // 209. Minimum Size Subarray Sum
 int minSubArrayLen(int target, int* nums, int numsSize);
 // 283. Move Zeroes

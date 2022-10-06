@@ -133,13 +133,12 @@ char* minWindow(char* s, char* t)
     return s;
 }
 
-
 // 203. Remove Linked List Elements
-struct ListNode* removeElements(struct ListNode* head, int val)
+ListNode* removeElements(ListNode* head, int val)
 {
-    struct ListNode* dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    ListNode* dummy = (ListNode*)malloc(sizeof(ListNode));
     dummy->next = head;
-    struct ListNode* node = dummy, *temp = NULL;
+    ListNode* node = dummy, *temp = NULL;
 
     while (node->next != NULL) {
         if (node->next->val == val) {

@@ -6,12 +6,12 @@
 
 using namespace std;
 
-struct ListNode {
+typedef struct ListNode {
     int val;
     struct ListNode* next;
-};
+}ListNode;
 
-struct ListNode* CreateListNode(vector<int> nums);
+ListNode* CreateListNode(vector<int> nums);
 
 
 #define COMPVALUE(exp, out)     {                                               \
