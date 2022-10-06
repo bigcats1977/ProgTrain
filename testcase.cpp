@@ -28,6 +28,9 @@ void TestCase(unsigned int caseno)
     case 209:
         CallCase(209);
         break;
+    case 203:
+        CallCase(203);
+        break;
     case 283:
         CallCase(283);
         break;
@@ -49,6 +52,16 @@ void TestCase(unsigned int caseno)
     default:
         cout << "Problem " << caseno << " to be continue..." << endl;
     }
+}
+
+void TestCase_203()
+{
+    vector<int> nums = { 1,2,6,3,4,5,6 };
+    int target = 6;
+    struct ListNode* output = NULL;
+
+    struct ListNode* head = CreateListNode(nums);
+    output = removeElements(head, target);
 }
 
 void TestCase_76()

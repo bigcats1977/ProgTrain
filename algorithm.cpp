@@ -133,6 +133,30 @@ char* minWindow(char* s, char* t)
     return s;
 }
 
+
+// 203. Remove Linked List Elements
+struct ListNode* removeElements(struct ListNode* head, int val)
+{
+    struct ListNode* dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    dummy->next = head;
+    struct ListNode* node = dummy, *temp = NULL;
+
+    while (node->next != NULL) {
+        if (node->next->val == val) {
+            temp = node->next;
+            node->next = node->next->next;
+            free(temp);
+        }
+        else {
+            node = node->next;
+        }
+    }
+
+    temp = dummy->next;
+    free(dummy);
+    return temp;
+}
+
 // 209. Minimum Size Subarray Sum
 int minSubArrayLen(int target, int* nums, int numsSize)
 {

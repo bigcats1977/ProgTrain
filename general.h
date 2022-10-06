@@ -6,6 +6,14 @@
 
 using namespace std;
 
+struct ListNode {
+    int val;
+    struct ListNode* next;
+};
+
+struct ListNode* CreateListNode(vector<int> nums);
+
+
 #define COMPVALUE(exp, out)     {                                               \
     cout << "Expect result: " << exp << ", output result: " << out << endl;     \
 }
