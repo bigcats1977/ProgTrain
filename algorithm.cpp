@@ -1,5 +1,31 @@
 #include "algorithm.h"
 
+
+// 24. Swap Nodes in Pairs
+struct ListNode* swapPairs(struct ListNode* head)
+{
+    struct ListNode * cur = head, *next, *prior;
+    struct ListNode* dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+
+    dummy->next = head;
+    prior = dummy;
+    cur = head;
+    while (cur && cur->next) {
+        next = cur->next;
+        prior->next = next;
+        cur->next = next->next;
+        next->next = cur;
+
+        prior = cur;
+        cur = cur->next;
+    }
+
+    cur = dummy->next;
+    free(dummy);
+
+    return cur;
+}
+
 // 26. Remove Duplicates from Sorted Array
 int removeDuplicates(int* nums, int numsSize)
 {

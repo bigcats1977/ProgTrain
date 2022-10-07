@@ -2,6 +2,8 @@
 
 #include "general.h"
 
+// 24. Swap Nodes in Pairs
+struct ListNode* swapPairs(struct ListNode* head);
 // 26. Remove Duplicates from Sorted Array
 int removeDuplicates(int* nums, int numsSize);
 // 27. Remove Element

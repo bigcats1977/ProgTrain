@@ -8,6 +8,9 @@ void TestCase(unsigned int caseno)
     cout << "Run TestCase: " << caseno << "." << endl;
     switch (caseno)
     {
+    case 24:
+        CallCase(24);
+        break;
     case 26:
         CallCase(26);
         break;
@@ -61,6 +64,20 @@ void TestCase(unsigned int caseno)
         cout << "Problem " << caseno << " to be continue..." << endl;
     }
 }
+
+void TestCase_24()
+{
+    vector<int> nums = { 1,2,3,4 };
+    ListNode* output = NULL;
+
+    struct ListNode* head = CreateListNode(nums);
+    output = swapPairs(head);
+
+    nums = { 1 };
+    head = CreateListNode(nums);
+    output = swapPairs(head);
+}
+
 
 void TestCase_206()
 {
