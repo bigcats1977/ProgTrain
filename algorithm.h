@@ -16,6 +16,8 @@ int mySqrt(int x);
 char* minWindow(char* s, char* t);
 // 203. Remove Linked List Elements
 ListNode* removeElements(ListNode* head, int val);
+// 206. Reverse Linked List
+struct ListNode* reverseList(struct ListNode* head);
 // 209. Minimum Size Subarray Sum
 int minSubArrayLen(int target, int* nums, int numsSize);
 // 283. Move Zeroes

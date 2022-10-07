@@ -156,6 +156,26 @@ ListNode* removeElements(ListNode* head, int val)
     return temp;
 }
 
+// 206. Reverse Linked List
+struct ListNode* reverseList(struct ListNode* head)
+{
+    struct ListNode* dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    struct ListNode* node;
+    dummy->next = NULL;
+
+    while (head != NULL)
+    {
+        node = head;
+        head = head->next;
+        node->next = dummy->next;
+        dummy->next = node;
+    }
+
+    node = dummy->next;
+    free(dummy);
+    return node;
+}
+
 // 209. Minimum Size Subarray Sum
 int minSubArrayLen(int target, int* nums, int numsSize)
 {

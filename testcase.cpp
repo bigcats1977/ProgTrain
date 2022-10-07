@@ -26,12 +26,16 @@ void TestCase(unsigned int caseno)
     case 76:
         CallCase(76);
         break;
-    case 209:
-        CallCase(209);
         break;
     case 203:
         CallCase(203);
         break;
+        break;
+    case 206:
+        CallCase(206);
+        break;
+    case 209:
+        CallCase(209);
     case 283:
         CallCase(283);
         break;
@@ -56,6 +60,15 @@ void TestCase(unsigned int caseno)
     default:
         cout << "Problem " << caseno << " to be continue..." << endl;
     }
+}
+
+void TestCase_206()
+{
+    vector<int> nums = { 1,2,3,4,5 };
+    ListNode* output = NULL;
+
+    struct ListNode* head = CreateListNode(nums);
+    output = reverseList(head);
 }
 
 void TestCase_707()
