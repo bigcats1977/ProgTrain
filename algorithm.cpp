@@ -1,5 +1,32 @@
 #include "algorithm.h"
 
+// 19. Remove Nth Node From End of List
+struct ListNode* removeNthFromEnd(struct ListNode* head, int n)
+{
+    struct ListNode* dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    struct ListNode* fast = dummy, * slow = dummy;
+    dummy->next = head;
+
+    while (fast && n> 0) {
+        n--;
+        fast = fast->next;
+    }
+    fast = fast->next;
+    while (fast)
+    {
+        fast = fast->next;
+        slow = slow->next;
+    }
+
+    fast = slow->next;
+    slow->next = slow->next->next;
+    free(fast);
+
+    slow = dummy->next;
+    free(dummy);
+
+    return slow;
+}
 
 // 24. Swap Nodes in Pairs
 struct ListNode* swapPairs(struct ListNode* head)
