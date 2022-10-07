@@ -1,10 +1,18 @@
 #pragma once
 
 #include <iostream>
+#include <string>
 #include <vector>
 #include <map>
 
 using namespace std;
+
+
+typedef void(*funcTest)();
+typedef struct {
+    int caseno;
+    funcTest funcName;
+}FUNCNAME;
 
 typedef struct ListNode {
     int val;

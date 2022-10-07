@@ -1,72 +1,26 @@
 #include "testcase.h"
 #include "MyLinkedList.h"
 
-#define CallCase(num) TestCase_##num()
-
-void TestCase(unsigned int caseno)
-{
-    cout << "Run TestCase: " << caseno << "." << endl;
-    switch (caseno)
-    {
-    case 19:
-        CallCase(19);
-        break;
-    case 24:
-        CallCase(24);
-        break;
-    case 26:
-        CallCase(26);
-        break;
-    case 27:
-        CallCase(27);
-        break;
-    case 34:
-        CallCase(34);
-        break;
-    case 35:
-        CallCase(35);
-        break;
-    case 69:
-        CallCase(69);
-        break;
-    case 76:
-        CallCase(76);
-        break;
-        break;
-    case 203:
-        CallCase(203);
-        break;
-        break;
-    case 206:
-        CallCase(206);
-        break;
-    case 209:
-        CallCase(209);
-    case 283:
-        CallCase(283);
-        break;
-    case 367:
-        CallCase(367);
-        break;
-    case 704:
-        CallCase(704);
-        break;
-    case 707:
-        CallCase(707);
-        break;
-    case 844:
-        CallCase(844);
-        break;
-    case 904:
-        CallCase(904);
-        break;
-    case 977:
-        CallCase(977);
-        break;
-    default:
-        cout << "Problem " << caseno << " to be continue..." << endl;
-    }
-}
+FUNCNAME g_tFuncName[] = {
+    {19,    TestCase_19  },
+    {24,    TestCase_24  },
+    {26,    TestCase_26  },
+    {27,    TestCase_27  },
+    {34,    TestCase_34  },
+    {35,    TestCase_35  },
+    {69,    TestCase_69  },
+    {76,    TestCase_76  },
+    {203,   TestCase_203 },
+    {206,   TestCase_206 },
+    {209,   TestCase_209 },
+    {283,   TestCase_283 },
+    {367,   TestCase_367 },
+    {704,   TestCase_704 },
+    {707,   TestCase_707 },
+    {844,   TestCase_844 },
+    {904,   TestCase_904 },
+    {977,   TestCase_977 },
+};
 
 void TestCase_19()
 {
@@ -399,4 +353,29 @@ void TestCase_704()
 }
 
 
+funcTest getFuncTestPointer(int caseno)
+{
+    for (int i = 0; i < sizeof(g_tFuncName) / sizeof(FUNCNAME); i++)
+    {
+        if (g_tFuncName[i].caseno == caseno)
+            return g_tFuncName[i].funcName;
+    }
+
+    return NULL;
+}
+
+//#define CallCase(num) TestCase_##num()
+
+void TestCase(unsigned int caseno)
+{
+    cout << "Run TestCase: " << caseno << "." << endl;
+    funcTest func;
+    func = getFuncTestPointer(caseno);
+    if (!func) {
+        cout << "Problem " << caseno << " to be continue..." << endl;
+        return;
+    }
+
+    func();
+}
 
