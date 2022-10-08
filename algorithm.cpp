@@ -28,6 +28,50 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n)
     return slow;
 }
 
+// 20. Valid Parentheses
+bool isValid(char* s)
+{
+    int i, len = strlen(s);
+    if(len %2 == 1)
+        return false;
+
+    struct stack {
+        int top;
+        char* ch;
+    }st;
+    st.top = -1;
+    st.ch = (char*) malloc(len*sizeof(char));
+
+    for (i = 0; i < len; i++) {
+        switch (s[i])
+        {
+        case '{':
+            st.top++;
+            st.ch[st.top] = '}';
+            break;
+        case '(':
+            st.top++;
+            st.ch[st.top] = ')';
+            break;
+        case '[':
+            st.top++;
+            st.ch[st.top] = ']';
+            break;
+        default:
+            if (st.top < 0 || st.ch[st.top] != s[i]) {
+                free(st.ch);
+                return false;
+            }
+            st.top--;
+            break;
+        }
+    }
+    free(st.ch);
+    if (st.top >= 0)
+        return false;
+    return true;
+}
+
 // 24. Swap Nodes in Pairs
 struct ListNode* swapPairs(struct ListNode* head)
 {

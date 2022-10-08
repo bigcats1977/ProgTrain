@@ -3,6 +3,7 @@
 #include "algorithm.h"
 
 void TestCase_19();
+void TestCase_20();
 void TestCase_24();
 void TestCase_26();
 void TestCase_27();

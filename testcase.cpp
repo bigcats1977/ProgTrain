@@ -3,6 +3,7 @@
 
 FUNCNAME g_tFuncName[] = {
     {19,    TestCase_19  },
+    {20,    TestCase_20  },
     {24,    TestCase_24  },
     {26,    TestCase_26  },
     {27,    TestCase_27  },
@@ -21,6 +22,24 @@ FUNCNAME g_tFuncName[] = {
     {904,   TestCase_904 },
     {977,   TestCase_977 },
 };
+
+void TestCase_20()
+{
+    string s;
+    bool expect;
+
+    s = "()";
+    expect = true;
+    COMPVALUE(expect, isValid(&*s.begin()));
+
+    s = "()[]{}";
+    expect = true;
+    COMPVALUE(expect, isValid(&*s.begin()));
+
+    s="(]";
+    expect = false;
+    COMPVALUE(expect, isValid(&*s.begin()));
+}
 
 void TestCase_19()
 {

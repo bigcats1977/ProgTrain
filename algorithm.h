@@ -4,6 +4,8 @@
 
 // 19. Remove Nth Node From End of List
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n);
+// 20. Valid Parentheses
+bool isValid(char* s);
 // 24. Swap Nodes in Pairs
 struct ListNode* swapPairs(struct ListNode* head);
 // 26. Remove Duplicates from Sorted Array
