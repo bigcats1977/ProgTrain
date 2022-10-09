@@ -350,6 +350,26 @@ bool isPerfectSquare(int num)
     return false;
 }
 
+// 383. Ransom Note
+bool canConstruct(char* ransomNote, char* magazine)
+{
+    int m = strlen(ransomNote), n = strlen(magazine);
+    int nums[26] = { 0 };
+    int i;
+
+    if (m > n)
+        return false;
+
+    for (i = 0; i < n; i++)
+        nums[magazine[i] - 'a']++;
+    for (i = 0; i < m; i++) {
+        nums[ransomNote[i] - 'a']--;
+        if (nums[ransomNote[i] - 'a'] < 0)
+            return false;
+    }
+    return true;
+}
+
 // 704. Binary Search
 int search(int* nums, int numsSize, int target) {
     int left = 0;

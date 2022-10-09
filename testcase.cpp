@@ -17,12 +17,35 @@ FUNCNAME g_tFuncName[] = {
     {242,   TestCase_242 },
     {283,   TestCase_283 },
     {367,   TestCase_367 },
+    {383,   TestCase_383 },
     {704,   TestCase_704 },
     {707,   TestCase_707 },
     {844,   TestCase_844 },
     {904,   TestCase_904 },
     {977,   TestCase_977 },
 };
+
+
+void TestCase_383()
+{
+    string s, t;
+    bool expect;
+
+    s = "a";
+    t = "b";
+    expect = false;
+    COMPVALUE(expect, canConstruct(&*s.begin(), &*t.begin()));
+
+    s = "aa";
+    t = "ab";
+    expect = false;
+    COMPVALUE(expect, canConstruct(&*s.begin(), &*t.begin()));
+
+    s = "aa";
+    t = "aab";
+    expect = true;
+    COMPVALUE(expect, canConstruct(&*s.begin(), &*t.begin()));
+}
 
 void TestCase_242()
 {

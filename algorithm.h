@@ -32,6 +32,8 @@ bool isAnagram(char* s, char* t);
 void moveZeroes(int* nums, int numsSize);
 // 367. Valid Perfect Square
 bool isPerfectSquare(int num);
+// 383. Ransom Note
+bool canConstruct(char* ransomNote, char* magazine);
 // 704. Binary Search
 int search(int* nums, int numsSize, int target);
 // 707. Design Linked List
