@@ -296,6 +296,25 @@ int minSubArrayLen(int target, int* nums, int numsSize)
     return len;
 }
 
+// 242. Valid Anagram
+bool isAnagram(char* s, char* t)
+{
+    int m = strlen(s), n = strlen(t);
+    int nums[26] = { 0 };
+    int i;
+    if (m != n)
+        return false;
+
+    for (i = 0; i < m; i++)
+        nums[s[i] - 'a']++;
+    for (i = 0; i < n; i++) {
+        nums[t[i]-'a']--;
+        if (nums[t[i]-'a'] < 0)
+            return false;
+    }
+    return true;
+}
+
 // 283. Move Zeroes
 void moveZeroes(int* nums, int numsSize)
 {

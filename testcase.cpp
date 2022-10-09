@@ -14,6 +14,7 @@ FUNCNAME g_tFuncName[] = {
     {203,   TestCase_203 },
     {206,   TestCase_206 },
     {209,   TestCase_209 },
+    {242,   TestCase_242 },
     {283,   TestCase_283 },
     {367,   TestCase_367 },
     {704,   TestCase_704 },
@@ -22,6 +23,23 @@ FUNCNAME g_tFuncName[] = {
     {904,   TestCase_904 },
     {977,   TestCase_977 },
 };
+
+void TestCase_242()
+{
+    string s, t;
+    bool expect;
+
+    s = "anagram";
+    t = "nagaram";
+    expect = true;
+    COMPVALUE(expect, isAnagram(&*s.begin(), &*t.begin()));
+
+    s = "rat";
+    t = "cat";
+    expect = false;
+    COMPVALUE(expect, isAnagram(&*s.begin(), &*t.begin()));
+}
+
 
 void TestCase_20()
 {
