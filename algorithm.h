@@ -16,6 +16,8 @@ int removeElement(int* nums, int numsSize, int val);
 int* searchRange(int* nums, int numsSize, int target, int* returnSize);
 // 35. Search Insert Position
 int searchInsert(int* nums, int numsSize, int target);
+// 49. Group Anagrams
+char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnColumnSizes);
 // 69. Sqrt(x)
 int mySqrt(int x);
 // 76. Minimum Window Substring
