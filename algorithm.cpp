@@ -337,6 +337,29 @@ void moveZeroes(int* nums, int numsSize)
         nums[slow] = 0;
 }
 
+// 349. Intersection of Two Arrays
+int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize)
+{
+    int i = 0;
+    int repeat[1000] = { 0 };
+    int* result = (int*)malloc(sizeof(int) * 1000);
+    memset(result, 0, sizeof(int) * 1000);
+    *returnSize = 0;
+
+    for (i = 0; i < nums1Size; i++) {
+        repeat[nums1[i]]= 1;
+    }
+
+    for (i = 0; i < nums2Size; i++) {
+        if (repeat[nums2[i]] > 0) {
+            result[(*returnSize)++] = nums2[i];
+            repeat[nums2[i]] = 0;
+        }
+    }
+
+    return result;
+}
+
 // 367. Valid Perfect Square
 bool isPerfectSquare(int num)
 {

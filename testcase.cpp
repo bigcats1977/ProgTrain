@@ -17,6 +17,7 @@ FUNCNAME g_tFuncName[] = {
     {209,   TestCase_209 },
     {242,   TestCase_242 },
     {283,   TestCase_283 },
+    {349,   TestCase_349 },
     {367,   TestCase_367 },
     {383,   TestCase_383 },
     {704,   TestCase_704 },
@@ -25,6 +26,28 @@ FUNCNAME g_tFuncName[] = {
     {904,   TestCase_904 },
     {977,   TestCase_977 },
 };
+
+void TestCase_349()
+{
+    vector<int> nums1;
+    vector<int> nums2;
+    int* output = NULL;
+    vector<int> expect;
+    int returnsize = 0;
+
+    nums1 = { 1,2,2,1 }, nums2 = { 2,2 };
+    expect = { 2 };
+    output = intersection(nums1.data(), nums1.size(), nums2.data(), nums2.size(), &returnsize);
+    COMPARRAY(expect.data(), expect.size(), output, returnsize);
+    free(output);
+
+    nums1 = { 4,9,5 }, nums2 = { 9,4,9,8,4 };
+    expect = { 9 ,4 };
+    output = intersection(nums1.data(), nums1.size(), nums2.data(), nums2.size(), &returnsize);
+    COMPARRAY(expect.data(), expect.size(), output, returnsize);
+    free(output);
+}
+
 
 void TestCase_49()
 {
