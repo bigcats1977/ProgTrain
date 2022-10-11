@@ -360,6 +360,29 @@ int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* ret
     return result;
 }
 
+// 350. Intersection of Two Arrays II
+int* intersect(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize)
+{
+    int i = 0;
+    int repeat[1001] = { 0 };
+    int* result = (int*)malloc(sizeof(int) * 1000);
+    memset(result, 0, sizeof(int) * 1000);
+    *returnSize = 0;
+
+    for (i = 0; i < nums1Size; i++) {
+        repeat[nums1[i]] ++;
+    }
+
+    for (i = 0; i < nums2Size; i++) {
+        if (repeat[nums2[i]] > 0) {
+            result[(*returnSize)++] = nums2[i];
+            repeat[nums2[i]] --;
+        }
+    }
+
+    return result;
+}
+
 // 367. Valid Perfect Square
 bool isPerfectSquare(int num)
 {

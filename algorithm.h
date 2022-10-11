@@ -34,6 +34,8 @@ bool isAnagram(char* s, char* t);
 void moveZeroes(int* nums, int numsSize);
 // 349. Intersection of Two Arrays
 int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize);
+// 350. Intersection of Two Arrays II
+int* intersect(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize);
 // 367. Valid Perfect Square
 bool isPerfectSquare(int num);
 // 383. Ransom Note
