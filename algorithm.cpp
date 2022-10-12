@@ -1,5 +1,27 @@
 #include "algorithm.h"
 
+// 1. Two Sum
+int* twoSum(int* nums, int numsSize, int target, int* returnSize)
+{
+    int i, j;
+    int* res = (int*)malloc(sizeof(int) * 2);
+    memset(res, 0, sizeof(int) * 2);
+
+    for (i = 0; i < numsSize; i++) {
+        for (j = i + 1; j < numsSize; j++) {
+            if (nums[j] == target - nums[i]) {
+                *returnSize = 2;
+                res[0] = i;
+                res[1] = j;
+                return res;
+            }
+        }
+    }
+
+    *returnSize = 0;
+    return res;
+}
+
 // 19. Remove Nth Node From End of List
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n)
 {
@@ -31,7 +53,7 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n)
 // 20. Valid Parentheses
 bool isValid(char* s)
 {
-    int i, len = strlen(s);
+    int i, len = (int)strlen(s);
     if(len %2 == 1)
         return false;
 
@@ -338,7 +360,7 @@ int minSubArrayLen(int target, int* nums, int numsSize)
 // 242. Valid Anagram
 bool isAnagram(char* s, char* t)
 {
-    int m = strlen(s), n = strlen(t);
+    int m = (int)strlen(s), n = (int)strlen(t);
     int nums[26] = { 0 };
     int i;
     if (m != n)
@@ -438,7 +460,7 @@ bool isPerfectSquare(int num)
 // 383. Ransom Note
 bool canConstruct(char* ransomNote, char* magazine)
 {
-    int m = strlen(ransomNote), n = strlen(magazine);
+    int m = (int)strlen(ransomNote), n = (int)strlen(magazine);
     int nums[26] = { 0 };
     int i;
 

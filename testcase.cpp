@@ -2,6 +2,7 @@
 #include "MyLinkedList.h"
 
 FUNCNAME g_tFuncName[] = {
+    {1,     TestCase_1   },
     {19,    TestCase_19  },
     {20,    TestCase_20  },
     {24,    TestCase_24  },
@@ -29,14 +30,44 @@ FUNCNAME g_tFuncName[] = {
     {977,   TestCase_977 },
 };
 
+void TestCase_1()
+{
+    vector<int> nums;
+    int target;
+    vector<int> expect;
+    int rSize;
+    int* output;
+
+    nums = { 2,7,11,15 };
+    target = 9;
+    expect = { 0,1 };
+    output = twoSum(nums.data(), (int)nums.size(), target, &rSize);
+    COMPARRAY(expect.data(), expect.size(), output, rSize);
+    FREEMEM(output);
+
+    nums = { 3,2,4};
+    target = 6;
+    expect = { 1,2 };
+    output = twoSum(nums.data(), (int)nums.size(), target, &rSize);
+    COMPARRAY(expect.data(), expect.size(), output, rSize);
+    FREEMEM(output);
+
+    nums = { 3,3 };
+    target = 6;
+    expect = { 0, 1};
+    output = twoSum(nums.data(), (int)nums.size(), target, &rSize);
+    COMPARRAY(expect.data(), expect.size(), output, rSize);
+    FREEMEM(output);
+}
+
 void TestCase_202()
 {
     bool expect;
     int num;
 
-    /*num = 19;
+    num = 19;
     expect = true;
-    COMPVALUE(expect, isHappy(num));*/
+    COMPVALUE(expect, isHappy(num));
 
     num = 2;
     expect = false;
@@ -53,13 +84,13 @@ void TestCase_350()
 
     nums1 = { 1,2,2,1 }, nums2 = { 2,2 };
     expect = { 2,2  };
-    output = intersect(nums1.data(), nums1.size(), nums2.data(), nums2.size(), &returnsize);
+    output = intersect(nums1.data(), (int)nums1.size(), nums2.data(), (int)nums2.size(), &returnsize);
     COMPARRAY(expect.data(), expect.size(), output, returnsize);
     free(output);
 
     nums1 = { 4,9,5 }, nums2 = { 9,4,9,8,4 };
     expect = { 9 ,4 };
-    output = intersect(nums1.data(), nums1.size(), nums2.data(), nums2.size(), &returnsize);
+    output = intersect(nums1.data(), (int)nums1.size(), nums2.data(), (int)nums2.size(), &returnsize);
     COMPARRAY(expect.data(), expect.size(), output, returnsize);
     free(output);
 }
@@ -74,13 +105,13 @@ void TestCase_349()
 
     nums1 = { 1,2,2,1 }, nums2 = { 2,2 };
     expect = { 2 };
-    output = intersection(nums1.data(), nums1.size(), nums2.data(), nums2.size(), &returnsize);
+    output = intersection(nums1.data(), (int)nums1.size(), nums2.data(), (int)nums2.size(), &returnsize);
     COMPARRAY(expect.data(), expect.size(), output, returnsize);
     free(output);
 
     nums1 = { 4,9,5 }, nums2 = { 9,4,9,8,4 };
     expect = { 9 ,4 };
-    output = intersection(nums1.data(), nums1.size(), nums2.data(), nums2.size(), &returnsize);
+    output = intersection(nums1.data(), (int)nums1.size(), nums2.data(), (int)nums2.size(), &returnsize);
     COMPARRAY(expect.data(), expect.size(), output, returnsize);
     free(output);
 }

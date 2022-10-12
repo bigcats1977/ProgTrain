@@ -2,6 +2,8 @@
 
 #include "general.h"
 
+// 1. Two Sum
+int* twoSum(int* nums, int numsSize, int target, int* returnSize);
 // 19. Remove Nth Node From End of List
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n);
 // 20. Valid Parentheses
