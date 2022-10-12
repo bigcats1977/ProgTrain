@@ -12,6 +12,7 @@ FUNCNAME g_tFuncName[] = {
     {69,    TestCase_69  },
     {49,    TestCase_49  },
     {76,    TestCase_76  },
+    {202,   TestCase_202 },
     {203,   TestCase_203 },
     {206,   TestCase_206 },
     {209,   TestCase_209 },
@@ -27,6 +28,20 @@ FUNCNAME g_tFuncName[] = {
     {904,   TestCase_904 },
     {977,   TestCase_977 },
 };
+
+void TestCase_202()
+{
+    bool expect;
+    int num;
+
+    /*num = 19;
+    expect = true;
+    COMPVALUE(expect, isHappy(num));*/
+
+    num = 2;
+    expect = false;
+    COMPVALUE(expect, isHappy(num));
+}
 
 void TestCase_350()
 {

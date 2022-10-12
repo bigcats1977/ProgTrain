@@ -22,6 +22,8 @@ char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnCo
 int mySqrt(int x);
 // 76. Minimum Window Substring
 char* minWindow(char* s, char* t);
+// 202. Happy Number
+bool isHappy(int n);
 // 203. Remove Linked List Elements
 ListNode* removeElements(ListNode* head, int val);
 // 206. Reverse Linked List

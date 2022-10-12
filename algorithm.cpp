@@ -240,6 +240,35 @@ char* minWindow(char* s, char* t)
     return s;
 }
 
+// 202. Happy Number
+bool isHappy(int n)
+{
+    int cur = n;
+    int sum = n;
+    int *his = (int*) malloc(sizeof(int)*1000);
+    int hisnum = 0;
+    memset(his, 0, sizeof(int) * 1000);
+
+    while (sum != 1) {
+        for (int i = 0; i < hisnum; i++) {
+            if (his[i] == cur) {
+                free(his);
+                return false;
+            }
+        }
+        sum = 0;
+        his[hisnum++] = cur;
+        while (cur > 0) {
+            sum += (cur % 10) * (cur % 10);
+            cur = cur / 10;
+        }
+        cur = sum;
+    }
+
+    free(his);
+    return true;
+}
+
 // 203. Remove Linked List Elements
 ListNode* removeElements(ListNode* head, int val)
 {
