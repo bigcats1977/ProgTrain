@@ -24,12 +24,30 @@ FUNCNAME g_tFuncName[] = {
     {350,   TestCase_350 },
     {367,   TestCase_367 },
     {383,   TestCase_383 },
+    {541,   TestCase_541 },
     {704,   TestCase_704 },
     {707,   TestCase_707 },
     {844,   TestCase_844 },
     {904,   TestCase_904 },
     {977,   TestCase_977 },
 };
+
+void TestCase_541()
+{
+    string s;
+    string expect;
+
+    s = "abcdefg";
+    expect = "bacdfeg";
+
+    reverseStr((&*s.begin()), 2);
+    COMPARRAY((&*expect.begin()), expect.length(), (&*s.begin()), s.length());
+
+    s = "abcd";
+    expect = "bacd";
+    reverseStr((&*s.begin()), 2);
+    COMPARRAY((&*expect.begin()), expect.length(), (&*s.begin()), s.length());
+}
 
 void TestCase_344()
 {

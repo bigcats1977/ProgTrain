@@ -488,6 +488,21 @@ bool canConstruct(char* ransomNote, char* magazine)
     return true;
 }
 
+// 541. Reverse String II
+char* reverseStr(char* s, int k)
+{
+    int len = (int)strlen(s);
+    int i = 0;
+
+    for (i = 0; i < len; i += 2 * k) {
+        if (i + k <= len)
+            reverseString(&s[i], k);
+        else
+            reverseString(&s[i], len - i);
+    }
+    return s;
+}
+
 // 704. Binary Search
 int search(int* nums, int numsSize, int target) {
     int left = 0;
