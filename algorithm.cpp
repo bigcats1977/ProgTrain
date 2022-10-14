@@ -388,6 +388,17 @@ void moveZeroes(int* nums, int numsSize)
         nums[slow] = 0;
 }
 
+// 344. Reverse String
+void reverseString(char* s, int sSize)
+{
+    char c;
+    for (int i = 0; i < sSize / 2; i++) {
+        c = s[i];
+        s[i] = s[sSize - 1 - i];
+        s[sSize - 1 - i] = c;
+    }
+}
+
 // 349. Intersection of Two Arrays
 int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize)
 {

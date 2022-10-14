@@ -19,6 +19,7 @@ FUNCNAME g_tFuncName[] = {
     {209,   TestCase_209 },
     {242,   TestCase_242 },
     {283,   TestCase_283 },
+    {344,   TestCase_344 },
     {349,   TestCase_349 },
     {350,   TestCase_350 },
     {367,   TestCase_367 },
@@ -29,6 +30,16 @@ FUNCNAME g_tFuncName[] = {
     {904,   TestCase_904 },
     {977,   TestCase_977 },
 };
+
+void TestCase_344()
+{
+    string s;
+
+    s = "hello";
+    COUTARRAY((&*s.begin()), s.length());
+    reverseString(&*s.begin(), (int)s.length());
+    COUTARRAY((&*s.begin()), s.length());
+}
 
 void TestCase_1()
 {
@@ -115,7 +126,6 @@ void TestCase_349()
     COMPARRAY(expect.data(), expect.size(), output, returnsize);
     free(output);
 }
-
 
 void TestCase_49()
 {

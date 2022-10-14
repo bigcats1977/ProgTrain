@@ -36,6 +36,8 @@ int minSubArrayLen(int target, int* nums, int numsSize);
 bool isAnagram(char* s, char* t);
 // 283. Move Zeroes
 void moveZeroes(int* nums, int numsSize);
+// 344. Reverse String
+void reverseString(char* s, int sSize);
 // 349. Intersection of Two Arrays
 int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize);
 // 350. Intersection of Two Arrays II
