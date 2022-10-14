@@ -23,7 +23,8 @@ ListNode* CreateListNode(vector<int> nums);
 
 
 #define COMPVALUE(exp, out)     {                                               \
-    cout << "Expect result: " << exp << ", output result: " << out << endl;     \
+    cout << "Expect result: " << exp << endl;                                   \
+    cout << "Output result: " << out << endl;                                   \
 }
 
 #define COUTSTRING(array)  {                                                    \
@@ -40,7 +41,7 @@ ListNode* CreateListNode(vector<int> nums);
 }
 
 #define COMPSTRING(exp, out) {                                                  \
-    cout << "expected result: ";                                                \
+    cout << "expect result: ";                                                  \
     COUTSTRING(exp);                                                            \
     cout << "output result: ";                                                  \
     COUTSTRING(out);                                                            \
@@ -54,7 +55,7 @@ ListNode* CreateListNode(vector<int> nums);
 }
 
 #define COMPARRAY(exp, expnum, out, outnum) {                                   \
-    cout << "expected result: ";                                                \
+    cout << "expect result: ";                                                  \
     COUTARRAY(exp, expnum);                                                     \
     cout << "output result: ";                                                  \
     COUTARRAY(out, outnum);                                                     \

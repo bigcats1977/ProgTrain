@@ -262,6 +262,46 @@ char* minWindow(char* s, char* t)
     return s;
 }
 
+// 151. Reverse Words in a String
+char* reverseWords(char* s)
+{
+    int len = (int)strlen(s);
+    bool bWord = false;
+    int begin = len, right = 0, end = -1;
+    char* result = (char*)malloc(len+1);
+    int pos = 0 ,j = 0;
+    memset(result, 0, len+1);
+
+    for (right = len - 1; right >=0; right--) {
+        if ((s[right] == ' ')&& bWord)
+        {
+            begin = right + 1;
+            bWord = false;
+            if (pos > 0)
+                result[pos++] = ' ';
+            for (j = begin; j <= end; j++) {
+                result[pos++] = s[j];
+            }
+            end = -1;
+            continue;
+        }
+        if (s[right] != ' ' && !bWord) {
+            end = right;
+            bWord = true;
+            continue;
+        }
+    }
+    if (end >= 0) {
+        if (pos > 0)
+            result[pos++] = ' ';
+        for (j = 0; j <= end; j++) {
+            result[pos++] = s[j];
+        }
+    }
+
+    return result;
+}
+
 // 202. Happy Number
 bool isHappy(int n)
 {

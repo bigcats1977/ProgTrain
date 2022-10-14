@@ -13,6 +13,7 @@ FUNCNAME g_tFuncName[] = {
     {69,    TestCase_69  },
     {49,    TestCase_49  },
     {76,    TestCase_76  },
+    {151,   TestCase_151 },
     {202,   TestCase_202 },
     {203,   TestCase_203 },
     {206,   TestCase_206 },
@@ -31,6 +32,31 @@ FUNCNAME g_tFuncName[] = {
     {904,   TestCase_904 },
     {977,   TestCase_977 },
 };
+
+void TestCase_151()
+{
+    string s;
+    string expect;
+    char* output;
+
+    s = "the sky is blue";
+    expect = "blue is sky the";
+    output = reverseWords((&*s.begin()));
+    COMPARRAY((&*expect.begin()), expect.length(), output, strlen(output));
+    FREEMEM(output);
+
+    s = "  hello world  ";
+    expect = "world hello";
+    output = reverseWords((&*s.begin()));
+    COMPARRAY((&*expect.begin()), expect.length(), output, strlen(output));
+    FREEMEM(output);
+
+    s = "a good   example";
+    expect = "example good a";
+    output = reverseWords((&*s.begin()));
+    COMPARRAY((&*expect.begin()), expect.length(), output, strlen(output));
+    FREEMEM(output);
+}
 
 void TestCase_541()
 {
