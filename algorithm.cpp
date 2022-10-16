@@ -663,3 +663,14 @@ int* sortedSquares(int* nums, int numsSize, int* returnSize) {
 
     return result;
 }
+
+
+// ½£Ö¸ Offer 58 - II.×óÐý×ª×Ö·û´®
+string reverseLeftWords(string s, int n)
+{
+    reverseString(&*s.begin(), n);
+    reverseString(&*s.begin() + n, s.length() - n);
+    reverseString(&*s.begin(), s.length());
+
+    return s;
+}

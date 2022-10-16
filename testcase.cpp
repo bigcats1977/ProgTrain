@@ -31,7 +31,24 @@ FUNCNAME g_tFuncName[] = {
     {844,   TestCase_844 },
     {904,   TestCase_904 },
     {977,   TestCase_977 },
+    {8058,  TestCase_8058},
 };
+
+
+void TestCase_8058()
+{
+    string s, expect;
+
+    s = "abcdefg";
+    expect = "cdefgab";
+    cout << "expect:" << expect << endl;
+    cout << "output:" << reverseLeftWords(s, 2) << endl;
+
+    s = "lrloseumgh";
+    expect = "umghlrlose";
+    cout << "expect:" << expect << endl;
+    cout << "output:" << reverseLeftWords(s, 6) << endl;
+}
 
 void TestCase_151()
 {
