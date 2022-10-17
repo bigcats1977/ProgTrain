@@ -263,6 +263,22 @@ char* minWindow(char* s, char* t)
 }
 
 // 151. Reverse Words in a String
+int reverseExtraspace(char* s)
+{
+    int len = (int)strlen(s);
+    int newlen = 0;
+    for (int i = 0; i < len; i++) {
+        if (s[i] != ' ') {
+            if (newlen != 0) {
+                s[newlen++] = ' ';
+            }
+            while (i < len && s[i] != ' ')
+                s[newlen++] = s[i];
+        }
+    }
+    s[newlen] = '\0';
+    return newlen;
+}
 char* reverseWords(char* s)
 {
     int len = (int)strlen(s);
