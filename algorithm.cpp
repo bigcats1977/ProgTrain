@@ -668,15 +668,16 @@ int* sortedSquares(int* nums, int numsSize, int* returnSize) {
 bool checkIfPangram(char* sentence)
 {
     int letters[26] = { 0 };
+    int count = 26;
     int i;
     for (i = 0; i < strlen(sentence); i++) {
-        letters[sentence[i] - 'a']--;
+        if (letters[sentence[i] - 'a'] == 0)
+        {
+            letters[sentence[i] - 'a']--;
+            count--;
+        }
     }
-    for (i = 0; i < 26; i++) {
-        if (letters[i] >= 0)
-            return false;
-    }
-    return true;
+    return count > 0 ? false : true;
 }
 
 // ½£Ö¸ Offer 58 - II.×óÐý×ª×Ö·û´®
