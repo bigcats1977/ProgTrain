@@ -60,6 +60,7 @@ bool backspaceCompare(char* s, char* t);
 int totalFruit(int* fruits, int fruitsSize);
 // 977. Squares of a Sorted Array
 int* sortedSquares(int* nums, int numsSize, int* returnSize);
-
+// 1832. Check if the Sentence Is Pangram
+bool checkIfPangram(char* sentence);
 // ½£Ö¸ Offer 58 - II.×óÐý×ª×Ö·û´®
 string reverseLeftWords(string s, int n);

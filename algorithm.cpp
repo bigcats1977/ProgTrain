@@ -664,13 +664,27 @@ int* sortedSquares(int* nums, int numsSize, int* returnSize) {
     return result;
 }
 
+// 1832. Check if the Sentence Is Pangram
+bool checkIfPangram(char* sentence)
+{
+    int letters[26] = { 0 };
+    int i;
+    for (i = 0; i < strlen(sentence); i++) {
+        letters[sentence[i] - 'a']--;
+    }
+    for (i = 0; i < 26; i++) {
+        if (letters[i] >= 0)
+            return false;
+    }
+    return true;
+}
 
 // ½£Ö¸ Offer 58 - II.×óÐý×ª×Ö·û´®
 string reverseLeftWords(string s, int n)
 {
     reverseString(&*s.begin(), n);
-    reverseString(&*s.begin() + n, s.length() - n);
-    reverseString(&*s.begin(), s.length());
+    reverseString(&*s.begin() + n, (int)s.length() - n);
+    reverseString(&*s.begin(), (int)s.length());
 
     return s;
 }

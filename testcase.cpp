@@ -31,9 +31,25 @@ FUNCNAME g_tFuncName[] = {
     {844,   TestCase_844 },
     {904,   TestCase_904 },
     {977,   TestCase_977 },
+    {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
 
+
+void TestCase_1832()
+{
+    string s;
+    bool expect;
+
+    s = "thequickbrownfoxjumpsoverthelazydog";
+    expect = true;
+    COMPVALUE(expect, checkIfPangram((&*s.begin())));
+
+
+    s = "leetcode";
+    expect = false;
+    COMPVALUE(expect, checkIfPangram(&*s.begin()));
+}
 
 void TestCase_8058()
 {
