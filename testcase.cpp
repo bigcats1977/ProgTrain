@@ -8,6 +8,7 @@ FUNCNAME g_tFuncName[] = {
     {24,    TestCase_24  },
     {26,    TestCase_26  },
     {27,    TestCase_27  },
+    {28,    TestCase_28  },
     {34,    TestCase_34  },
     {35,    TestCase_35  },
     {69,    TestCase_69  },
@@ -35,6 +36,19 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_28()
+{
+    string haystack, needle;
+    int expect;
+
+    haystack = "sadbutsad", needle = "sad";
+    expect = 0;
+    COMPVALUE(expect, strStr(&*haystack.begin(), &*needle.begin()));
+
+    haystack = "leetcode", needle = "leeto";
+    expect = -1;
+    COMPVALUE(expect, strStr(&*haystack.begin(), &*needle.begin()));
+}
 
 void TestCase_1832()
 {
@@ -43,8 +57,7 @@ void TestCase_1832()
 
     s = "thequickbrownfoxjumpsoverthelazydog";
     expect = true;
-    COMPVALUE(expect, checkIfPangram((&*s.begin())));
-
+    COMPVALUE(expect, checkIfPangram(&*s.begin()));
 
     s = "leetcode";
     expect = false;

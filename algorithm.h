@@ -14,6 +14,8 @@ struct ListNode* swapPairs(struct ListNode* head);
 int removeDuplicates(int* nums, int numsSize);
 // 27. Remove Element
 int removeElement(int* nums, int numsSize, int val);
+// 28. Find the Index of the First Occurrence in a String
+int strStr(char* haystack, char* needle);
 // 34. Find First and Last Position of Element in Sorted Array
 int* searchRange(int* nums, int numsSize, int target, int* returnSize);
 // 35. Search Insert Position
