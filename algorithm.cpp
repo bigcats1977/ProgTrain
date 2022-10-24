@@ -680,13 +680,39 @@ int* sortedSquares(int* nums, int numsSize, int* returnSize) {
     return result;
 }
 
+// 1239. Maximum Length of a Concatenated String with Unique Characters
+int maxLength(char** arr, int arrSize)
+{
+    int i, j;
+    char ch;
+    int* arrnum;
+    int* letfreq;
+    arrnum = (int*)malloc(arrSize * sizeof(int));
+    letfreq = (int*)malloc(arrSize * 26 * sizeof(int));
+    memset(arrnum, 0, arrSize * sizeof(int));
+    memset(letfreq, 0, arrSize * 26 * sizeof(int));
+
+    for (i = 0; i < arrSize; i++) {
+        ch = arr[i][0];
+        while (ch != '\0')
+        {
+            letfreq[ch - 'a'] = 1;
+            arrnum[i] ++;
+            if (arrnum[i] == 26)
+                return 26;
+        }
+    }
+
+    return 0;
+}
+
 // 1832. Check if the Sentence Is Pangram
 bool checkIfPangram(char* sentence)
 {
     int letters[26] = { 0 };
     int count = 26;
     int i;
-    for (i = 0; i < strlen(sentence); i++) {
+    for (i = 0; i < (int)strlen(sentence); i++) {
         if (letters[sentence[i] - 'a'] == 0)
         {
             letters[sentence[i] - 'a']--;

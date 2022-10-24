@@ -31,10 +31,29 @@ FUNCNAME g_tFuncName[] = {
     {844,   TestCase_844 },
     {904,   TestCase_904 },
     {977,   TestCase_977 },
+    {1239,  TestCase_1239},
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
 
+
+void TestCase_1239()
+{
+    vector<string> arr ;
+    int expect;
+
+    arr = { "un","iq","ue" };
+    expect = 4;
+    COMPVALUE(expect, maxLength((char**)&arr[0][0], (int)arr.size()));
+
+    arr = { "cha","r","act","ers" };
+    expect = 6;
+    COMPVALUE(expect, maxLength((char**)&arr[0], (int)arr.size()));
+
+    arr = { "abcdefghijklmnopqrstuvwxyz" };
+    expect = 26;
+    COMPVALUE(expect, maxLength((char**)&arr[0], (int)arr.size()));
+}
 
 void TestCase_1832()
 {
