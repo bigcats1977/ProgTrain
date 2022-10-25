@@ -176,7 +176,7 @@ int strStr(char* haystack, char* needle)
             j++;
         }
         if (j == strlen(needle) - 1)
-            return (i - strlen(needle) + 1);
+            return (int)(i - strlen(needle) + 1);
     }
     return -1;
 }
@@ -351,6 +351,45 @@ char* reverseWords(char* s)
     }
 
     return result;
+}
+
+// 160. Intersection of Two Linked Lists
+struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* headB)
+{
+    struct ListNode* nodeA = headA, * nodeB = headB;
+    int lenA = 0, lenB = 0, diff;
+
+    while (nodeA) {
+        lenA++;
+        nodeA = nodeA->next;
+    }
+    while (nodeB) {
+        lenB++;
+        nodeB = nodeB->next;
+    }
+    if (lenA > lenB) {
+        diff = lenA - lenB;
+        nodeA = headA;
+        nodeB = headB;
+    }
+    else {
+            diff = lenB - lenA;
+            nodeB = headA;
+            nodeA = headB;
+    }
+    while (diff) {
+        diff--;
+        nodeA = nodeA->next;
+    }
+    while (nodeB)
+    {
+        if (nodeA == nodeB)
+            return nodeA;
+        nodeA = nodeA->next;
+        nodeB = nodeB->next;
+    }
+        
+    return nodeB;
 }
 
 // 202. Happy Number
@@ -718,7 +757,7 @@ int* sortedSquares(int* nums, int numsSize, int* returnSize) {
 // 1239. Maximum Length of a Concatenated String with Unique Characters
 int maxLength(char** arr, int arrSize)
 {
-    int i, j;
+    int i;// , j;
     char ch;
     int* arrnum;
     int* letfreq;

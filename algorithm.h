@@ -28,6 +28,8 @@ int mySqrt(int x);
 char* minWindow(char* s, char* t);
 // 151. Reverse Words in a String
 char* reverseWords(char* s);
+// 160. Intersection of Two Linked Lists
+struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* headB);
 // 202. Happy Number
 bool isHappy(int n);
 // 203. Remove Linked List Elements

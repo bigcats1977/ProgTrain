@@ -15,6 +15,7 @@ FUNCNAME g_tFuncName[] = {
     {49,    TestCase_49  },
     {76,    TestCase_76  },
     {151,   TestCase_151 },
+    {160,   TestCase_160 },
     {202,   TestCase_202 },
     {203,   TestCase_203 },
     {206,   TestCase_206 },
@@ -36,6 +37,19 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_160()
+{
+    vector<int> nums1, nums2;
+    
+    ListNode* output = NULL;
+
+    nums1 = { 4,1,8,4,5 };
+    nums2 = { 5,6,1,8,4,5 };
+    struct ListNode* headA = CreateListNode(nums1);
+    struct ListNode* headB = CreateListNode(nums2);
+    output = getIntersectionNode(headA, headB);
+}
 
 void TestCase_28()
 {
