@@ -34,9 +34,17 @@ FUNCNAME g_tFuncName[] = {
     {904,   TestCase_904 },
     {977,   TestCase_977 },
     {1239,  TestCase_1239},
+    {1662,  TestCase_1662},
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_1662()
+{
+    char word1[2][4] = { "ab", "c" };
+    char word2[2][4] = { "a", "bc" };
+    arrayStringsAreEqual((char**)word1, 2, (char**)word2, 2);
+}
 
 void TestCase_160()
 {
