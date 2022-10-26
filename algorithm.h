@@ -54,6 +54,8 @@ int* intersect(int* nums1, int nums1Size, int* nums2, int nums2Size, int* return
 bool isPerfectSquare(int num);
 // 383. Ransom Note
 bool canConstruct(char* ransomNote, char* magazine);
+// 523. Continuous Subarray Sum
+bool checkSubarraySum(int* nums, int numsSize, int k);
 // 541. Reverse String II
 char* reverseStr(char* s, int k);
 // 704. Binary Search

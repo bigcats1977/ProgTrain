@@ -641,6 +641,12 @@ bool canConstruct(char* ransomNote, char* magazine)
     return true;
 }
 
+// 523. Continuous Subarray Sum
+bool checkSubarraySum(int* nums, int numsSize, int k)
+{
+    return false;
+}
+
 // 541. Reverse String II
 char* reverseStr(char* s, int k)
 {

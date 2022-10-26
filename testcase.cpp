@@ -28,6 +28,7 @@ FUNCNAME g_tFuncName[] = {
     {350,   TestCase_350 },
     {367,   TestCase_367 },
     {383,   TestCase_383 },
+    {523,   TestCase_523 },
     {541,   TestCase_541 },
     {704,   TestCase_704 },
     {707,   TestCase_707 },
@@ -39,6 +40,29 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+
+void TestCase_523()
+{
+    vector<int> nums;
+    int k;
+    bool expect;
+
+    nums = { 23,2,4,6,7 };
+    k = 6;
+    expect = true;
+    COMPVALUE(expect, checkSubarraySum(nums.data(), (int)nums.size(), 6));
+
+    nums = { 23,2,6,4,7 };
+    k = 6;
+    expect = true;
+    COMPVALUE(expect, checkSubarraySum(nums.data(), (int)nums.size(), 6));
+
+    nums = { 23,2,6,4,7 };
+    k = 13;
+    expect = false;
+    COMPVALUE(expect, checkSubarraySum(nums.data(), (int)nums.size(), 6));
+}
 
 void TestCase_142()
 {
