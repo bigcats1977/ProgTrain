@@ -14,6 +14,7 @@ FUNCNAME g_tFuncName[] = {
     {69,    TestCase_69  },
     {49,    TestCase_49  },
     {76,    TestCase_76  },
+    {142,   TestCase_142 },
     {151,   TestCase_151 },
     {160,   TestCase_160 },
     {202,   TestCase_202 },
@@ -38,6 +39,11 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_142()
+{
+    cout << "detectCycle" << endl;
+}
 
 void TestCase_1662()
 {

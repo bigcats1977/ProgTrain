@@ -26,6 +26,8 @@ char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnCo
 int mySqrt(int x);
 // 76. Minimum Window Substring
 char* minWindow(char* s, char* t);
+// 142. Linked List Cycle II
+struct ListNode* detectCycle(struct ListNode* head);
 // 151. Reverse Words in a String
 char* reverseWords(char* s);
 // 160. Intersection of Two Linked Lists

@@ -297,6 +297,29 @@ char* minWindow(char* s, char* t)
     return s;
 }
 
+// 142. Linked List Cycle II
+struct ListNode* detectCycle(struct ListNode* head)
+{
+    struct ListNode* fast=head, * slow = head;
+
+    while (fast != NULL && fast->next != NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (fast == slow) {
+            struct ListNode* index1 = fast;
+            struct ListNode* index2 = head;
+            while (index1 != index2)
+            {
+                index1 = index1->next;
+                index2 = index2->next;
+            }
+            return index1;
+        }
+    }
+
+    return NULL;
+}
+
 // 151. Reverse Words in a String
 int reverseExtraspace(char* s)
 {
