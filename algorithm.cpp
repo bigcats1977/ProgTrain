@@ -644,6 +644,20 @@ bool canConstruct(char* ransomNote, char* magazine)
 // 523. Continuous Subarray Sum
 bool checkSubarraySum(int* nums, int numsSize, int k)
 {
+    int cur = 0;
+    int i, j;
+    /*int* vals = (int *)malloc(numsSize * sizeof(int));
+    memset(vals, 0, numsSize * sizeof(int));*/
+    int vals[5] = { 0 };
+
+    for (i = 0; i < numsSize; i++) {
+        cur = (k == 0) ? (cur + nums[i]) : (cur + nums[i]) % abs(k);
+        vals[i] = cur;
+        for (j = 0; j < i; j++) {
+            if (cur == 0 || (vals[j] == cur && i-j>1))
+                return true;
+        }
+    }
     return false;
 }
 
