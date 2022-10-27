@@ -645,18 +645,28 @@ bool canConstruct(char* ransomNote, char* magazine)
 bool checkSubarraySum(int* nums, int numsSize, int k)
 {
     int cur = 0;
-    int i, j;
-    /*int* vals = (int *)malloc(numsSize * sizeof(int));
-    memset(vals, 0, numsSize * sizeof(int));*/
-    int vals[5] = { 0 };
+    int i;
+    int zeros = 0;
+    int* vals = (int *)malloc(k * sizeof(int));
+    memset(vals, -1, k * sizeof(int));
+
+    if (numsSize < 2)
+        return false;
 
     for (i = 0; i < numsSize; i++) {
-        cur = (k == 0) ? (cur + nums[i]) : (cur + nums[i]) % abs(k);
-        vals[i] = cur;
-        for (j = 0; j < i; j++) {
-            if (cur == 0 || (vals[j] == cur && i-j>1))
+        if (nums[i]%k == 0)
+        {
+            zeros++;
+            if (zeros > 1)
                 return true;
+            continue;
         }
+        zeros = 0;
+        cur = (cur + nums[i]) % k;
+        if (cur == 0 || vals[cur] != -1)
+            return true;
+        else
+            vals[cur] = i;
     }
     return false;
 }

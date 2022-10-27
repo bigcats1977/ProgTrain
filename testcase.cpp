@@ -47,6 +47,11 @@ void TestCase_523()
     int k;
     bool expect;
 
+    nums = { 1,0 };
+    k = 2;
+    expect = false;
+    COMPVALUE(expect, checkSubarraySum(nums.data(), (int)nums.size(), k));
+
     nums = { 5,0,0,0 };
     k = 3;
     expect = true;
