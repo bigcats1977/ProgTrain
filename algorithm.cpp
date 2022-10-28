@@ -807,6 +807,40 @@ int* sortedSquares(int* nums, int numsSize, int* returnSize) {
     return result;
 }
 
+// 1047. Remove All Adjacent Duplicates In String
+char* removeDuplicates(char* s)
+{
+    struct stack {
+        int top;
+        char* ch;
+    }st;
+    int i;
+    int len = (int)strlen(s);
+
+    st.top = -1;
+    st.ch = (char*)malloc(len);
+    char* result = (char*)malloc(len);
+    
+    for (i = 0; i < len; i++)
+    {
+        if (st.top >= 0 && st.ch[st.top] == s[i]) {
+            st.top--;
+        }
+        else {
+            st.ch[++st.top] = s[i];
+        }
+    }
+    result[st.top + 1] = '\0';
+    i = st.top;
+    while (st.top >= 0) {
+        result[st.top] = st.ch[st.top];
+        st.top--;
+    }
+    free(st.ch);
+
+    return result;
+}
+
 // 1239. Maximum Length of a Concatenated String with Unique Characters
 int maxLength(char** arr, int arrSize)
 {

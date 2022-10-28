@@ -35,12 +35,33 @@ FUNCNAME g_tFuncName[] = {
     {844,   TestCase_844 },
     {904,   TestCase_904 },
     {977,   TestCase_977 },
+    {1047,  TestCase_1047},
     {1239,  TestCase_1239},
     {1662,  TestCase_1662},
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
 
+void TestCase_1047()
+{
+    string s;
+    string expect;
+    char* output;
+
+    s = "abbaca";
+    expect = "ca";
+    output = removeDuplicates(&*s.begin());
+    cout << "expect:" << expect << endl;
+    cout << "output:" << output << endl;
+    FREEMEM(output);
+
+    s = "azxxzy";
+    expect = "ay";
+    output = removeDuplicates(&*s.begin());
+    cout << "expect:" << expect << endl;
+    cout << "output:" << output << endl;
+    FREEMEM(output);
+}
 void TestCase_523()
 {
     vector<int> nums;
