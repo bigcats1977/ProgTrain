@@ -37,10 +37,25 @@ FUNCNAME g_tFuncName[] = {
     {977,   TestCase_977 },
     {1047,  TestCase_1047},
     {1239,  TestCase_1239},
+    {1480,  TestCase_1480},
     {1662,  TestCase_1662},
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_1480()
+{
+    vector<int> nums;
+    vector<int> expect;
+    int* output;
+    int  retrunsize = 0;
+
+    nums = { 1,2,3,4 };
+    expect = { 1,3,6,10 };
+    output = runningSum(nums.data(), (int)nums.size(), &retrunsize);
+    COMPARRAY(expect.data(), expect.size(), output, retrunsize);
+    FREEMEM(output);
+}
 
 void TestCase_1047()
 {
