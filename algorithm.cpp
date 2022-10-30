@@ -151,7 +151,7 @@ void getNext(int* next, char* s)
 {
     int j = -1;
     next[0] = j;
-    for (int i = 1; i < strlen(s); i++) {
+    for (int i = 1; i < (int)strlen(s); i++) {
         if (j >= 0 && s[i] != s[j + 1]) {
             j = next[j];
         }
@@ -168,7 +168,7 @@ int strStr(char* haystack, char* needle)
     int* next = (int*)malloc(strlen(needle) * sizeof(int));
     getNext(next, needle);
     int j = -1;
-    for (int i = 0; i < strlen(haystack); i++) {
+    for (int i = 0; i < (int)strlen(haystack); i++) {
         while (j >= 0 && haystack[i] != needle[j + 1]) {
             j = next[j];
         }
@@ -529,6 +529,26 @@ bool isAnagram(char* s, char* t)
     return true;
 }
 
+// 278. First Bad Version
+bool isBadVersion(int version)
+{
+    return true;
+}
+int firstBadVersion(int n)
+{
+    int left = 1, right = n;
+    int mid;
+    while (left <= right) {
+        mid = left + (right - left) / 2;
+        if (!isBadVersion(mid)) {
+            left = mid + 1;
+        }
+        else {
+            right = mid - 1;
+        }
+    }
+    return left;
+}
 // 283. Move Zeroes
 void moveZeroes(int* nums, int numsSize)
 {
