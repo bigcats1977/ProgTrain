@@ -32,6 +32,7 @@ FUNCNAME g_tFuncName[] = {
     {541,   TestCase_541 },
     {704,   TestCase_704 },
     {707,   TestCase_707 },
+    {724,   TestCase_724 },
     {844,   TestCase_844 },
     {904,   TestCase_904 },
     {977,   TestCase_977 },
@@ -43,6 +44,27 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_724()
+{
+    vector<int> nums;
+    int expect;
+    int output;
+
+    nums = { 1,7,3,6,5,6 };
+    expect = 3;
+    output = pivotIndex(nums.data(), (int)nums.size());
+    COMPVALUE(expect, output);
+
+    nums = { 1,2,3 };
+    expect = -1;
+    output = pivotIndex(nums.data(), (int)nums.size());
+    COMPVALUE(expect, output);
+
+    nums = { 2,1,-1 };
+    expect = 0;
+    output = pivotIndex(nums.data(), (int)nums.size());
+    COMPVALUE(expect, output);
+}
 void TestCase_1480()
 {
     vector<int> nums;

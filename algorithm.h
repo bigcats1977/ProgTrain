@@ -64,6 +64,8 @@ char* reverseStr(char* s, int k);
 int search(int* nums, int numsSize, int target);
 // 707. Design Linked List
 // MyLinkedList
+// 724. Find Pivot Index
+int pivotIndex(int* nums, int numsSize);
 // 844. Backspace String Compare
 bool backspaceCompare(char* s, char* t);
 // 904. Fruit Into Baskets

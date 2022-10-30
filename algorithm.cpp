@@ -734,6 +734,47 @@ int search(int* nums, int numsSize, int target) {
 // 707. Design Linked List
 // MyLinkedList
 
+// 724. Find Pivot Index
+int pivotIndex(int* nums, int numsSize)
+{
+#if 0
+    int suml=0, sumr = 0;
+    /*suml = (int*)malloc((numsSize+1) * sizeof(int));
+    memset(suml, 0, (numsSize + 1) * sizeof(int));*/
+    int i;
+    for (i = 0; i < numsSize; i++) {
+        suml += nums[i];
+    }
+    sumr = suml;
+    for (i = numsSize - 1; i >= 0; i--) {
+        suml -= nums[i];
+        sumr -= nums[numsSize - i];
+        if (suml == sumr)
+            return i;
+    }
+    return -1;
+#else
+    int* suml, total;
+    suml = (int*)malloc((numsSize + 1) * sizeof(int));
+    memset(suml, 0, (numsSize + 1) * sizeof(int));
+    int i;
+    for (i = 1; i <= numsSize; i++) {
+        suml[i] = suml[i - 1] + nums[i - 1];
+    }
+    total = suml[numsSize];
+    for (i = 0; i < numsSize; i++) {
+        total -= nums[i];
+        if (suml[i] == total)
+            break;
+    }
+
+    free(suml);
+    if (i == numsSize)
+        return -1;
+    return i;
+#endif
+}
+
 // 844. Backspace String Compare
 void procBS(char* s, int* pos)
 {
