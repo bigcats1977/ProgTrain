@@ -32,6 +32,8 @@ struct ListNode* detectCycle(struct ListNode* head);
 char* reverseWords(char* s);
 // 160. Intersection of Two Linked Lists
 struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* headB);
+// 189. Rotate Array
+void rotate(int* nums, int numsSize, int k);
 // 202. Happy Number
 bool isHappy(int n);
 // 203. Remove Linked List Elements

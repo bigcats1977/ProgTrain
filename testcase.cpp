@@ -17,6 +17,7 @@ FUNCNAME g_tFuncName[] = {
     {142,   TestCase_142 },
     {151,   TestCase_151 },
     {160,   TestCase_160 },
+    {189,   TestCase_189 },
     {202,   TestCase_202 },
     {203,   TestCase_203 },
     {205,   TestCase_205 },
@@ -47,6 +48,21 @@ FUNCNAME g_tFuncName[] = {
 };
 
 
+
+void TestCase_189()
+{
+    vector<int> nums;
+
+    nums = { 1,2,3,4,5,6,7 };
+    COUTARRAY(nums.data(), (int)nums.size());
+    rotate(nums.data(), (int)nums.size(), 3);
+    COUTARRAY(nums.data(), (int)nums.size());
+
+    nums = { -1, -100, 3, 99 };
+    COUTARRAY(nums.data(), (int)nums.size());
+    rotate(nums.data(), (int)nums.size(), 2);
+    COUTARRAY(nums.data(), (int)nums.size());
+}
 void TestCase_392()
 {
     string s, t;

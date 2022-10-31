@@ -415,6 +415,46 @@ struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* he
     return nodeB;
 }
 
+// 189. Rotate Array
+void inverse(int* nums, int begin, int end)
+{
+    while (begin < end)
+    {
+        int temp = nums[begin];
+        nums[begin++] = nums[end];
+        nums[end--] = temp;
+    }
+}
+void rotate(int* nums, int numsSize, int k)
+{
+    k = k % numsSize;
+    if (k == 0)
+        return;
+    inverse(nums, 0, numsSize-1);
+    inverse(nums, 0, k-1);
+    inverse(nums, k, numsSize - 1);
+    return;
+#if 0
+    int* buff = (int*)malloc(numsSize * sizeof(int));
+    memcpy(buff, nums, numsSize * sizeof(int));
+    int slow = 0, fast = k;
+    int temp;
+    int i, j;
+    for (i = 0; i <numsSize; i++) {
+        j = (i + k+1) % numsSize;
+        nums[i] = buff[j];
+        /*temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = i;*/
+    }
+    /*for (fast = k; fast < numsSize; fast++) {
+        temp = nums[slow];
+        nums[slow++] = nums[fast];
+        nums[fast] = temp;
+    }*/
+#endif
+}
+
 // 202. Happy Number
 bool isHappy(int n)
 {
