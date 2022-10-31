@@ -711,6 +711,27 @@ bool canConstruct(char* ransomNote, char* magazine)
     return true;
 }
 
+// 392. Is Subsequence
+bool isSubsequence(char* s, char* t)
+{
+    char* slow = s, * fast = t;
+    if (*slow == 0)
+        return true;
+    if (*fast == 0)
+        return false;
+    while (*fast != 0)
+    {
+        if (*slow == *fast)
+        {
+            slow++;
+            if (*slow == 0)
+                return true;
+        }
+        fast++;
+    }
+    return false;
+}
+
 // 523. Continuous Subarray Sum
 bool checkSubarraySum(int* nums, int numsSize, int k)
 {

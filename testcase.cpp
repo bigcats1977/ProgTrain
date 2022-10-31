@@ -29,6 +29,7 @@ FUNCNAME g_tFuncName[] = {
     {350,   TestCase_350 },
     {367,   TestCase_367 },
     {383,   TestCase_383 },
+    {392,   TestCase_392 },
     {523,   TestCase_523 },
     {541,   TestCase_541 },
     {704,   TestCase_704 },
@@ -44,6 +45,20 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+
+void TestCase_392()
+{
+    string s, t;
+    bool expect;
+    bool output;
+
+    s = "abc";
+    t = "ahbgdc";
+    expect = true;
+    output = isSubsequence(&*s.begin(), &*t.begin());
+    COMPVALUE(expect, output);
+}
 
 void TestCase_205()
 {
