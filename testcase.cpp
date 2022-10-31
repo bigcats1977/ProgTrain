@@ -52,8 +52,8 @@ FUNCNAME g_tFuncName[] = {
 
 void TestCase_217()
 {
-    int nums[2] = {3,1};
-    containsDuplicate(nums, 2);
+    int nums[4] = {1,2,3,1};
+    containsDuplicate(nums, 4);
 }
 void TestCase_766()
 {

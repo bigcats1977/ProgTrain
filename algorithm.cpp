@@ -632,7 +632,40 @@ bool quicksort4Duplicate(int* nums, int begin, int end)
 }
 bool containsDuplicate(int* nums, int numsSize)
 {
-    return !quicksort4Duplicate(nums, 0, numsSize - 1);
+#define PRIME 997
+    struct Data {
+        int val;
+        struct Data* next;
+    }HTable[PRIME];
+    int i;
+
+    struct Data* pre, * cur;
+    for (i = 0; i < PRIME; i++) {
+        HTable[i].val = INT_MIN;
+        HTable[i].next = NULL;
+    }
+    for (i = 0; i < numsSize; i++) {
+        int index = abs(nums[i] % PRIME);
+        if (HTable[index].val == INT_MIN) {
+            HTable[index].val = nums[i];
+            continue;
+        }
+        else if (HTable[index].val == nums[i]) {
+            return true;
+        }
+        pre = &HTable[index];
+        while (pre->next) {
+            if (pre->next->val == nums[i]) {
+                return true;
+            }
+            pre = pre->next;
+        }
+        cur = (struct Data*)malloc(sizeof(struct Data));
+        cur->val = nums[i];
+        cur->next = NULL;
+        pre->next = cur;
+    }
+    return false;
 }
 
 // 242. Valid Anagram
