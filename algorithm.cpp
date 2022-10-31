@@ -467,6 +467,56 @@ ListNode* removeElements(ListNode* head, int val)
     return temp;
 }
 
+// 205. Isomorphic Strings
+//void SWAP(int* p, int* q)
+//{
+//    int buf;
+//    buf = *p;
+//    *p = *q;
+//    *q = buf;
+//    return;
+//}
+//void quicksort(int* freq, int left, int right)
+//{
+//    if (left >= right)
+//        return;
+//
+//    int i = left, j = right;
+//    int temp;
+//    int key=freq[i];
+//
+//    while (i < j) {
+//        while (i<j && freq[j]>=key)
+//            j--;
+//        SWAP(&freq[i], &freq[j]);
+//        i++;
+//        while (i<j && freq[i]>=key)
+//            i++;
+//        SWAP(&freq[i], &freq[j]);
+//        j--;
+//    }
+//
+//    quicksort(freq, left, i - 1);
+//    quicksort(freq, i + 1, right);
+//}
+
+bool isIsomorphic(char* s, char* t)
+{
+    int swS[128] = { 0 };
+    int swT[128] = { 0 };
+    int i;
+    for (i = 0; i < (int)strlen(s); i++) {
+        if (swS[s[i]] == 0 && swT[t[i]] == 0) {
+            swS[s[i]] = t[i];
+            swT[t[i]] = s[i];
+        }
+        else if (swS[s[i]] != t[i] || swT[t[i] != s[i]])
+            return false;
+    }
+
+    return true;
+}
+
 // 206. Reverse Linked List
 struct ListNode* reverseList(struct ListNode* head)
 {

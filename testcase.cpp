@@ -19,6 +19,7 @@ FUNCNAME g_tFuncName[] = {
     {160,   TestCase_160 },
     {202,   TestCase_202 },
     {203,   TestCase_203 },
+    {205,   TestCase_205 },
     {206,   TestCase_206 },
     {209,   TestCase_209 },
     {242,   TestCase_242 },
@@ -43,6 +44,19 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_205()
+{
+    string s, t;
+    bool expect;
+    bool output;
+
+    s = "egg";
+    t = "add";
+    expect = true;
+    output = isIsomorphic(&*s.begin(), &*t.begin());
+    COMPVALUE(expect, output);
+}
 
 void TestCase_724()
 {

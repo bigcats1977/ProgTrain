@@ -36,6 +36,8 @@ struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* he
 bool isHappy(int n);
 // 203. Remove Linked List Elements
 ListNode* removeElements(ListNode* head, int val);
+// 205. Isomorphic Strings
+bool isIsomorphic(char* s, char* t);
 // 206. Reverse Linked List
 struct ListNode* reverseList(struct ListNode* head);
 // 209. Minimum Size Subarray Sum
