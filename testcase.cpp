@@ -36,6 +36,7 @@ FUNCNAME g_tFuncName[] = {
     {704,   TestCase_704 },
     {707,   TestCase_707 },
     {724,   TestCase_724 },
+    {766,   TestCase_766 },
     {844,   TestCase_844 },
     {904,   TestCase_904 },
     {977,   TestCase_977 },
@@ -47,7 +48,25 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_766()
+{
+    int matrix[3][4] = { {1, 2, 3, 4}, {5, 1, 2, 3}, {9, 5, 1, 2 } };
+    int** p;
+    bool expect = true;
+    bool output;
+    int col = 4;
 
+    p = (int**)malloc(sizeof(int*) * 3);
+    for (int i = 0; i < 3; i++) {
+        p[i] = (int*)malloc(sizeof(int) * 4);
+        for (int j = 0; j < 4; j++) {
+            p[i][j] = matrix[i][j];
+        }
+    }
+
+    output = isToeplitzMatrix(p, 3, &col);
+    COMPVALUE(expect, output);
+};
 
 void TestCase_189()
 {

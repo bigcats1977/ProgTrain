@@ -886,6 +886,32 @@ int pivotIndex(int* nums, int numsSize)
 #endif
 }
 
+// 766. Toeplitz Matrix
+bool isToeplitzMatrix(int** matrix, int matrixSize, int* matrixColSize)
+{
+    int i,j;
+    int m, n;
+    int val;
+
+    m = 0;
+    for (n = 0; n < *matrixColSize; n++) {
+        val = matrix[m][n];
+        for (i = m + 1, j = n + 1; i < matrixSize && j < *matrixColSize; i++, j++) {
+            if(val != matrix[i][j])
+                return false;
+        }
+    }
+    n = 0;
+    for (m = 1; m < matrixSize; m++) {
+        val = *(*(matrix + m) + n);
+        for (i = m + 1, j = n + 1; i < matrixSize && j < *matrixColSize; i++, j++) {
+            if (val != matrix[i][j])
+                return false;
+        }
+    }
+
+    return true;
+}
 // 844. Backspace String Compare
 void procBS(char* s, int* pos)
 {
