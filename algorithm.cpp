@@ -600,6 +600,41 @@ int minSubArrayLen(int target, int* nums, int numsSize)
     return len;
 }
 
+// 217. Contains Duplicate
+bool quicksort4Duplicate(int* nums, int begin, int end)
+{
+    if (begin >= end)
+        return true;
+
+    int pivot = nums[begin];
+    int low = begin, high = end;
+    while (low < high) {
+        while (low < high && nums[high] >= pivot) {
+            if (nums[high] == pivot)
+                return false;
+            high--;
+        }
+        nums[low] = nums[high];
+        while (low < high && nums[low] <= pivot) {
+            if (nums[low] == pivot)
+                return false;
+            low++;
+        }
+        nums[high] = nums[low];
+    }
+    nums[low] = pivot;
+
+    if (!quicksort4Duplicate(nums, begin, low - 1))
+        return false;
+    if (!quicksort4Duplicate(nums, low + 1, end))
+        return false;
+    return true;
+}
+bool containsDuplicate(int* nums, int numsSize)
+{
+    return !quicksort4Duplicate(nums, 0, numsSize - 1);
+}
+
 // 242. Valid Anagram
 bool isAnagram(char* s, char* t)
 {

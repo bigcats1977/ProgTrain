@@ -18,3 +18,24 @@ ListNode* CreateListNode(vector<int> nums)
 
     return head;
 }
+
+void quicksort(int* nums, int begin, int end)
+{
+    if (begin >= end)
+        return;
+
+    int pivot = nums[begin];
+    int low = begin, high = end;
+    while (low < high) {
+        while (low < high && nums[high] >= pivot)
+            high--;
+        nums[low] = nums[high];
+        while (low < high && nums[low] <= pivot)
+            low++;
+        nums[high] = nums[low];
+    }
+    nums[low] = pivot;
+
+    quicksort(nums, begin, low - 1);
+    quicksort(nums, low+1, end);
+}

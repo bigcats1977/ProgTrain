@@ -23,6 +23,7 @@ FUNCNAME g_tFuncName[] = {
     {205,   TestCase_205 },
     {206,   TestCase_206 },
     {209,   TestCase_209 },
+    {217,   TestCase_217 },
     {242,   TestCase_242 },
     {283,   TestCase_283 },
     {344,   TestCase_344 },
@@ -48,6 +49,12 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+
+void TestCase_217()
+{
+    int nums[2] = {3,1};
+    containsDuplicate(nums, 2);
+}
 void TestCase_766()
 {
     int matrix[3][4] = { {1, 2, 3, 4}, {5, 1, 2, 3}, {9, 5, 1, 2 } };

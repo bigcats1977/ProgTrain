@@ -44,6 +44,8 @@ bool isIsomorphic(char* s, char* t);
 struct ListNode* reverseList(struct ListNode* head);
 // 209. Minimum Size Subarray Sum
 int minSubArrayLen(int target, int* nums, int numsSize);
+// 217. Contains Duplicate
+bool containsDuplicate(int* nums, int numsSize);
 // 242. Valid Anagram
 bool isAnagram(char* s, char* t);
 // 278. First Bad Version

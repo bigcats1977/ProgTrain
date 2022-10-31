@@ -22,6 +22,8 @@ typedef struct ListNode {
 
 ListNode* CreateListNode(vector<int> nums);
 
+void quicksort(int* nums, int low, int high);
+
 
 #define COMPVALUE(exp, out)     {                                               \
     cout << "Expect result: " << exp << endl;                                   \
