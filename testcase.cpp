@@ -11,6 +11,7 @@ FUNCNAME g_tFuncName[] = {
     {28,    TestCase_28  },
     {34,    TestCase_34  },
     {35,    TestCase_35  },
+    {53,    TestCase_53  },
     {69,    TestCase_69  },
     {49,    TestCase_49  },
     {76,    TestCase_76  },
@@ -48,6 +49,16 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+
+void TestCase_53()
+{
+    int nums[] = { -2,1,-3,4,-1,2,1,-5,4 };
+    int expect = 6;
+    int output;
+    output = maxSubArray(nums, 9);
+    COMPVALUE(expect, output);
+}
 
 
 void TestCase_217()

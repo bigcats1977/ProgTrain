@@ -22,6 +22,8 @@ int* searchRange(int* nums, int numsSize, int target, int* returnSize);
 int searchInsert(int* nums, int numsSize, int target);
 // 49. Group Anagrams
 char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnColumnSizes);
+// 53. Maximum Subarray
+int maxSubArray(int* nums, int numsSize);
 // 69. Sqrt(x)
 int mySqrt(int x);
 // 76. Minimum Window Substring

@@ -247,6 +247,18 @@ char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnCo
     return NULL;
 }
 
+// 53. Maximum Subarray
+int maxSubArray(int* nums, int numsSize)
+{
+    int sum = INT_MIN, curSum = 0;
+    for (int i= 0; i < numsSize; i++)
+    {
+        curSum = curSum + nums[i] > nums[i] ? curSum + nums[i] : nums[i];
+        sum = curSum > sum ? curSum : sum;
+    }
+    return sum;
+}
+
 // 69. Sqrt(x)
 int mySqrt(int x)
 {
