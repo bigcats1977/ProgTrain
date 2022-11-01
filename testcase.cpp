@@ -11,10 +11,11 @@ FUNCNAME g_tFuncName[] = {
     {28,    TestCase_28  },
     {34,    TestCase_34  },
     {35,    TestCase_35  },
+    {49,    TestCase_49  },
     {53,    TestCase_53  },
     {69,    TestCase_69  },
-    {49,    TestCase_49  },
     {76,    TestCase_76  },
+    {88,    TestCase_88  },
     {142,   TestCase_142 },
     {151,   TestCase_151 },
     {160,   TestCase_160 },
@@ -51,6 +52,12 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_88()
+{
+    vector<int> nums1 = { 1,2,3,0,0,0 };
+    vector<int> nums2 = { 2,5,6 };
+    merge(nums1.data(), (int)nums1.size(), 3, nums2.data(), (int)nums2.size(), 3);
+}
 
 void TestCase_53()
 {

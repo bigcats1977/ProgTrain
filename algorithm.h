@@ -30,6 +30,8 @@ int maxSubArray(int* nums, int numsSize);
 int mySqrt(int x);
 // 76. Minimum Window Substring
 char* minWindow(char* s, char* t);
+// 88. Merge Sorted Array
+void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n);
 // 142. Linked List Cycle II
 struct ListNode* detectCycle(struct ListNode* head);
 // 151. Reverse Words in a String
