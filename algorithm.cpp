@@ -94,6 +94,35 @@ bool isValid(char* s)
     return true;
 }
 
+// 21. Merge Two Sorted Lists
+struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2)
+{
+    struct ListNode* dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    dummy->next = NULL;
+    
+    struct ListNode* node1 = list1, * node2 =list2, * prenode = dummy;
+    while (node1 != NULL && node2 != NULL) {
+        if (node1->val <= node2->val) {
+            prenode->next = node1;
+            node1 = node1->next;
+        }
+        else {
+            prenode->next = node2;
+            node2 = node2->next;
+        }
+
+        prenode = prenode->next;
+    }
+    if (node1 != NULL)
+        prenode->next = node1;
+    if (node2 != NULL)
+        prenode->next = node2;
+
+    prenode = dummy->next;
+    free(dummy);
+    return prenode;
+}
+
 // 24. Swap Nodes in Pairs
 struct ListNode* swapPairs(struct ListNode* head)
 {

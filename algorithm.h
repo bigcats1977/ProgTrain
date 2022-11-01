@@ -8,6 +8,8 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize);
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n);
 // 20. Valid Parentheses
 bool isValid(char* s);
+// 21. Merge Two Sorted Lists
+struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2);
 // 24. Swap Nodes in Pairs
 struct ListNode* swapPairs(struct ListNode* head);
 // 26. Remove Duplicates from Sorted Array
