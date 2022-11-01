@@ -69,7 +69,7 @@ void TestCase_167()
     int rSize;
     int* output;
 
-    /*nums = { 2,7,11,5 };
+    nums = { 2,7,11,15 };
     target = 9;
     expect = { 1,2 };
     output = twoSumII(nums.data(), (int)nums.size(), target, &rSize);
@@ -88,7 +88,7 @@ void TestCase_167()
     expect = { 1,2 };
     output = twoSumII(nums.data(), (int)nums.size(), target, &rSize);
     COMPARRAY(expect.data(), expect.size(), output, rSize);
-    FREEMEM(output);*/
+    FREEMEM(output);
 
     nums = { 3,3 };
     target = 6;

@@ -448,7 +448,8 @@ int* twoSumII(int* numbers, int numbersSize, int target, int* returnSize)
 {
     *returnSize = 2;
     int* result = (int*)malloc(2 * sizeof(int));
-    memset(result, -1, 2 * sizeof(int));
+#if 0
+    //memset(result, -1, 2 * sizeof(int));
     int index;
     for (int i = 0; i < numbersSize; i++)    {
         index = quickfind(numbers, numbersSize, target - numbers[i]);
@@ -459,6 +460,24 @@ int* twoSumII(int* numbers, int numbersSize, int target, int* returnSize)
             return result;
         }
     }
+#else
+    int left = 0, right = numbersSize - 1;
+    int sum;
+    while (left < right) {
+        sum = numbers[left] + numbers[right];
+        if (sum == target) {
+            result[0] = left + 1;
+            result[1] = right + 1;
+            return result;
+        }
+        if (sum < target) {
+            left++;
+        }
+        else {
+            right--;
+        }
+    }
+#endif
     return result;
 }
 
