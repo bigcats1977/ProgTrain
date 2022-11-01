@@ -18,6 +18,7 @@ FUNCNAME g_tFuncName[] = {
     {142,   TestCase_142 },
     {151,   TestCase_151 },
     {160,   TestCase_160 },
+    {167,   TestCase_167 },
     {189,   TestCase_189 },
     {202,   TestCase_202 },
     {203,   TestCase_203 },
@@ -60,6 +61,42 @@ void TestCase_53()
     COMPVALUE(expect, output);
 }
 
+void TestCase_167()
+{
+    vector<int> nums;
+    int target;
+    vector<int> expect;
+    int rSize;
+    int* output;
+
+    /*nums = { 2,7,11,5 };
+    target = 9;
+    expect = { 1,2 };
+    output = twoSumII(nums.data(), (int)nums.size(), target, &rSize);
+    COMPARRAY(expect.data(), expect.size(), output, rSize);
+    FREEMEM(output);
+
+    nums = { 2,3,4 };
+    target =6;
+    expect = { 1,3 };
+    output = twoSumII(nums.data(), (int)nums.size(), target, &rSize);
+    COMPARRAY(expect.data(), expect.size(), output, rSize);
+    FREEMEM(output);
+
+    nums = { -1,0 };
+    target = -1;
+    expect = { 1,2 };
+    output = twoSumII(nums.data(), (int)nums.size(), target, &rSize);
+    COMPARRAY(expect.data(), expect.size(), output, rSize);
+    FREEMEM(output);*/
+
+    nums = { 3,3 };
+    target = 6;
+    expect = { 1,2 };
+    output = twoSumII(nums.data(), (int)nums.size(), target, &rSize);
+    COMPARRAY(expect.data(), expect.size(), output, rSize);
+    FREEMEM(output);
+}
 
 void TestCase_217()
 {

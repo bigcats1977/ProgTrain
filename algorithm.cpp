@@ -427,6 +427,41 @@ struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* he
     return nodeB;
 }
 
+// 167. Two Sum II - Input Array Is Sorted
+int quickfind(int* numbers, int numberSize, int target)
+{
+    int left = 0, right = numberSize - 1;
+    int mid;
+    while (left <= right) {
+        mid = left + (right - left) / 2;
+        if (numbers[mid] == target)
+            return mid;
+        if (numbers[mid] > target) {
+            right = mid - 1;
+        }
+        else
+            left = mid + 1;
+    }
+    return -1;
+}
+int* twoSumII(int* numbers, int numbersSize, int target, int* returnSize)
+{
+    *returnSize = 2;
+    int* result = (int*)malloc(2 * sizeof(int));
+    memset(result, -1, 2 * sizeof(int));
+    int index;
+    for (int i = 0; i < numbersSize; i++)    {
+        index = quickfind(numbers, numbersSize, target - numbers[i]);
+        if (index != -1 && index !=i)
+        {
+            result[0] = i > index ? index + 1 : i + 1;
+            result[1] = i < index ? index + 1 : i + 1;
+            return result;
+        }
+    }
+    return result;
+}
+
 // 189. Rotate Array
 void inverse(int* nums, int begin, int end)
 {
