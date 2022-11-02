@@ -358,6 +358,25 @@ void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n)
     }
 }
 
+// 121. Best Time to Buy and Sell Stock
+int maxProfit(int* prices, int pricesSize)
+{
+    int profit = 0, max = 0;
+    int pre = prices[0];
+    for (int i = 1; i < pricesSize; i++) {
+        profit = prices[i] - pre;
+        if (profit <= 0) {
+            pre = prices[i];
+            continue;
+        }
+        else {
+            max = profit > max ? profit : max;
+        }
+    }
+
+    return max;
+}
+
 // 142. Linked List Cycle II
 struct ListNode* detectCycle(struct ListNode* head)
 {

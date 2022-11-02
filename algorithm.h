@@ -32,6 +32,8 @@ int mySqrt(int x);
 char* minWindow(char* s, char* t);
 // 88. Merge Sorted Array
 void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n);
+// 121. Best Time to Buy and Sell Stock
+int maxProfit(int* prices, int pricesSize);
 // 142. Linked List Cycle II
 struct ListNode* detectCycle(struct ListNode* head);
 // 151. Reverse Words in a String
