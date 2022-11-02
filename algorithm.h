@@ -88,6 +88,8 @@ int pivotIndex(int* nums, int numsSize);
 bool isToeplitzMatrix(int** matrix, int matrixSize, int* matrixColSize);
 // 844. Backspace String Compare
 bool backspaceCompare(char* s, char* t);
+// 876. Middle of the Linked List
+struct ListNode* middleNode(struct ListNode* head);
 // 904. Fruit Into Baskets
 int totalFruit(int* fruits, int fruitsSize);
 // 977. Squares of a Sorted Array

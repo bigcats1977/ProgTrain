@@ -1157,6 +1157,23 @@ bool backspaceCompare(char* s, char* t)
     return true;
 }
 
+// 876. Middle of the Linked List
+struct ListNode* middleNode(struct ListNode* head)
+{
+    struct ListNode* Dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    Dummy->next = head;
+    struct ListNode* fast = Dummy, * slow = Dummy;
+
+    while (fast != NULL) {
+        slow = slow->next;
+        fast = fast->next;
+        if (fast != NULL)
+            fast = fast->next;
+    }
+    free(Dummy);
+    return slow;
+}
+
 // 904. Fruit Into Baskets
 int totalFruit(int* fruits, int fruitsSize)
 {
