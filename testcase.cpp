@@ -37,6 +37,7 @@ FUNCNAME g_tFuncName[] = {
     {392,   TestCase_392 },
     {523,   TestCase_523 },
     {541,   TestCase_541 },
+    {557,   TestCase_557 },
     {704,   TestCase_704 },
     {707,   TestCase_707 },
     {724,   TestCase_724 },
@@ -51,6 +52,18 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+
+void TestCase_557()
+{
+    string s;
+    char* output;
+    
+    s = "Let's take LeetCode contest";
+    COUTARRAY((&*s.begin()), s.length());
+    output =  reverseWordsIII(&*s.begin());
+    COUTARRAY((&*s.begin()), s.length());
+}
 
 void TestCase_88()
 {

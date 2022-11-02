@@ -76,6 +76,8 @@ bool isSubsequence(char* s, char* t);
 bool checkSubarraySum(int* nums, int numsSize, int k);
 // 541. Reverse String II
 char* reverseStr(char* s, int k);
+// 557. Reverse Words in a String III
+char* reverseWordsIII(char* s);
 // 704. Binary Search
 int search(int* nums, int numsSize, int target);
 // 707. Design Linked List

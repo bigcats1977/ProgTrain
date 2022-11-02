@@ -1000,6 +1000,21 @@ char* reverseStr(char* s, int k)
     return s;
 }
 
+// 557. Reverse Words in a String III
+//reverseString(s, size);
+char* reverseWordsIII(char* s)
+{
+    int start = 0;
+    int len = (int)strlen(s);
+    for (int i = 0; i <= len; i++) {
+        if (s[i] == ' ' || i == len) {
+                reverseString(&s[start], i - start);
+            start = i + 1;
+        }
+    }
+    return s;
+}
+
 // 704. Binary Search
 int search(int* nums, int numsSize, int target) {
     int left = 0;
