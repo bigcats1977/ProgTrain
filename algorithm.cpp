@@ -1061,6 +1061,30 @@ char* reverseWordsIII(char* s)
     return s;
 }
 
+// 566. Reshape the Matrix
+int** matrixReshape(int** mat, int matSize, int* matColSize, int r, int c, int* returnSize, int** returnColumnSizes)
+{
+    int** reMat = NULL;
+    if (r * c != matSize * (*matColSize)) {
+        *returnSize = matSize;
+        **returnColumnSizes = *matColSize;
+        return mat;
+    }
+    *returnSize = r;
+    **returnColumnSizes = c;
+
+    reMat = (int**)malloc(sizeof(int*) * r);
+    for (int i = 0; i < r; i++) {
+        reMat[i] = (int*)malloc(sizeof(int) * c);
+        for (int j = 0; j < c; j++) {
+            int pos = i * c + j;
+            reMat[i][j] = mat[pos / (*matColSize)][pos % (*matColSize)];
+        }
+    }
+
+    return reMat;
+}
+
 // 704. Binary Search
 int search(int* nums, int numsSize, int target) {
     int left = 0;

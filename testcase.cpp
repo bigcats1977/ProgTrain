@@ -38,6 +38,7 @@ FUNCNAME g_tFuncName[] = {
     {523,   TestCase_523 },
     {541,   TestCase_541 },
     {557,   TestCase_557 },
+    {566,   TestCase_566 },
     {704,   TestCase_704 },
     {707,   TestCase_707 },
     {724,   TestCase_724 },
@@ -53,6 +54,37 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+
+void TestCase_566()
+{
+    int** p;
+    int nr, nl;
+    int* nnl = &nl;
+
+    int matrix[3][4] = { {1, 2, 3, 4}, {5, 1, 2, 3}, {9, 5, 1, 2 } };
+    int col = 4;
+
+    p = (int**)malloc(sizeof(int*) * 3);
+    for (int i = 0; i < 3; i++) {
+        p[i] = (int*)malloc(sizeof(int) * 4);
+        for (int j = 0; j < 4; j++) {
+            p[i][j] = matrix[i][j];
+        }
+    }
+    matrixReshape(p, 3, &col, 4,3, &nr, &nnl);
+
+
+    int bb[2][2] = { {1, 2}, {3,4}};
+    col = 2;
+    p = (int**)malloc(sizeof(int*) * 2);
+    for (int i = 0; i < 2; i++) {
+        p[i] = (int*)malloc(sizeof(int) * 2);
+        for (int j = 0; j < 2; j++) {
+            p[i][j] = bb[i][j];
+        }
+    }
+    matrixReshape(p, 2, &col, 1, 4, &nr, &nnl);
+};
 
 void TestCase_557()
 {
