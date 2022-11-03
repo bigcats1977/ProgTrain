@@ -112,5 +112,7 @@ int* runningSum(int* nums, int numsSize, int* returnSize);
 bool arrayStringsAreEqual(char** word1, int word1Size, char** word2, int word2Size);
 // 1832. Check if the Sentence Is Pangram
 bool checkIfPangram(char* sentence);
+// 2131. Longest Palindrome by Concatenating Two Letter Words
+int longestPalindrome(char** words, int wordsSize);
 // ½£Ö¸ Offer 58 - II.×óÐý×ª×Ö·û´®
 string reverseLeftWords(string s, int n);

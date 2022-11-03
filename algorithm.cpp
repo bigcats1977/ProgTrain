@@ -1459,6 +1459,34 @@ bool checkIfPangram(char* sentence)
     return count > 0 ? false : true;
 }
 
+// 2131. Longest Palindrome by Concatenating Two Letter Words
+int longestPalindrome(char** words, int wordsSize)
+{
+    int longPal = 0;
+    int freq[26][26] = { 0 };
+    int a, b;
+    int i;
+    for (i = 0; i < wordsSize; i++) {
+        a = words[i][0] - 'a';
+        b = words[i][1] - 'a';
+        if (freq[b][a]) {
+            longPal += 4;
+            freq[b][a]--;
+        }
+        else
+            freq[a][b]++;
+    }
+    for(i = 0; i < 26; i++) {
+        if (freq[i][i])
+        {
+            longPal += 2;
+            break;
+        }
+    }
+
+    return longPal;
+}
+
 // ½£Ö¸ Offer 58 - II.×óÐý×ª×Ö·û´®
 string reverseLeftWords(string s, int n)
 {
