@@ -358,6 +358,26 @@ void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n)
     }
 }
 
+// 118. Pascal's Triangle
+int** generate(int numRows, int* returnSize, int** returnColumnSizes)
+{
+    int** ans = NULL;
+    *returnSize = numRows;
+    ans = (int**)malloc(sizeof(int*) * numRows);
+    *returnColumnSizes = (int*)malloc(sizeof(int) * numRows);
+    for (int i = 0; i < numRows; i++) {
+        (*returnColumnSizes)[i] = i+1;
+        ans[i] = (int*)malloc(sizeof(int) * (i + 1));
+        ans[i][0] = 1;
+        ans[i][i] = 1;
+        for (int j = 1; j < i; j++) {
+            ans[i][j] = ans[i - 1][j - 1] + ans[i - 1][j];
+        }
+    }
+
+    return ans;
+}
+
 // 121. Best Time to Buy and Sell Stock
 int maxProfit(int* prices, int pricesSize)
 {
@@ -1065,17 +1085,18 @@ char* reverseWordsIII(char* s)
 int** matrixReshape(int** mat, int matSize, int* matColSize, int r, int c, int* returnSize, int** returnColumnSizes)
 {
     int** reMat = NULL;
-    if (r * c != matSize * (*matColSize)) {
+    if (r * c != matSize * matColSize[0]) {
         *returnSize = matSize;
-        **returnColumnSizes = *matColSize;
+        *returnColumnSizes = matColSize;
         return mat;
     }
-    *returnSize = r;
-    **returnColumnSizes = c;
 
+    *returnSize = r;
     reMat = (int**)malloc(sizeof(int*) * r);
+    *returnColumnSizes = (int*)malloc(sizeof(int) * r);
     for (int i = 0; i < r; i++) {
         reMat[i] = (int*)malloc(sizeof(int) * c);
+        returnColumnSizes[0][i] = c;
         for (int j = 0; j < c; j++) {
             int pos = i * c + j;
             reMat[i][j] = mat[pos / (*matColSize)][pos % (*matColSize)];
