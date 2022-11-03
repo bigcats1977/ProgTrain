@@ -974,6 +974,33 @@ bool isSubsequence(char* s, char* t)
     return false;
 }
 
+// 409. Longest Palindrome
+int longestPalindrome(char* s)
+{
+    int hashval[52] = { 0 };
+    int temp = 0;
+    int longPal = 0;
+    int i;
+    bool bSingle = false;
+    for (i = 0; i < (int)strlen(s); i++) {
+        if (s[i] >= 'a')
+            hashval[s[i] - 'a'+26]++;
+        else
+            hashval[s[i] - 'A']++;
+    }
+    for (i = 0; i < 52; i++) {
+        if (hashval[i] % 2 == 0)
+            longPal += hashval[i];
+        else {
+            longPal += hashval[i] - 1;
+            bSingle = true;
+        }
+    }
+    if (bSingle)
+        longPal ++;
+    return longPal;
+}
+
 // 523. Continuous Subarray Sum
 bool checkSubarraySum(int* nums, int numsSize, int k)
 {

@@ -74,6 +74,8 @@ bool isPerfectSquare(int num);
 bool canConstruct(char* ransomNote, char* magazine);
 // 392. Is Subsequence
 bool isSubsequence(char* s, char* t);
+// 409. Longest Palindrome
+int longestPalindrome(char* s);
 // 523. Continuous Subarray Sum
 bool checkSubarraySum(int* nums, int numsSize, int k);
 // 541. Reverse String II
