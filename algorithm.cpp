@@ -299,6 +299,52 @@ char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnCo
     return NULL;
 }
 
+// 36. Valid Sudoku
+bool isValidSudoku(char** board, int boardSize, int* boardColSize)
+{
+    bool freq1[9], freq2[9];
+    int i, j;
+    int t = 0, l = 0;
+    char ch1, ch2;
+
+    for (i = 0; i < 9; i++) {
+        memset(freq1, false, sizeof(bool) * 9);
+        memset(freq2, false, sizeof(bool) * 9);
+        for (j = 0; j < 9; j++) {
+            ch1 = board[i][j];
+            if (ch1 != '.') {
+                if (freq1[ch1 - '1'])
+                    return false;
+                freq1[ch1 - '1'] = true;
+            }
+
+            ch2 = board[j][i];
+            if (ch2 != '.') {
+                if (freq2[ch2 - '1'])
+                    return false;
+                freq2[ch2 - '1'] = true;
+            }
+        }
+    }
+
+    for (t = 0; t < 9; t += 3) {
+        for (l = 0; l < 9; l += 3) {
+            memset(freq1, false, sizeof(bool) * 9);
+            for (i = 0; i < 3; i++) {
+                for (j = 0; j < 3; j++) {
+                    ch1 = board[i+t][j+l];
+                    if (ch1 != '.') {
+                        if (freq1[ch1 - '1'])
+                            return false;
+                        freq1[ch1 - '1'] = true;
+                    }
+                }
+            }
+        }
+    }
+    return true;
+}
+
 // 53. Maximum Subarray
 int maxSubArray(int* nums, int numsSize)
 {

@@ -24,6 +24,8 @@ int strStr(char* haystack, char* needle);
 int* searchRange(int* nums, int numsSize, int target, int* returnSize);
 // 35. Search Insert Position
 int searchInsert(int* nums, int numsSize, int target);
+// 36. Valid Sudoku
+bool isValidSudoku(char** board, int boardSize, int* boardColSize);
 // 49. Group Anagrams
 char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnColumnSizes);
 // 53. Maximum Subarray
