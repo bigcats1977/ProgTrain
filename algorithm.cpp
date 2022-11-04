@@ -884,6 +884,42 @@ void reverseString(char* s, int sSize)
     }
 }
 
+// 345. Reverse Vowels of a String
+bool isVowel(char ch)
+{
+    switch (ch) {
+    case 'a':
+    case 'A':
+    case 'e':
+    case 'E':
+    case 'i':
+    case 'I':
+    case 'o':
+    case 'O':
+    case 'u':
+    case 'U':
+        return true;
+    default:
+        return false;
+    }
+    return false;
+}
+char* reverseVowels(char* s)
+{
+    int left = 0, right = (int)strlen(s) - 1;
+    char ch;
+    while (left < right) {
+        while (left < right && !isVowel(s[left]))
+            left++;
+        while (left < right && !isVowel(s[right]))
+            right--;
+        ch = s[left];
+        s[left++] = s[right];
+        s[right--] = ch;
+    }
+    return s;
+}
+
 // 349. Intersection of Two Arrays
 int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize)
 {

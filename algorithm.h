@@ -66,6 +66,8 @@ int firstBadVersion(int n);
 void moveZeroes(int* nums, int numsSize);
 // 344. Reverse String
 void reverseString(char* s, int sSize);
+// 345. Reverse Vowels of a String;
+char* reverseVowels(char* s);
 // 349. Intersection of Two Arrays
 int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize);
 // 350. Intersection of Two Arrays II
