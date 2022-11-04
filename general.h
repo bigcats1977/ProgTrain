@@ -20,6 +20,12 @@ typedef struct ListNode {
     struct ListNode* next;
 }ListNode;
 
+struct Node {
+    int val;
+    int numChildren;
+    struct Node** children;
+};
+
 ListNode* CreateListNode(vector<int> nums);
 
 void quicksort(int* nums, int low, int high);

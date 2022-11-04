@@ -1256,6 +1256,36 @@ bool checkInclusion(char* s1, char* s2)
     return false;
 }
 
+// 589. N - ary Tree Preorder Traversal
+void preTraver(struct Node* root, int* result, int* count)
+{
+    if (!root)
+        return;
+
+    result[(*count)++] = root->val;
+    for (int i = 0; i < root->numChildren; i++) {
+        preTraver(root->children[i], result, count);
+    }
+}
+int* preorder(struct Node* root, int* returnSize)
+{
+    int count = 0;
+    int* temp = (int*)malloc(sizeof(int) * 10000);
+    int* result = NULL;
+
+    preTraver(root, temp, &count);
+    if (count > 0)
+    {
+        result = (int*)malloc(sizeof(int) * count);
+        memcpy(result, temp, sizeof(int) * count);
+    }
+
+    free(temp);
+
+    *returnSize = count;
+    return result;
+}
+
 // 704. Binary Search
 int search(int* nums, int numsSize, int target) {
     int left = 0;
