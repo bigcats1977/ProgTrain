@@ -22,6 +22,29 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize)
     return res;
 }
 
+// 3. Longest Substring Without Repeating Characters
+int lengthOfLongestSubstring(char* s)
+{
+    int max = 0;
+    int slow = -1, fast = 0;
+    int pos[256];
+    if (s == NULL || strlen(s) == 0)
+        return 0;
+    memset(&pos[0], -1, sizeof(int) * 256);
+    for (fast = 0; fast < (int)strlen(s); fast++)
+    {
+        if (pos[s[fast]] > slow)
+        {
+            slow = pos[s[fast]];
+        }
+
+        pos[s[fast]] = fast;
+        int len = fast - slow;
+        max = max < len ? len : max;
+    }
+    return max;
+}
+
 // 19. Remove Nth Node From End of List
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n)
 {
@@ -1140,6 +1163,32 @@ int** matrixReshape(int** mat, int matSize, int* matColSize, int r, int c, int* 
     }
 
     return reMat;
+}
+
+// 567. Permutation in String
+bool checkInclusion(char* s1, char* s2)
+{
+    int len1 = (int)strlen(s1), len2 = (int)strlen(s2);
+    int freq1[26] = { 0 };
+    int freq2[26] = { 0 };
+    int i;
+
+    if (len1 > len2)
+        return false;
+    for (i = 0; i < len1; i++) {
+        freq1[s1[i] - 'a']++;
+        freq2[s2[i] - 'a']++;
+    }
+    if (memcmp(freq1, freq2, sizeof(int) * 26) == 0)
+        return true;
+
+    for (i = len1; i < len2; i++) {
+        freq2[s2[i - len1] - 'a']--;
+        freq2[s2[i] - 'a']++;
+        if (memcmp(freq1, freq2, sizeof(int) * 26) == 0)
+            return true;
+    }
+    return false;
 }
 
 // 704. Binary Search

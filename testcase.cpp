@@ -3,6 +3,7 @@
 
 FUNCNAME g_tFuncName[] = {
     {1,     TestCase_1   },
+    {3,     TestCase_3   },
     {19,    TestCase_19  },
     {20,    TestCase_20  },
     {24,    TestCase_24  },
@@ -40,6 +41,7 @@ FUNCNAME g_tFuncName[] = {
     {541,   TestCase_541 },
     {557,   TestCase_557 },
     {566,   TestCase_566 },
+    {567,   TestCase_567 },
     {704,   TestCase_704 },
     {707,   TestCase_707 },
     {724,   TestCase_724 },
@@ -54,6 +56,59 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+
+void TestCase_567()
+{
+    string s1, s2;
+    bool expect;
+    bool output;
+
+    s1 = "ab";
+    s2 = "eidbaooo";
+    expect = true;
+    output = checkInclusion(&*s1.begin(), &*s2.begin());
+    COMPVALUE(expect, output);
+
+    s1 = "ab";
+    s2 = "eidboaoo";
+    expect = false;
+    output = checkInclusion(&*s1.begin(), &*s2.begin());
+    COMPVALUE(expect, output);
+}
+
+void TestCase_3()
+{
+    string s;
+    int expect;
+    int output;
+
+    s = " ";
+    expect = 1;
+    output = lengthOfLongestSubstring(&*s.begin());
+    COMPVALUE(expect, output);
+
+
+    s = "tmmzuxt";
+    expect = 5;
+    output = lengthOfLongestSubstring(&*s.begin());
+    COMPVALUE(expect, output);
+
+    s = "abcabcbb";
+    expect = 3;
+    output = lengthOfLongestSubstring(&*s.begin());
+    COMPVALUE(expect, output);
+
+    s = "bbbbb";
+    expect = 1;
+    output = lengthOfLongestSubstring(&*s.begin());
+    COMPVALUE(expect, output);
+
+    s = "pwwkew";
+    expect = 3;
+    output = lengthOfLongestSubstring(&*s.begin());
+    COMPVALUE(expect, output);
+}
 
 void TestCase_118()
 {

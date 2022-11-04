@@ -3,6 +3,7 @@
 #include "algorithm.h"
 
 void TestCase_1();
+void TestCase_3();
 void TestCase_19();
 void TestCase_20();
 void TestCase_24();
@@ -40,6 +41,7 @@ void TestCase_523();
 void TestCase_541();
 void TestCase_557();
 void TestCase_566();
+void TestCase_567();
 void TestCase_704();
 void TestCase_707();
 void TestCase_724();

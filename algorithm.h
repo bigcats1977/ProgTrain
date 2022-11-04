@@ -4,6 +4,8 @@
 
 // 1. Two Sum
 int* twoSum(int* nums, int numsSize, int target, int* returnSize);
+// 3. Longest Substring Without Repeating Characters
+int lengthOfLongestSubstring(char* s);
 // 19. Remove Nth Node From End of List
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n);
 // 20. Valid Parentheses
@@ -88,6 +90,8 @@ char* reverseStr(char* s, int k);
 char* reverseWordsIII(char* s);
 // 566. Reshape the Matrix
 int** matrixReshape(int** mat, int matSize, int* matColSize, int r, int c, int* returnSize, int** returnColumnSizes);
+// 567. Permutation in String
+bool checkInclusion(char* s1, char* s2);
 // 704. Binary Search
 int search(int* nums, int numsSize, int target);
 // 707. Design Linked List
