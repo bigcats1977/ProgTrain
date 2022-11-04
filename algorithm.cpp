@@ -446,6 +446,72 @@ void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n)
     }
 }
 
+// 102. Binary Tree Level Order Traversal
+struct QNode {
+    struct TreeNode* tree;
+    struct QNode* next;
+};
+bool insertQueue(struct QNode** tail, struct TreeNode* node)
+{
+    if (!node)
+        return false;
+    struct QNode* qnode;
+    qnode = (struct QNode*)malloc(sizeof(struct QNode));
+    qnode->tree = node;
+    qnode->next = NULL;
+    (*tail)->next = qnode;
+    (*tail) = (*tail)->next;
+    return true;
+}
+int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes)
+{
+    if (!root) {
+        *returnSize = 0;
+        (*returnColumnSizes)[0] = 0;
+        return NULL;
+    }
+
+    int** ans = (int**)malloc(sizeof(int*));
+    struct QNode* head = NULL, * tail = NULL, * curnode = NULL;
+    struct QNode* qnode = (struct QNode*)malloc(sizeof(struct QNode));
+    qnode->tree = root;
+    qnode->next = NULL;
+    int nodenum = 0;
+    int high = 0;
+    tail = qnode;
+    head = (struct QNode*)malloc(sizeof(struct QNode));
+    head->tree = NULL;
+    head->next = qnode;
+    nodenum = 1;
+
+    *returnColumnSizes = (int*)malloc(sizeof(int) * 2000);
+    while (nodenum > 0) {
+        ans[high] = (int*)malloc(sizeof(int) * nodenum);
+        (*returnColumnSizes)[high] = nodenum;
+
+        int cur = 0;
+        for (int i = nodenum - 1; i >= 0; i--) {
+            curnode = head->next;
+            ans[high][cur++] = curnode->tree->val;
+            if (insertQueue(&tail, curnode->tree->left)) {
+                nodenum++;
+            }
+            if (insertQueue(&tail, curnode->tree->right)) {
+                nodenum++;
+            }
+            head->next = curnode->next;
+            nodenum--;
+            free(curnode);
+        }
+        high++;
+    }
+    free(head);
+
+    *returnSize = high;
+
+    return ans;
+}
+
 // 118. Pascal's Triangle
 int** generate(int numRows, int* returnSize, int** returnColumnSizes)
 {

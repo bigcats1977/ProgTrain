@@ -17,6 +17,7 @@ FUNCNAME g_tFuncName[] = {
     {69,    TestCase_69  },
     {76,    TestCase_76  },
     {88,    TestCase_88  },
+    {102,   TestCase_102 },
     {118,   TestCase_118 },
     {142,   TestCase_142 },
     {151,   TestCase_151 },
@@ -57,6 +58,18 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_102()
+{
+    vector<int> input;
+    TreeNode* root;
+    int nr, nl;
+    int* nnl = &nl;
+
+    input = { 3,9,20,-1,-1,15,7 };
+
+    root = CreateBinaryTree(input);
+    levelOrder(root,&nr, &nnl);
+}
 
 void TestCase_567()
 {
