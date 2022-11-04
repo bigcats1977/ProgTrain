@@ -377,6 +377,25 @@ int mySqrt(int x)
     return right;
 }
 
+// 74. Search a 2D Matrix
+bool searchMatrix(int** matrix, int matrixSize, int* matrixColSize, int target)
+{
+    int n = *matrixColSize;
+    int left = 0, right = matrixSize * n - 1;
+    int mid = 0, cur = 0;
+    while (left <= right) {
+        mid = left + (right - left) / 2;
+        cur = matrix[mid / n][mid % n];
+        if (cur == target)
+            return true;
+        if (cur < target)
+            left = mid + 1;
+        else
+            right = mid - 1;
+    }
+    return false;
+}
+
 // 76. Minimum Window Substring
 char* minWindow(char* s, char* t)
 {

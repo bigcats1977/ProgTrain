@@ -32,6 +32,8 @@ char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnCo
 int maxSubArray(int* nums, int numsSize);
 // 69. Sqrt(x)
 int mySqrt(int x);
+// 74. Search a 2D Matrix
+bool searchMatrix(int** matrix, int matrixSize, int* matrixColSize, int target);
 // 76. Minimum Window Substring
 char* minWindow(char* s, char* t);
 // 88. Merge Sorted Array
