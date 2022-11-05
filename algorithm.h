@@ -100,6 +100,8 @@ int** matrixReshape(int** mat, int matSize, int* matColSize, int r, int c, int* 
 bool checkInclusion(char* s1, char* s2);
 // 589. N - ary Tree Preorder Traversal
 int* preorder(struct Node* root, int* returnSize);
+// 695. Max Area of Island
+int maxAreaOfIsland(int** grid, int gridSize, int* gridColSize);
 // 704. Binary Search
 int search(int* nums, int numsSize, int target);
 // 707. Design Linked List

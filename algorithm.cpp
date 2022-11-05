@@ -1352,6 +1352,37 @@ int* preorder(struct Node* root, int* returnSize)
     return result;
 }
 
+// 695. Max Area of Island
+void depthIsland(int** grid, int row, int col, int sr, int sc, int* area)
+{
+    if (sr < 0 || sr >= row || sc < 0 || sc >= col)
+        return;
+    if (grid[sr][sc] == 0)
+        return;
+    (*area)++;
+    grid[sr][sc] = 0;
+
+    depthIsland(grid, row, col, sr - 1, sc, area);
+    depthIsland(grid, row, col, sr, sc - 1, area);
+    depthIsland(grid, row, col, sr + 1, sc, area);
+    depthIsland(grid, row, col, sr, sc + 1, area);
+}
+int maxAreaOfIsland(int** grid, int gridSize, int* gridColSize)
+{
+    int maxarea = 0;
+    int curarea = 0;
+    for (int i = 0; i < gridSize; i++) {
+        for (int j = 0; j < *gridColSize; j++) {
+            if (grid[i][j] == 0)
+                continue;
+            curarea = 0;
+            depthIsland(grid, gridSize, *gridColSize, i, j, &curarea);
+            maxarea = maxarea < curarea ? curarea : maxarea;
+        }
+    }
+    return maxarea;
+}
+
 // 704. Binary Search
 int search(int* nums, int numsSize, int target) {
     int left = 0;
