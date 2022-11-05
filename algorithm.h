@@ -84,6 +84,8 @@ int* intersect(int* nums1, int nums1Size, int* nums2, int nums2Size, int* return
 bool isPerfectSquare(int num);
 // 383. Ransom Note
 bool canConstruct(char* ransomNote, char* magazine);
+// 387. First Unique Character in a String
+int firstUniqChar(char* s);
 // 392. Is Subsequence
 bool isSubsequence(char* s, char* t);
 // 409. Longest Palindrome

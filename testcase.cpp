@@ -37,6 +37,7 @@ FUNCNAME g_tFuncName[] = {
     {350,   TestCase_350 },
     {367,   TestCase_367 },
     {383,   TestCase_383 },
+    {387,   TestCase_387 },
     {392,   TestCase_392 },
     {523,   TestCase_523 },
     {541,   TestCase_541 },
@@ -57,6 +58,23 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_387()
+{
+    string s;
+    int expect;
+    int output;
+
+    s = "aabb";
+    expect = -1;
+    output = firstUniqChar(&*s.begin());
+    COMPVALUE(expect, output);
+
+    s = "loveleetcode";
+    expect = 2;
+    output = firstUniqChar(&*s.begin());
+    COMPVALUE(expect, output);
+}
 
 void TestCase_102()
 {

@@ -1163,6 +1163,31 @@ bool canConstruct(char* ransomNote, char* magazine)
     return true;
 }
 
+// 387. First Unique Character in a String
+int firstUniqChar(char* s)
+{
+    struct charinfo {
+        int  freq;
+        int  place;
+    };
+    int i = 0;
+    struct charinfo info[26] = { 0 };
+    int min = INT_MAX;
+    for (i = 0; i < (int)strlen(s); i++) {
+        info[s[i] - 'a'].freq++;
+        if (info[s[i] - 'a'].freq == 1) {
+            info[s[i] - 'a'].place = i;
+        }
+    }
+    for (i = 0; i < 26; i++) {
+        if (info[i].freq == 1) {
+            min = min > info[i].place ? info[i].place : min;
+        }
+    }
+    
+    return min == INT_MAX ? -1 : min;
+}
+
 // 392. Is Subsequence
 bool isSubsequence(char* s, char* t)
 {
@@ -1388,9 +1413,6 @@ int search(int* nums, int numsSize, int target) {
     int left = 0;
     int right = numsSize - 1;
     int mid;
-
-    if (NULL == nums || numsSize < 1)
-        return -1;
 
     while (left <= right) {
         mid = left + (right - left) / 2;
