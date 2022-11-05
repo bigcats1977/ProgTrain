@@ -1421,6 +1421,36 @@ int pivotIndex(int* nums, int numsSize)
 #endif
 }
 
+// 733. Flood Fill
+void depthTravel(int** image, int row, int col, int srcClr, int sr, int sc, int color)
+{
+    if (sr <0 || sr >= row || sc<0 || sc >=col)
+        return;
+    if (image[sr][sc] != srcClr)
+        return;
+
+    image[sr][sc] = color;
+    depthTravel(image, row, col, srcClr, sr - 1, sc, color);
+    depthTravel(image, row, col, srcClr, sr, sc - 1, color);
+    depthTravel(image, row, col, srcClr, sr + 1, sc, color);
+    depthTravel(image, row, col, srcClr, sr, sc + 1, color);
+}
+int** floodFill(int** image, int imageSize, int* imageColSize, int sr, int sc, int color, int* returnSize, int** returnColumnSizes)
+{
+    int i;
+    *returnSize = imageSize;
+    *returnColumnSizes = (int*)malloc(sizeof(int) * imageSize);
+    for (i = 0; i < imageSize; i++)
+        (*returnColumnSizes)[i] = imageColSize[i];
+
+    if (color == image[sr][sc])
+        return image;
+
+    depthTravel(image, imageSize, imageColSize[0], image[sr][sc], sr, sc, color);
+
+    return image;
+}
+
 // 766. Toeplitz Matrix
 bool isToeplitzMatrix(int** matrix, int matrixSize, int* matrixColSize)
 {

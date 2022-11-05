@@ -106,6 +106,8 @@ int search(int* nums, int numsSize, int target);
 // MyLinkedList
 // 724. Find Pivot Index
 int pivotIndex(int* nums, int numsSize);
+// 733. Flood Fill
+int** floodFill(int** image, int imageSize, int* imageColSize, int sr, int sc, int color, int* returnSize, int** returnColumnSizes);
 // 766. Toeplitz Matrix
 bool isToeplitzMatrix(int** matrix, int matrixSize, int* matrixColSize);
 // 844. Backspace String Compare
