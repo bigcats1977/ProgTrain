@@ -72,6 +72,8 @@ int minSubArrayLen(int target, int* nums, int numsSize);
 char** findWords(char** board, int boardSize, int* boardColSize, char** words, int wordsSize, int* returnSize);
 // 217. Contains Duplicate
 bool containsDuplicate(int* nums, int numsSize);
+// 235. Lowest Common Ancestor of a Binary Search Tree
+struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q);
 // 242. Valid Anagram
 bool isAnagram(char* s, char* t);
 // 278. First Bad Version
