@@ -1425,6 +1425,24 @@ int* preorder(struct Node* root, int* returnSize)
     return result;
 }
 
+// 617. Merge Two Binary Trees
+struct TreeNode* priorMerge(struct TreeNode* root1, struct TreeNode* root2)
+{
+    if (!root1)
+        return root2;
+    if (!root2)
+        return root1;
+    root1->val += root2->val;
+
+    root1->left = priorMerge(root1->left, root2->left);
+    root1->right = priorMerge(root1->right, root2->right);
+    return root1;
+}
+struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2)
+{
+    return priorMerge(root1, root2);
+}
+
 // 695. Max Area of Island
 void depthIsland(int** grid, int row, int col, int sr, int sc, int* area)
 {
