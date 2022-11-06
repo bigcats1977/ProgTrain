@@ -574,7 +574,18 @@ int maxProfit(int* prices, int pricesSize)
 
     return max;
 }
-
+// 141. Linked List Cycle
+bool hasCycle(struct ListNode* head)
+{
+    struct ListNode* fast = head, *slow = head;
+    while (fast != NULL && fast->next != NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (fast == slow)
+            return true;
+    }
+    return false;
+}
 // 142. Linked List Cycle II
 struct ListNode* detectCycle(struct ListNode* head)
 {

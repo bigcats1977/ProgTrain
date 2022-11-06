@@ -48,6 +48,8 @@ struct Node* connect(struct Node* root);
 int** generate(int numRows, int* returnSize, int** returnColumnSizes);
 // 121. Best Time to Buy and Sell Stock
 int maxProfit(int* prices, int pricesSize);
+// 141. Linked List Cycle
+bool hasCycle(struct ListNode* head);
 // 142. Linked List Cycle II
 struct ListNode* detectCycle(struct ListNode* head);
 // 151. Reverse Words in a String
