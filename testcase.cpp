@@ -29,6 +29,7 @@ FUNCNAME g_tFuncName[] = {
     {205,   TestCase_205 },
     {206,   TestCase_206 },
     {209,   TestCase_209 },
+    {212,   TestCase_212 },
     {217,   TestCase_217 },
     {242,   TestCase_242 },
     {283,   TestCase_283 },
@@ -58,6 +59,30 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_212()
+{
+    char** board;
+    char** words;
+    int size;
+    char matrix[4][4] = { { 'o','a','a','n' }, {'e', 't', 'a', 'e'},{'i', 'h', 'k', 'r'},{'i', 'f', 'l', 'v'}};
+    char wordss[4][4] = { { 'o','a','t','h' }, {'p', 'e', 'a', 0},{'e', 'a', 't', 0},{'r', 'a', 'i', 'n'} };
+    int col = 4;
+
+    board = (char**)malloc(sizeof(char*) * 4);
+    words = (char**)malloc(sizeof(char*) * 4);
+    for (int i = 0; i < 4; i++) {
+        board[i] = (char*)malloc(sizeof(char) * 4);
+        words[i] = (char*)malloc(sizeof(char) * 5);
+        memset(words[i], 0, 5);
+        for (int j = 0; j < 4; j++) {
+            board[i][j] = matrix[i][j];
+            words[i][j] = wordss[i][j];
+        }
+    }
+
+    findWords(board, 4, &col, words, 4, &size);
+}
 
 void TestCase_387()
 {

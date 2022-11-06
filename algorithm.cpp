@@ -908,6 +908,54 @@ int minSubArrayLen(int target, int* nums, int numsSize)
     return len;
 }
 
+// 212. Word Search II
+void DepthFindWord(char** board, int r, int c, int sr, int sc, char* word, bool *bfind)
+{
+    if (strlen(word) == 0 || *bfind)
+        return;
+    if (sr < 0 || sc < 0 || sr >= r || sc >= c)
+        return;
+    if (board[sr][sc] != word[0])
+        return;
+    if (strlen(word) == 1) {
+        *bfind = true;
+        return;
+    }
+
+    DepthFindWord(board, r, c, sr - 1, sc, &word[1], bfind);
+    DepthFindWord(board, r, c, sr, sc - 1, &word[1], bfind);
+    DepthFindWord(board, r, c, sr + 1, sc, &word[1], bfind);
+    DepthFindWord(board, r, c, sr, sc + 1, &word[1], bfind);
+}
+char** findWords(char** board, int boardSize, int* boardColSize, char** words, int wordsSize, int* returnSize)
+{
+    char** ans = (char**)malloc(sizeof(char*)*wordsSize);
+
+    int findnums = 0;
+    bool bfind;
+    for (int w = 0; w < wordsSize; w++) {
+        bfind = false;
+        for (int i = 0; i < boardSize; i++) {
+            if (bfind)
+                break;
+            for (int j = 0; j < boardColSize[0]; j++) {
+                DepthFindWord(board, boardSize, boardColSize[0], i, j, words[w], &bfind);
+                if (bfind) {
+                    int len = strlen(words[w]);
+                    ans[findnums] = (char*)malloc(sizeof(char)*(len + 1));
+                    memset(ans[findnums], 0, sizeof(char) * (len + 1));
+                    memcpy(ans[findnums], words[w], sizeof(char) * len);
+                    findnums++;
+                    break;
+                }
+            }
+        }
+    }
+
+    *returnSize = findnums;
+    return ans;
+}
+
 // 217. Contains Duplicate
 bool quicksort4Duplicate(int* nums, int begin, int end)
 {
