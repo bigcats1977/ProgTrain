@@ -31,10 +31,17 @@ struct TreeNode {
 };
  
 
-struct Node {
+struct NNode {
     int val;
     int numChildren;
-    struct Node** children;
+    struct NNode** children;
+};
+
+struct Node {
+    int val;
+    struct Node* left;
+    struct Node* right;
+    struct Node* next;
 };
 
 ListNode* CreateListNode(vector<int> nums);

@@ -446,6 +446,24 @@ void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n)
     }
 }
 
+// 98. Validate Binary Search Tree
+bool pretravel(struct TreeNode* root, long* preval)
+{
+    if (!root)
+        return true;
+    if (!pretravel(root->left, preval))
+        return false;
+    if (root->val <= *preval)
+        return false;
+    *preval = root->val;
+    return (pretravel(root->right, preval));
+}
+bool isValidBST(struct TreeNode* root)
+{
+    long preval = LONG_MIN;
+    return pretravel(root, &preval);
+}
+
 // 102. Binary Tree Level Order Traversal
 struct QNode {
     struct TreeNode* tree;
@@ -510,6 +528,12 @@ int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes
     *returnSize = high;
 
     return ans;
+}
+
+// 116. Populating Next Right Pointers in Each Node
+struct Node* connect(struct Node* root)
+{
+    return root;
 }
 
 // 118. Pascal's Triangle
@@ -1396,7 +1420,7 @@ bool checkInclusion(char* s1, char* s2)
 }
 
 // 589. N - ary Tree Preorder Traversal
-void preTraver(struct Node* root, int* result, int* count)
+void preTraver(struct NNode* root, int* result, int* count)
 {
     if (!root)
         return;
@@ -1406,7 +1430,7 @@ void preTraver(struct Node* root, int* result, int* count)
         preTraver(root->children[i], result, count);
     }
 }
-int* preorder(struct Node* root, int* returnSize)
+int* preorder(struct NNode* root, int* returnSize)
 {
     int count = 0;
     int* temp = (int*)malloc(sizeof(int) * 10000);
