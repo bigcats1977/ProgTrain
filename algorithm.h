@@ -36,6 +36,8 @@ int mySqrt(int x);
 bool searchMatrix(int** matrix, int matrixSize, int* matrixColSize, int target);
 // 76. Minimum Window Substring
 char* minWindow(char* s, char* t);
+// 83. Remove Duplicates from Sorted List
+struct ListNode* deleteDuplicates(struct ListNode* head);
 // 88. Merge Sorted Array
 void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n);
 // 98. Validate Binary Search Tree

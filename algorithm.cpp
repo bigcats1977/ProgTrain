@@ -426,6 +426,31 @@ char* minWindow(char* s, char* t)
     return s;
 }
 
+// 83. Remove Duplicates from Sorted List
+struct ListNode* deleteDuplicates(struct ListNode* head)
+{
+    struct ListNode* Dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    int preval = INT_MIN;
+    Dummy->val = INT_MIN;
+    Dummy->next = head;
+    struct ListNode* prenode = Dummy, * node = head;
+    while (prenode->next)
+    {
+        if (prenode->val == prenode->next->val) {
+            node = prenode->next;
+            prenode->next = node->next;
+            free(node);
+        }
+        else {
+            prenode = prenode->next;
+        }
+    }
+
+    prenode = Dummy->next;
+    free(Dummy);
+    return prenode;
+}
+
 // 88. Merge Sorted Array
 void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n)
 {
@@ -811,31 +836,29 @@ void rotate(int* nums, int numsSize, int k)
 }
 
 // 200. Number of Islands
-void SearchIsland(char** grid, int r, int c, int sr, int sc, bool* bIsland)
+void SearchIsland(char** grid, int r, int c, int sr, int sc)
 {
     if (sr < 0 || sr >= r || sc < 0 || sc >= c)
         return;
     if (grid[sr][sc] == '0')
         return;
-    *bIsland = true;
     grid[sr][sc] = '0';
 
-    SearchIsland(grid, r, c, sr - 1, sc, bIsland);
-    SearchIsland(grid, r, c, sr, sc - 1, bIsland);
-    SearchIsland(grid, r, c, sr + 1, sc, bIsland);
-    SearchIsland(grid, r, c, sr, sc + 1, bIsland);
+    SearchIsland(grid, r, c, sr - 1, sc);
+    SearchIsland(grid, r, c, sr, sc - 1);
+    SearchIsland(grid, r, c, sr + 1, sc);
+    SearchIsland(grid, r, c, sr, sc + 1);
 }
 int numIslands(char** grid, int gridSize, int* gridColSize)
 {
     int ans = 0;
-    bool bIsland = false;
 
     for (int i = 0; i < gridSize; i++) {
         for (int j = 0; j < gridColSize[i]; j++) {
-            bIsland = false;
-            SearchIsland(grid, gridSize, gridColSize[i], i, j, &bIsland);
-            if (bIsland)
+            if (grid[i][j] == '1') {
+                SearchIsland(grid, gridSize, gridColSize[i], i, j);
                 ans++;
+            }
         }
     }
     return ans;
