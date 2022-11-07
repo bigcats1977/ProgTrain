@@ -1816,6 +1816,28 @@ int maxLength(char** arr, int arrSize)
     return 0;
 }
 
+// 1323. Maximum 69 Number
+int maximum69Number(int num)
+{
+    int temp = num;
+    int ans = 3000;
+    int digits[4] = { 0 };
+    int i = 0;
+    for (i = 3; i >= 0; i--)
+    {
+        digits[i] = temp % 10;
+        temp = (temp - digits[i]) / 10;
+        if (temp == 0)
+            break;
+    }
+    for (i = 0; i < 4; i++) {
+        if (digits[i] == 6)
+            return ans + num;
+        ans /= 10;
+    }
+    return num;
+}
+
 // 1480. Running Sum of 1d Array
 int* runningSum(int* nums, int numsSize, int* returnSize)
 {

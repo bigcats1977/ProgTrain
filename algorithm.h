@@ -138,6 +138,8 @@ int* sortedSquares(int* nums, int numsSize, int* returnSize);
 char* removeDuplicates(char* s);
 // 1239. Maximum Length of a Concatenated String with Unique Characters
 int maxLength(char** arr, int arrSize);
+// 1323. Maximum 69 Number
+int maximum69Number(int num);
 // 1480. Running Sum of 1d Array
 int* runningSum(int* nums, int numsSize, int* returnSize);
 // 1662. Check If Two String Arrays are Equivalent
