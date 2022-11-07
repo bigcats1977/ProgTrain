@@ -42,6 +42,7 @@ FUNCNAME g_tFuncName[] = {
     {392,   TestCase_392 },
     {523,   TestCase_523 },
     {541,   TestCase_541 },
+    {542,   TestCase_542 },
     {557,   TestCase_557 },
     {566,   TestCase_566 },
     {567,   TestCase_567 },
@@ -61,6 +62,36 @@ FUNCNAME g_tFuncName[] = {
 };
 
 
+void TestCase_542()
+{
+    int** p;
+    int nr, nl;
+    int* nnl = &nl;
+
+    int matrix[3][3] = { {0,0,0}, {0,1,0}, {1,1,1 } };
+    int col = 3;
+
+    p = (int**)malloc(sizeof(int*) * 3);
+    for (int i = 0; i < 3; i++) {
+        p[i] = (int*)malloc(sizeof(int) * 3);
+        for (int j = 0; j < 3; j++) {
+            p[i][j] = matrix[i][j];
+        }
+    }
+    updateMatrix(p, 3, &col, &nr, &nnl);
+
+    int bb[5][3] = { {0,1,0}, {0,1,0}, {0,1,0 }, {0,1,0}, {0,1,0 } };
+    col = 3;
+    p = (int**)malloc(sizeof(int*) * 5);
+    for (int i = 0; i < 5; i++) {
+        p[i] = (int*)malloc(sizeof(int) * 3);
+        for (int j = 0; j < 3; j++) {
+            p[i][j] = bb[i][j];
+        }
+    }
+
+    updateMatrix(p, 5, &col, &nr, &nnl);
+};
 
 void TestCase_212()
 {

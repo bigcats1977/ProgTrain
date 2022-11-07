@@ -108,6 +108,8 @@ int longestPalindrome(char* s);
 bool checkSubarraySum(int* nums, int numsSize, int k);
 // 541. Reverse String II
 char* reverseStr(char* s, int k);
+// 542. 01 Matrix
+int** updateMatrix(int** mat, int matSize, int* matColSize, int* returnSize, int** returnColumnSizes);
 // 557. Reverse Words in a String III
 char* reverseWordsIII(char* s);
 // 566. Reshape the Matrix

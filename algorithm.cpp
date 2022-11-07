@@ -1449,6 +1449,49 @@ char* reverseStr(char* s, int k)
     return s;
 }
 
+// 542. 01 Matrix
+void calAdjDist(int** mat, int r, int c, int sr, int sc, int* dist)
+{
+    int four[4][2] = { {-1,0},{0,-1},{1,0},{0,1} };
+    int dist4[4] = { 0 };
+    int i;
+    if (sr < 0 || sr >= r || sc < 0 || sc >= c)
+        return;
+    if (mat[sr][sc] == 0)
+        return;
+    (*dist)++;
+    for (i = 0; i < 4; i++)  {
+        dist4[i] = *dist;
+    }
+    calAdjDist(mat, r, c, sr - 1, sc, &dist4[0]);
+    calAdjDist(mat, r, c, sr, sc - 1, &dist4[1]);
+    calAdjDist(mat, r, c, sr + 1, sc, &dist4[2]);
+    calAdjDist(mat, r, c, sr, sc + 1, &dist4[3]);
+    (*dist) = dist4[0];
+    for (i = 1; i < 4; i++) {
+        (*dist) = (*dist) > dist4[i] ? dist4[i] : (*dist);
+    }
+}
+int** updateMatrix(int** mat, int matSize, int* matColSize, int* returnSize, int** returnColumnSizes)
+{
+    int** ans = (int**)malloc(sizeof(int*) * matSize);
+    int col = *matColSize;
+    *returnSize = matSize;
+    *returnColumnSizes = (int*)malloc(sizeof(int) * matSize);
+    for (int i = 0; i < matSize; i++) {
+        (*returnColumnSizes)[i] = col;
+        ans[i] = (int*)malloc(sizeof(int) * col);
+        for (int j = 0; j < col; j++) {
+            int dist = 0;
+            if (mat[i][j] != 0) {
+                calAdjDist(mat, matSize, col, i, j, &dist);
+            }
+            ans[i][j] = dist;
+        }
+    }
+    return ans;
+}
+
 // 557. Reverse Words in a String III
 //reverseString(s, size);
 char* reverseWordsIII(char* s)
