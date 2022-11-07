@@ -531,8 +531,20 @@ int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes
 }
 
 // 116. Populating Next Right Pointers in Each Node
+void connect_left_to_right(struct Node* left, struct Node* right)
+{
+    if (left && right) {
+        left->next = right;
+        connect_left_to_right(left->right, right->left);
+    }
+}
 struct Node* connect(struct Node* root)
 {
+    if (root) {
+        connect_left_to_right(root->left, root->right);
+        connect(root->left);
+        connect(root->right);
+    }
     return root;
 }
 
@@ -798,6 +810,36 @@ void rotate(int* nums, int numsSize, int k)
 #endif
 }
 
+// 200. Number of Islands
+void SearchIsland(char** grid, int r, int c, int sr, int sc, bool* bIsland)
+{
+    if (sr < 0 || sr >= r || sc < 0 || sc >= c)
+        return;
+    if (grid[sr][sc] == '0')
+        return;
+    *bIsland = true;
+    grid[sr][sc] = '0';
+
+    SearchIsland(grid, r, c, sr - 1, sc, bIsland);
+    SearchIsland(grid, r, c, sr, sc - 1, bIsland);
+    SearchIsland(grid, r, c, sr + 1, sc, bIsland);
+    SearchIsland(grid, r, c, sr, sc + 1, bIsland);
+}
+int numIslands(char** grid, int gridSize, int* gridColSize)
+{
+    int ans = 0;
+    bool bIsland = false;
+
+    for (int i = 0; i < gridSize; i++) {
+        for (int j = 0; j < gridColSize[i]; j++) {
+            bIsland = false;
+            SearchIsland(grid, gridSize, gridColSize[i], i, j, &bIsland);
+            if (bIsland)
+                ans++;
+        }
+    }
+    return ans;
+}
 // 202. Happy Number
 bool isHappy(int n)
 {

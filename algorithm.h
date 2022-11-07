@@ -60,6 +60,8 @@ struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* he
 int* twoSumII(int* numbers, int numbersSize, int target, int* returnSize);
 // 189. Rotate Array
 void rotate(int* nums, int numsSize, int k);
+// 200. Number of Islands
+int numIslands(char** grid, int gridSize, int* gridColSize);
 // 202. Happy Number
 bool isHappy(int n);
 // 203. Remove Linked List Elements
