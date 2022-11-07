@@ -140,6 +140,8 @@ struct ListNode* middleNode(struct ListNode* head);
 int totalFruit(int* fruits, int fruitsSize);
 // 977. Squares of a Sorted Array
 int* sortedSquares(int* nums, int numsSize, int* returnSize);
+// 994. Rotting Oranges
+int orangesRotting(int** grid, int gridSize, int* gridColSize);
 // 1047. Remove All Adjacent Duplicates In String
 char* removeDuplicates(char* s);
 // 1239. Maximum Length of a Concatenated String with Unique Characters
