@@ -1041,7 +1041,7 @@ char** findWords(char** board, int boardSize, int* boardColSize, char** words, i
             for (int j = 0; j < boardColSize[0]; j++) {
                 DepthFindWord(board, boardSize, boardColSize[0], i, j, words[w], &bfind);
                 if (bfind) {
-                    int len = strlen(words[w]);
+                    int len = (int)strlen(words[w]);
                     ans[findnums] = (char*)malloc(sizeof(char)*(len + 1));
                     memset(ans[findnums], 0, sizeof(char) * (len + 1));
                     memcpy(ans[findnums], words[w], sizeof(char) * len);
@@ -1450,26 +1450,17 @@ char* reverseStr(char* s, int k)
 }
 
 // 542. 01 Matrix
-void calAdjDist(int** mat, int r, int c, int sr, int sc, int* dist)
+#if 0
+void calAdjDist(int** mat, int r, int c, int** result, int sr, int sc, int range)
 {
-    int four[4][2] = { {-1,0},{0,-1},{1,0},{0,1} };
-    int dist4[4] = { 0 };
-    int i;
     if (sr < 0 || sr >= r || sc < 0 || sc >= c)
         return;
-    if (mat[sr][sc] == 0)
-        return;
-    (*dist)++;
-    for (i = 0; i < 4; i++)  {
-        dist4[i] = *dist;
-    }
-    calAdjDist(mat, r, c, sr - 1, sc, &dist4[0]);
-    calAdjDist(mat, r, c, sr, sc - 1, &dist4[1]);
-    calAdjDist(mat, r, c, sr + 1, sc, &dist4[2]);
-    calAdjDist(mat, r, c, sr, sc + 1, &dist4[3]);
-    (*dist) = dist4[0];
-    for (i = 1; i < 4; i++) {
-        (*dist) = (*dist) > dist4[i] ? dist4[i] : (*dist);
+    if ((range == 0 || mat[sr][sc] == 1) && (result[sr][sc] == 0 || result[sr][sc] > range)) {
+        result[sr][sc] = range;
+        calAdjDist(mat, r, c, result, sr - 1, sc, range + 1);
+        calAdjDist(mat, r, c, result, sr, sc - 1, range + 1);
+        calAdjDist(mat, r, c, result, sr + 1, sc, range + 1);
+        calAdjDist(mat, r, c, result, sr, sc + 1, range + 1);
     }
 }
 int** updateMatrix(int** mat, int matSize, int* matColSize, int* returnSize, int** returnColumnSizes)
@@ -1481,16 +1472,78 @@ int** updateMatrix(int** mat, int matSize, int* matColSize, int* returnSize, int
     for (int i = 0; i < matSize; i++) {
         (*returnColumnSizes)[i] = col;
         ans[i] = (int*)malloc(sizeof(int) * col);
+        memset(ans[i], 0, sizeof(int) * col);
+    }
+    for (int i = 0; i < matSize; i++) {
         for (int j = 0; j < col; j++) {
-            int dist = 0;
-            if (mat[i][j] != 0) {
-                calAdjDist(mat, matSize, col, i, j, &dist);
+            if (mat[i][j] == 0) {
+                calAdjDist(mat, matSize, col, ans, i, j, 0);
             }
-            ans[i][j] = dist;
         }
     }
     return ans;
 }
+#else
+int** find_minus_one(int** ret, int matrixSize, int* matrixColSize, int row, int col, int* size) {
+    int dir[4][2] = { {1,0},{0,1},{-1,0},{0,-1} };
+    int** result = (int**)malloc(4 * sizeof(int*));
+    (*size) = 0;
+    for (int i = 0; i < 4; i++) {
+        int x = row + dir[i][0];
+        int y = col + dir[i][1];
+        if (x > -1 && x<matrixSize && y>-1 && y < matrixColSize[0]) {
+            if (ret[x][y] == -1) {
+                result[(*size)++] = (int*)malloc(2 * sizeof(int));
+                result[(*size) - 1][0] = x;
+                result[(*size) - 1][1] = y;
+            }
+        }
+    }
+    return result;
+}
+int** updateMatrix(int** matrix, int matrixSize, int* matrixColSize, int* returnSize, int** returnColumnSizes) {
+    *returnSize = matrixSize;
+    returnColumnSizes[0] = matrixColSize;
+    int** stack = (int**)malloc(matrixSize * matrixColSize[0] * sizeof(int*));
+    int count = 0;
+    int** ret = (int**)malloc(matrixSize * sizeof(int*));
+    for (int i = 0; i < matrixSize; i++) {
+        ret[i] = (int*)malloc(matrixColSize[i] * sizeof(int));
+        for (int j = 0; j < matrixColSize[i]; j++) {
+            if (matrix[i][j] == 0) {
+                ret[i][j] = 0;
+                stack[count++] = (int*)malloc(2 * sizeof(int));
+                stack[count - 1][0] = i;
+                stack[count - 1][1] = j;
+            }
+            else {
+                ret[i][j] = -1;
+            }
+        }
+    }
+    while (count > 0) {
+        int** stack_tmp = (int**)malloc(matrixSize * matrixColSize[0] * sizeof(int*));
+        int count_tmp = 0;
+        for (int i = 0; i < count; i++) {
+            int x = stack[i][0];
+            int y = stack[i][1];
+            free(stack[i]);
+            int size = 0;
+            int** tmp = find_minus_one(ret, matrixSize, matrixColSize, x, y, &size);
+            for (int j = 0; j < size; j++) {
+                ret[tmp[j][0]][tmp[j][1]] = ret[x][y] + 1;
+                stack_tmp[count_tmp++] = (int*)malloc(2 * sizeof(int));
+                stack_tmp[count_tmp - 1][0] = tmp[j][0];
+                stack_tmp[count_tmp - 1][1] = tmp[j][1];
+            }
+        }
+        free(stack);
+        stack = stack_tmp;
+        count = count_tmp;
+    }
+    return ret;
+}
+#endif
 
 // 557. Reverse Words in a String III
 //reverseString(s, size);
