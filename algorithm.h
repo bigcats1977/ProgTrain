@@ -104,6 +104,8 @@ int firstUniqChar(char* s);
 bool isSubsequence(char* s, char* t);
 // 409. Longest Palindrome
 int longestPalindrome(char* s);
+// 509. Fibonacci Number
+int fib(int n);
 // 523. Continuous Subarray Sum
 bool checkSubarraySum(int* nums, int numsSize, int k);
 // 541. Reverse String II

@@ -40,6 +40,7 @@ FUNCNAME g_tFuncName[] = {
     {383,   TestCase_383 },
     {387,   TestCase_387 },
     {392,   TestCase_392 },
+    {509,   TestCase_509 },
     {523,   TestCase_523 },
     {541,   TestCase_541 },
     {542,   TestCase_542 },
@@ -61,6 +62,21 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_509()
+{
+    COMPVALUE(0, fib(0));
+
+    COMPVALUE(1, fib(1));
+
+    COMPVALUE(1, fib(2));
+
+    COMPVALUE(2, fib(3));
+
+    COMPVALUE(3, fib(4));
+
+    COMPVALUE(5, fib(5));
+}
 
 void TestCase_1544()
 {

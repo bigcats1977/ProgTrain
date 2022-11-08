@@ -1428,6 +1428,22 @@ int longestPalindrome(char* s)
     return longPal;
 }
 
+// 509. Fibonacci Number
+int fib(int n)
+{
+    int ans;
+    int* FibNum = (int*)malloc(sizeof(int) * (n + 1));
+    for (int i = 0; i <= n; i++) {
+        if (i < 2)
+            FibNum[i] = i;
+        else
+            FibNum[i] = FibNum[i - 1] + FibNum[i - 2];
+    }
+    ans = FibNum[n];
+    free(FibNum);
+    return ans;
+}
+
 // 523. Continuous Subarray Sum
 bool checkSubarraySum(int* nums, int numsSize, int k)
 {
