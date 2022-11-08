@@ -1165,6 +1165,64 @@ bool containsDuplicate(int* nums, int numsSize)
     return false;
 }
 
+// 232. Implement Queue using Stacks
+typedef struct {
+    int         stackin[100];
+    int         stackout[100];
+    int         indexin;
+    int         indexout;
+} MyQueue;
+
+MyQueue* myQueueCreate() {
+    MyQueue* myQ = (MyQueue*)malloc(sizeof(MyQueue));
+    myQ->indexin = myQ->indexout = -1;
+    return myQ;
+}
+
+void myQueuePush(MyQueue* obj, int x) {
+    obj->stackin[++(obj->indexin)] = x;
+}
+
+int myQueuePeek(MyQueue* obj) {
+    int top;
+    if (obj->indexout < 0) {
+        for (int i = obj->indexin; i >= 0; i--) {
+            top = obj->stackin[(obj->indexin)--];
+            obj->stackout[++(obj->indexout)] = top;
+        }
+    }
+
+    top = obj->stackout[obj->indexout];
+    return top;
+}
+int myQueuePop(MyQueue* obj) {
+    int top = myQueuePeek(obj);
+    obj->indexout--;
+    return top;
+}
+
+bool myQueueEmpty(MyQueue* obj) {
+    return (obj->indexin<0 && obj->indexout < 0);
+}
+
+void myQueueFree(MyQueue* obj) {
+    free(obj);
+}
+
+/**
+ * Your MyQueue struct will be instantiated and called as such:
+ * MyQueue* obj = myQueueCreate();
+ * myQueuePush(obj, x);
+
+ * int param_2 = myQueuePop(obj);
+
+ * int param_3 = myQueuePeek(obj);
+
+ * bool param_4 = myQueueEmpty(obj);
+
+ * myQueueFree(obj);
+*/
+
 // 235. Lowest Common Ancestor of a Binary Search Tree
 struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q)
 {
