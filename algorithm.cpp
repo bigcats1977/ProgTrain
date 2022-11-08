@@ -2051,6 +2051,26 @@ int* runningSum(int* nums, int numsSize, int* returnSize)
 
     return result;
 }
+
+// 1544. Make The String Great
+char* makeGood(char* s)
+{
+    int len = (int)strlen(s);
+    char* ans = (char*)malloc(len+1);
+    memset(ans, 0, len+1);
+    int top = -1;
+    for (int i = 0; i < len; i++) {
+        if (top >= 0 && (ans[top] == s[i] - 0x20 || ans[top] == s[i] + 0x20)) {
+            top--;
+        }
+        else {
+            ans[++top] = s[i];
+        }
+    }
+    ans[++top] = '\0';
+    return ans;
+}
+
 // 1662. Check If Two String Arrays are Equivalent
 bool arrayStringsAreEqual(char** word1, int word1Size, char** word2, int word2Size)
 {

@@ -56,10 +56,20 @@ FUNCNAME g_tFuncName[] = {
     {1047,  TestCase_1047},
     {1239,  TestCase_1239},
     {1480,  TestCase_1480},
+    {1544,  TestCase_1544},
     {1662,  TestCase_1662},
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_1544()
+{
+    string s;
+    char *output;
+
+    s = "s";
+    output = makeGood(&*s.begin());
+}
 
 
 void TestCase_542()

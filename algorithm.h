@@ -150,6 +150,8 @@ int maxLength(char** arr, int arrSize);
 int maximum69Number(int num);
 // 1480. Running Sum of 1d Array
 int* runningSum(int* nums, int numsSize, int* returnSize);
+// 1544. Make The String Great
+char* makeGood(char* s);
 // 1662. Check If Two String Arrays are Equivalent
 bool arrayStringsAreEqual(char** word1, int word1Size, char** word2, int word2Size);
 // 1832. Check if the Sentence Is Pangram
