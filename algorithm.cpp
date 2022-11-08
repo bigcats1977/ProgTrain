@@ -401,6 +401,23 @@ int mySqrt(int x)
     return right;
 }
 
+// 70. Climbing Stairs
+int climbStairs(int n)
+{
+    if (n <= 1)
+        return n;
+    int* temp = (int*)malloc(sizeof(int) * (n+ 1));
+    int way;
+    temp[1] = 1;
+    temp[2] = 2;
+    for (int i = 3; i <= n; i++) {
+        temp[i] = temp[i - 2] + temp[i - 1];
+    }
+    way = temp[n];
+    free(temp);
+    return way;    
+}
+
 // 74. Search a 2D Matrix
 bool searchMatrix(int** matrix, int matrixSize, int* matrixColSize, int target)
 {
