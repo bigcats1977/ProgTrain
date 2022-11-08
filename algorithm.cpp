@@ -74,8 +74,19 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n)
 }
 
 // 20. Valid Parentheses
+int checkParent(char *stack, int top)
+{
+    if (top < 1)
+        return top;
+    if ((stack[top - 1] == '{' && stack[top] == '}') ||
+        (stack[top - 1] == '(' && stack[top] == ')') ||
+        (stack[top - 1] == '[' && stack[top] == ']'))
+        return top - 2;
+    return top;
+}
 bool isValid(char* s)
 {
+#if 0
     int i, len = (int)strlen(s);
     if(len %2 == 1)
         return false;
@@ -115,6 +126,19 @@ bool isValid(char* s)
     if (st.top >= 0)
         return false;
     return true;
+#else
+    int i, len = (int)strlen(s);
+    char* tempStack = (char*)malloc(len);
+    int top = -1;
+    if (len % 2 == 1)
+        return false;
+    for (i = 0; i < len; i++) {
+        tempStack[++top] = s[i];
+        top = checkParent(tempStack, top);
+    }
+    if (top > 0) return false;
+    return true;
+#endif
 }
 
 // 21. Merge Two Sorted Lists
