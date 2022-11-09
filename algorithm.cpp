@@ -313,6 +313,53 @@ int searchInsert(int* nums, int numsSize, int target)
     return left;
 }
 
+// 46. Permutations
+int** permuteAns;
+int   CurPermute;
+int* permutePath;
+int   CurMutePath;
+void BackTrackPerMute(int* nums, int numsSize, bool *used)
+{
+    if (CurMutePath == numsSize) {
+        permuteAns[CurPermute] = (int*)malloc(sizeof(int) * numsSize);
+        memcpy(permuteAns[CurPermute++], permutePath, sizeof(int) * numsSize);
+        return;
+    }
+    for (int i = 0; i < numsSize; i++) {
+        if (used[i])
+            continue;
+        used[i] = true;
+        permutePath[CurMutePath++] = nums[i];
+        BackTrackPerMute(nums, numsSize, used);
+        used[i] = false;
+        CurMutePath--;
+    }
+}
+int** permute(int* nums, int numsSize, int* returnSize, int** returnColumnSizes)
+{
+    int i = 0;
+    int size = 1;
+    bool* used = (bool*)malloc(sizeof(bool) * numsSize);
+    memset(used, false, sizeof(bool) * numsSize);
+
+    for (i = numsSize; i > 0; i--)
+        size *= i;
+    permuteAns = (int**)malloc(sizeof(int*) * size);
+    *returnSize = size;
+    (*returnColumnSizes) = (int*)malloc(sizeof(int) * size);
+    for (i = 0; i < size; i++)
+        (*returnColumnSizes)[i] = numsSize;
+    permutePath = (int*)malloc(sizeof(int) * numsSize);
+    CurPermute = 0;
+    CurMutePath = 0;
+
+    BackTrackPerMute(nums, numsSize, used);
+
+    free(permutePath);
+    free(used);
+    return permuteAns;
+}
+
 // 49. Group Anagrams
 char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnColumnSizes)
 {
