@@ -814,6 +814,24 @@ int* preorderTraversal(struct TreeNode* root, int* returnSize)
     return ans;
 }
 
+//145. Binary Tree Postorder Traversal
+void postorder(struct TreeNode* root, int* ans, int* index)
+{
+    if (!root)
+        return;
+    postorder(root->left, ans, index);
+    postorder(root->right, ans, index);
+    ans[(*index)++] = root->val;
+}
+int* postorderTraversal(struct TreeNode* root, int* returnSize)
+{
+    int* ans = (int*)malloc(sizeof(int) * 100);
+    int index = 0;
+    postorder(root, ans, &index);
+    *returnSize = index;
+    return ans;
+}
+
 // 151. Reverse Words in a String
 int reverseExtraspace(char* s)
 {
