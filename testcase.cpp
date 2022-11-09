@@ -16,6 +16,7 @@ FUNCNAME g_tFuncName[] = {
     {53,    TestCase_53  },
     {69,    TestCase_69  },
     {76,    TestCase_76  },
+    {77,    TestCase_77  },
     {88,    TestCase_88  },
     {102,   TestCase_102 },
     {118,   TestCase_118 },
@@ -62,6 +63,13 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_77()
+{
+    int nr, nl;
+    int* nnl = &nl;
+    combine(4, 2, &nr, &nnl);
+}
 
 void TestCase_509()
 {

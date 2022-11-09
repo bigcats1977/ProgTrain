@@ -38,6 +38,8 @@ int climbStairs(int n);
 bool searchMatrix(int** matrix, int matrixSize, int* matrixColSize, int target);
 // 76. Minimum Window Substring
 char* minWindow(char* s, char* t);
+// 77. Combinations
+int** combine(int n, int k, int* returnSize, int** returnColumnSizes);
 // 83. Remove Duplicates from Sorted List
 struct ListNode* deleteDuplicates(struct ListNode* head);
 // 88. Merge Sorted Array

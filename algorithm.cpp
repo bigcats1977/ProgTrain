@@ -467,6 +467,49 @@ char* minWindow(char* s, char* t)
     return s;
 }
 
+// 77. Combinations
+int** CombAns;
+int  CurComb;
+int* CombPath;
+int  CurPath;
+void CombBackTrack(int n, int k, int start)
+{
+    if (CurPath == k) {
+        CombAns[CurComb] = (int*)malloc(sizeof(int) * k);
+        memcpy(CombAns[CurComb++], CombPath, sizeof(int) * k);
+        return;
+    }
+    for (int i = start; i <= n; i++) { // 控制树的横向遍历
+        CombPath[CurPath++] = i;
+        CombBackTrack(n, k, i + 1);
+        CurPath--;
+    }
+}
+int** combine(int n, int k, int* returnSize, int** returnColumnSizes)
+{
+    int i, j;
+    int nums = 1;
+    for (i = n, j = 1; j <= k; i--, j++) {
+        nums *= i;
+        nums /= j;
+    }
+
+    *returnSize = nums;
+    CombAns = (int**)malloc(sizeof(int*) * nums);
+    *returnColumnSizes = (int*)malloc(sizeof(int) * nums);
+    CombPath = (int*)malloc(sizeof(int) * k);
+    for (i = 0; i < nums; i++) {
+        (*returnColumnSizes)[i] = k;
+    }
+    CurComb = 0;
+    CurPath = 0;
+    CombBackTrack(n, k, 1);
+
+    free(CombPath);
+
+    return CombAns;
+}
+
 // 83. Remove Duplicates from Sorted List
 struct ListNode* deleteDuplicates(struct ListNode* head)
 {
