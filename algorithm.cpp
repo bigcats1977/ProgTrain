@@ -602,6 +602,24 @@ void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n)
     }
 }
 
+// 94. Binary Tree Inorder Traversal
+void inorder(struct TreeNode* root, int* ans, int* index)
+{
+    if (!root)
+        return;
+    inorder(root->left, ans, index);
+    ans[(*index)++] = root->val;
+    inorder(root->right, ans, index);
+}
+int* inorderTraversal(struct TreeNode* root, int* returnSize)
+{
+    int* ans = (int*)malloc(sizeof(int) * 100);
+    int index = 0;
+    inorder(root, ans, &index);
+    *returnSize = index;
+    return ans;
+}
+
 // 98. Validate Binary Search Tree
 bool pretravel(struct TreeNode* root, long* preval)
 {
