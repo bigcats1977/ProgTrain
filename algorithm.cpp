@@ -479,7 +479,7 @@ void CombBackTrack(int n, int k, int start)
         memcpy(CombAns[CurComb++], CombPath, sizeof(int) * k);
         return;
     }
-    for (int i = start; i <= n; i++) { // 控制树的横向遍历
+    for (int i = start; i <= n - (k-CurPath) + 1; i++) {
         CombPath[CurPath++] = i;
         CombBackTrack(n, k, i + 1);
         CurPath--;
