@@ -777,6 +777,25 @@ struct ListNode* detectCycle(struct ListNode* head)
     return NULL;
 }
 
+// 144. Binary Tree Preorder Traversal
+void preorder(struct TreeNode* root, int* ans, int* index)
+{
+    if (!root)
+        return;
+    ans[(*index)++] = root->val;
+    preorder(root->left, ans, index);
+    preorder(root->right, ans, index);
+}
+int* preorderTraversal(struct TreeNode* root, int* returnSize)
+{
+    int* ans = (int*)malloc(sizeof(int) * 100);
+    int index = 0;
+
+    preorder(root, ans, &index);
+    *returnSize = index;
+    return ans;
+}
+
 // 151. Reverse Words in a String
 int reverseExtraspace(char* s)
 {

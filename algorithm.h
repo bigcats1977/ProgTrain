@@ -60,6 +60,8 @@ int maxProfit(int* prices, int pricesSize);
 bool hasCycle(struct ListNode* head);
 // 142. Linked List Cycle II
 struct ListNode* detectCycle(struct ListNode* head);
+// 144. Binary Tree Preorder Traversal
+int* preorderTraversal(struct TreeNode* root, int* returnSize);
 // 151. Reverse Words in a String
 char* reverseWords(char* s);
 // 160. Intersection of Two Linked Lists
