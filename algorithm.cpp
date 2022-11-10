@@ -704,6 +704,14 @@ int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes
     return ans;
 }
 
+// 104. Maximum Depth of Binary Tree
+int maxDepth(struct TreeNode* root)
+{
+    if (!root)
+        return 0;
+    return (int)fmax(maxDepth(root->left), maxDepth(root->right)) + 1;
+}
+
 // 116. Populating Next Right Pointers in Each Node
 void connect_left_to_right(struct Node* left, struct Node* right)
 {
