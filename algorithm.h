@@ -50,6 +50,8 @@ void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n);
 int* inorderTraversal(struct TreeNode* root, int* returnSize);
 // 98. Validate Binary Search Tree
 bool isValidBST(struct TreeNode* root);
+// 101. Symmetric Tree
+bool isSymmetric(struct TreeNode* root);
 // 102. Binary Tree Level Order Traversal
 int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes);
 // 104. Maximum Depth of Binary Tree

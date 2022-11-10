@@ -638,6 +638,26 @@ bool isValidBST(struct TreeNode* root)
     return pretravel(root, &preval);
 }
 
+// 101. Symmetric Tree
+bool CompTree(struct TreeNode* left, struct TreeNode *right)
+{
+    if (!left && !right)
+        return true;
+    if (!left || !right)
+        return false;
+    if (left->val != right->val)
+        return false;
+    if (!CompTree(left->left, right->right))
+        return false;
+    return CompTree(left->right, right->left);
+}
+bool isSymmetric(struct TreeNode* root)
+{
+    if (!root)
+        return true;
+    return CompTree(root->left, root->right);
+}
+
 // 102. Binary Tree Level Order Traversal
 struct QNode {
     struct TreeNode* tree;
