@@ -1070,6 +1070,17 @@ void rotate(int* nums, int numsSize, int k)
 #endif
 }
 
+// 191. Number of 1 Bits
+int hammingWeight(uint32_t n)
+{
+    int num = 0;
+    while (n) {
+        if (n % 2)
+            num++;
+        n >>= 1;
+    }
+    return num;
+}
 // 200. Number of Islands
 void SearchIsland(char** grid, int r, int c, int sr, int sc)
 {

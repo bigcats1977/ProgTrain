@@ -80,6 +80,8 @@ struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* he
 int* twoSumII(int* numbers, int numbersSize, int target, int* returnSize);
 // 189. Rotate Array
 void rotate(int* nums, int numsSize, int k);
+// 191. Number of 1 Bits
+int hammingWeight(uint32_t n);
 // 200. Number of Islands
 int numIslands(char** grid, int gridSize, int* gridColSize);
 // 202. Happy Number
