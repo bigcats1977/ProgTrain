@@ -732,6 +732,27 @@ int maxDepth(struct TreeNode* root)
     return (int)fmax(maxDepth(root->left), maxDepth(root->right)) + 1;
 }
 
+// 112. Path Sum
+void presum(struct TreeNode* root, int sum, bool* pFind)
+{
+    if (!root)
+        return;
+    sum -= root->val;
+    if (!root->left && !root->right) {
+        if (sum == 0)
+            *pFind = true;
+        return;
+    }
+    presum(root->left, sum, pFind);
+    presum(root->right, sum, pFind);
+}
+bool hasPathSum(struct TreeNode* root, int targetSum)
+{
+    bool bFind = false;
+    presum(root, targetSum, &bFind);
+    return bFind;
+}
+
 // 116. Populating Next Right Pointers in Each Node
 void connect_left_to_right(struct Node* left, struct Node* right)
 {

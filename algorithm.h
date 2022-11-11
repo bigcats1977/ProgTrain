@@ -56,6 +56,8 @@ bool isSymmetric(struct TreeNode* root);
 int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes);
 // 104. Maximum Depth of Binary Tree
 int maxDepth(struct TreeNode* root);
+// 112. Path Sum
+bool hasPathSum(struct TreeNode* root, int targetSum);
 // 116. Populating Next Right Pointers in Each Node
 struct Node* connect(struct Node* root);
 // 118. Pascal's Triangle
