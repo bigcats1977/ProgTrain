@@ -1377,6 +1377,22 @@ struct TreeNode* invertTree(struct TreeNode* root)
     return root;
 }
 
+// 231. Power of Two
+bool isPowerOfTwo(int n)
+{
+    if (n == 1)
+        return true;
+    if (n <= 0)
+        return false;
+    while (n > 1)
+    {
+        if (n % 2)
+            return false;
+        n /= 2;
+    }
+    return true;
+}
+
 // 232. Implement Queue using Stacks
 typedef struct {
     int         stackin[100];

@@ -98,6 +98,8 @@ char** findWords(char** board, int boardSize, int* boardColSize, char** words, i
 bool containsDuplicate(int* nums, int numsSize);
 // 226. Invert Binary Tree
 struct TreeNode* invertTree(struct TreeNode* root);
+// 231. Power of Two
+bool isPowerOfTwo(int n);
 // 232. Implement Queue using Stacks
 // 235. Lowest Common Ancestor of a Binary Search Tree
 struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q);
