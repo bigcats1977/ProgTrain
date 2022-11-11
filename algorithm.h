@@ -155,6 +155,8 @@ int pivotIndex(int* nums, int numsSize);
 int** floodFill(int** image, int imageSize, int* imageColSize, int sr, int sc, int color, int* returnSize, int** returnColumnSizes);
 // 766. Toeplitz Matrix
 bool isToeplitzMatrix(int** matrix, int matrixSize, int* matrixColSize);
+// 784. Letter Case Permutation
+char** letterCasePermutation(char* s, int* returnSize);
 // 844. Backspace String Compare
 bool backspaceCompare(char* s, char* t);
 // 876. Middle of the Linked List

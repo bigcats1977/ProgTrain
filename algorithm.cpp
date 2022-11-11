@@ -2146,6 +2146,51 @@ bool isToeplitzMatrix(int** matrix, int matrixSize, int* matrixColSize)
 
     return true;
 }
+
+// 784. Letter Case Permutation
+/*
+* Input: s = "a1b2"
+Output: ["a1b2","a1B2","A1b2","A1B2"]
+*/
+char  **LCAns;
+int   CurLC;
+char*  LCPath;
+int   CurLCPath;
+void backTrackLCPerm(char* s, int len, int cur)
+{
+    if (cur == len) {
+        LCAns[CurLC] = (char*)malloc(len+1);
+        memset(LCAns[CurLC],0, len + 1);
+        memcpy(LCAns[CurLC++], LCPath, len);
+        return;
+    }
+    LCPath[CurLCPath++] = s[cur];
+    backTrackLCPerm(s, len, cur+1);
+    CurLCPath--;
+
+    if (s[cur] >= 'a' && s[cur] <= 'z') {
+        LCPath[CurLCPath++] = s[cur] - 0x20;
+        backTrackLCPerm(s, len, cur + 1);
+        CurLCPath--;
+    }
+    else if (s[cur] >= 'A' && s[cur] <= 'Z') {
+        LCPath[CurLCPath++] = s[cur] + 0x20;
+        backTrackLCPerm(s, len, cur + 1);
+        CurLCPath--;
+    }
+}
+char** letterCasePermutation(char* s, int* returnSize)
+{
+    int len = (int)strlen(s);
+    LCAns = (char**)malloc(sizeof(char*) * 4096);
+    LCPath = (char*)malloc(len+1);
+    memset(LCPath, 0, len + 1);
+    CurLCPath = 0;
+    backTrackLCPerm(s, len, 0);
+    free(LCPath);
+    *returnSize = CurLC;
+    return LCAns;
+}
 // 844. Backspace String Compare
 void procBS(char* s, int* pos)
 {

@@ -52,6 +52,7 @@ FUNCNAME g_tFuncName[] = {
     {707,   TestCase_707 },
     {724,   TestCase_724 },
     {766,   TestCase_766 },
+    {784,   TestCase_784 },
     {844,   TestCase_844 },
     {904,   TestCase_904 },
     {977,   TestCase_977 },
@@ -63,6 +64,15 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_784()
+{
+    string s;
+    int retsize;
+
+    s = "3z4";
+    letterCasePermutation(&*s.begin(), &retsize);
+}
 
 void TestCase_77()
 {
