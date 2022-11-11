@@ -1338,6 +1338,24 @@ bool containsDuplicate(int* nums, int numsSize)
     return false;
 }
 
+// 226. Invert Binary Tree
+struct TreeNode* invertTree(struct TreeNode* root)
+{
+    struct TreeNode* temp;
+    if (!root)
+        return root;
+
+    temp = root->right;
+    root->right = root->left;
+    root->left = temp;
+
+    if (root->left)
+        invertTree(root->left);
+    if (root->right)
+        invertTree(root->right);
+    return root;
+}
+
 // 232. Implement Queue using Stacks
 typedef struct {
     int         stackin[100];
