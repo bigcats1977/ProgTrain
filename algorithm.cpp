@@ -1742,6 +1742,37 @@ int longestPalindrome(char* s)
     return longPal;
 }
 
+// 438. Find All Anagrams in a String
+int* findAnagrams(char* s, char* p, int* returnSize)
+{
+    int sLen = (int)strlen(s);
+    int pLen = (int)strlen(p);
+    if (pLen > sLen) {
+        *returnSize = 0;
+        return NULL;
+    }
+
+    int pchar[26] = { 0 };
+    int schar[26] = { 0 };
+    int nums = 0;
+    int i = 0;
+    int* res = (int*)malloc(sizeof(int) * (sLen - pLen + 1));
+    for (i = 0; i < pLen; i++) {
+        pchar[p[i] - 'a']++;
+        schar[s[i] - 'a']++;
+    }
+    for (i=pLen; i <= sLen; i++) {
+        if (memcmp(pchar, schar, 26 * sizeof(int)) == 0) {
+            res[nums++] = i - pLen;
+        }
+        schar[s[i - pLen] - 'a']--;
+        if(i<sLen)
+            schar[s[i] - 'a']++;
+    }
+    *returnSize = nums;
+    return res;
+}
+
 // 509. Fibonacci Number
 int fib(int n)
 {

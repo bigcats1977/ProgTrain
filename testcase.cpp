@@ -41,6 +41,7 @@ FUNCNAME g_tFuncName[] = {
     {383,   TestCase_383 },
     {387,   TestCase_387 },
     {392,   TestCase_392 },
+    {438,   TestCase_438 },
     {509,   TestCase_509 },
     {523,   TestCase_523 },
     {541,   TestCase_541 },
@@ -64,6 +65,26 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+
+void TestCase_438()
+{
+    string s, p;
+    int retsize;
+
+    //s = "cbaebabacd";
+    //p = "abc";
+    //findAnagrams(&*s.begin(), &*p.begin(), &retsize);
+
+    //s = "abab";
+    //p = "ab";
+    //findAnagrams(&*s.begin(), &*p.begin(), &retsize);
+
+    s = "afdkljflsdkjfsdlkjfdslkjfdslkjfkljlkjlkfdjslkfjsdlkjsdflksdjflkdsjfldskjksldfjlksdjflkdsjfsjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjfsdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+    p = "z";
+    findAnagrams(&*s.begin(), &*p.begin(), &retsize);
+}
+
 
 void TestCase_784()
 {

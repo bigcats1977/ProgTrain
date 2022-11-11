@@ -129,6 +129,8 @@ int firstUniqChar(char* s);
 bool isSubsequence(char* s, char* t);
 // 409. Longest Palindrome
 int longestPalindrome(char* s);
+// 438. Find All Anagrams in a String
+int* findAnagrams(char* s, char* p, int* returnSize);
 // 509. Fibonacci Number
 int fib(int n);
 // 523. Continuous Subarray Sum
