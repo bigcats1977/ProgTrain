@@ -149,6 +149,8 @@ bool checkInclusion(char* s1, char* s2);
 int* preorder(struct Node* root, int* returnSize);
 // 617. Merge Two Binary Trees
 struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2);
+// 653. Two Sum IV - Input is a BST
+bool findTarget(struct TreeNode* root, int k);
 // 695. Max Area of Island
 int maxAreaOfIsland(int** grid, int gridSize, int* gridColSize);
 // 700. Search in a Binary Search Tree

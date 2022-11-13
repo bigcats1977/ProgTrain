@@ -2044,6 +2044,37 @@ struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2)
     return priorMerge(root1, root2);
 }
 
+// 653. Two Sum IV - Input is a BST
+void prefindtarget(struct TreeNode* root, int* vals, int* nums)
+{
+    if (!root)
+        return;
+
+    prefindtarget(root->left, vals, nums);
+    vals[(*nums)++] = root->val;
+    prefindtarget(root->right, vals, nums);
+}
+bool findTarget(struct TreeNode* root, int k)
+{
+    int* treeval = (int*)malloc(sizeof(int) * 10000);
+    int  nums = 0;
+
+    prefindtarget(root, treeval, &nums);
+    int left = 0, right = nums - 1;
+    int diff;
+    while (left < right)
+    {
+        diff = k - treeval[left];
+        if (diff == treeval[right])
+            return true;
+        else if (diff < treeval[right])
+            right--;
+        else
+            left++;
+    }
+    return false;
+}
+
 // 695. Max Area of Island
 void depthIsland(int** grid, int row, int col, int sr, int sc, int* area)
 {
