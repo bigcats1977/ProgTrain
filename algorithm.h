@@ -137,6 +137,8 @@ int* preorder(struct Node* root, int* returnSize);
 struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2);
 // 695. Max Area of Island
 int maxAreaOfIsland(int** grid, int gridSize, int* gridColSize);
+// 700. Search in a Binary Search Tree
+struct TreeNode* searchBST(struct TreeNode* root, int val);
 // 704. Binary Search
 int search(int* nums, int numsSize, int target);
 // 707. Design Linked List

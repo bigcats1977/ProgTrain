@@ -1950,6 +1950,21 @@ int maxAreaOfIsland(int** grid, int gridSize, int* gridColSize)
     return maxarea;
 }
 
+// 700. Search in a Binary Search Tree
+struct TreeNode* searchBST(struct TreeNode* root, int val)
+{
+    if (!root)
+        return NULL;
+
+    if (root->val == val)
+        return root;
+    if (root->val > val) {
+        return searchBST(root->left, val);
+    }
+
+    return searchBST(root->right, val);
+}
+
 // 704. Binary Search
 int search(int* nums, int numsSize, int target) {
     int left = 0;
