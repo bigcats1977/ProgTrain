@@ -1465,19 +1465,17 @@ void myQueueFree(MyQueue* obj) {
 // 235. Lowest Common Ancestor of a Binary Search Tree
 struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q)
 {
-    struct TreeNode* node;
+    struct TreeNode* node = NULL;
     if (!root)
         return root;
 
     if (root->val > p->val && root->val > q->val) {
         node = lowestCommonAncestor(root->left, p, q);
-        if (node)
-            return node;
     }else if (root->val < p->val && root->val < q->val) {
         node = lowestCommonAncestor(root->right, p, q);
-        if (node)
-            return node;
     }
+    if (node)
+        return node;
 
     return root;
 }
