@@ -2090,6 +2090,26 @@ struct TreeNode* searchBST(struct TreeNode* root, int val)
     return searchBST(root->right, val);
 }
 
+// 701. Insert into a Binary Search Tree
+struct TreeNode* insertIntoBST(struct TreeNode* root, int val)
+{
+    if (!root)
+    {
+        struct TreeNode* node = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+        node->val = val;
+        node->left = node->right = NULL;
+        return node;
+    }
+
+    if (root->val > val) {
+        root->left = insertIntoBST(root->left, val);
+    }
+    else {
+        root->right = insertIntoBST(root->right, val);
+    }
+    return root;
+}
+
 // 704. Binary Search
 int search(int* nums, int numsSize, int target) {
     int left = 0;
