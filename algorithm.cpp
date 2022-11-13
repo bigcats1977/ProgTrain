@@ -638,6 +638,26 @@ bool isValidBST(struct TreeNode* root)
     return pretravel(root, &preval);
 }
 
+// 101. Symmetric Tree
+bool CompTree(struct TreeNode* left, struct TreeNode *right)
+{
+    if (!left && !right)
+        return true;
+    if (!left || !right)
+        return false;
+    if (left->val != right->val)
+        return false;
+    if (!CompTree(left->left, right->right))
+        return false;
+    return CompTree(left->right, right->left);
+}
+bool isSymmetric(struct TreeNode* root)
+{
+    if (!root)
+        return true;
+    return CompTree(root->left, root->right);
+}
+
 // 102. Binary Tree Level Order Traversal
 struct QNode {
     struct TreeNode* tree;
@@ -702,6 +722,35 @@ int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes
     *returnSize = high;
 
     return ans;
+}
+
+// 104. Maximum Depth of Binary Tree
+int maxDepth(struct TreeNode* root)
+{
+    if (!root)
+        return 0;
+    return (int)fmax(maxDepth(root->left), maxDepth(root->right)) + 1;
+}
+
+// 112. Path Sum
+void presum(struct TreeNode* root, int sum, bool* pFind)
+{
+    if (!root)
+        return;
+    sum -= root->val;
+    if (!root->left && !root->right) {
+        if (sum == 0)
+            *pFind = true;
+        return;
+    }
+    presum(root->left, sum, pFind);
+    presum(root->right, sum, pFind);
+}
+bool hasPathSum(struct TreeNode* root, int targetSum)
+{
+    bool bFind = false;
+    presum(root, targetSum, &bFind);
+    return bFind;
 }
 
 // 116. Populating Next Right Pointers in Each Node
@@ -1021,6 +1070,17 @@ void rotate(int* nums, int numsSize, int k)
 #endif
 }
 
+// 191. Number of 1 Bits
+int hammingWeight(uint32_t n)
+{
+    int num = 0;
+    while (n) {
+        if (n % 2)
+            num++;
+        n >>= 1;
+    }
+    return num;
+}
 // 200. Number of Islands
 void SearchIsland(char** grid, int r, int c, int sr, int sc)
 {
@@ -1308,6 +1368,40 @@ bool containsDuplicate(int* nums, int numsSize)
         pre->next = cur;
     }
     return false;
+}
+
+// 226. Invert Binary Tree
+struct TreeNode* invertTree(struct TreeNode* root)
+{
+    struct TreeNode* temp;
+    if (!root)
+        return root;
+
+    temp = root->right;
+    root->right = root->left;
+    root->left = temp;
+
+    if (root->left)
+        invertTree(root->left);
+    if (root->right)
+        invertTree(root->right);
+    return root;
+}
+
+// 231. Power of Two
+bool isPowerOfTwo(int n)
+{
+    if (n == 1)
+        return true;
+    if (n <= 0)
+        return false;
+    while (n > 1)
+    {
+        if (n % 2)
+            return false;
+        n /= 2;
+    }
+    return true;
 }
 
 // 232. Implement Queue using Stacks
@@ -1646,6 +1740,37 @@ int longestPalindrome(char* s)
     if (bSingle)
         longPal ++;
     return longPal;
+}
+
+// 438. Find All Anagrams in a String
+int* findAnagrams(char* s, char* p, int* returnSize)
+{
+    int sLen = (int)strlen(s);
+    int pLen = (int)strlen(p);
+    if (pLen > sLen) {
+        *returnSize = 0;
+        return NULL;
+    }
+
+    int pchar[26] = { 0 };
+    int schar[26] = { 0 };
+    int nums = 0;
+    int i = 0;
+    int* res = (int*)malloc(sizeof(int) * (sLen - pLen + 1));
+    for (i = 0; i < pLen; i++) {
+        pchar[p[i] - 'a']++;
+        schar[s[i] - 'a']++;
+    }
+    for (i=pLen; i <= sLen; i++) {
+        if (memcmp(pchar, schar, 26 * sizeof(int)) == 0) {
+            res[nums++] = i - pLen;
+        }
+        schar[s[i - pLen] - 'a']--;
+        if(i<sLen)
+            schar[s[i] - 'a']++;
+    }
+    *returnSize = nums;
+    return res;
 }
 
 // 509. Fibonacci Number
@@ -2093,6 +2218,51 @@ bool isToeplitzMatrix(int** matrix, int matrixSize, int* matrixColSize)
     }
 
     return true;
+}
+
+// 784. Letter Case Permutation
+/*
+* Input: s = "a1b2"
+Output: ["a1b2","a1B2","A1b2","A1B2"]
+*/
+char  **LCAns;
+int   CurLC;
+char*  LCPath;
+int   CurLCPath;
+void backTrackLCPerm(char* s, int len, int cur)
+{
+    if (cur == len) {
+        LCAns[CurLC] = (char*)malloc(len+1);
+        memset(LCAns[CurLC],0, len + 1);
+        memcpy(LCAns[CurLC++], LCPath, len);
+        return;
+    }
+    LCPath[CurLCPath++] = s[cur];
+    backTrackLCPerm(s, len, cur+1);
+    CurLCPath--;
+
+    if (s[cur] >= 'a' && s[cur] <= 'z') {
+        LCPath[CurLCPath++] = s[cur] - 0x20;
+        backTrackLCPerm(s, len, cur + 1);
+        CurLCPath--;
+    }
+    else if (s[cur] >= 'A' && s[cur] <= 'Z') {
+        LCPath[CurLCPath++] = s[cur] + 0x20;
+        backTrackLCPerm(s, len, cur + 1);
+        CurLCPath--;
+    }
+}
+char** letterCasePermutation(char* s, int* returnSize)
+{
+    int len = (int)strlen(s);
+    LCAns = (char**)malloc(sizeof(char*) * 4096);
+    LCPath = (char*)malloc(len+1);
+    memset(LCPath, 0, len + 1);
+    CurLCPath = 0;
+    backTrackLCPerm(s, len, 0);
+    free(LCPath);
+    *returnSize = CurLC;
+    return LCAns;
 }
 // 844. Backspace String Compare
 void procBS(char* s, int* pos)

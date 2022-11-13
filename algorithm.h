@@ -50,8 +50,14 @@ void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n);
 int* inorderTraversal(struct TreeNode* root, int* returnSize);
 // 98. Validate Binary Search Tree
 bool isValidBST(struct TreeNode* root);
+// 101. Symmetric Tree
+bool isSymmetric(struct TreeNode* root);
 // 102. Binary Tree Level Order Traversal
 int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes);
+// 104. Maximum Depth of Binary Tree
+int maxDepth(struct TreeNode* root);
+// 112. Path Sum
+bool hasPathSum(struct TreeNode* root, int targetSum);
 // 116. Populating Next Right Pointers in Each Node
 struct Node* connect(struct Node* root);
 // 118. Pascal's Triangle
@@ -74,6 +80,8 @@ struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* he
 int* twoSumII(int* numbers, int numbersSize, int target, int* returnSize);
 // 189. Rotate Array
 void rotate(int* nums, int numsSize, int k);
+// 191. Number of 1 Bits
+int hammingWeight(uint32_t n);
 // 200. Number of Islands
 int numIslands(char** grid, int gridSize, int* gridColSize);
 // 202. Happy Number
@@ -90,6 +98,10 @@ int minSubArrayLen(int target, int* nums, int numsSize);
 char** findWords(char** board, int boardSize, int* boardColSize, char** words, int wordsSize, int* returnSize);
 // 217. Contains Duplicate
 bool containsDuplicate(int* nums, int numsSize);
+// 226. Invert Binary Tree
+struct TreeNode* invertTree(struct TreeNode* root);
+// 231. Power of Two
+bool isPowerOfTwo(int n);
 // 232. Implement Queue using Stacks
 // 235. Lowest Common Ancestor of a Binary Search Tree
 struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q);
@@ -117,6 +129,8 @@ int firstUniqChar(char* s);
 bool isSubsequence(char* s, char* t);
 // 409. Longest Palindrome
 int longestPalindrome(char* s);
+// 438. Find All Anagrams in a String
+int* findAnagrams(char* s, char* p, int* returnSize);
 // 509. Fibonacci Number
 int fib(int n);
 // 523. Continuous Subarray Sum
@@ -149,6 +163,8 @@ int pivotIndex(int* nums, int numsSize);
 int** floodFill(int** image, int imageSize, int* imageColSize, int sr, int sc, int color, int* returnSize, int** returnColumnSizes);
 // 766. Toeplitz Matrix
 bool isToeplitzMatrix(int** matrix, int matrixSize, int* matrixColSize);
+// 784. Letter Case Permutation
+char** letterCasePermutation(char* s, int* returnSize);
 // 844. Backspace String Compare
 bool backspaceCompare(char* s, char* t);
 // 876. Middle of the Linked List
