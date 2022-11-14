@@ -50,7 +50,7 @@ ListNode* CreateListNode(vector<int> nums);
 
 TreeNode* CreateBinaryTree(vector<int> nums);
 
-void quicksort(int* nums, int low, int high);
+void quicksort(int* nums, int left, int right);
 
 
 #define COMPVALUE(exp, out)     {                                               \

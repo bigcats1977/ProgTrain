@@ -48,27 +48,41 @@ int lengthOfLongestSubstring(char* s)
 // 15. 3Sum
 int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes)
 {
-    int count = 0;
-    int target;
-    int** ans = (int**)malloc(sizeof(int*)*(numsSize * (numsSize - 1) * (numsSize - 2) / 6));
-    (*returnColumnSizes) = (int*)malloc(sizeof(int) * (numsSize * (numsSize - 1) * (numsSize - 2) / 6));
-    for (int i = 0; i < numsSize - 2; i++) {
-        for (int j = i + 1; j < numsSize - 1; j++) {
-            target = -nums[i] - nums[j];
-            for (int k = j + 1; k < numsSize; k++) {
-                if (nums[k] == target) {
-                    ans[count] = (int*)malloc(sizeof(int) * 3);
-                    (*returnColumnSizes)[count] = 3;
-                    ans[count][0] = nums[i];
-                    ans[count][1] = nums[j];
-                    ans[count][2] = nums[k];
-                    count++;
-                }
+    quicksort(nums, 0, numsSize - 1);
+
+    int** ans = (int**)malloc(sizeof(int*)*(numsSize * numsSize));
+    (*returnColumnSizes) = (int*)malloc(sizeof(int) * (numsSize * numsSize));
+    *returnSize = 0;
+    for (int i = 0; i < numsSize; i++) {
+        if (nums[i] > 0)
+            return ans;
+
+        if (i > 0 && nums[i] == nums[i - 1]) {
+            continue;
+        }
+
+        int left = i + 1;
+        int right = numsSize - 1;
+        while (left < right) {
+            if (nums[i] + nums[left] + nums[right] > 0)
+                right--;
+            else if(nums[i] + nums[left] + nums[right] < 0)
+                left++;
+            else {
+                ans[(*returnSize)] = (int*)malloc(sizeof(int) * 3);
+                (*returnColumnSizes)[(*returnSize)] = 3;
+                ans[(*returnSize)][0] = nums[i];
+                ans[(*returnSize)][1] = nums[left];
+                ans[(*returnSize)][2] = nums[right];
+                (*returnSize)++;
+                while (left < right && nums[right] == nums[right - 1]) right--;
+                while (left < right && nums[left] == nums[left + 1]) left++;
+                left++;
+                right--;
             }
         }
     }
 
-    *returnSize = count;
     return ans;
 }
 

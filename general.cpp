@@ -19,25 +19,28 @@ ListNode* CreateListNode(vector<int> nums)
     return head;
 }
 
-void quicksort(int* nums, int begin, int end)
+void quicksort(int* nums, int left, int right)
 {
-    if (begin >= end)
+    int num = nums[left];
+    int temp;
+    int i = left, j = right;
+    if (left >= right)
         return;
+    while (i < j) {
+        while (i<j && nums[j] >= num)
+            j--;
+        temp = nums[j];
+        nums[j] = nums[i];
+        nums[i] = temp;
 
-    int pivot = nums[begin];
-    int low = begin, high = end;
-    while (low < high) {
-        while (low < high && nums[high] >= pivot)
-            high--;
-        nums[low] = nums[high];
-        while (low < high && nums[low] <= pivot)
-            low++;
-        nums[high] = nums[low];
+        while (i < j && nums[i] <= num)
+            i++;
+        temp = nums[j];
+        nums[j] = nums[i];
+        nums[i] = temp;
     }
-    nums[low] = pivot;
-
-    quicksort(nums, begin, low - 1);
-    quicksort(nums, low+1, end);
+    quicksort(nums, left, i - 1);
+    quicksort(nums, i + 1, right);
 }
 
 // 根据数组构造二叉树
