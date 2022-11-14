@@ -809,6 +809,17 @@ int maxProfit(int* prices, int pricesSize)
 
     return max;
 }
+
+// 136. Single Number
+int singleNumber(int* nums, int numsSize)
+{
+    int number = nums[0];
+    for (int i = 1; i < numsSize; i++) {
+        number ^= nums[i];
+    }
+    return number;
+}
+
 // 141. Linked List Cycle
 bool hasCycle(struct ListNode* head)
 {
@@ -1028,6 +1039,23 @@ int* twoSumII(int* numbers, int numbersSize, int target, int* returnSize)
     }
 #endif
     return result;
+}
+
+// 169. Majority Element
+int majorityElement(int* nums, int numsSize)
+{
+    int major = nums[0], count = 1;
+    for (int i = 1; i < numsSize; i++) {
+        if (nums[i] == major)
+            count++;
+        else
+            count--;
+        if (count < 0) {
+            major = nums[i];
+            count = 1;
+        }
+    }
+    return major;
 }
 
 // 189. Rotate Array

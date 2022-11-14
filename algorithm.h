@@ -64,6 +64,8 @@ struct Node* connect(struct Node* root);
 int** generate(int numRows, int* returnSize, int** returnColumnSizes);
 // 121. Best Time to Buy and Sell Stock
 int maxProfit(int* prices, int pricesSize);
+// 136. Single Number
+int singleNumber(int* nums, int numsSize);
 // 141. Linked List Cycle
 bool hasCycle(struct ListNode* head);
 // 142. Linked List Cycle II
@@ -78,6 +80,8 @@ char* reverseWords(char* s);
 struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* headB);
 // 167. Two Sum II - Input Array Is Sorted
 int* twoSumII(int* numbers, int numbersSize, int target, int* returnSize);
+// 169. Majority Element
+int majorityElement(int* nums, int numsSize);
 // 189. Rotate Array
 void rotate(int* nums, int numsSize, int k);
 // 191. Number of 1 Bits

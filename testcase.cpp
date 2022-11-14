@@ -20,6 +20,7 @@ FUNCNAME g_tFuncName[] = {
     {88,    TestCase_88  },
     {102,   TestCase_102 },
     {118,   TestCase_118 },
+    {136,   TestCase_136 },
     {142,   TestCase_142 },
     {151,   TestCase_151 },
     {160,   TestCase_160 },
@@ -66,6 +67,17 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_136()
+{
+    vector<int> input;
+    int output,expect;
+
+    input = { 4,1,2,1,2 };
+    expect = 4;
+    output = singleNumber(input.data(), input.size());
+
+    input = { 3,9,20,-1,-1,15,7 };
+}
 
 void TestCase_438()
 {
