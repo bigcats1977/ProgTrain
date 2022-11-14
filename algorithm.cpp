@@ -45,6 +45,33 @@ int lengthOfLongestSubstring(char* s)
     return max;
 }
 
+// 15. 3Sum
+int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes)
+{
+    int count = 0;
+    int target;
+    int** ans = (int**)malloc(sizeof(int*)*(numsSize * (numsSize - 1) * (numsSize - 2) / 6));
+    (*returnColumnSizes) = (int*)malloc(sizeof(int) * (numsSize * (numsSize - 1) * (numsSize - 2) / 6));
+    for (int i = 0; i < numsSize - 2; i++) {
+        for (int j = i + 1; j < numsSize - 1; j++) {
+            target = -nums[i] - nums[j];
+            for (int k = j + 1; k < numsSize; k++) {
+                if (nums[k] == target) {
+                    ans[count] = (int*)malloc(sizeof(int) * 3);
+                    (*returnColumnSizes)[count] = 3;
+                    ans[count][0] = nums[i];
+                    ans[count][1] = nums[j];
+                    ans[count][2] = nums[k];
+                    count++;
+                }
+            }
+        }
+    }
+
+    *returnSize = count;
+    return ans;
+}
+
 // 19. Remove Nth Node From End of List
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n)
 {
