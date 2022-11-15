@@ -1,5 +1,6 @@
 #include "testcase.h"
 #include "MyLinkedList.h"
+#include "MyHashMap.h"
 
 FUNCNAME g_tFuncName[] = {
     {1,     TestCase_1   },
@@ -54,6 +55,7 @@ FUNCNAME g_tFuncName[] = {
     {566,   TestCase_566 },
     {567,   TestCase_567 },
     {704,   TestCase_704 },
+    {706,   TestCase_706 },
     {707,   TestCase_707 },
     {724,   TestCase_724 },
     {766,   TestCase_766 },
@@ -70,6 +72,20 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_706()
+{
+    int val;
+    MyHashMap* obj = myHashMapCreate();
+    myHashMapPut(obj, 1, 1);
+    myHashMapPut(obj, 2, 2);
+    val = myHashMapGet(obj, 1);
+    val = myHashMapGet(obj, 3);
+    myHashMapPut(obj, 2, 1);
+    val = myHashMapGet(obj, 2);
+    myHashMapRemove(obj, 2);
+    val = myHashMapGet(obj, 2);
+    myHashMapFree(obj);
+}
 void TestCase_56()
 {
     int** p;

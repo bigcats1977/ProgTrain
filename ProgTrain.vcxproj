@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="algorithm.cpp" />
     <ClCompile Include="general.cpp" />
+    <ClCompile Include="MyHashMap.cpp" />
     <ClCompile Include="MyLinkedList.cpp" />
     <ClCompile Include="ProgTrain.cpp" />
     <ClCompile Include="testcase.cpp" />
@@ -148,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="algorithm.h" />
     <ClInclude Include="general.h" />
+    <ClInclude Include="MyHashMap.h" />
     <ClInclude Include="MyLinkedList.h" />
     <ClInclude Include="testcase.h" />
   </ItemGroup>

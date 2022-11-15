@@ -2330,6 +2330,10 @@ int search(int* nums, int numsSize, int target) {
     return -1;
 }
 
+// 706. Design HashMap
+// myself HashMap
+
+
 // 707. Design Linked List
 // MyLinkedList
 

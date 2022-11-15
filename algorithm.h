@@ -171,6 +171,8 @@ struct TreeNode* searchBST(struct TreeNode* root, int val);
 struct TreeNode* insertIntoBST(struct TreeNode* root, int val);
 // 704. Binary Search
 int search(int* nums, int numsSize, int target);
+// 706. Design HashMap
+// myself HashMap
 // 707. Design Linked List
 // MyLinkedList
 // 724. Find Pivot Index
