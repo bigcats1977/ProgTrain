@@ -29,7 +29,6 @@ void swap(int* val1, int* val2)
 void quicksort(int* nums, int left, int right)
 {
     int num = nums[left];
-    //int temp;
     int i = left, j = right;
     if (left >= right)
         return;
@@ -37,16 +36,10 @@ void quicksort(int* nums, int left, int right)
         while (i<j && nums[j] >= num)
             j--;
         swap(&nums[i], &nums[j]);
-        /*temp = nums[j];
-        nums[j] = nums[i];
-        nums[i] = temp;*/
 
         while (i < j && nums[i] <= num)
             i++;
         swap(&nums[i], &nums[j]);
-        /*temp = nums[j];
-        nums[j] = nums[i];
-        nums[i] = temp;*/
     }
     quicksort(nums, left, i - 1);
     quicksort(nums, i + 1, right);

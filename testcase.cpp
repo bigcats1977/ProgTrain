@@ -15,6 +15,7 @@ FUNCNAME g_tFuncName[] = {
     {35,    TestCase_35  },
     {49,    TestCase_49  },
     {53,    TestCase_53  },
+    {56,    TestCase_56  },
     {69,    TestCase_69  },
     {75,    TestCase_75  },
     {76,    TestCase_76  },
@@ -69,6 +70,26 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_56()
+{
+    int** p;
+    int nr, nl;
+    int* nnl = &nl;
+
+    int matrix[2][2] = { {1,4}, {0,4} };
+    int col = 2;
+
+    p = (int**)malloc(sizeof(int*) * 2);
+    for (int i = 0; i < 2; i++) {
+        p[i] = (int*)malloc(sizeof(int) * 2);
+        for (int j = 0; j < 2; j++) {
+            p[i][j] = matrix[i][j];
+        }
+    }
+
+    merge(p, 2, &col, &nr, &nnl);
+
+}
 void TestCase_75()
 {
     vector<int> input;
@@ -92,7 +113,7 @@ void TestCase_136()
 
     input = { 4,1,2,1,2 };
     expect = 4;
-    output = singleNumber(input.data(), input.size());
+    output = singleNumber(input.data(), (int)input.size());
 
     input = { 3,9,20,-1,-1,15,7 };
 }

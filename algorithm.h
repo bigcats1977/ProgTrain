@@ -34,6 +34,8 @@ int** permute(int* nums, int numsSize, int* returnSize, int** returnColumnSizes)
 char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnColumnSizes);
 // 53. Maximum Subarray
 int maxSubArray(int* nums, int numsSize);
+// 56. Merge Intervals
+int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* returnSize, int** returnColumnSizes);
 // 69. Sqrt(x)
 int mySqrt(int x);
 // 70. Climbing Stairs

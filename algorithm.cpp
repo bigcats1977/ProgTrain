@@ -469,6 +469,64 @@ int maxSubArray(int* nums, int numsSize)
     return sum;
 }
 
+// 56. Merge Intervals
+void swapInter(int** inter1, int** inter2)
+{
+    int temp[2];
+    int sizes = sizeof(int) * 2;
+    memcpy(temp, *inter1, sizes);
+    memcpy(*inter1, *inter2, sizes);
+    memcpy(*inter2, temp, sizes);
+}
+void sortInter(int** intervals, int left, int right)
+{
+    if (left >= right)
+        return;
+    int temp[2];
+    temp[0] = intervals[left][0];
+    temp[1] = intervals[left][1];
+    int i = left, j = right;
+    while (i < j)
+    {
+        while (i < j && temp[0] <= intervals[j][0])
+            j--;
+        swapInter(&intervals[i], &intervals[j]);
+        while (i < j && temp[0] >= intervals[i][0])
+            i++;
+        swapInter(&intervals[i], &intervals[j]);
+    }
+
+    sortInter(intervals, left, i - 1);
+    sortInter(intervals, i + 1, right);
+}
+int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* returnSize, int** returnColumnSizes)
+{
+    int** ans;
+    int count = 0;
+    sortInter(intervals, 0, intervalsSize - 1);
+    ans = (int**)malloc(sizeof(int*) * intervalsSize);
+    (*returnColumnSizes) = (int*)malloc(sizeof(int) * intervalsSize);
+    ans[count] = (int*)malloc(sizeof(int) * 2);
+    ans[count][0] = intervals[0][0];
+    ans[count][1] = intervals[0][1];
+    (*returnColumnSizes)[count] = 2;
+    for (int i = 1; i < intervalsSize; i++) {
+        if (intervals[i][0] <= ans[count][1]) {
+            ans[count][1] = (int)fmax(ans[count][1], intervals[i][1]);
+        }
+        else {
+            count++;
+            ans[count] = (int*)malloc(sizeof(int) * 2);
+            (*returnColumnSizes)[count] = 2;
+            ans[count][0] = intervals[i][0];
+            ans[count][1] = intervals[i][1];
+        }
+    }
+    *returnSize = count + 1;
+
+    return ans;
+}
+
 // 69. Sqrt(x)
 int mySqrt(int x)
 {
