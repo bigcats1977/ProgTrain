@@ -525,6 +525,28 @@ bool searchMatrix(int** matrix, int matrixSize, int* matrixColSize, int target)
     return false;
 }
 
+// 75. Sort Colors
+void sortColors(int* nums, int numsSize)
+{
+    int left = 0, right = numsSize - 1;
+    int mid = 0;
+    while (mid <= right) {
+        switch (nums[mid]) {
+        case 0:
+            swap(&nums[mid], &nums[left]);
+            left++;
+            mid++;
+            break;
+        case 1:
+            mid++;
+            break;
+        case 2: 
+            swap(&nums[mid], &nums[right]);
+            right--;
+            break;
+        }
+    }
+}
 // 76. Minimum Window Substring
 char* minWindow(char* s, char* t)
 {

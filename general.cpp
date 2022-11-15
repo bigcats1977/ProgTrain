@@ -19,25 +19,34 @@ ListNode* CreateListNode(vector<int> nums)
     return head;
 }
 
+
+void swap(int* val1, int* val2)
+{
+    int temp = *val1;
+    *val1 = *val2;
+    *val2 = temp;
+}
 void quicksort(int* nums, int left, int right)
 {
     int num = nums[left];
-    int temp;
+    //int temp;
     int i = left, j = right;
     if (left >= right)
         return;
     while (i < j) {
         while (i<j && nums[j] >= num)
             j--;
-        temp = nums[j];
+        swap(&nums[i], &nums[j]);
+        /*temp = nums[j];
         nums[j] = nums[i];
-        nums[i] = temp;
+        nums[i] = temp;*/
 
         while (i < j && nums[i] <= num)
             i++;
-        temp = nums[j];
+        swap(&nums[i], &nums[j]);
+        /*temp = nums[j];
         nums[j] = nums[i];
-        nums[i] = temp;
+        nums[i] = temp;*/
     }
     quicksort(nums, left, i - 1);
     quicksort(nums, i + 1, right);

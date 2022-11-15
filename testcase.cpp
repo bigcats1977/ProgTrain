@@ -16,6 +16,7 @@ FUNCNAME g_tFuncName[] = {
     {49,    TestCase_49  },
     {53,    TestCase_53  },
     {69,    TestCase_69  },
+    {75,    TestCase_75  },
     {76,    TestCase_76  },
     {77,    TestCase_77  },
     {88,    TestCase_88  },
@@ -67,6 +68,14 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_75()
+{
+    vector<int> input;
+
+    input = { 2,0,1 };
+    sortColors(input.data(), (int)input.size());
+}
 
 void TestCase_15()
 {
