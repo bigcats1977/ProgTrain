@@ -106,6 +106,8 @@ int minSubArrayLen(int target, int* nums, int numsSize);
 char** findWords(char** board, int boardSize, int* boardColSize, char** words, int wordsSize, int* returnSize);
 // 217. Contains Duplicate
 bool containsDuplicate(int* nums, int numsSize);
+// 222. Count Complete Tree Nodes
+int countNodes(struct TreeNode* root);
 // 226. Invert Binary Tree
 struct TreeNode* invertTree(struct TreeNode* root);
 // 231. Power of Two

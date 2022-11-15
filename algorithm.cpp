@@ -1461,6 +1461,26 @@ bool containsDuplicate(int* nums, int numsSize)
     return false;
 }
 
+// 222. Count Complete Tree Nodes
+int countNodes(struct TreeNode* root)
+{
+    int lheight = 0, rheight = 0;
+    struct TreeNode* leftNode = root, * rightNode = root;
+    if (!root)
+        return 0;
+    while (leftNode) {
+        lheight++;
+        leftNode = leftNode->left;
+    }
+    while (rightNode) {
+        rheight++;
+        rightNode = rightNode->right;
+    }
+    if (lheight == rheight)
+        return (1 << lheight) - 1;
+    return 1 + countNodes(root->left) + countNodes(root->right);
+}
+
 // 226. Invert Binary Tree
 struct TreeNode* invertTree(struct TreeNode* root)
 {
