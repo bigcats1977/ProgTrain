@@ -1816,6 +1816,32 @@ bool isPerfectSquare(int num)
     return false;
 }
 
+// 374. Guess Number Higher or Lower
+int guess(int num)
+{
+    return 0;
+}
+int guessNumber(int n)
+{
+    int left = 1, right = n;
+    int mid;
+    while (left <= right) {
+        mid = left + (right - left) / 2;
+        switch (guess(mid)) {
+        case -1:
+            right = mid - 1;
+            break;
+        case 1:
+            left = mid + 1;
+            break;
+        case 0:
+            return mid;
+            break;
+        }
+    }
+    return left;
+}
+
 // 383. Ransom Note
 bool canConstruct(char* ransomNote, char* magazine)
 {

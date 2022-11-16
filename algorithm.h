@@ -133,6 +133,8 @@ int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* ret
 int* intersect(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize);
 // 367. Valid Perfect Square
 bool isPerfectSquare(int num);
+// 374. Guess Number Higher or Lower
+int guessNumber(int n);
 // 383. Ransom Note
 bool canConstruct(char* ransomNote, char* magazine);
 // 387. First Unique Character in a String
