@@ -17,6 +17,7 @@ FUNCNAME g_tFuncName[] = {
     {49,    TestCase_49  },
     {53,    TestCase_53  },
     {56,    TestCase_56  },
+    {59,    TestCase_59  },
     {69,    TestCase_69  },
     {75,    TestCase_75  },
     {76,    TestCase_76  },
@@ -71,6 +72,15 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_59()
+{
+    int nr, * nc;
+    generateMatrix(4, &nr, &nc);
+
+
+    generateMatrix(5, &nr, &nc);
+}
 
 void TestCase_706()
 {

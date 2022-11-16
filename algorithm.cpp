@@ -546,6 +546,47 @@ int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* retu
     return ans;
 }
 
+// 59. Spiral Matrix II
+int** generateMatrix(int n, int* returnSize, int** returnColumnSizes)
+{
+    int i, j, m, k = 0;
+    int** ans;
+    *returnSize = n;
+    ans = (int**)malloc(sizeof(int*) * n);
+    (*returnColumnSizes) = (int*)malloc(sizeof(int) * n);
+    for (i = 0; i < n; i++) {
+        ans[i] = (int*)malloc(sizeof(int) * n);
+        (*returnColumnSizes)[i] = n;
+    }
+    i = 0, j = 0;
+    m = 1;
+    int begin = 0, end = n;
+    while (begin < end) {
+        i = begin, j = begin;
+        for (; j < end; j++) {
+            ans[i][j] = m++;
+        }
+        j--;
+        i++;
+        for (; i < end; i++) {
+            ans[i][j] = m++;
+        }
+
+        j--;
+        i--;
+        for (; j >= begin; j--) {
+            ans[i][j] = m++;
+        }
+        j++;
+        i--;
+        for (; i > begin; i--) {
+            ans[i][j] = m++;
+        }
+        begin++, end--;
+    }
+    return ans;
+}
+
 // 69. Sqrt(x)
 int mySqrt(int x)
 {
