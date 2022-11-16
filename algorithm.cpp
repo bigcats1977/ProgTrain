@@ -912,6 +912,20 @@ int** generate(int numRows, int* returnSize, int** returnColumnSizes)
     return ans;
 }
 
+// 119. Pascal's Triangle II
+int* getRow(int rowIndex, int* returnSize)
+{
+    int* ans = (int*)malloc(sizeof(int) * (rowIndex + 1));
+    *returnSize = rowIndex + 1;
+    long temp = 1;
+    for (int i = 0; i < rowIndex + 1; i++) {
+        ans[i] = temp;
+        temp = (temp * (rowIndex - i) / (i + 1));
+
+    }
+    return ans;
+}
+
 // 121. Best Time to Buy and Sell Stock
 int maxProfit(int* prices, int pricesSize)
 {

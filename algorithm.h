@@ -68,6 +68,8 @@ bool hasPathSum(struct TreeNode* root, int targetSum);
 struct Node* connect(struct Node* root);
 // 118. Pascal's Triangle
 int** generate(int numRows, int* returnSize, int** returnColumnSizes);
+// 119. Pascal's Triangle II
+int* getRow(int rowIndex, int* returnSize);
 // 121. Best Time to Buy and Sell Stock
 int maxProfit(int* prices, int pricesSize);
 // 136. Single Number
