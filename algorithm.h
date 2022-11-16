@@ -30,6 +30,8 @@ int searchInsert(int* nums, int numsSize, int target);
 bool isValidSudoku(char** board, int boardSize, int* boardColSize);
 // 46. Permutations
 int** permute(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
+// 48. Rotate Image
+void rotate(int** matrix, int matrixSize, int* matrixColSize);
 // 49. Group Anagrams
 char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnColumnSizes);
 // 53. Maximum Subarray

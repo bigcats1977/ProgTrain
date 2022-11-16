@@ -401,6 +401,11 @@ int** permute(int* nums, int numsSize, int* returnSize, int** returnColumnSizes)
     return permuteAns;
 }
 
+// 48. Rotate Image
+void rotate(int** matrix, int matrixSize, int* matrixColSize)
+{
+}
+
 // 49. Group Anagrams
 char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnColumnSizes)
 {
