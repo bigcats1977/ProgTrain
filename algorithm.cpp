@@ -404,6 +404,20 @@ int** permute(int* nums, int numsSize, int* returnSize, int** returnColumnSizes)
 // 48. Rotate Image
 void rotate(int** matrix, int matrixSize, int* matrixColSize)
 {
+    int i, j, temp;
+    int* tempcol;
+    for (i = 0; i < matrixSize / 2; i++) {
+        tempcol = matrix[i];
+        matrix[i] = matrix[matrixSize - 1 - i];
+        matrix[matrixSize - 1 - i] = tempcol;
+    }
+    for (i = 0; i < matrixSize; i++) {
+        for (j = i + 1; j < matrixColSize[i]; j++) {
+            temp = matrix[i][j];
+            matrix[i][j] = matrix[j][i];
+            matrix[j][i] = temp;
+        }
+    }
 }
 
 // 49. Group Anagrams
