@@ -116,6 +116,8 @@ char** findWords(char** board, int boardSize, int* boardColSize, char** words, i
 bool containsDuplicate(int* nums, int numsSize);
 // 222. Count Complete Tree Nodes
 int countNodes(struct TreeNode* root);
+// 223. Rectangle Area
+int computeArea(int ax1, int ay1, int ax2, int ay2, int bx1, int by1, int bx2, int by2);
 // 226. Invert Binary Tree
 struct TreeNode* invertTree(struct TreeNode* root);
 // 231. Power of Two
