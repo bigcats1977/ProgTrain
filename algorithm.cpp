@@ -1744,6 +1744,8 @@ bool searchMatrixII(vector<vector<int>> matrix, int matrixSize, int* matrixColSi
     for(colm=left;colm<=right;colm++)
     {
         top = 0, bottom = matrixSize - 1;
+        if (matrix[top][colm] > target || matrix[bottom][colm] < target)
+            continue;
         while (top <= bottom) {
             rowm = top + (bottom - top) / 2;
             if (matrix[rowm][colm] == target)
