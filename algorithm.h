@@ -125,6 +125,9 @@ bool isPowerOfTwo(int n);
 // 232. Implement Queue using Stacks
 // 235. Lowest Common Ancestor of a Binary Search Tree
 struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q);
+// 240. Search a 2D Matrix II
+//bool searchMatrixII(int** matrix, int matrixSize, int* matrixColSize, int target);
+bool searchMatrixII(vector<vector<int>> matrix, int matrixSize, int* matrixColSize, int target);
 // 242. Valid Anagram
 bool isAnagram(char* s, char* t);
 // 278. First Bad Version

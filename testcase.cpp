@@ -38,6 +38,7 @@ FUNCNAME g_tFuncName[] = {
     {209,   TestCase_209 },
     {212,   TestCase_212 },
     {217,   TestCase_217 },
+    {240,   TestCase_240 },
     {242,   TestCase_242 },
     {283,   TestCase_283 },
     {344,   TestCase_344 },
@@ -72,6 +73,27 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_240()
+{
+    vector<vector<int>> matrix;
+    int col = 5;
+    bool expect, output;
+
+    matrix = {{1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13, 14, 15}, {16, 17, 18, 19, 20}, {21, 22, 23, 24, 25}};
+    expect = true;
+    output = searchMatrixII(matrix, 5, &col, 5);
+    COMPVALUE(expect, output);
+    
+    matrix = { {1,4,7,11,15},{2,5,8,12,19},{3,6,9,16,22},{10,13,1,17,24},{18,21,23,26,30} };
+    col = 5;
+    expect = true;
+    output = searchMatrixII(matrix, 5, &col, 5);
+    COMPVALUE(expect, output);
+    expect = false;
+    output = searchMatrixII(matrix, 5, &col, 20);
+    COMPVALUE(expect, output);
+}
 
 void TestCase_59()
 {

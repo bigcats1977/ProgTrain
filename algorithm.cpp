@@ -1733,6 +1733,36 @@ struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p,
     return root;
 }
 
+// 240. Search a 2D Matrix II
+//bool searchMatrixII(int** matrix, int matrixSize, int* matrixColSize, int target)
+bool searchMatrixII(vector<vector<int>> matrix, int matrixSize, int* matrixColSize, int target)
+{
+    int left = 0, right = matrixColSize[0] - 1, colm;
+    int top = 0, bottom = matrixSize - 1, rowm;
+    /*while (left <= right) {
+        colm = left + (right - left) / 2; */
+    for(colm=left;colm<=right;colm++)
+    {
+        top = 0, bottom = matrixSize - 1;
+        while (top <= bottom) {
+            rowm = top + (bottom - top) / 2;
+            if (matrix[rowm][colm] == target)
+                return true;
+            else if (matrix[rowm][colm] > target)
+                bottom = rowm - 1;
+            else
+                top = rowm + 1;
+        }
+        //top = 0, bottom = matrixSize - 1;
+        //rowm = top + (bottom - top) / 2;
+        //if (matrix[rowm][colm] > target)
+        //    right = colm - 1;
+        //else
+        //    left = colm + 1;
+    }
+    return false;
+}
+
 // 242. Valid Anagram
 bool isAnagram(char* s, char* t)
 {
