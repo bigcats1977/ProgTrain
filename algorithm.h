@@ -130,6 +130,8 @@ struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p,
 bool searchMatrixII(vector<vector<int>> matrix, int matrixSize, int* matrixColSize, int target);
 // 242. Valid Anagram
 bool isAnagram(char* s, char* t);
+// 263. Ugly Number
+bool isUgly(int n);
 // 278. First Bad Version
 int firstBadVersion(int n);
 // 283. Move Zeroes

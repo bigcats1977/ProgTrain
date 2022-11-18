@@ -1784,6 +1784,29 @@ bool isAnagram(char* s, char* t)
     return true;
 }
 
+// 263. Ugly Number
+bool isUgly(int n)
+{
+    int prior = n;
+    if (n == 1)
+        return true;
+    while (n)
+    {
+        if (n == 1)
+            return true;
+        if (n % 2 == 0)
+            n /= 2;
+        if (n % 3 == 0)
+            n /= 3;
+        if (n % 5 == 0)
+            n /= 5;
+        if (prior == n)
+            return false;
+        prior = n;
+    }
+    return false;
+}
+
 // 278. First Bad Version
 bool isBadVersion(int version)
 {
