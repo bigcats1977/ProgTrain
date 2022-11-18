@@ -1788,8 +1788,6 @@ bool isAnagram(char* s, char* t)
 bool isUgly(int n)
 {
     int prior = n;
-    if (n == 1)
-        return true;
     while (n)
     {
         if (n == 1)
