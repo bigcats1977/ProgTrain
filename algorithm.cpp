@@ -1733,6 +1733,27 @@ struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p,
     return root;
 }
 
+// 238. Product of Array Except Self
+int* productExceptSelf(int* nums, int numsSize, int* returnSize)
+{
+    int* ans;
+    ans = (int*)malloc(numsSize * sizeof(int));
+    *returnSize = numsSize;
+    int i,prefix;
+    ans[numsSize - 1] = nums[numsSize - 1];
+    for (i = numsSize - 2; i >= 0; i--) {
+        ans[i] = ans[i + 1] * nums[i];
+    }
+    prefix = nums[0];
+    ans[0] = ans[1];
+    for (i = 1; i < numsSize - 1; i++) {
+        ans[i] = ans[i + 1] * prefix;
+        prefix *= nums[i];
+    }
+    ans[numsSize - 1] = prefix;
+    return ans;
+}
+
 // 240. Search a 2D Matrix II
 //bool searchMatrixII(int** matrix, int matrixSize, int* matrixColSize, int target)
 bool searchMatrixII(vector<vector<int>> matrix, int matrixSize, int* matrixColSize, int target)

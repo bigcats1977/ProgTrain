@@ -125,6 +125,8 @@ bool isPowerOfTwo(int n);
 // 232. Implement Queue using Stacks
 // 235. Lowest Common Ancestor of a Binary Search Tree
 struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q);
+// 238. Product of Array Except Self
+int* productExceptSelf(int* nums, int numsSize, int* returnSize);
 // 240. Search a 2D Matrix II
 //bool searchMatrixII(int** matrix, int matrixSize, int* matrixColSize, int target);
 bool searchMatrixII(vector<vector<int>> matrix, int matrixSize, int* matrixColSize, int target);
