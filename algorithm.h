@@ -174,6 +174,8 @@ char* reverseStr(char* s, int k);
 int** updateMatrix(int** mat, int matSize, int* matColSize, int* returnSize, int** returnColumnSizes);
 // 557. Reverse Words in a String III
 char* reverseWordsIII(char* s);
+// 560. Subarray Sum Equals K
+int subarraySum(int* nums, int numsSize, int k);
 // 566. Reshape the Matrix
 int** matrixReshape(int** mat, int matSize, int* matColSize, int r, int c, int* returnSize, int** returnColumnSizes);
 // 567. Permutation in String
