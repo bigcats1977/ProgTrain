@@ -49,6 +49,7 @@ FUNCNAME g_tFuncName[] = {
     {387,   TestCase_387 },
     {392,   TestCase_392 },
     {415,   TestCase_415 },
+    {435,   TestCase_435 },
     {438,   TestCase_438 },
     {509,   TestCase_509 },
     {523,   TestCase_523 },
@@ -75,6 +76,18 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_435()
+{
+    vector<vector<int>> matrix;
+    int** p;
+
+    matrix = { {1,2},{1,2},{1,2} };
+    int row = 3, col = 2;
+    p = matrix2addr(matrix);
+
+    int output = eraseOverlapIntervals(p, row, &col);
+
+}
 
 void TestCase_415()
 {

@@ -2159,22 +2159,36 @@ void sortInter(int** intervals, int left, int right)
     sortInter(intervals, i + 1, right);
 }
 #endif
+int cmp(const void* a, const void* b) {
+    int* t1 = *(int**)a;
+    int* t2 = *(int**)b;
+    int dif = t1[1] - t2[1];
+    if (dif == 0)
+        dif = t1[0] - t2[0];
+    return  dif;
+}
 int eraseOverlapIntervals(int** intervals, int intervalsSize, int* intervalsColSize)
 {
     if (intervalsSize < 2)
         return 0;
-    sortInter(intervals, 0, intervalsSize - 1);
+    //sortInter(intervals, 0, intervalsSize - 1);
+    qsort(intervals, intervalsSize, sizeof(int*), cmp);
 
-    int i = 1, j = 0;
+    int i = 0, j = 1;
     int ans = 0;
-    while (i < intervalsSize) {
-            if (intervals[i][0] == intervals[j][0])
-                ans++;
-            else if (intervals[j][1] > intervals[i][0])
-                ans++;
-            else
-                j = i;
-            i++;
+    while (j < intervalsSize) {
+        if (intervals[i][1] <= intervals[j][0]) {
+            i=j; j++;
+        }
+        else if (intervals[i][1] < intervals[j][1]) {
+            ans++;
+            j++;
+        }
+        else if (intervals[i][1] >= intervals[j][1])
+        {
+            ans++;
+            i = j; j++;
+        }
     }
     return ans;
 }

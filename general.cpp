@@ -74,3 +74,20 @@ TreeNode* CreateBinaryTree(vector<int> nums)
 
     return root;
 }
+
+
+int** matrix2addr(vector<vector<int>> matrix)
+{
+    int** p;
+    int row = (int)matrix.size();
+    int col = (int)matrix[0].size();
+
+    p = (int**)malloc(sizeof(int*) * row);
+    for (int i = 0; i < row; i++) {
+        p[i] = (int*)malloc(sizeof(int) * col);
+        for (int j = 0; j < col; j++) {
+            p[i][j] = matrix[i][j];
+        }
+    }
+    return p;
+}

@@ -53,6 +53,8 @@ TreeNode* CreateBinaryTree(vector<int> nums);
 void swap(int* val1, int* val2);
 void quicksort(int* nums, int left, int right);
 
+int** matrix2addr(vector<vector<int>> matrix);
+
 
 #define COMPVALUE(exp, out)     {                                               \
     cout << "Expect result: " << exp << endl;                                   \
