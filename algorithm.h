@@ -156,6 +156,8 @@ int firstUniqChar(char* s);
 bool isSubsequence(char* s, char* t);
 // 409. Longest Palindrome
 int longestPalindrome(char* s);
+// 415. Add Strings
+char* addStrings(char* num1, char* num2);
 // 435. Non - overlapping Intervals
 int eraseOverlapIntervals(int** intervals, int intervalsSize, int* intervalsColSize);
 // 438. Find All Anagrams in a String

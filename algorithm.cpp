@@ -2072,6 +2072,35 @@ int longestPalindrome(char* s)
     return longPal;
 }
 
+// 415. Add Strings
+char* addStrings(char* num1, char* num2)
+{
+    int len1 = (int)strlen(num1);
+    int len2 = (int)strlen(num2);
+    int len = len1 > len2 ? len1 + 1 : len2 + 1;
+    char* ans = (char*)malloc(len+1);
+    int val =0;
+    memset(ans, 0, len + 1);
+    while (len1 && len2) {
+        val += num1[len1-- - 1] - '0' + num2[len2-- - 1] - '0';
+        ans[len-- - 1] = val % 10 + '0';
+        val /= 10;
+    }
+    while(len1) {
+        val += num1[len1-- - 1] - '0';
+        ans[len-- -1] = val % 10 + '0';
+        val /= 10;
+    }
+    while (len2) {
+        val += num2[len2-- - 1] - '0';
+        ans[len-- -1] = val % 10 + '0';
+        val /= 10;
+    }
+    if (val > 0)
+        ans[len-- - 1] = '1';
+    return &ans[len];
+}
+
 // 435. Non - overlapping Intervals
 /*
 Input: intervals = [[1,2],[2,3],[3,4],[1,3]]

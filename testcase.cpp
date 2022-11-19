@@ -48,6 +48,7 @@ FUNCNAME g_tFuncName[] = {
     {383,   TestCase_383 },
     {387,   TestCase_387 },
     {392,   TestCase_392 },
+    {415,   TestCase_415 },
     {438,   TestCase_438 },
     {509,   TestCase_509 },
     {523,   TestCase_523 },
@@ -73,6 +74,15 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+
+void TestCase_415()
+{
+    string a, b;
+    a = "9133";
+    b = "0";
+    addStrings(&*a.begin(), &*b.begin());
+}
 
 void TestCase_240()
 {
