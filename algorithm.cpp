@@ -1858,6 +1858,38 @@ void moveZeroes(int* nums, int numsSize)
         nums[slow] = 0;
 }
 
+// 290. Word Pattern
+bool wordPattern(char* pattern, char* s)
+{
+    int pidx = 0, sidx = 0, plen = (int)strlen(pattern), slen = (int)strlen(s);
+    int start = -1;
+    char** whash = (char**)malloc(sizeof(char*) * 26);
+    memset(whash, 0, sizeof(char*) * 26);
+    while (sidx < slen) {
+        if (sidx == slen - 1 || s[sidx] == ' ') {
+            if (pidx >= plen)
+                return false;
+            int index = pattern[pidx++] - 'a';
+            int len = sidx - start;
+            len += (sidx == (slen - 1)) ? 1 : 0;
+            if (!whash[index]) {
+                for (int i = 0; i < 26; i++) {
+                    if (i != index && whash[i] && !strncmp(whash[i], &s[start + 1], len - 1))
+                        return false;
+                }
+                whash[index] = (char*)malloc(len);
+                memcpy(whash[index], &s[start + 1], len - 1);
+                whash[index][len - 1] = '\0';
+            }
+            else if (strncmp(whash[index], &s[start + 1], len - 1))
+                return false;
+            start = sidx;
+        }
+        sidx++;
+    }
+    return pidx != plen ? false : true;
+}
+
 // 344. Reverse String
 void reverseString(char* s, int sSize)
 {

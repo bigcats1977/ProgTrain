@@ -138,6 +138,8 @@ bool isUgly(int n);
 int firstBadVersion(int n);
 // 283. Move Zeroes
 void moveZeroes(int* nums, int numsSize);
+// 290. Word Pattern
+bool wordPattern(char* pattern, char* s);
 // 344. Reverse String
 void reverseString(char* s, int sSize);
 // 345. Reverse Vowels of a String;

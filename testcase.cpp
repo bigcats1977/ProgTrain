@@ -41,6 +41,7 @@ FUNCNAME g_tFuncName[] = {
     {240,   TestCase_240 },
     {242,   TestCase_242 },
     {283,   TestCase_283 },
+    {290,   TestCase_290 },
     {344,   TestCase_344 },
     {349,   TestCase_349 },
     {350,   TestCase_350 },
@@ -76,6 +77,43 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+
+void TestCase_290()
+{
+    string a, b;
+    bool expect, output;
+
+    a = "abc";
+    b = "b c a";
+    expect = true;
+    output = wordPattern(&*a.begin(), &*b.begin());
+    COMPVALUE(expect, output);
+
+    a = "e";
+    b = "eukera";
+    expect = true;
+    output = wordPattern(&*a.begin(), &*b.begin());
+    COMPVALUE(expect, output);
+
+    a = "aaa";
+    b = "aa aa aa aa";
+    expect = false;
+    output = wordPattern(&*a.begin(), &*b.begin());
+    COMPVALUE(expect, output);
+
+    a = "abba";
+    b = "dog cat cat dog";
+    expect = true;
+    output = wordPattern(&*a.begin(), &*b.begin());
+    COMPVALUE(expect, output);
+
+    a = "abba";
+    b = "dog dog dog dog";
+    expect = false;
+    output = wordPattern(&*a.begin(), &*b.begin());
+    COMPVALUE(expect, output);    
+}
+
 void TestCase_435()
 {
     vector<vector<int>> matrix;
@@ -86,7 +124,6 @@ void TestCase_435()
     p = matrix2addr(matrix);
 
     int output = eraseOverlapIntervals(p, row, &col);
-
 }
 
 void TestCase_415()
