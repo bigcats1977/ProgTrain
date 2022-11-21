@@ -2525,7 +2525,7 @@ int* preorder(struct NNode* root, int* returnSize)
 }
 
 // 617. Merge Two Binary Trees
-struct TreeNode* priorMerge(struct TreeNode* root1, struct TreeNode* root2)
+struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2)
 {
     if (!root1)
         return root2;
@@ -2533,13 +2533,9 @@ struct TreeNode* priorMerge(struct TreeNode* root1, struct TreeNode* root2)
         return root1;
     root1->val += root2->val;
 
-    root1->left = priorMerge(root1->left, root2->left);
-    root1->right = priorMerge(root1->right, root2->right);
+    root1->left = mergeTrees(root1->left, root2->left);
+    root1->right = mergeTrees(root1->right, root2->right);
     return root1;
-}
-struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2)
-{
-    return priorMerge(root1, root2);
 }
 
 // 653. Two Sum IV - Input is a BST
@@ -2737,6 +2733,12 @@ int** floodFill(int** image, int imageSize, int* imageColSize, int sr, int sc, i
     depthTravel(image, imageSize, imageColSize[0], image[sr][sc], sr, sc, color);
 
     return image;
+}
+
+// 763. Partition Labels
+int* partitionLabels(char* s, int* returnSize)
+{
+    return NULL;
 }
 
 // 766. Toeplitz Matrix

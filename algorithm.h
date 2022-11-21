@@ -204,6 +204,8 @@ int search(int* nums, int numsSize, int target);
 int pivotIndex(int* nums, int numsSize);
 // 733. Flood Fill
 int** floodFill(int** image, int imageSize, int* imageColSize, int sr, int sc, int color, int* returnSize, int** returnColumnSizes);
+// 763. Partition Labels
+int* partitionLabels(char* s, int* returnSize);
 // 766. Toeplitz Matrix
 bool isToeplitzMatrix(int** matrix, int matrixSize, int* matrixColSize);
 // 784. Letter Case Permutation
