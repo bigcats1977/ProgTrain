@@ -421,6 +421,100 @@ void rotate(int** matrix, int matrixSize, int* matrixColSize)
 }
 
 // 49. Group Anagrams
+#define HASHSZ 200
+struct groupInfo {
+    int cnt[26];
+    int idx;
+    struct groupInfo* next;
+};
+/* accumulate each count for hash function */
+int hashFunc(int* cnt)
+{
+    int val = 0;
+    for (int i = 0; i < 26; i++) {
+        val += cnt[i];
+    }
+    return (val % HASHSZ);
+}
+struct groupInfo** initTable(void)
+{
+    struct groupInfo** table = (struct groupInfo**)malloc(sizeof(struct groupInfo*) * HASHSZ);
+    memset(table, 0, sizeof(struct groupInfo*) * HASHSZ);
+
+    return table;
+}
+int findTable(struct groupInfo** table, int val, int* cnt)
+{
+    struct groupInfo* head = table[val];
+    while (head) {
+        if (0 == memcmp(head->cnt, cnt, sizeof(int) * 26)) {
+            return head->idx;
+        }
+        head = head->next;
+    }
+    return -1;
+}
+void insertTable(struct groupInfo** head, int* cnt, int index)
+{
+    struct groupInfo* node = (struct groupInfo*)malloc(sizeof(struct groupInfo));
+    memcpy(node->cnt, cnt, sizeof(int) * 26);
+    node->idx = index;
+    node->next = *head;
+    *head = node;
+}
+char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnColumnSizes) {
+    //iterate n strings
+    //increase letter count
+    //use the value to be hash, insert or get index
+    int i, j, idx, col, sz, val;
+    int cnt[26];
+
+    *returnSize = 0;
+    *returnColumnSizes = (int*)malloc(sizeof(int) * strsSize);
+    memset(*returnColumnSizes, 0, sizeof(int) * strsSize);
+    char*** returnBuf = (char***)malloc(sizeof(char**) * strsSize);
+    for (i = 0; i < strsSize; i++) {
+        //dynamic alloc
+        returnBuf[i] = (char**)malloc(sizeof(char*));
+    }
+
+    struct groupInfo** tbl = initTable();
+
+    for (i = 0; i < strsSize; i++) {
+        memset(cnt, 0, sizeof(int) * 26);
+        sz = (int)strlen(strs[i]);
+        for (j = 0; j < sz; j++) {
+            cnt[strs[i][j] - 'a']++;
+        }
+
+        val = hashFunc(cnt);
+        idx = findTable(tbl, val, cnt);
+        if (idx == -1) {
+            //get new index
+            idx = *returnSize;
+            insertTable(&tbl[val], cnt, idx);
+            (*returnSize)++;
+        }
+
+        char* str = (char*)malloc(sizeof(char) * (sz + 1));
+        memcpy(str, strs[i], sz);
+        str[sz] = '\0';
+
+        col = (*returnColumnSizes)[idx];
+        (*returnColumnSizes)[idx]++;
+        returnBuf[idx] = (char**)realloc(returnBuf[idx], sizeof(char*) * (*returnColumnSizes)[idx]);
+        returnBuf[idx][col] = str;
+    }
+
+    for (i = (*returnSize); i < strsSize; i++) {
+        free(returnBuf[i]);
+    }
+    returnBuf = (char***)realloc(returnBuf, sizeof(char**) * (*returnSize));
+    *returnColumnSizes = (int*)realloc(*returnColumnSizes, sizeof(int) * (*returnSize));
+
+    return returnBuf;
+}
+#if 0
 struct groupInfo {
     int no;
     int nums;
@@ -488,6 +582,7 @@ char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnCo
     
     return ans;
 }
+#endif
 
 // 36. Valid Sudoku
 bool isValidSudoku(char** board, int boardSize, int* boardColSize)
