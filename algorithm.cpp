@@ -2738,7 +2738,25 @@ int** floodFill(int** image, int imageSize, int* imageColSize, int sr, int sc, i
 // 763. Partition Labels
 int* partitionLabels(char* s, int* returnSize)
 {
-    return NULL;
+    int i, count = (int)strlen(s);
+    int last[26] = { 0 };
+
+    for (i = 0; i < count; i++) {
+        last[s[i] - 'a'] = i;
+    }
+
+    *returnSize = 0;
+    int j = 0, anchor = 0;
+    int* ans = (int*)malloc(sizeof(int)* count);
+
+    for (int i = 0; i < count; ++i) {
+        j = j > last[s[i] - 'a'] ? j : last[s[i] - 'a'];
+        if (i == j) {
+            ans[(*returnSize)++] = i - anchor + 1;
+            anchor = i + 1;
+        }
+    }
+    return ans;
 }
 
 // 766. Toeplitz Matrix
