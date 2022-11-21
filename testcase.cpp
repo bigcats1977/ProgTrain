@@ -77,7 +77,22 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_49() {
+    vector<string> vstr= { "eat","tea","tan","ate","nat","bat" };
+    char** strs;
+    int grps,nums, i, len;
+    int *nn = &nums;
 
+    strs = (char**)malloc(sizeof(char*) * vstr.size());
+    for (i = 0; i < (int)vstr.size(); i++) {
+        len = (int)vstr[i].size();
+        strs[i] = (char*)malloc(len + 1);
+        memcpy(strs[i], vstr[i].c_str(), len);
+        strs[i][len] = '\0';
+    }
+
+    groupAnagrams((char**)strs, (int)vstr.size(), &grps, &nn);
+}
 void TestCase_290()
 {
     string a, b;
@@ -904,27 +919,6 @@ void TestCase_349()
     output = intersection(nums1.data(), (int)nums1.size(), nums2.data(), (int)nums2.size(), &returnsize);
     COMPARRAY(expect.data(), expect.size(), output, returnsize);
     free(output);
-}
-
-void TestCase_49()
-{
-    string s, t;
-    bool expect;
-
-    s = "a";
-    t = "b";
-    expect = false;
-    COMPVALUE(expect, canConstruct(&*s.begin(), &*t.begin()));
-
-    s = "aa";
-    t = "ab";
-    expect = false;
-    COMPVALUE(expect, canConstruct(&*s.begin(), &*t.begin()));
-
-    s = "aa";
-    t = "aab";
-    expect = true;
-    COMPVALUE(expect, canConstruct(&*s.begin(), &*t.begin()));
 }
 
 void TestCase_383()

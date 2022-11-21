@@ -421,13 +421,72 @@ void rotate(int** matrix, int matrixSize, int* matrixColSize)
 }
 
 // 49. Group Anagrams
+struct groupInfo {
+    int no;
+    int nums;
+    int times[26];
+    struct groupInfo* next;
+};
 char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnColumnSizes)
 {
-    if (strsSize == 0)
-        return NULL;
+    int i, j, k;
+    int count = 0;
+    bool bFind;
+    struct groupInfo* prior, *node;
+    struct groupInfo* group = (struct groupInfo*)malloc(sizeof(struct groupInfo) * strsSize);
+    memset(group, 0, sizeof(struct groupInfo) * strsSize);
 
+    for (i = 0; i < strsSize; i++) {
+        group[i].no = -1;
+        for (k = 0; k < (int)strlen(strs[i]); k++) {
+            group[i].times[strs[i][k] - 'a']++;
+        }
+        bFind = false;
+        for (j = 0; j < i; j++) {
+            if (group[j].no < 0)
+                continue;
+            if (memcmp(group[j].times, group[i].times, sizeof(int) * 26) == 0) {
+                bFind = true;
+                node = (struct groupInfo*)malloc(sizeof(struct groupInfo));
+                node->no = i;
+                node->nums = 0;
+                node->next = NULL;
+                prior = &group[j];
+                prior->nums++;
+                while (prior->next != NULL)
+                    prior = prior->next;
+                prior->next = node;
+                break;
+            }
+        }
+        if (!bFind) {
+            group[i].no = i;
+            group[i].nums = 1;
+            count++;
+        }
+    }
+
+    char*** ans = (char***)malloc(sizeof(char**) * strsSize);
+    (*returnColumnSizes) = (int*)malloc(sizeof(int*) * count);
+    count = 0;
+    for (i = 0; i < strsSize; i++) {
+        if (group[i].no != -1) {
+            ans[count] = (char**)malloc(sizeof(char*) * group[i].nums);
+            (*returnColumnSizes)[count] = group[i].nums;
+            node = &group[i];
+            for (j = 0; j < group[i].nums; j++) {
+                int len = (int)strlen(strs[node->no]);
+                ans[count][j] = (char*)malloc(len+1);
+                memcpy(ans[count][j], strs[node->no], len);
+                ans[count][j][len] = '\0';
+                node = node->next;
+            }
+            count++;
+        }
+    }
+    *returnSize = count;
     
-    return NULL;
+    return ans;
 }
 
 // 36. Valid Sudoku
