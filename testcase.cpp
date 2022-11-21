@@ -14,6 +14,7 @@ FUNCNAME g_tFuncName[] = {
     {28,    TestCase_28  },
     {34,    TestCase_34  },
     {35,    TestCase_35  },
+    {43,    TestCase_43  },
     {49,    TestCase_49  },
     {53,    TestCase_53  },
     {56,    TestCase_56  },
@@ -77,7 +78,17 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
-void TestCase_49() {
+
+void TestCase_43() 
+{
+    string num1, num2;
+
+    num1 = "123";
+    num2 = "456";
+    multiply(&*num1.begin(), &*num2.begin());
+}
+void TestCase_49() 
+{
     vector<string> vstr= { "eat","tea","tan","ate","nat","bat" };
     char** strs;
     int grps,nums, i, len;

@@ -28,6 +28,8 @@ int* searchRange(int* nums, int numsSize, int target, int* returnSize);
 int searchInsert(int* nums, int numsSize, int target);
 // 36. Valid Sudoku
 bool isValidSudoku(char** board, int boardSize, int* boardColSize);
+// 43. Multiply Strings
+char* multiply(char* num1, char* num2);
 // 46. Permutations
 int** permute(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
 // 48. Rotate Image

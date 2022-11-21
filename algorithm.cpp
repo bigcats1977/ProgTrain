@@ -354,6 +354,37 @@ int searchInsert(int* nums, int numsSize, int target)
     return left;
 }
 
+// 43. Multiply Strings
+char* multiply(char* num1, char* num2)
+{
+    if (num1[0] == '0' || num2[0] == '0')
+        return (char*)"0";
+
+    int i, j;
+    int len1 = (int)strlen(num1), len2 = (int)strlen(num2);
+    int maxlen = len1 + len2 + 1;
+    char* ans = (char*)calloc(maxlen, 1);
+    
+    for (i = len1 - 1; i >= 0; i--) {
+        for (j = len2 - 1; j >= 0; j--) {
+            char multis = (num1[i] - '0') * (num2[j] - '0');
+            int ii = i + j + 1;
+            ans[ii] += multis % 10;
+            ans[ii - 1] += multis / 10;
+            multis = ans[ii];
+            if (multis >= 10) {
+                ans[ii] = multis % 10;
+                ans[ii - 1] += multis / 10;
+            }
+        }
+    }
+
+    for (i = 0; i < maxlen-1; i++)
+        ans[i] += '0';
+    if (ans[0] == '0') ans++;
+    return ans;
+}
+
 // 46. Permutations
 int** permuteAns;
 int   CurPermute;
