@@ -1495,14 +1495,14 @@ char** findRepeatedDnaSequences(char* s, int* returnSize)
     }
 
     char** ans = (char**)malloc(sizeof(char*) * count);
-    long* hashval = (long*)calloc(count - 10, sizeof(long));
+    long* hashval = (long*)calloc(count - 9, sizeof(long));
     for (i = 0; i <= count - 10; i++) {
         for (j = 1; j <= 10; j++) {
             hashval[i] += (int)pow(getbase(s[i + j - 1]), j);
         }
     }
     for (int i = 0; i < count - 10; i++) {
-        long curval = hashval[0];
+        long curval = hashval[i];
         for (j = i + 1; j <= count - 10; j++) {
             if (hashval[i] > 0 && hashval[i] == hashval[j])
             {
