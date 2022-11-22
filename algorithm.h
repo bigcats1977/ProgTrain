@@ -6,6 +6,8 @@
 int* twoSum(int* nums, int numsSize, int target, int* returnSize);
 // 3. Longest Substring Without Repeating Characters
 int lengthOfLongestSubstring(char* s);
+// 5. Longest Palindromic Substring
+char* longestPalindromeI(char* s);
 // 15. 3Sum
 int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
 // 19. Remove Nth Node From End of List

@@ -45,6 +45,12 @@ int lengthOfLongestSubstring(char* s)
     return max;
 }
 
+// 5. Longest Palindromic Substring
+char* longestPalindromeI(char* s)
+{
+    return NULL;
+}
+
 // 15. 3Sum
 int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes)
 {
