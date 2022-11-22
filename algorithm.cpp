@@ -46,9 +46,29 @@ int lengthOfLongestSubstring(char* s)
 }
 
 // 5. Longest Palindromic Substring
+int maxpalstr(char* s, int l, int r)
+{
+    while (l >= 0 && r < (int)strlen(s) && s[l] == s[r]) {
+        l--;
+        r++;
+    }
+    return (r - l - 1);
+}
 char* longestPalindromeI(char* s)
 {
-    return NULL;
+    int maxlen = 0, start = 0;
+    for (int i = 0; i < (int)strlen(s); i++) {
+        int len1 = maxpalstr(s, i, i);
+        int len2 = maxpalstr(s, i, i + 1);
+        int len = len1 > len2 ? len1 : len2;
+        if (len > maxlen) {
+            maxlen = len;
+            start = i - ((maxlen - 1) / 2);
+        }
+    }
+    char* ans = (char*)calloc(maxlen+1, 1);
+    memcpy(ans, &s[start], maxlen);
+    return ans;
 }
 
 // 15. 3Sum
