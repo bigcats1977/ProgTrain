@@ -1464,6 +1464,61 @@ int majorityElement(int* nums, int numsSize)
     return major;
 }
 
+// 187. Repeated DNA Sequences
+int getbase(char c)
+{
+    int base = 2;
+    switch (c) {
+    case 'C':
+        base = 3;
+        break;
+    case 'G':
+        base = 5;
+        break;
+    case 'T':
+        base = 7;
+        break;
+    case 'A':
+    default:
+        base = 2;
+        break;
+    }
+    return base;
+}
+char** findRepeatedDnaSequences(char* s, int* returnSize)
+{
+    int i, j;
+    int count = (int)strlen(s);
+    *returnSize = 0;
+    if (count <= 10) {
+        return NULL;
+    }
+
+    char** ans = (char**)malloc(sizeof(char*) * count);
+    long* hashval = (long*)calloc(count - 10, sizeof(long));
+    for (i = 0; i <= count - 10; i++) {
+        for (j = 1; j <= 10; j++) {
+            hashval[i] += (int)pow(getbase(s[i + j - 1]), j);
+        }
+    }
+    for (int i = 0; i < count - 10; i++) {
+        long curval = hashval[0];
+        for (j = i + 1; j <= count - 10; j++) {
+            if (hashval[i] > 0 && hashval[i] == hashval[j])
+            {
+                hashval[j] = -1;
+                if (curval == hashval[i]) {
+                    ans[(*returnSize)] = (char*)calloc(11, 1);
+                    memcpy(ans[(*returnSize)++], &s[i], 10);
+                    curval = -1;
+                }
+            }
+        }
+    }
+
+    return ans;
+}
+
 // 189. Rotate Array
 void inverse(int* nums, int begin, int end)
 {

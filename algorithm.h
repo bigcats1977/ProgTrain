@@ -98,6 +98,8 @@ struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* he
 int* twoSumII(int* numbers, int numbersSize, int target, int* returnSize);
 // 169. Majority Element
 int majorityElement(int* nums, int numsSize);
+// 187. Repeated DNA Sequences
+char** findRepeatedDnaSequences(char* s, int* returnSize);
 // 189. Rotate Array
 void rotate(int* nums, int numsSize, int k);
 // 191. Number of 1 Bits
