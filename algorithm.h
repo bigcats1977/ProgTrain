@@ -4,6 +4,8 @@
 
 // 1. Two Sum
 int* twoSum(int* nums, int numsSize, int target, int* returnSize);
+// 2. Add Two Numbers
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2);
 // 3. Longest Substring Without Repeating Characters
 int lengthOfLongestSubstring(char* s);
 // 5. Longest Palindromic Substring

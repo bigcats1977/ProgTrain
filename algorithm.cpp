@@ -22,6 +22,48 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize)
     return res;
 }
 
+// 2. Add Two Numbers
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2)
+{
+    int sum = 0;
+    struct ListNode* Dummy, *prior, *node;
+    if (!l1)
+        return l2;
+    if (!l2)
+        return l1;
+    Dummy = (struct ListNode*)calloc(sizeof(struct ListNode), 1);
+    Dummy->next = l1;
+    prior = Dummy;
+    while (l1 && l2) {
+        sum += l1->val + l2->val;
+        l1->val = sum % 10;
+        sum /= 10;
+        prior = l1;
+        l1 = l1->next;
+        l2 = l2->next;
+    }
+    if (l2)  {
+        prior->next = l2;
+        l1 = l2;
+    }
+    while (l1) {
+        sum += l1->val;
+        l1->val = sum % 10;
+        sum /= 10;
+        prior = l1;
+        l1 = l1->next;
+    }
+    if (sum > 0) {
+        node = (struct ListNode*)calloc(sizeof(struct ListNode), 1);
+        node->val = sum;
+        prior->next = node;
+    }
+
+    prior = Dummy->next;
+    free(Dummy);
+    return prior;
+}
+
 // 3. Longest Substring Without Repeating Characters
 int lengthOfLongestSubstring(char* s)
 {
