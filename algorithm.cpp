@@ -1465,29 +1465,29 @@ int majorityElement(int* nums, int numsSize)
 }
 
 // 187. Repeated DNA Sequences
-int getbase(char c)
-{
-    int base = 2;
-    switch (c) {
-    case 'C':
-        base = 3;
-        break;
-    case 'G':
-        base = 5;
-        break;
-    case 'T':
-        base = 7;
-        break;
-    case 'A':
-    default:
-        base = 2;
-        break;
-    }
-    return base;
-}
+//int getbase(char c)
+//{
+//    int base = 2;
+//    switch (c) {
+//    case 'C':
+//        base = 3;
+//        break;
+//    case 'G':
+//        base = 5;
+//        break;
+//    case 'T':
+//        base = 7;
+//        break;
+//    case 'A':
+//    default:
+//        base = 11;
+//        break;
+//    }
+//    return base;
+//}
 char** findRepeatedDnaSequences(char* s, int* returnSize)
 {
-    int i, j;
+    int i, j, num;
     int count = (int)strlen(s);
     *returnSize = 0;
     if (count <= 10) {
@@ -1497,8 +1497,9 @@ char** findRepeatedDnaSequences(char* s, int* returnSize)
     char** ans = (char**)malloc(sizeof(char*) * count);
     long* hashval = (long*)calloc(count - 9, sizeof(long));
     for (i = 0; i <= count - 10; i++) {
-        for (j = 1; j <= 10; j++) {
-            hashval[i] += (int)pow(getbase(s[i + j - 1]), j);
+        num = 0;
+        for (j = 0; j < 10; j++) {
+            hashval[i] += hashval[i] * 4 + s[i+j];//(int)pow(getbase(s[i + j - 1]), j);
         }
     }
     for (int i = 0; i < count - 10; i++) {
