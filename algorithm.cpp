@@ -840,6 +840,29 @@ int** generateMatrix(int n, int* returnSize, int** returnColumnSizes)
     return ans;
 }
 
+// 62. Unique Paths
+int uniquePaths(int m, int n)
+{
+    int i, j;
+    int** dp = (int**)calloc(m, sizeof(int*));
+    for (i = 0; i < m; i++) {
+        dp[i] = (int*)calloc(n, sizeof(int));
+        dp[i][0] = 1;
+    }
+    for (j = 1; j < n; j++)
+        dp[0][j] = 1;
+    for (i = 1; i < m; i++) {
+        for (j = 1; j < n; j++) {
+            dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+        }
+    }
+    int ans = dp[m - 1][n - 1];
+    for (i = 0; i < m; i++)
+        free(dp[i]);
+    free(dp);
+    return ans;
+}
+
 // 69. Sqrt(x)
 int mySqrt(int x)
 {

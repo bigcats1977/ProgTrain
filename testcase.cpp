@@ -19,6 +19,7 @@ FUNCNAME g_tFuncName[] = {
     {53,    TestCase_53  },
     {56,    TestCase_56  },
     {59,    TestCase_59  },
+    {62,    TestCase_62  },
     {69,    TestCase_69  },
     {75,    TestCase_75  },
     {76,    TestCase_76  },
@@ -79,6 +80,12 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_62()
+{
+    int output;
+    output = uniquePaths(3, 7);
+}
 
 void TestCase_746()
 {
