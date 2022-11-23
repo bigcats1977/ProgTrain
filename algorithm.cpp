@@ -863,6 +863,38 @@ int uniquePaths(int m, int n)
     return ans;
 }
 
+// 63. Unique Paths II
+int uniquePathsWithObstacles(int** obstacleGrid, int obstacleGridSize, int* obstacleGridColSize)
+{
+    int i, j;
+    bool block = false;
+    int** dp = (int**)calloc(obstacleGridSize,sizeof(int*));
+    block = false;
+    for (i = 0; i < obstacleGridSize; i++) {
+        dp[i] = (int*)calloc(obstacleGridColSize[i], sizeof(int));
+        if (obstacleGrid[i][0])
+            block = true;
+        if (!block)
+            dp[i][0] = 1;
+    }
+    for (i = 0; i < obstacleGridColSize[0] && obstacleGrid[0][i] == 0; i++) {
+        dp[0][i] = 1;
+    }
+    for (i = 1; i < obstacleGridSize; i++) {
+        block = false;
+        for (j = 1; j < obstacleGridColSize[i]; j++) {
+            if (obstacleGrid[i][j])
+                continue;
+            dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+        }
+    }
+    int ans = dp[obstacleGridSize - 1][obstacleGridColSize[0] - 1];
+    for (i = 0; i < obstacleGridSize; i++)
+        free(dp[i]);
+    free(dp);
+    return ans;
+}
+
 // 69. Sqrt(x)
 int mySqrt(int x)
 {

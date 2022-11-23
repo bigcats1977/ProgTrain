@@ -84,7 +84,7 @@ FUNCNAME g_tFuncName[] = {
 void TestCase_62()
 {
     int output;
-    output = uniquePaths(3, 7);
+    output = uniquePaths(3, 3);
 }
 
 void TestCase_746()

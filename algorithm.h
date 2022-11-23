@@ -48,6 +48,8 @@ int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* retu
 int** generateMatrix(int n, int* returnSize, int** returnColumnSizes);
 // 62. Unique Paths
 int uniquePaths(int m, int n);
+// 63. Unique Paths II
+int uniquePathsWithObstacles(int** obstacleGrid, int obstacleGridSize, int* obstacleGridColSize);
 // 69. Sqrt(x)
 int mySqrt(int x);
 // 70. Climbing Stairs
