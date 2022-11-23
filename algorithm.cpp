@@ -3044,6 +3044,18 @@ int** floodFill(int** image, int imageSize, int* imageColSize, int sr, int sc, i
     return image;
 }
 
+// 746. Min Cost Climbing Stairs
+int minCostClimbingStairs(int* cost, int costSize)
+{
+    int dp0 = 0, dp1 = 0;
+    for (int i = 2; i <= costSize; i++) {
+        int dpi = (int)fmin(dp0 + cost[i - 2], dp1 + cost[i - 1]);
+        dp0 = dp1;
+        dp1 = dpi;
+    }
+    return dp1;
+}
+
 // 763. Partition Labels
 int* partitionLabels(char* s, int* returnSize)
 {

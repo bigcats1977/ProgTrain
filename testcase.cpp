@@ -65,6 +65,7 @@ FUNCNAME g_tFuncName[] = {
     {706,   TestCase_706 },
     {707,   TestCase_707 },
     {724,   TestCase_724 },
+    {746,   TestCase_746 },
     {766,   TestCase_766 },
     {784,   TestCase_784 },
     {844,   TestCase_844 },
@@ -79,6 +80,13 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_746()
+{
+    vector<int> cost;
+    int output;
+    cost = { 1, 100,1,1,1,100,1,1,100,1 };
+    output = minCostClimbingStairs(cost.data(), (int)cost.size());
+}
 
 void TestCase_187()
 {
