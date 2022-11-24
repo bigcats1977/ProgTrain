@@ -3205,9 +3205,9 @@ char** letterCasePermutation(char* s, int* returnSize)
 {
     int len = (int)strlen(s);
     LCAns = (char**)malloc(sizeof(char*) * 4096);
-    LCPath = (char*)malloc(len+1);
-    memset(LCPath, 0, len + 1);
+    LCPath = (char*)calloc(len + 1, 1);
     CurLCPath = 0;
+    CurLC = 0;
     backTrackLCPerm(s, len, 0);
     free(LCPath);
     *returnSize = CurLC;
