@@ -1046,6 +1046,56 @@ int** combine(int n, int k, int* returnSize, int** returnColumnSizes)
     return CombAns;
 }
 
+// 79. Word Search
+int  searchpos[4][2] = { {-1,0,},{1,0},{0,-1},{0,1} };
+bool searchword(char** board, bool** bmark, int m, int n, int i, int j, char* word)
+{
+    bool bflag[4] = { 0 };
+
+    if (i < 0 || i >= m || j < 0 || j >= n)
+        return false;
+
+    if (strlen(word) == 0)
+        return true;
+    for (int k = 0; k < 4; k++)
+    {
+        int ni = i + searchpos[k][0], nj = j + searchpos[k][1];
+
+        if (ni < 0 || ni >= m || nj < 0 || nj >= n)
+            continue;
+        if (bmark[ni][nj])
+            continue;
+        if (board[ni][nj] == word[0]) {
+            if (strlen(word) == 1)
+                return true;
+            bmark[ni][nj] = true;
+            if (searchword(board, bmark, m, n, ni, nj, &word[1]))
+                return true;
+            bmark[ni][nj] = false;
+        }
+    }
+    return false;
+}
+bool exist(char** board, int boardSize, int* boardColSize, char* word)
+{
+    int i, j;
+    bool** bmark = (bool**)calloc(boardSize, sizeof(bool*));
+    for (i = 0; i < boardSize; i++)
+        bmark[i] = (bool*)calloc(boardColSize[0], sizeof(bool));
+
+    for (i = 0; i < boardSize; i++) {
+        for (j = 0; j < boardColSize[0]; j++) {
+            if (board[i][j] == word[0]) {
+                bmark[i][j] = true;
+                if (searchword(board, bmark, boardSize, boardColSize[0], 0, 0, &word[1]))
+                    return true;
+                bmark[i][j] = false;
+            }
+        }
+    }
+    return false;
+}
+
 // 82. Remove Duplicates from Sorted List II
 struct ListNode* deleteDuplicatesII(struct ListNode* head)
 {
