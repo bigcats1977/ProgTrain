@@ -62,6 +62,8 @@ void sortColors(int* nums, int numsSize);
 char* minWindow(char* s, char* t);
 // 77. Combinations
 int** combine(int n, int k, int* returnSize, int** returnColumnSizes);
+// 82. Remove Duplicates from Sorted List II
+struct ListNode* deleteDuplicatesII(struct ListNode* head);
 // 83. Remove Duplicates from Sorted List
 struct ListNode* deleteDuplicates(struct ListNode* head);
 // 88. Merge Sorted Array

@@ -1046,6 +1046,43 @@ int** combine(int n, int k, int* returnSize, int** returnColumnSizes)
     return CombAns;
 }
 
+// 82. Remove Duplicates from Sorted List II
+struct ListNode* deleteDuplicatesII(struct ListNode* head)
+{
+    if (!head || !head->next)
+        return head;
+
+    struct ListNode* Dummy = (struct ListNode*)calloc(sizeof(struct ListNode), 1);
+    Dummy->next = head;
+    struct ListNode* prenode = Dummy, * node = head;
+    int preval = INT_MIN;
+
+    while (node) {
+        if (node->val == preval) {
+            prenode->next = node->next;
+            free(node);
+            node = prenode->next;
+        }
+        else {
+            if (!node->next)
+                break;
+            preval = node->val;
+            if (node->next->val == preval) {
+                prenode->next = node->next;
+                free(node);
+                node = prenode->next;
+            }
+            else {
+                prenode = node;
+                node = node->next;
+            }
+        }
+    }
+    node = Dummy->next;
+    free(Dummy);
+    return node;
+}
+
 // 83. Remove Duplicates from Sorted List
 struct ListNode* deleteDuplicates(struct ListNode* head)
 {
