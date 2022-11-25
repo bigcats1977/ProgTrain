@@ -27,6 +27,7 @@ FUNCNAME g_tFuncName[] = {
     {88,    TestCase_88  },
     {102,   TestCase_102 },
     {118,   TestCase_118 },
+    {120,   TestCase_120 },
     {136,   TestCase_136 },
     {142,   TestCase_142 },
     {151,   TestCase_151 },
@@ -80,6 +81,35 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_120()
+{
+    vector<vector<int>> matrix;
+    int** p;
+    int row = 3, col = 3;
+    int expect, output;
+
+    matrix = { {-1,0,0},{3,2,0},{-3, 1, -1} };
+    row = 3, col = 3;
+    expect = -1;
+    p = matrix2addr(matrix);
+    output = minimumTotal(p, row, &col);
+    COMPVALUE(expect, output);
+
+    matrix = { {-1,0,0},{2,3,0},{1, -1, -3}};
+    row = 3, col = 3;
+    expect = -1;
+    p = matrix2addr(matrix);
+    output = minimumTotal(p, row, &col);
+    COMPVALUE(expect, output);
+
+    matrix = { {2,0,0,0},{3,4,0,0},{6,5,7,0},{4,1,8,3} };
+    row = 4, col = 4;
+    expect = 11;
+    p = matrix2addr(matrix);
+    output = minimumTotal(p, row, &col);
+    COMPVALUE(expect, output);
+}
 
 void TestCase_62()
 {

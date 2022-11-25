@@ -1382,26 +1382,27 @@ int* getRow(int rowIndex, int* returnSize)
 }
 
 // 120. Triangle
+//[[-1], [2, 3], [1, -1, -3]]
 int minimumTotal(int** triangle, int triangleSize, int* triangleColSize)
 {
-    int i;
-    int sum = 0;
-    int index;
-    if (triangleSize == 1)
-        return triangle[0][0];
-
-    int* selidx = (int*)calloc(triangleSize, sizeof(int));
-    selidx[0] = 0;
-    selidx[1] = triangle[1][0] <= triangle[1][1] ? 0 : 1;
-    for (i = 2; i < triangleSize; i++)
-    {
-        index = selidx[i - 1];
-        selidx[i] = triangle[i][index] <= triangle[i][index + 1] ? index : index + 1;
+    int i, j;
+    int sum = INT_MAX;
+    int** total = (int**)malloc(triangleSize*sizeof(int*));
+    total[0] = (int*)malloc(sizeof(int));
+    total[0][0] = triangle[0][0];
+    for (i = 1; i < triangleSize; i++) {
+        total[i] = (int*)malloc((i+1)*sizeof(int));
+        for (j = 0; j < i; j++) {
+            total[i][j] = total[i - 1][j] + (int)fmin(triangle[i][j], triangle[i][j + 1]);
+        }
+        total[i][i] = total[i - 1][i-1] + triangle[i][i];
     }
-
+    for (j = 0; j < triangleSize; j++) {
+        sum = total[triangleSize - 1][j] < sum ? total[triangleSize - 1][j] : sum;
+    }
     for (i = 0; i < triangleSize; i++)
-        sum += triangle[i][selidx[i]];
-    free(selidx);
+        free(total[i]);
+    free(total);
     return sum;
 }
 
