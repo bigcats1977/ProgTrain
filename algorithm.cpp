@@ -1381,6 +1381,30 @@ int* getRow(int rowIndex, int* returnSize)
     return ans;
 }
 
+// 120. Triangle
+int minimumTotal(int** triangle, int triangleSize, int* triangleColSize)
+{
+    int i;
+    int sum = 0;
+    int index;
+    if (triangleSize == 1)
+        return triangle[0][0];
+
+    int* selidx = (int*)calloc(triangleSize, sizeof(int));
+    selidx[0] = 0;
+    selidx[1] = triangle[1][0] <= triangle[1][1] ? 0 : 1;
+    for (i = 2; i < triangleSize; i++)
+    {
+        index = selidx[i - 1];
+        selidx[i] = triangle[i][index] <= triangle[i][index + 1] ? index : index + 1;
+    }
+
+    for (i = 0; i < triangleSize; i++)
+        sum += triangle[i][selidx[i]];
+    free(selidx);
+    return sum;
+}
+
 // 121. Best Time to Buy and Sell Stock
 int maxProfit(int* prices, int pricesSize)
 {
