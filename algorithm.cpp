@@ -1755,6 +1755,24 @@ int hammingWeight(uint32_t n)
     }
     return num;
 }
+
+// 198. House Robber
+int rob(int* nums, int numsSize)
+{
+    if (numsSize == 1)
+        return nums[0];
+    int* robval = (int*)calloc(numsSize, sizeof(int));
+    robval[0] = nums[0];
+    robval[1] = (int)fmax(nums[0], nums[1]);
+    //int robs0 = nums[0], robs1 = nums[1];
+    for (int i = 2; i < numsSize; i++) {
+        robval[i] = (int)fmax(robval[i - 2] + nums[i], robval[i - 1]);
+    }
+    int ans = robval[numsSize - 1];
+    free(robval);
+    return ans;
+}
+
 // 200. Number of Islands
 void SearchIsland(char** grid, int r, int c, int sr, int sc)
 {

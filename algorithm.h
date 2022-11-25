@@ -114,6 +114,8 @@ char** findRepeatedDnaSequences(char* s, int* returnSize);
 void rotate(int* nums, int numsSize, int k);
 // 191. Number of 1 Bits
 int hammingWeight(uint32_t n);
+// 198. House Robber
+int rob(int* nums, int numsSize);
 // 200. Number of Islands
 int numIslands(char** grid, int gridSize, int* gridColSize);
 // 202. Happy Number
