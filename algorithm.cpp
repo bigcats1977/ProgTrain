@@ -3668,6 +3668,32 @@ int maxLength(char** arr, int arrSize)
     return 0;
 }
 
+// 1249. Minimum Remove to Make Valid Parentheses
+char* minRemoveToMakeValid(char* s)
+{
+    char* result = (char*)calloc(strlen(s) + 1, sizeof(char));
+    int* stack = (int*)malloc(strlen(s) * sizeof(int));
+    int idx = -1;
+    int i;
+    for (i = 0; i < (int)strlen(s); i++)
+        if (s[i] == '(')
+            stack[++idx] = i;
+        else if (s[i] == ')')
+        {
+            if (idx >= 0)
+                idx--;
+            else
+                s[i] = ' ';
+        }
+    for (i = 0; i <= idx; i++)
+        s[stack[i]] = ' ';
+    int id = 0;
+    for (int i = 0; i < (int)strlen(s); i++)
+        if (s[i] != ' ')
+            result[id++] = s[i];
+    return result;
+}
+
 // 1323. Maximum 69 Number
 int maximum69Number(int num)
 {

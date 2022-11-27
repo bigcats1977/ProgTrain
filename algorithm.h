@@ -254,6 +254,8 @@ int orangesRotting(int** grid, int gridSize, int* gridColSize);
 char* removeDuplicates(char* s);
 // 1239. Maximum Length of a Concatenated String with Unique Characters
 int maxLength(char** arr, int arrSize);
+// 1249. Minimum Remove to Make Valid Parentheses
+char* minRemoveToMakeValid(char* s);
 // 1323. Maximum 69 Number
 int maximum69Number(int num);
 // 1480. Running Sum of 1d Array
