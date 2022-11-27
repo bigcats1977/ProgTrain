@@ -1634,6 +1634,52 @@ char* reverseWords(char* s)
     return result;
 }
 
+// 155. Min Stack
+#define MAXNUM 30000
+typedef struct {
+    int minstack[MAXNUM];
+    int top;
+    int minval;
+} MinStack;
+MinStack* minStackCreate() {
+    MinStack* obj = (MinStack*)calloc(sizeof(MinStack), 1);
+    obj->top = -1;
+    obj->minval = INT_MAX;
+    return obj;
+}
+void minStackPush(MinStack* obj, int val) {
+    if (obj->top < MAXNUM) {
+        obj->minstack[++(obj->top)] = val;
+        if (obj->minval > val)
+            obj->minval = val;
+    }
+}
+void minStackPop(MinStack* obj) {
+    if (obj->top < 0)
+        return;
+    if (obj->minval == obj->minstack[obj->top])
+    {
+        obj->minval = INT_MAX;
+        for (int i = 0; i < obj->top; i++) {
+            if (obj->minval > obj->minstack[i])
+                obj->minval = obj->minstack[i];
+        }
+    }
+    obj->top--;
+}
+int minStackTop(MinStack* obj) {
+    if (obj->top < 0 || obj->top >= MAXNUM)
+        return -1;
+    return obj->minstack[obj->top];
+}
+int minStackGetMin(MinStack* obj) {
+    return obj->minval;
+}
+void minStackFree(MinStack* obj) {
+    obj->top = -1;
+    obj->minval = INT_MAX;
+}
+
 // 160. Intersection of Two Linked Lists
 struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* headB)
 {

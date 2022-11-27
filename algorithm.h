@@ -108,6 +108,8 @@ int* preorderTraversal(struct TreeNode* root, int* returnSize);
 int* postorderTraversal(struct TreeNode* root, int* returnSize);
 // 151. Reverse Words in a String
 char* reverseWords(char* s);
+// 155. Min Stack
+
 // 160. Intersection of Two Linked Lists
 struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* headB);
 // 167. Two Sum II - Input Array Is Sorted
