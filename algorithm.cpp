@@ -1383,8 +1383,20 @@ int* getRow(int rowIndex, int* returnSize)
 
 // 120. Triangle
 //[[-1], [2, 3], [1, -1, -3]]
+//int minTotalUtil(int** triangle, int m, int h, int j)
+//{
+//    if (h == m) {
+//        return 0;
+//    }
+//    return triangle[h][j] + (int)fmin(minTotalUtil(triangle, m, h + 1, j), minTotalUtil(triangle, m, h + 1, j + 1));
+//}
 int minimumTotal(int** triangle, int triangleSize, int* triangleColSize)
 {
+    //return minTotalUtil(triangle, triangleSize, 0, 0);
+    if (triangleSize == 1)
+    {
+        return triangle[0][0];
+    }
     int i, j;
     int sum = INT_MAX;
     int** total = (int**)malloc(triangleSize*sizeof(int*));
@@ -1392,8 +1404,9 @@ int minimumTotal(int** triangle, int triangleSize, int* triangleColSize)
     total[0][0] = triangle[0][0];
     for (i = 1; i < triangleSize; i++) {
         total[i] = (int*)malloc((i+1)*sizeof(int));
-        for (j = 0; j < i; j++) {
-            total[i][j] = total[i - 1][j] + (int)fmin(triangle[i][j], triangle[i][j + 1]);
+        total[i][0] = total[i - 1][0] + triangle[i][0];
+        for (j = 1; j < i; j++) {
+            total[i][j] = triangle[i][j] + (int)fmin(total[i-1][j], total[i-1][j - 1]);
         }
         total[i][i] = total[i - 1][i-1] + triangle[i][i];
     }
