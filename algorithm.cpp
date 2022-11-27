@@ -1521,6 +1521,26 @@ struct ListNode* detectCycle(struct ListNode* head)
     return NULL;
 }
 
+// 143. Reorder List
+void reorderList(struct ListNode* head)
+{
+    struct ListNode* temp=head, *pre=NULL, *last, *next;
+    while (temp->next && temp->next->next)
+    {
+        next = temp->next;
+        last = temp;
+        while (last->next) {
+            pre = last;
+            last = last->next;
+        }
+
+        pre->next = NULL;
+        temp->next = last;
+        last->next = next;
+        temp = temp->next->next;
+    }
+}
+
 // 144. Binary Tree Preorder Traversal
 void preorder(struct TreeNode* root, int* ans, int* index)
 {

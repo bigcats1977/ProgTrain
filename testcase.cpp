@@ -31,6 +31,7 @@ FUNCNAME g_tFuncName[] = {
     {120,   TestCase_120 },
     {136,   TestCase_136 },
     {142,   TestCase_142 },
+    {143,   TestCase_143 },
     {151,   TestCase_151 },
     {160,   TestCase_160 },
     {167,   TestCase_167 },
@@ -83,9 +84,22 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+
+void TestCase_143()
+{
+    vector<int> nums1;
+
+    ListNode* output = NULL;
+    struct ListNode* headA;
+
+    nums1 = { 1,2,3,4,5 };
+    headA = CreateListNode(nums1);
+    reorderList(headA);
+}
+
 void TestCase_25()
 {
-    vector<int> nums1, nums2;
+    vector<int> nums1;
 
     ListNode* output = NULL; 
     struct ListNode* headA;

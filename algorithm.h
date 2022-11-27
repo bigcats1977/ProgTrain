@@ -100,6 +100,8 @@ int singleNumber(int* nums, int numsSize);
 bool hasCycle(struct ListNode* head);
 // 142. Linked List Cycle II
 struct ListNode* detectCycle(struct ListNode* head);
+// 143. Reorder List
+void reorderList(struct ListNode* head);
 // 144. Binary Tree Preorder Traversal
 int* preorderTraversal(struct TreeNode* root, int* returnSize);
 // 145. Binary Tree Postorder Traversal
