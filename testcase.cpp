@@ -9,6 +9,7 @@ FUNCNAME g_tFuncName[] = {
     {19,    TestCase_19  },
     {20,    TestCase_20  },
     {24,    TestCase_24  },
+    {25,    TestCase_25  },
     {26,    TestCase_26  },
     {27,    TestCase_27  },
     {28,    TestCase_28  },
@@ -81,6 +82,22 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_25()
+{
+    vector<int> nums1, nums2;
+
+    ListNode* output = NULL; 
+    struct ListNode* headA;
+
+    nums1 = { 1,2,3,4,5 ,6,7};
+    headA  = CreateListNode(nums1);
+    output = reverseKGroup(headA, 3);
+
+    nums1 = { 1,2,3,4,5 };
+    headA = CreateListNode(nums1);
+    output = reverseKGroup(headA, 2);
+}
 
 void TestCase_120()
 {

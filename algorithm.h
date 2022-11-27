@@ -20,6 +20,8 @@ bool isValid(char* s);
 struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2);
 // 24. Swap Nodes in Pairs
 struct ListNode* swapPairs(struct ListNode* head);
+// 25. Reverse Nodes in k - Group
+struct ListNode* reverseKGroup(struct ListNode* head, int k);
 // 26. Remove Duplicates from Sorted Array
 int removeDuplicates(int* nums, int numsSize);
 // 27. Remove Element

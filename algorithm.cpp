@@ -304,6 +304,44 @@ struct ListNode* swapPairs(struct ListNode* head)
     return cur;
 }
 
+// 25. Reverse Nodes in k - Group
+struct ListNode* reverseKGroup(struct ListNode* head, int k)
+{
+    if (k == 1)
+        return head;
+
+    struct ListNode* Dummy, * pre, * first, * last, * node, * newpre;
+    int resnum;
+    Dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    Dummy->next = head;
+    pre = last = Dummy;
+    while (last) {
+        resnum = k;
+        while (last && resnum > 0)  {
+            last = last->next;
+            resnum--;
+        }
+        if (!last)
+            break;
+
+        resnum = k;
+        newpre = first = pre->next;
+        pre->next = last->next;
+        while (resnum)
+        {
+            node = first;
+            first = first->next;
+            node->next = pre->next;
+            pre->next = node;
+            resnum--;
+        }
+        pre = last = newpre;
+    }
+    first = Dummy->next;
+    free(Dummy);
+    return first;
+}
+
 // 26. Remove Duplicates from Sorted Array
 int removeDuplicates(int* nums, int numsSize)
 {

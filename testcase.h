@@ -8,6 +8,7 @@ void TestCase_15();
 void TestCase_19();
 void TestCase_20();
 void TestCase_24();
+void TestCase_25();
 void TestCase_26();
 void TestCase_27();
 void TestCase_28();
