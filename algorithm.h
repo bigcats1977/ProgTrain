@@ -114,6 +114,8 @@ int majorityElement(int* nums, int numsSize);
 char** findRepeatedDnaSequences(char* s, int* returnSize);
 // 189. Rotate Array
 void rotate(int* nums, int numsSize, int k);
+// 190. Reverse Bits
+uint32_t reverseBits(uint32_t n);
 // 191. Number of 1 Bits
 int hammingWeight(uint32_t n);
 // 198. House Robber

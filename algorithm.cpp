@@ -1782,6 +1782,18 @@ void rotate(int* nums, int numsSize, int k)
 #endif
 }
 
+// 190. Reverse Bits
+uint32_t reverseBits(uint32_t n)
+{
+    uint32_t ans = 0;
+    for (int i = 0; i < 32; i++) {
+        ans <<= 1;
+        ans += n % 2;
+        n >>= 1;
+    }
+    return ans;
+}
+
 // 191. Number of 1 Bits
 int hammingWeight(uint32_t n)
 {
