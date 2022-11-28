@@ -80,10 +80,23 @@ FUNCNAME g_tFuncName[] = {
     {1480,  TestCase_1480},
     {1544,  TestCase_1544},
     {1662,  TestCase_1662},
+    {1823,  TestCase_1823},
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
 
+
+void TestCase_1823()
+{
+    int expect, output;
+    expect = 3;
+    output = findTheWinner(3,1);
+    COMPVALUE(expect, output);
+
+    expect = 1;
+    output = findTheWinner(6, 5);
+    COMPVALUE(expect, output);
+}
 
 void TestCase_143()
 {

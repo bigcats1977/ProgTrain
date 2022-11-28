@@ -79,6 +79,7 @@ void TestCase_1239();
 void TestCase_1480();
 void TestCase_1544();
 void TestCase_1662();
+void TestCase_1823();
 void TestCase_1832();
 void TestCase_8058();
 void TestCase(unsigned int caseno);

@@ -3813,6 +3813,29 @@ bool arrayStringsAreEqual(char** word1, int word1Size, char** word2, int word2Si
     return true;
 }
 
+// 1823. Find the Winner of the Circular Game
+int findTheWinner(int n, int k)
+{
+    int i, j, index=0;
+    bool* found = (bool*)calloc(n, sizeof(bool));
+    for (i = 0; i < n - 1; i++) {
+        j = k;
+        while (j > 0) {
+            index = (++index) % n;
+            if (found[index])
+            {
+                continue;
+            }
+            j--;
+        }
+        found[index] = true;
+    }
+    for (i = 0; i < n; i++)
+        if (!found[i])
+            break;
+    free(found);
+    return i==0?n:i;
+}
 // 1832. Check if the Sentence Is Pangram
 bool checkIfPangram(char* sentence)
 {
