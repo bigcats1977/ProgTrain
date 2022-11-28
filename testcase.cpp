@@ -27,6 +27,7 @@ FUNCNAME g_tFuncName[] = {
     {77,    TestCase_77  },
     {88,    TestCase_88  },
     {102,   TestCase_102 },
+    {108,   TestCase_108 },
     {118,   TestCase_118 },
     {120,   TestCase_120 },
     {136,   TestCase_136 },
@@ -85,6 +86,12 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_108()
+{
+    vector<int> cost;
+    cost = { -1,0,1,2 };
+    sortedArrayToBST(cost.data(), (int)cost.size());
+}
 
 void TestCase_1823()
 {

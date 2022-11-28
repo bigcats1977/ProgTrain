@@ -1346,6 +1346,45 @@ int maxDepth(struct TreeNode* root)
     return (int)fmax(maxDepth(root->left), maxDepth(root->right)) + 1;
 }
 
+// 105. Construct Binary Tree from Preorder and Inorder Traversal
+struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int inorderSize)
+{
+    if (preorderSize <= 0)
+        return NULL;
+
+    struct TreeNode* root = (struct TreeNode*)calloc(sizeof(struct TreeNode), 1);
+    int left,right, i;
+    root->val = preorder[0];
+    if (preorderSize == 1)
+        return root;
+    for (i = 0; i < inorderSize; i++) {
+        if (inorder[i] == preorder[0])
+        {
+            left = i;
+            right = preorderSize - i - 1;
+            break;
+        }
+    }
+    root->left = buildTree(&preorder[1], left, &inorder[0], left);
+    root->right = buildTree(&preorder[i+1], right, &inorder[i+1], right);
+    return root;
+}
+
+// 108. Convert Sorted Array to Binary Search Tree
+struct TreeNode* sortedArrayToBST(int* nums, int numsSize)
+{
+    if (numsSize == 0)
+        return NULL;
+    struct TreeNode* root = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+    root->val = nums[numsSize / 2];
+    root->left = sortedArrayToBST(&nums[0], numsSize / 2);
+    if (numsSize / 2 + 1 > numsSize - 1)
+        root->right = NULL;
+    else
+        root->right = sortedArrayToBST(&nums[numsSize / 2 + 1], (numsSize - 1) / 2);
+    return root;
+}
+
 // 112. Path Sum
 void presum(struct TreeNode* root, int sum, bool* pFind)
 {

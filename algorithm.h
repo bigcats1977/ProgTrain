@@ -82,6 +82,10 @@ bool isSymmetric(struct TreeNode* root);
 int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes);
 // 104. Maximum Depth of Binary Tree
 int maxDepth(struct TreeNode* root);
+// 105. Construct Binary Tree from Preorder and Inorder Traversal
+struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int inorderSize);
+// 108. Convert Sorted Array to Binary Search Tree
+struct TreeNode* sortedArrayToBST(int* nums, int numsSize);
 // 112. Path Sum
 bool hasPathSum(struct TreeNode* root, int targetSum);
 // 116. Populating Next Right Pointers in Each Node
