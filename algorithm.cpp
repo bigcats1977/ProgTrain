@@ -1338,6 +1338,12 @@ int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes
     return ans;
 }
 
+// 103. Binary Tree Zigzag Level Order Traversal
+int** zigzagLevelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes)
+{
+    return NULL;
+}
+
 // 104. Maximum Depth of Binary Tree
 int maxDepth(struct TreeNode* root)
 {

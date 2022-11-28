@@ -80,6 +80,8 @@ bool isValidBST(struct TreeNode* root);
 bool isSymmetric(struct TreeNode* root);
 // 102. Binary Tree Level Order Traversal
 int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes);
+// 103. Binary Tree Zigzag Level Order Traversal
+int** zigzagLevelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes);
 // 104. Maximum Depth of Binary Tree
 int maxDepth(struct TreeNode* root);
 // 105. Construct Binary Tree from Preorder and Inorder Traversal
