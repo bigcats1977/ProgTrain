@@ -1341,7 +1341,41 @@ int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes
 // 103. Binary Tree Zigzag Level Order Traversal
 int** zigzagLevelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes)
 {
-    return NULL;
+    *returnSize = 0;
+    (*returnColumnSizes) = (int*)malloc(sizeof(int) * 1000);
+    (*returnColumnSizes)[0] = 0;
+    if (!root)
+        return NULL;
+
+    int index = 0, begin = 0,height=0, size;
+    bool bOrder = true;
+    int** ans = (int**)malloc(sizeof(int*) * 2048);
+    struct TreeNode** nodequeue = (struct TreeNode**)malloc(sizeof(struct TreeNode*) * 2048);
+    struct TreeNode* node = NULL;
+    nodequeue[index++] = root;
+    while (begin < index) {
+        size = index - begin;
+        ans[height] = (int*)malloc(sizeof(int) * size);
+        (*returnColumnSizes)[height] = size;
+        for (int i = 0; i < size; i++) {
+            node = nodequeue[begin+i];
+            if (bOrder)
+                ans[height][i] = node->val;
+            else
+                ans[height][size-i-1] = node->val;
+            if(node->left)
+                nodequeue[index++] = node->left;
+            if (node->right)
+                nodequeue[index++] = node->right;
+        }
+        begin += size;
+        bOrder = !bOrder;
+        height++;
+    }
+    free(nodequeue);
+
+    *returnSize = height;
+    return ans;
 }
 
 // 104. Maximum Depth of Binary Tree

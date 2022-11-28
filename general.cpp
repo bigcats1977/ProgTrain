@@ -55,7 +55,7 @@ TreeNode* CreateBinaryTree(vector<int> nums)
     for (i = 0; i < (int)nums.size(); i++)
     {
         node = NULL;
-        if (nums[i] != -1)
+        if (nums[i] != -101)
             node = new TreeNode(nums[i]); // ÓÃ -1 ±íÊ¾null
         vecTree[i] = node;
         if (i == 0)
