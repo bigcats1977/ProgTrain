@@ -3816,6 +3816,10 @@ bool arrayStringsAreEqual(char** word1, int word1Size, char** word2, int word2Si
 // 1823. Find the Winner of the Circular Game
 int findTheWinner(int n, int k)
 {
+    int ans = 0;
+    for (int i = 1; i <= n; i++)
+        ans = (ans + k) % i;
+    return ans + 1;
     int i, j, index=0;
     bool* found = (bool*)calloc(n, sizeof(bool));
     for (i = 0; i < n - 1; i++) {
