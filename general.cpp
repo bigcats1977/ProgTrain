@@ -46,7 +46,7 @@ void quicksort(int* nums, int left, int right)
 }
 
 // 根据数组构造二叉树
-TreeNode* CreateBinaryTree(vector<int> nums)
+TreeNode* CreateBinaryTree(vector<int> nums, int invalidval)
 {
     TreeNode* root = NULL, * node = NULL;
     vector<TreeNode*> vecTree(nums.size(), NULL);
@@ -55,7 +55,7 @@ TreeNode* CreateBinaryTree(vector<int> nums)
     for (i = 0; i < (int)nums.size(); i++)
     {
         node = NULL;
-        if (nums[i] != -101)
+        if (nums[i] != invalidval)
             node = new TreeNode(nums[i]); // 用 -1 表示null
         vecTree[i] = node;
         if (i == 0)

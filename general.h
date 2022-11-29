@@ -48,7 +48,7 @@ struct Node {
 
 ListNode* CreateListNode(vector<int> nums);
 
-TreeNode* CreateBinaryTree(vector<int> nums);
+TreeNode* CreateBinaryTree(vector<int> nums, int invalidval=-1);
 
 void swap(int* val1, int* val2);
 void quicksort(int* nums, int left, int right);

@@ -1446,6 +1446,40 @@ bool hasPathSum(struct TreeNode* root, int targetSum)
     return bFind;
 }
 
+// 113. Path Sum II
+int** pathSumAns = NULL;
+void findPath(struct TreeNode* root, int target, int* path, int *curlen, int* returnSize, int** returnColumnSizes)
+{
+    if (!root)
+        return;
+    path[(*curlen)++] = root->val;
+    if (target - root->val == 0 && !root->left && !root->right) {
+        pathSumAns[*returnSize] = (int*)malloc(sizeof(int) * (*curlen));
+        (*returnColumnSizes)[*returnSize] = *curlen;
+        memcpy(pathSumAns[*returnSize], path, sizeof(int) * (*curlen));
+        (*returnSize)++;
+        (*curlen)--;
+        return;
+    }
+    findPath(root->left, target - root->val, path, curlen, returnSize, returnColumnSizes);
+    findPath(root->right, target - root->val, path, curlen, returnSize, returnColumnSizes);
+    (*curlen)--;
+    return;
+}
+int** pathSum(struct TreeNode* root, int targetSum, int* returnSize, int** returnColumnSizes)
+{
+    int sumpath[5000] = { 0 };
+    int curlen = 0;
+
+    *returnSize = 0;
+    pathSumAns = (int**)malloc(sizeof(int*) * 4096);
+    *returnColumnSizes = (int*)calloc(sizeof(int), 4096);
+
+    findPath(root, targetSum, sumpath, &curlen, returnSize, returnColumnSizes);
+    
+    return pathSumAns;
+}
+
 // 116. Populating Next Right Pointers in Each Node
 void connect_left_to_right(struct Node* left, struct Node* right)
 {

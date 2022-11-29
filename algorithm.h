@@ -90,6 +90,8 @@ struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int in
 struct TreeNode* sortedArrayToBST(int* nums, int numsSize);
 // 112. Path Sum
 bool hasPathSum(struct TreeNode* root, int targetSum);
+// 113. Path Sum II
+int** pathSum(struct TreeNode* root, int targetSum, int* returnSize, int** returnColumnSizes);
 // 116. Populating Next Right Pointers in Each Node
 struct Node* connect(struct Node* root);
 // 118. Pascal's Triangle
