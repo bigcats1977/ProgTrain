@@ -3891,10 +3891,9 @@ int maximum69Number(int num)
 // 1480. Running Sum of 1d Array
 int* runningSum(int* nums, int numsSize, int* returnSize)
 {
-    int* result = (int*)malloc(numsSize * sizeof(int));
+    int* result = (int*)calloc(numsSize, sizeof(int));
 
     *returnSize = numsSize;
-    memset(result, 0, numsSize * sizeof(int));
     result[0] = nums[0];
     for (int i = 1; i < numsSize; i++) {
         result[i] = result[i-1]+nums[i];
