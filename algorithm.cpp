@@ -1989,6 +1989,36 @@ int hammingWeight(uint32_t n)
     return num;
 }
 
+// 199. Binary Tree Right Side View
+int* rightSideView(struct TreeNode* root, int* returnSize)
+{
+    *returnSize = 0;
+    if (!root) {
+        return NULL;
+    }
+    int* ans = (int*)malloc(sizeof(int) * 100);
+    struct TreeNode* Queue[100], *node = NULL;
+    int start =0, index = 0, height = 0;
+    Queue[index++] = root;
+    while (start < index)
+    {
+        int end = index;
+        node = NULL;
+        for (int i = start; i < end; i++) {
+            node = Queue[i];
+            if (node->left)
+                Queue[index++] = node->left;
+            if (node->right)
+                Queue[index++] = node->right;
+        }
+        if(node)
+            ans[height++] = node->val;
+        start = end;
+    }
+    *returnSize = height;
+    return ans;
+}
+
 // 198. House Robber
 int rob(int* nums, int numsSize)
 {

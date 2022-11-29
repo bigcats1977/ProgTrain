@@ -132,6 +132,8 @@ uint32_t reverseBits(uint32_t n);
 int hammingWeight(uint32_t n);
 // 198. House Robber
 int rob(int* nums, int numsSize);
+// 199. Binary Tree Right Side View
+int* rightSideView(struct TreeNode* root, int* returnSize);
 // 200. Number of Islands
 int numIslands(char** grid, int gridSize, int* gridColSize);
 // 202. Happy Number
