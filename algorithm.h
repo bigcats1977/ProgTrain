@@ -204,6 +204,8 @@ char* addStrings(char* num1, char* num2);
 int eraseOverlapIntervals(int** intervals, int intervalsSize, int* intervalsColSize);
 // 438. Find All Anagrams in a String
 int* findAnagrams(char* s, char* p, int* returnSize);
+// 450. Delete Node in a BST
+struct TreeNode* deleteNode(struct TreeNode* root, int key);
 // 509. Fibonacci Number
 int fib(int n);
 // 523. Continuous Subarray Sum

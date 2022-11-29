@@ -3022,6 +3022,35 @@ int* findAnagrams(char* s, char* p, int* returnSize)
     return res;
 }
 
+// 450. Delete Node in a BST
+struct TreeNode* deleteNode(struct TreeNode* root, int key)
+{
+    struct TreeNode* temp = NULL;
+    if (!root)
+        return root;
+    if (root->val == key) {
+        if (!root->left && !root->right)
+            return NULL;
+        if (!root->left)
+            return root->right;
+        if (!root->right)
+            return root->left;
+
+        temp = root->right;
+        while (temp->left != NULL)
+            temp = temp->left;
+        temp->left = root->left;
+        return root->right;
+    }
+    if (root->val > key) {
+        root->left = deleteNode(root->left, key);
+    }
+    else {
+        root->right = deleteNode(root->right, key);
+    }
+    return root;
+}
+
 // 509. Fibonacci Number
 int fib(int n)
 {
