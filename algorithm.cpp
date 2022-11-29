@@ -3480,8 +3480,7 @@ int pivotIndex(int* nums, int numsSize)
     return -1;
 #else
     int* suml, total;
-    suml = (int*)malloc((numsSize + 1) * sizeof(int));
-    memset(suml, 0, (numsSize + 1) * sizeof(int));
+    suml = (int*)calloc((numsSize + 1) , sizeof(int));
     int i;
     for (i = 1; i <= numsSize; i++) {
         suml[i] = suml[i - 1] + nums[i - 1];
