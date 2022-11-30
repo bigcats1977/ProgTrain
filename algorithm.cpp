@@ -2407,6 +2407,28 @@ struct TreeNode* invertTree(struct TreeNode* root)
     return root;
 }
 
+// 230. Kth Smallest Element in a BST
+void midtrace(struct TreeNode* root, int * kth, int *k)
+{
+    if (!root)
+        return ;
+    midtrace(root->left, kth, k);
+    if (*kth != INT_MIN)
+        return;
+    (*k)--;
+    if ((*k) == 0) {
+        *kth = root->val;
+        return;
+    }
+    midtrace(root->right, kth, k);
+}
+int kthSmallest(struct TreeNode* root, int k)
+{
+    int kth = INT_MIN;
+    midtrace(root, &kth, &k);
+    return kth;
+}
+
 // 231. Power of Two
 bool isPowerOfTwo(int n)
 {
