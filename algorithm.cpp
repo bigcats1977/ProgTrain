@@ -2521,6 +2521,22 @@ struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p,
     return root;
 }
 
+// 236. Lowest Common Ancestor of a Binary Tree
+struct TreeNode* lowestCommonAncestorBT(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q)
+{
+    if (!root)
+        return root;
+    if (p == root || q == root)
+        return root;
+    struct TreeNode* locl = lowestCommonAncestor(root->left, p, q);
+    struct TreeNode* locr = lowestCommonAncestor(root->right, p, q);
+    if (locl && locr)
+        return root;
+    if(locl)
+        return locl;
+    return locr;
+}
+
 // 238. Product of Array Except Self
 int* productExceptSelf(int* nums, int numsSize, int* returnSize)
 {
