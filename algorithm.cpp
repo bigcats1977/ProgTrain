@@ -4005,6 +4005,38 @@ bool arrayStringsAreEqual(char** word1, int word1Size, char** word2, int word2Si
     return true;
 }
 
+// 1704. Determine if String Halves Are Alike
+bool IsVowels(char ch) {
+    switch (ch) {
+    case 'a':
+    case 'A':
+    case 'e':
+    case 'E':
+    case 'i':
+    case 'I':
+    case 'o':
+    case 'O':
+    case 'u':
+    case 'U':
+        return true;
+    }
+    return false;
+}
+bool halvesAreAlike(char* s)
+{
+    int left = 0, right = (int)strlen(s);
+    int lnum = 0, rnum = 0;
+    while (left < right) {
+        if (IsVowels(s[left++]))
+            lnum++;
+        if (IsVowels(s[right--]))
+            rnum++;
+    }
+    if (lnum == rnum)
+        return true;
+    return false;
+}
+
 // 1823. Find the Winner of the Circular Game
 int findTheWinner(int n, int k)
 {

@@ -278,6 +278,8 @@ int* runningSum(int* nums, int numsSize, int* returnSize);
 char* makeGood(char* s);
 // 1662. Check If Two String Arrays are Equivalent
 bool arrayStringsAreEqual(char** word1, int word1Size, char** word2, int word2Size);
+// 1704. Determine if String Halves Are Alike
+bool halvesAreAlike(char* s);
 // 1823. Find the Winner of the Circular Game
 int findTheWinner(int n, int k);
 // 1832. Check if the Sentence Is Pangram
