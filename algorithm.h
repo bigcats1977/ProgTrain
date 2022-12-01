@@ -182,6 +182,11 @@ int firstBadVersion(int n);
 void moveZeroes(int* nums, int numsSize);
 // 290. Word Pattern
 bool wordPattern(char* pattern, char* s);
+// 297. Serialize and Deserialize Binary Tree
+/** Encodes a tree to a single string. */
+char* serialize(struct TreeNode* root);
+/** Decodes your encoded data to tree. */
+struct TreeNode* deserialize(char* data);
 // 344. Reverse String
 void reverseString(char* s, int sSize);
 // 345. Reverse Vowels of a String;

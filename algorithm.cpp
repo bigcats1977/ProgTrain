@@ -2694,6 +2694,211 @@ bool wordPattern(char* pattern, char* s)
     return pidx != plen ? false : true;
 }
 
+// 297. Serialize and Deserialize Binary Tree
+#if 0
+/** Encodes a tree to a single string. */
+typedef struct treequeue {
+    struct TreeNode* tnode;
+    struct treequeue* next;
+}TreeQueue;
+#define INVALIDTREEVAL      -1001
+TreeQueue* tqHead = NULL, *tqTail = NULL;
+void PushTNode(struct TreeNode* tnode)
+{
+    TreeQueue* node = (TreeQueue*)calloc(1, sizeof(TreeQueue));
+    node->tnode = tnode;
+    node->next = NULL;
+    if (!tqTail) {
+        tqHead = tqTail = node;
+    }
+    else {
+        tqTail->next = node;
+        tqTail = node;
+    }
+}
+struct TreeNode* PopTNode()
+{
+    if (!tqHead)
+        return NULL;
+
+    struct TreeNode* tnode;
+    TreeQueue* node = tqHead;
+    tqHead = tqHead->next;
+    if (!tqHead)
+        tqTail = NULL;
+    tnode = node->tnode;
+    free(node);
+    return tnode;
+}
+char* serialize(struct TreeNode* root) {
+    int* nodeval = NULL;
+    int  INVALID = -2000;
+    long cur = 0;
+    char* ans = (char*)calloc(120200, sizeof(char));
+    ans[cur++] = '[';
+    if (!root) {
+        ans[cur++] = ']';
+        return &ans[0];
+    }
+
+    tqHead = tqTail = NULL;
+    bool bValid = true;
+    int  i=0, base = 1, len;
+    struct TreeNode* tnode;
+    long lastpos = cur;
+    PushTNode(root);
+    while (bValid)
+    {
+        bValid = false;
+        for (i = 0; i < base; i++)
+        {
+            tnode = PopTNode();
+            if (!tnode) {
+                PushTNode(NULL);
+                PushTNode(NULL);
+                memcpy(&ans[cur], "null,", 5);
+                cur += 5;
+            }
+            else
+            {
+                PushTNode(tnode->left);
+                PushTNode(tnode->right);
+                bValid |= (tnode->left || tnode->right);
+                len = sprintf(&ans[cur], "%d,", tnode->val);
+                cur += len;
+                lastpos = cur;
+            }
+        }
+        base *= 2;
+    }
+    if (ans[lastpos -1] == ',')
+        lastpos--;
+    ans[lastpos++] = ']';
+    ans[lastpos++] = '\0';
+    return &ans[0];
+}
+
+/** Decodes your encoded data to tree. */
+struct TreeNode* createBTTree(int* data, int num, int cur)
+{
+    if (cur > num || data[cur-1] == INVALIDTREEVAL)
+        return NULL;
+
+    struct TreeNode* tnode;
+    tnode = (struct TreeNode*)calloc(1, sizeof(struct TreeNode));
+    tnode->val = data[cur-1];
+
+    tnode->left = createBTTree(data, num, 2 * cur);
+    tnode->right = createBTTree(data, num, 2 * cur+1);
+    return tnode;
+}
+struct TreeNode* deserialize(char* data) {
+    if (!data)
+        return NULL;
+    int len = (int)strlen(data);
+    if (len <= 2)
+        return NULL;
+    if(data[0] != '[' || data[len-1] != ']')
+        return NULL;
+
+    int* digdata = (int*)malloc(20000*sizeof(int));
+    int num = 0;
+    char buffer[8];
+    int i, pos=0;
+    for (i = 1; i < len; i++) {
+        if (data[i] == ' ')
+            continue;
+        if (data[i] == ',' || data[i] == ']') {
+            buffer[pos++] = '\0';
+            if (0 == strlen(buffer)) {
+                pos = 0;
+            }
+            else if (0 == strcmp(buffer, "null"))
+                digdata[num++] = INVALIDTREEVAL;
+            else
+                digdata[num++] = atoi(buffer);
+            memset(buffer, 0, 8);
+            pos = 0;
+        }
+        else {
+            buffer[pos++] = data[i];
+        }
+    }
+
+    struct TreeNode* root = createBTTree(digdata, num, 1);
+    free(digdata);
+
+    return root;
+}
+#else
+
+void DFS(struct TreeNode* root, char* ans, int* ansIdx, char* tmp)
+{
+    if (!root)
+    {
+        ans[(*ansIdx)++] = 'N'; /* means NULL */
+        ans[(*ansIdx)++] = '#';
+        return;
+    }
+
+    sprintf(tmp, "%d#", root->val);
+    int len = (int)strlen(tmp);
+    memcpy(&ans[*ansIdx], tmp, sizeof(char) * len);
+    *ansIdx += len; /* update index */
+    DFS(root->left, ans, ansIdx, tmp);
+    DFS(root->right, ans, ansIdx, tmp);
+}
+
+/** Encodes a tree to a single string. */
+char* serialize(struct TreeNode* root) {
+    char* ans = (char*)calloc(100000, sizeof(char));
+    char* tmp = (char*)calloc(7, sizeof(char));
+    int ansIdx = 0;
+    DFS(root, ans, &ansIdx, tmp);
+    return ans;
+}
+
+struct TreeNode* DeDFS(char* data, int len, int* dataIdx)
+{
+    if (*dataIdx >= len)
+        return NULL;
+
+    if (data[*dataIdx] == 'N')
+    {
+        (*dataIdx) += 2;
+        return NULL;
+    }
+
+    struct TreeNode* root = (struct TreeNode*)calloc(1, sizeof(struct TreeNode));
+    int negative = 0;
+    if (data[(*dataIdx)] == '-')
+    {
+        (*dataIdx)++;
+        negative = 1;
+    }
+    while (data[(*dataIdx)] != '#')
+    {
+        root->val *= 10;
+        root->val += data[(*dataIdx)++] - 0x30;
+    }
+    if (negative)
+        root->val *= -1;
+    (*dataIdx)++;
+
+    root->left = DeDFS(data, len, dataIdx);
+    root->right = DeDFS(data, len, dataIdx);
+    return root;
+}
+
+/** Decodes your encoded data to tree. */
+struct TreeNode* deserialize(char* data) {
+    struct TreeNode* root;
+    int dataIdx = 0;
+    root = DeDFS(data, (int)strlen(data), &dataIdx);
+    return root;
+}
+#endif
+
 // 344. Reverse String
 void reverseString(char* s, int sSize)
 {
