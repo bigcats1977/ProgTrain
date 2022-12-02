@@ -4034,6 +4034,25 @@ int orangesRotting(int** grid, int gridSize, int* gridColSize)
     return (has_ones) ? -1 : rounds;
 }
 
+// 997. Find the Town Judge
+int findJudge(int n, int** trust, int trustSize, int* trustColSize)
+{
+    int i;
+    int* person = (int*)calloc(n+1, sizeof(int));
+    int* judge = (int*)calloc(n + 1, sizeof(int));
+    for (i = 0; i < trustSize; i++)
+    {
+        person[trust[i][0]] = 1;
+        judge[trust[i][1]]++;
+    }
+    for (i = 1; i <= n; i++)
+    {
+        if (person[i] != 1 && judge[i] == n-1)
+            return i;
+    }
+    return -1;
+}
+
 // 1047. Remove All Adjacent Duplicates In String
 char* removeDuplicates(char* s)
 {

@@ -271,6 +271,8 @@ int totalFruit(int* fruits, int fruitsSize);
 int* sortedSquares(int* nums, int numsSize, int* returnSize);
 // 994. Rotting Oranges
 int orangesRotting(int** grid, int gridSize, int* gridColSize);
+// 997. Find the Town Judge
+int findJudge(int n, int** trust, int trustSize, int* trustColSize);
 // 1047. Remove All Adjacent Duplicates In String
 char* removeDuplicates(char* s);
 // 1239. Maximum Length of a Concatenated String with Unique Characters
