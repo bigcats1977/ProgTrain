@@ -4182,6 +4182,27 @@ char* makeGood(char* s)
     return ans;
 }
 
+// 1557. Minimum Number of Vertices to Reach All Nodes
+int* findSmallestSetOfVertices(int n, int** edges, int edgesSize, int* edgesColSize, int* returnSize)
+{
+    int* ans = (int*)malloc(n * sizeof(int));
+    int* temp = (int*)calloc(n, sizeof(int));
+    int count = 0, i = 0;
+
+    for (i = 0; i < edgesSize; i++) {
+        temp[edges[i][0]] = 1;
+    }
+    for (i = 0; i < edgesSize; i++) {
+        temp[edges[i][1]] = 0;
+    }
+    for (i = 0; i < n; i++) {
+        if (temp[i] == 1)
+            ans[count++] = i;
+    }
+    *returnSize = count;
+    return ans;
+}
+
 // 1662. Check If Two String Arrays are Equivalent
 bool arrayStringsAreEqual(char** word1, int word1Size, char** word2, int word2Size)
 {

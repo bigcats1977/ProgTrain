@@ -285,6 +285,8 @@ int maximum69Number(int num);
 int* runningSum(int* nums, int numsSize, int* returnSize);
 // 1544. Make The String Great
 char* makeGood(char* s);
+// 1557. Minimum Number of Vertices to Reach All Nodes
+int* findSmallestSetOfVertices(int n, int** edges, int edgesSize, int* edgesColSize, int* returnSize);
 // 1662. Check If Two String Arrays are Equivalent
 bool arrayStringsAreEqual(char** word1, int word1Size, char** word2, int word2Size);
 // 1704. Determine if String Halves Are Alike
