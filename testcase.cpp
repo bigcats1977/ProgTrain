@@ -83,12 +83,24 @@ FUNCNAME g_tFuncName[] = {
     {1239,  TestCase_1239},
     {1480,  TestCase_1480},
     {1544,  TestCase_1544},
+    {1657,  TestCase_1657},
     {1662,  TestCase_1662},
     {1823,  TestCase_1823},
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
 
+void TestCase_1657()
+{
+    string word1, word2;
+    bool expect, output;
+
+    word1 = "cabbba";
+    word2 = "aabbss";
+    expect = false;
+    output = closeStrings(&*word1.begin(), &*word2.begin());
+    COMPVALUE(expect, output);
+}
 
 void TestCase_297()
 {

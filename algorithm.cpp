@@ -4224,6 +4224,35 @@ int* findSmallestSetOfVertices(int n, int** edges, int edgesSize, int* edgesColS
     return ans;
 }
 
+// 1657. Determine if Two Strings Are Close
+int cmpfunc(const void* a, const void* b) {
+    return (*(int*)a - *(int*)b);
+}
+bool closeStrings(char* word1, char* word2)
+{
+    int len1 = (int)strlen(word1), len2 = (int)strlen(word2);
+    int freq1[26] = { 0 }, freq2[26] = { 0 };
+    bool alp1[26] = { false }, alp2[26] = { false };
+    int i;
+    if (len1 != len2)
+        return false;
+    for (i = 0; i < len1; i++) {
+        alp1[word1[i] - 'a'] = true;
+        alp2[word2[i] - 'a'] = true;
+        freq1[word1[i] - 'a']++;
+        freq2[word2[i] - 'a']++;
+    }
+    if (0 != memcmp(alp1, alp2, 26))
+        return false;
+
+    qsort(freq1, 26, sizeof(int), cmpfunc);
+    qsort(freq2, 26, sizeof(int), cmpfunc);
+    if (0 != memcmp(freq1, freq2, 26*sizeof(int)))
+        return false;
+
+    return true;
+}
+
 // 1662. Check If Two String Arrays are Equivalent
 bool arrayStringsAreEqual(char** word1, int word1Size, char** word2, int word2Size)
 {
