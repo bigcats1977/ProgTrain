@@ -3888,19 +3888,19 @@ char** letterCasePermutation(char* s, int* returnSize)
 }
 
 // 841. Keys and Rooms
-void dfsroom(int** rooms, int roomsSize, int* roomsColSize, int cur, bool* visited)
+void dfsroom(int** rooms, int* roomsColSize, int cur, bool* visited)
 {
     visited[cur] = true;
     for (int i = 0; i < roomsColSize[cur]; i++) {
-        if (visited[rooms[cur][i]])
-            continue;
-        dfsroom(rooms, roomsSize, roomsColSize, rooms[cur][i], visited);
+        if (!visited[rooms[cur][i]]) {
+            dfsroom(rooms, roomsColSize, rooms[cur][i], visited);
+        }
     }
 }
 bool canVisitAllRooms(int** rooms, int roomsSize, int* roomsColSize)
 {
     bool* visited = (bool*)calloc(roomsSize, sizeof(bool));
-    dfsroom(rooms, roomsSize, roomsColSize, 0, visited);
+    dfsroom(rooms, roomsColSize, 0, visited);
     for (int i = 0; i < roomsSize; i++) {
         if (!visited[i])
             return false;
