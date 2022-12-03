@@ -150,6 +150,8 @@ struct ListNode* reverseList(struct ListNode* head);
 int minSubArrayLen(int target, int* nums, int numsSize);
 // 212. Word Search II
 char** findWords(char** board, int boardSize, int* boardColSize, char** words, int wordsSize, int* returnSize);
+// 215. Kth Largest Element in an Array
+int findKthLargest(int* nums, int numsSize, int k);
 // 217. Contains Duplicate
 bool containsDuplicate(int* nums, int numsSize);
 // 222. Count Complete Tree Nodes
@@ -191,6 +193,8 @@ struct TreeNode* deserialize(char* data);
 void reverseString(char* s, int sSize);
 // 345. Reverse Vowels of a String;
 char* reverseVowels(char* s);
+// 347. Top K Frequent Elements
+int* topKFrequent(int* nums, int numsSize, int k, int* returnSize);
 // 349. Intersection of Two Arrays
 int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize);
 // 350. Intersection of Two Arrays II

@@ -2291,6 +2291,18 @@ char** findWords(char** board, int boardSize, int* boardColSize, char** words, i
     return ans;
 }
 
+// 215. Kth Largest Element in an Array
+int klargecmp(const void* a, const void* b)
+{
+    return (*(int*)a - *(int*)b);
+}
+int findKthLargest(int* nums, int numsSize, int k)
+{
+    qsort(nums, numsSize,sizeof(int), klargecmp);
+
+    return nums[numsSize - k];
+}
+
 // 217. Contains Duplicate
 bool quicksort4Duplicate(int* nums, int begin, int end)
 {
@@ -2944,6 +2956,18 @@ char* reverseVowels(char* s)
         s[right--] = ch;
     }
     return s;
+}
+
+// 347. Top K Frequent Elements
+int* topKFrequent(int* nums, int numsSize, int k, int* returnSize)
+{
+    int i;
+    int* freq = (int*)calloc(20001, sizeof(int));
+    for (i = 0; i < numsSize; i++) {
+        freq[nums[i]]++;
+    }
+
+    return NULL;
 }
 
 // 349. Intersection of Two Arrays
