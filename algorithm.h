@@ -28,6 +28,8 @@ int removeDuplicates(int* nums, int numsSize);
 int removeElement(int* nums, int numsSize, int val);
 // 28. Find the Index of the First Occurrence in a String
 int strStr(char* haystack, char* needle);
+// 33. Search in Rotated Sorted Array
+int searchRotated(int* nums, int numsSize, int target);
 // 34. Find First and Last Position of Element in Sorted Array
 int* searchRange(int* nums, int numsSize, int target, int* returnSize);
 // 35. Search Insert Position
