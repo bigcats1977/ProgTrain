@@ -118,6 +118,8 @@ int* preorderTraversal(struct TreeNode* root, int* returnSize);
 int* postorderTraversal(struct TreeNode* root, int* returnSize);
 // 151. Reverse Words in a String
 char* reverseWords(char* s);
+// 153. Find Minimum in Rotated Sorted Array
+int findMin(int* nums, int numsSize);
 // 155. Min Stack
 
 // 160. Intersection of Two Linked Lists

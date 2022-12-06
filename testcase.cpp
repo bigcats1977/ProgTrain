@@ -36,6 +36,7 @@ FUNCNAME g_tFuncName[] = {
     {142,   TestCase_142 },
     {143,   TestCase_143 },
     {151,   TestCase_151 },
+    {153,   TestCase_153 },
     {160,   TestCase_160 },
     {167,   TestCase_167 },
     {187,   TestCase_187 },
@@ -90,6 +91,31 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_153()
+{
+    vector<int> nums;
+    int expect, output;
+
+    nums = { 2,3 };
+    expect = 2;
+    output = findMin(nums.data(), (int)nums.size());
+    COMPVALUE(expect, output);
+
+    nums = { 11,13,15,17 };
+    expect = 11;
+    output = findMin(nums.data(), (int)nums.size());
+    COMPVALUE(expect, output);
+
+    nums = { 3,1,2 };
+    expect = 1;
+    output = findMin(nums.data(), (int)nums.size());
+    COMPVALUE(expect, output);
+
+    nums = { 4,5,6,7,0,1,2,3 };
+    expect = 0;
+    output = findMin(nums.data(), (int)nums.size());
+    COMPVALUE(expect, output);
+}
 void TestCase_1657()
 {
     string word1, word2;

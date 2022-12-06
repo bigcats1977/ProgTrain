@@ -1768,6 +1768,28 @@ char* reverseWords(char* s)
     return result;
 }
 
+// 153. Find Minimum in Rotated Sorted Array
+int findMin(int* nums, int numsSize)
+{
+    int target = INT_MIN;
+    int left = 0, right = numsSize - 1, mid;
+    if (numsSize == 1)
+        return nums[0];
+    while (left <= right) {
+        mid = left + (right - left) / 2;
+        if (nums[mid + 1] < nums[mid])
+            return nums[mid + 1];
+        if (mid > 1 && nums[mid] < nums[mid - 1])
+            return nums[mid];
+        if (nums[mid] < nums[right])
+            right = mid - 1;
+        else
+            left = mid + 1;
+    }
+    return nums[mid];
+}
+
+
 // 155. Min Stack
 #define MAXNUM 30000
 typedef struct {
