@@ -114,9 +114,13 @@ char* longestPalindromeI(char* s)
 }
 
 // 15. 3Sum
+int threeCmp(const void* a, const void* b)
+{
+    return (*(int*)a - *(int*)b);
+}
 int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes)
 {
-    quicksort(nums, 0, numsSize - 1);
+    qsort(nums, numsSize, sizeof(int), threeCmp);
 
     int** ans = (int**)malloc(sizeof(int*)*(numsSize * numsSize));
     (*returnColumnSizes) = (int*)malloc(sizeof(int) * (numsSize * numsSize));
@@ -1875,6 +1879,15 @@ struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* he
     return nodeB;
 }
 
+// 162. Find Peak Element
+int findPeakElement(int* nums, int numsSize)
+{
+    int left = 0, right = numsSize - 1, mid;
+    if (numsSize == 1)
+        return nums[0];
+
+    return 0;
+}
 // 167. Two Sum II - Input Array Is Sorted
 int quickfind(int* numbers, int numberSize, int target)
 {

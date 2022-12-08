@@ -124,6 +124,8 @@ int findMin(int* nums, int numsSize);
 
 // 160. Intersection of Two Linked Lists
 struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* headB);
+// 162. Find Peak Element
+int findPeakElement(int* nums, int numsSize);
 // 167. Two Sum II - Input Array Is Sorted
 int* twoSumII(int* numbers, int numbersSize, int target, int* returnSize);
 // 169. Majority Element
