@@ -219,6 +219,8 @@ bool isSubsequence(char* s, char* t);
 int longestPalindrome(char* s);
 // 415. Add Strings
 char* addStrings(char* num1, char* num2);
+// 424. Longest Repeating Character Replacement
+int characterReplacement(char* s, int k);
 // 435. Non - overlapping Intervals
 int eraseOverlapIntervals(int** intervals, int intervalsSize, int* intervalsColSize);
 // 438. Find All Anagrams in a String

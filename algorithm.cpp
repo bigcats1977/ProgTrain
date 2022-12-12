@@ -3243,6 +3243,23 @@ char* addStrings(char* num1, char* num2)
     return &ans[len];
 }
 
+// 424. Longest Repeating Character Replacement
+int characterReplacement(char* s, int k)
+{
+    int len = int(strlen(s));
+    int freq[26] = { 0 };
+    int repeats = 0, slow = 0;
+    if (k >= len)
+        return len;
+    for (int i = 0; i < len; i++) {
+        freq[s[i] - 'A']++;
+
+    }
+
+
+    return 0;
+}
+
 // 435. Non - overlapping Intervals
 /*
 Input: intervals = [[1,2],[2,3],[3,4],[1,3]]
