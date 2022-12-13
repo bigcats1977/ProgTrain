@@ -195,6 +195,8 @@ bool wordPattern(char* pattern, char* s);
 char* serialize(struct TreeNode* root);
 /** Decodes your encoded data to tree. */
 struct TreeNode* deserialize(char* data);
+// 299. Bulls and Cows
+char* getHint(char* secret, char* guess);
 // 344. Reverse String
 void reverseString(char* s, int sSize);
 // 345. Reverse Vowels of a String;

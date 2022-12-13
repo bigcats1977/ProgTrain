@@ -2967,6 +2967,34 @@ struct TreeNode* deserialize(char* data) {
 }
 #endif
 
+// 299. Bulls and Cows
+char* getHint(char* secret, char* guess)
+{
+    int i;
+    int len = (int)strlen(secret);
+    int bulls = 0, cows = 0;
+    int freqA[10] = { 0 };
+    int freqB[10] = { 0 };
+    char* ans = (char*)calloc(10, sizeof(char));
+    for (i = 0; i < len; i++) {
+        if (secret[i] == guess[i])
+            bulls++;
+        else {
+            freqA[secret[i] - '0']++;
+            freqB[guess[i] - '0']++;
+        }
+    }
+    for (i = 0; i < 10; i++)
+    {
+        if (freqA[i] < freqB[i])
+            cows += freqA[i];
+        else
+            cows += freqB[i];
+    }
+    sprintf(ans, "%dA%dB", bulls, cows);
+    return &ans[0];
+}
+
 // 344. Reverse String
 void reverseString(char* s, int sSize)
 {
