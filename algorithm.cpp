@@ -3215,6 +3215,56 @@ bool isSubsequence(char* s, char* t)
     return false;
 }
 
+// 394. Decode String
+char* decodeString(char* s)
+{
+    char* result = (char*)calloc(8192, sizeof(char));
+    char* temp = NULL;
+    int pos = 0;
+    int x, count, j;
+    for (int i = 0; i < (int)strlen(s); ) {
+        x = 0;
+        count = 0;
+
+        while (s[i] - '0' >= 0 && s[i] - '0' <= 9 && (int)strlen(s)) {
+            x = x * 10 + s[i] - '0';
+            i++;
+        }
+
+        if (s[i] == '[') {
+            i++;
+            count = 1;
+        }
+        j = i;
+
+        while (count != 0 && j < (int)strlen(s)) {
+            if (s[j] == '[') count++;
+            else if (s[j] == ']') count--;
+            j++;
+        }
+
+        if (x > 0)
+        {
+            char sub[30] = { 0 };
+            memcpy(sub, &s[i], j - i - 1);
+            temp  = decodeString(&sub[0]);
+        }
+
+        while (x--)
+        {
+            memcpy(&result[pos], temp, strlen(temp));
+            pos += strlen(temp);
+        }
+
+        i = j;
+        if (s[i] - 'a' >= 0 && s[i] - 'a' < 26 || s[i] - 'A' >= 0 && s[i] - 'A' < 26) {
+            result[pos++] = s[i];
+            i++;
+        }
+    }
+    return result;
+}
+
 // 409. Longest Palindrome
 int longestPalindrome(char* s)
 {

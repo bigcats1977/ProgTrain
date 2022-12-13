@@ -217,6 +217,8 @@ bool canConstruct(char* ransomNote, char* magazine);
 int firstUniqChar(char* s);
 // 392. Is Subsequence
 bool isSubsequence(char* s, char* t);
+// 394. Decode String
+char* decodeString(char* s);
 // 409. Longest Palindrome
 int longestPalindrome(char* s);
 // 415. Add Strings
