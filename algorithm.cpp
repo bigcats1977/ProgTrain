@@ -1882,7 +1882,7 @@ struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* he
 // 162. Find Peak Element
 int findPeakElement(int* nums, int numsSize)
 {
-    int left = 0, right = numsSize - 1, mid;
+    int left = 0, right = numsSize - 1;
     if (numsSize == 1)
         return nums[0];
 
@@ -3246,18 +3246,22 @@ char* addStrings(char* num1, char* num2)
 // 424. Longest Repeating Character Replacement
 int characterReplacement(char* s, int k)
 {
-    int len = int(strlen(s));
+    int start = 0, i = 0;
+    int counter = 0, maxlen = 0;
+    int len = (int)strlen(s);
     int freq[26] = { 0 };
-    int repeats = 0, slow = 0;
-    if (k >= len)
-        return len;
-    for (int i = 0; i < len; i++) {
+    for ( i = 0; i < len; i++) {
         freq[s[i] - 'A']++;
+        counter = (int)fmax(counter, freq[s[i] - 'A']);
+        if (i - start + 1 - counter > k) {
+            freq[s[start] - 'A']--;
+            start++;
+        }
+        maxlen = (int)fmax(maxlen, i - start + 1);
 
     }
 
-
-    return 0;
+    return maxlen;
 }
 
 // 435. Non - overlapping Intervals
