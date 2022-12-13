@@ -3253,7 +3253,7 @@ char* decodeString(char* s)
         while (x--)
         {
             memcpy(&result[pos], temp, strlen(temp));
-            pos += strlen(temp);
+            pos += (int)strlen(temp);
         }
 
         i = j;
@@ -3708,6 +3708,39 @@ bool checkInclusion(char* s1, char* s2)
         if (memcmp(freq1, freq2, sizeof(int) * 26) == 0)
             return true;
     }
+    return false;
+}
+
+// 572. Subtree of Another Tree
+bool compsubtree(struct TreeNode* root1, struct TreeNode* root2)
+{
+    if (!root1 && !root2)
+        return true;
+    if (!root1 || !root2)
+        return false;
+    if (root1->val != root2->val)
+        return false;
+    if (!compsubtree(root1->left, root2->left))
+        return false;
+    if (!compsubtree(root1->right, root2->right))
+        return false;
+    return true;
+}
+bool isSubtree(struct TreeNode* root, struct TreeNode* subRoot)
+{
+    if (!root && !subRoot)
+        return true;
+    if (!root || !subRoot)
+        return false;
+    if (root->val == subRoot->val)
+    {
+        if (compsubtree(root, subRoot))
+            return true;
+    }
+    if (isSubtree(root->left, subRoot))
+        return true;
+    if (isSubtree(root->right, subRoot))
+        return true;
     return false;
 }
 
