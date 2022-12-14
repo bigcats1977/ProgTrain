@@ -1916,10 +1916,16 @@ struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* he
 // 162. Find Peak Element
 int findPeakElement(int* nums, int numsSize)
 {
-    int left = 0, right = numsSize - 1;
-    if (numsSize == 1)
-        return nums[0];
-
+    int i;
+    if (numsSize == 1 || nums[0] > nums[1])
+        return 0;
+    for (i = 1; i < numsSize - 1; i++)
+    {
+        if (nums[i] > nums[i + 1] && nums[i] > nums[i - 1])
+            return i;
+    }
+    if (nums[i] > nums[i - 1])
+        return i;
     return 0;
 }
 // 167. Two Sum II - Input Array Is Sorted
