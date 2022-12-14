@@ -96,6 +96,8 @@ bool hasPathSum(struct TreeNode* root, int targetSum);
 int** pathSum(struct TreeNode* root, int targetSum, int* returnSize, int** returnColumnSizes);
 // 116. Populating Next Right Pointers in Each Node
 struct Node* connect(struct Node* root);
+// 117. Populating Next Right Pointers in Each Node II
+struct Node* connect2(struct Node* root);
 // 118. Pascal's Triangle
 int** generate(int numRows, int* returnSize, int** returnColumnSizes);
 // 119. Pascal's Triangle II

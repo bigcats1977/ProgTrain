@@ -1523,6 +1523,40 @@ struct Node* connect(struct Node* root)
     return root;
 }
 
+// 117. Populating Next Right Pointers in Each Node II
+struct Node* connect2(struct Node* root)
+{
+    if (!root)
+        return root;
+
+    struct Node** tempqueue = (struct Node**)malloc(sizeof(struct Node* )*6000);
+    struct Node* pre, * next;
+    int head = 0, tail = 0;
+    tempqueue[tail++] = root;
+    while (tail > head)
+    {
+        int end = tail;
+        for (int i = head; i < end; i++) {
+            pre = tempqueue[i];
+            next = NULL;
+            if (i < end - 1)
+            {
+                next = tempqueue[i+1];
+            }
+            pre->next = next;
+            if (pre->left) {
+                tempqueue[tail++] = pre->left;
+            }
+            if (pre->right) {
+                tempqueue[tail++] = pre->right;
+            }
+        }
+        head = end;
+    }
+    free(tempqueue);
+    return root;
+}
+
 // 118. Pascal's Triangle
 int** generate(int numRows, int* returnSize, int** returnColumnSizes)
 {
