@@ -293,6 +293,8 @@ struct ListNode* middleNode(struct ListNode* head);
 int totalFruit(int* fruits, int fruitsSize);
 // 977. Squares of a Sorted Array
 int* sortedSquares(int* nums, int numsSize, int* returnSize);
+// 986. Interval List Intersections
+int** intervalIntersection(int** firstList, int firstListSize, int* firstListColSize, int** secondList, int secondListSize, int* secondListColSize, int* returnSize, int** returnColumnSizes);
 // 994. Rotting Oranges
 int orangesRotting(int** grid, int gridSize, int* gridColSize);
 // 997. Find the Town Judge

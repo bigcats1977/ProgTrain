@@ -4287,6 +4287,40 @@ int* sortedSquares(int* nums, int numsSize, int* returnSize) {
     return result;
 }
 
+// 986. Interval List Intersections
+int** intervalIntersection(int** firstList, int firstListSize, int* firstListColSize, int** secondList, int secondListSize, int* secondListColSize, int* returnSize, int** returnColumnSizes)
+{
+    int first = 0, second = 0;
+    int count = 0;
+
+    int** ans = (int**)calloc(firstListSize + secondListSize, sizeof(int*));
+    (*returnColumnSizes) = (int*)malloc(sizeof(int) * (firstListSize + secondListSize));
+
+    while (first < firstListSize && second < secondListSize) {
+        int start = (int)fmax(firstList[first][0], secondList[second][0]);
+        int end = (int)fmin(firstList[first][1], secondList[second][1]);
+        if (start <= end) {
+            ans[count] = (int*)malloc(sizeof(int) * 2);
+            (*returnColumnSizes)[count] = 2;
+            ans[count][0] = start;
+            ans[count][1] = end;
+            count++;
+        }
+        if (firstList[first][1] < secondList[second][1])
+            first++;
+        else if (firstList[first][1] > secondList[second][1])
+            second++;
+        else //equal
+        {
+            first++;
+            second++;
+        }
+    }
+
+    *returnSize = count;
+    return ans;
+}
+
 // 994. Rotting Oranges
 int infectable(int i, int j, int rows, int cols, int** grid) {
     if (i > 0 && grid[i - 1][j] == 2) return 1;
