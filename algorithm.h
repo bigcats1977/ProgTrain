@@ -270,6 +270,8 @@ int search(int* nums, int numsSize, int target);
 // 706. Design HashMap
 // myself HashMap
 // 707. Design Linked List
+// 713. Subarray Product Less Than K
+int numSubarrayProductLessThanK(int* nums, int numsSize, int k);
 // MyLinkedList
 // 724. Find Pivot Index
 int pivotIndex(int* nums, int numsSize);

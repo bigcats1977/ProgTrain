@@ -73,6 +73,7 @@ FUNCNAME g_tFuncName[] = {
     {704,   TestCase_704 },
     {706,   TestCase_706 },
     {707,   TestCase_707 },
+    {713,   TestCase_713 },
     {724,   TestCase_724 },
     {746,   TestCase_746 },
     {766,   TestCase_766 },
@@ -91,6 +92,21 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_713()
+{
+    vector<int> nums;
+    int expect, output;
+
+    nums = {10, 9, 10, 4, 3, 8, 3, 3, 6, 2, 10, 10, 9, 3};
+    expect = 18;
+    output = numSubarrayProductLessThanK(nums.data(), (int)nums.size(), 19);
+    COMPVALUE(expect, output);
+
+    nums = { 10,5,2,6 };
+    expect = 8;
+    output = numSubarrayProductLessThanK(nums.data(), (int)nums.size(), 100);
+    COMPVALUE(expect, output);
+}
 void TestCase_153()
 {
     vector<int> nums;
