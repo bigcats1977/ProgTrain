@@ -113,6 +113,24 @@ char* longestPalindromeI(char* s)
     return ans;
 }
 
+// 11. Container With Most Water
+int maxArea(int* height, int heightSize)
+{
+    int left = 0, right = heightSize - 1;
+    int max = 0, water = 0;
+    
+    while (left < right)
+    {
+        water = (right - left) * (int)fmin(height[left], height[right]);
+        max = max < water ? water : max;
+        if (height[left] < height[right])
+            left++;
+        else
+            right--;
+    }
+    return max;
+}
+
 // 15. 3Sum
 int threeCmp(const void* a, const void* b)
 {
