@@ -4547,6 +4547,27 @@ char* removeDuplicates(char* s)
     return res;
 }
 
+// 1143. Longest Common Subsequence
+int longestCommonSubsequence(char* text1, char* text2)
+{
+    int m = (int)strlen(text1), n = (int)strlen(text2);
+    int i, j;
+    int** ans = (int**)malloc((m+1) * sizeof(int*));
+    ans[0] = (int*)calloc((n + 1), sizeof(int));
+    for (i = 0; i < m; i++) {
+        ans[i + 1] = (int*)malloc((n + 1) * sizeof(int));
+        ans[i + 1][0] = ans[i][0];
+        for (j = 0; j < n; j++) {
+            ans[i + 1][j + 1] = text1[i] == text2[j] ? ans[i][j] + 1 : (int)fmax(ans[i + 1][j], ans[i][j + 1]);
+        }
+    }
+    int max = ans[m][n];
+    for (i = 0; i < m; i++)
+        free(ans[i]);
+    free(ans);
+    return max;
+}
+
 // 1239. Maximum Length of a Concatenated String with Unique Characters
 int maxLength(char** arr, int arrSize)
 {

@@ -82,6 +82,7 @@ FUNCNAME g_tFuncName[] = {
     {904,   TestCase_904 },
     {977,   TestCase_977 },
     {1047,  TestCase_1047},
+    {1143,  TestCase_1143},
     {1239,  TestCase_1239},
     {1480,  TestCase_1480},
     {1544,  TestCase_1544},
@@ -91,6 +92,16 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_1143()
+{
+    string text1, text2;
+
+    text1 = "bl";
+    text2 = "yby";
+
+    longestCommonSubsequence(&*text1.begin(), &*text2.begin());
+}
 
 void TestCase_713()
 {

@@ -305,6 +305,8 @@ int findJudge(int n, int** trust, int trustSize, int* trustColSize);
 int lastStoneWeight(int* stones, int stonesSize);
 // 1047. Remove All Adjacent Duplicates In String
 char* removeDuplicates(char* s);
+// 1143. Longest Common Subsequence
+int longestCommonSubsequence(char* text1, char* text2);
 // 1239. Maximum Length of a Concatenated String with Unique Characters
 int maxLength(char** arr, int arrSize);
 // 1249. Minimum Remove to Make Valid Parentheses
