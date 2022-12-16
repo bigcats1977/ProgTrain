@@ -3688,6 +3688,32 @@ int** updateMatrix(int** matrix, int matrixSize, int* matrixColSize, int* return
 }
 #endif
 
+// 547. Number of Provinces
+//[[1, 0, 0, 1], [0, 1, 1, 0], [0, 1, 1, 1], [1, 0, 1, 1]]
+
+int findCircleNum(int** isConnected, int isConnectedSize, int* isConnectedColSize)
+{
+    int i, j;
+    int count = 0;
+    int city[200] = { 0 };
+    int prov[200] = { 0 };
+
+    for (i = 0; i < isConnectedSize; i++) {
+        if (city[i] == 0)
+        {
+            city[i] = -1;
+            count++;
+        }
+
+        for (j = i + 1; j < isConnectedSize; j++) {
+            if (city[j] == 0 && isConnected[i][j] == 1) {
+                city[j] = -1;
+            }
+        }
+    }
+    return count;
+}
+
 // 557. Reverse Words in a String III
 //reverseString(s, size);
 char* reverseWordsIII(char* s)

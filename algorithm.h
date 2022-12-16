@@ -243,6 +243,8 @@ bool checkSubarraySum(int* nums, int numsSize, int k);
 char* reverseStr(char* s, int k);
 // 542. 01 Matrix
 int** updateMatrix(int** mat, int matSize, int* matColSize, int* returnSize, int** returnColumnSizes);
+// 547. Number of Provinces
+int findCircleNum(int** isConnected, int isConnectedSize, int* isConnectedColSize);
 // 557. Reverse Words in a String III
 char* reverseWordsIII(char* s);
 // 560. Subarray Sum Equals K
