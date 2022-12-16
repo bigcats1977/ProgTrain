@@ -3973,48 +3973,28 @@ int search(int* nums, int numsSize, int target) {
 // MyLinkedList
 
 // 713. Subarray Product Less Than K
-/*
-* Input: nums = [10,5,2,6], k = 100
-Output: 8
-Explanation: The 8 subarrays that have product less than 100 are:
-[10], [5], [2], [6], [10, 5], [5, 2], [2, 6], [5, 2, 6]
-*/
 int numSubarrayProductLessThanK(int* nums, int numsSize, int k)
 {
     int count = 0;
-    int slow = 0, i = 0, j = 0;
-    int product = 1;
-    if (k == 0)
-        return 0;
+    if (k <= 1) return count;
 
-    for(i=0;i<numsSize;i++)
-    {
-        if (nums[i] >= k)
-        {
-            product = 1;
-            continue;
+    int i1 = 0;
+    int prod = 1;
+
+    for (int i2 = 0; i2 < numsSize; ++i2) {
+        prod *= nums[i2];
+
+        while (prod >= k) {
+            prod /= nums[i1];
+            ++i1;
         }
-        // current 
-        count++;
-        product *= nums[i];
-        if (product < k) {
-            if(slow!= i)
-                count++;
-            continue;
-        }
-        // > k, ³ýÊý
-        for (j = slow; j <= i; j++) {
-            product /= nums[j];
-            if (product < k)
-            {
-                count++;
-                slow = j;
-                break;
-            }
-        }
+
+        count += i2 - i1 + 1;
     }
+
     return count;
 }
+
 // 724. Find Pivot Index
 int pivotIndex(int* nums, int numsSize)
 {
