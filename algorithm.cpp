@@ -4557,6 +4557,40 @@ char* removeDuplicates(char* s)
     return res;
 }
 
+// 1091. Shortest Path in Binary Matrix
+int eight[8][2] = { {1,1}, {1,0},{0,1},{-1,1},{1,-1},{-1,0},{0,-1},{-1,-1} };
+void  dfsBM(int** grid, int gridSize, int i, int j)
+{
+    int k, m, n;
+    if (i < 0 || i >= gridSize || j < 0 || j >= gridSize)
+        return ;
+    if (i == gridSize - 1 && j == gridSize - 1)
+    {
+        return ;
+    }
+    for (k = 0; k < 8; k++) {
+        m = i + eight[k][0];
+        n = j + eight[k][1];
+        if (m < 0 || m >= gridSize || n < 0 || n >= gridSize)
+            continue;
+        if (grid[m][n] != 0)
+            continue;
+
+        grid[m][n] = grid[i][j] + 1;
+        dfsBM(grid, gridSize, m, n);
+    }
+}
+int shortestPathBinaryMatrix(int** grid, int gridSize, int* gridColSize)
+{
+    if (grid[0][0] == 1 || grid[gridSize-1][gridSize-1] == 1)
+        return -1;
+
+    grid[0][0] = 1;
+    dfsBM(grid, gridSize, 0, 0);
+
+    return grid[gridSize - 1][gridSize - 1];
+}
+
 // 1143. Longest Common Subsequence
 int longestCommonSubsequence(char* text1, char* text2)
 {

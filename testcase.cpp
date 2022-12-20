@@ -82,6 +82,7 @@ FUNCNAME g_tFuncName[] = {
     {904,   TestCase_904 },
     {977,   TestCase_977 },
     {1047,  TestCase_1047},
+    {1091,  TestCase_1091},
     {1143,  TestCase_1143},
     {1239,  TestCase_1239},
     {1480,  TestCase_1480},
@@ -93,6 +94,27 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_1091()
+{
+    vector<vector<int>> matrix;
+    int** p;
+    int row , col ;
+    int expect, output;
+
+    matrix = { {0, 1, 0, 0, 0, 0},{0, 1, 0, 1, 1, 0},{0, 1, 1, 0, 1, 0},{0, 0, 0, 0, 1, 0} ,{1, 1, 1, 1, 1, 0},{1, 1, 1, 1, 1, 0} };
+    row = 6, col = 6;
+    expect = 14;
+    p = matrix2addr(matrix);
+    output = shortestPathBinaryMatrix(p, row, &col);
+    COMPVALUE(expect, output);
+
+    matrix = { {0, 0, 0},{1, 1, 0},{1, 1, 0 }};
+    row = 3, col = 3;
+    expect = 4;
+    p = matrix2addr(matrix);
+    output = shortestPathBinaryMatrix(p, row, &col);
+    COMPVALUE(expect, output);
+}
 void TestCase_1143()
 {
     string text1, text2;
