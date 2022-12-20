@@ -3689,25 +3689,29 @@ int** updateMatrix(int** matrix, int matrixSize, int* matrixColSize, int* return
 #endif
 
 // 547. Number of Provinces
-//[[1, 0, 0, 1], [0, 1, 1, 0], [0, 1, 1, 1], [1, 0, 1, 1]]
-
+void dfsProvinces(int** isConnected, int isConnectedSize, int* isConnectedColSize, int index)
+{
+    int i = 0;
+    for (i = 0; i < isConnectedSize; i++) {
+        if (isConnected[index][i])
+        {
+            isConnected[index][i] = 0;
+            isConnected[i][index] = 0;
+            dfsProvinces(isConnected, isConnectedSize, isConnectedColSize, i);
+        }
+    }
+}
 int findCircleNum(int** isConnected, int isConnectedSize, int* isConnectedColSize)
 {
     int i, j;
     int count = 0;
-    int city[200] = { 0 };
-    int prov[200] = { 0 };
 
     for (i = 0; i < isConnectedSize; i++) {
-        if (city[i] == 0)
+        for (j = 0; j < isConnectedColSize[i]; j++)
         {
-            city[i] = -1;
-            count++;
-        }
-
-        for (j = i + 1; j < isConnectedSize; j++) {
-            if (city[j] == 0 && isConnected[i][j] == 1) {
-                city[j] = -1;
+            if (isConnected[i][j]) {
+                count++;
+                dfsProvinces(isConnected, isConnectedSize, isConnectedColSize, i);
             }
         }
     }
