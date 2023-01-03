@@ -291,6 +291,8 @@ bool backspaceCompare(char* s, char* t);
 struct ListNode* middleNode(struct ListNode* head);
 // 904. Fruit Into Baskets
 int totalFruit(int* fruits, int fruitsSize);
+// 944. Delete Columns to Make Sorted
+int minDeletionSize(char** strs, int strsSize);
 // 977. Squares of a Sorted Array
 int* sortedSquares(int* nums, int numsSize, int* returnSize);
 // 994. Rotting Oranges

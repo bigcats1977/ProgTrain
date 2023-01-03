@@ -4262,6 +4262,25 @@ int totalFruit(int* fruits, int fruitsSize)
     }
     return result;
 }
+
+// 944. Delete Columns to Make Sorted
+int minDeletionSize(char** strs, int strsSize)
+{
+    int ans = 0;
+    if (strsSize <= 1)
+        return 0;
+
+    for (int i = 0; i < (int)strlen(strs[0]); i++) {
+        for (int j = 1; j < strsSize; j++) {
+            if (strs[j][i] < strs[j - 1][i]) {
+                ans++;
+                break;
+            }
+        }
+    }
+    return ans;
+}
+
 // 977. Squares of a Sorted Array
 int* sortedSquares(int* nums, int numsSize, int* returnSize) {
     int left = 0, right = numsSize - 1;
