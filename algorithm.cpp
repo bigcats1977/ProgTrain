@@ -3688,6 +3688,36 @@ int** updateMatrix(int** matrix, int matrixSize, int* matrixColSize, int* return
 }
 #endif
 
+// 547. Number of Provinces
+void dfsProvinces(int** isConnected, int isConnectedSize, int* isConnectedColSize, int index)
+{
+    int i = 0;
+    for (i = 0; i < isConnectedSize; i++) {
+        if (isConnected[index][i])
+        {
+            isConnected[index][i] = 0;
+            isConnected[i][index] = 0;
+            dfsProvinces(isConnected, isConnectedSize, isConnectedColSize, i);
+        }
+    }
+}
+int findCircleNum(int** isConnected, int isConnectedSize, int* isConnectedColSize)
+{
+    int i, j;
+    int count = 0;
+
+    for (i = 0; i < isConnectedSize; i++) {
+        for (j = 0; j < isConnectedColSize[i]; j++)
+        {
+            if (isConnected[i][j]) {
+                count++;
+                dfsProvinces(isConnected, isConnectedSize, isConnectedColSize, i);
+            }
+        }
+    }
+    return count;
+}
+
 // 557. Reverse Words in a String III
 //reverseString(s, size);
 char* reverseWordsIII(char* s)
@@ -3971,6 +4001,29 @@ int search(int* nums, int numsSize, int target) {
 
 // 707. Design Linked List
 // MyLinkedList
+
+// 713. Subarray Product Less Than K
+int numSubarrayProductLessThanK(int* nums, int numsSize, int k)
+{
+    int count = 0;
+    if (k <= 1) return count;
+
+    int i1 = 0;
+    int prod = 1;
+
+    for (int i2 = 0; i2 < numsSize; ++i2) {
+        prod *= nums[i2];
+
+        while (prod >= k) {
+            prod /= nums[i1];
+            ++i1;
+        }
+
+        count += i2 - i1 + 1;
+    }
+
+    return count;
+}
 
 // 724. Find Pivot Index
 int pivotIndex(int* nums, int numsSize)
@@ -4306,6 +4359,40 @@ int* sortedSquares(int* nums, int numsSize, int* returnSize) {
     return result;
 }
 
+// 986. Interval List Intersections
+int** intervalIntersection(int** firstList, int firstListSize, int* firstListColSize, int** secondList, int secondListSize, int* secondListColSize, int* returnSize, int** returnColumnSizes)
+{
+    int first = 0, second = 0;
+    int count = 0;
+
+    int** ans = (int**)calloc(firstListSize + secondListSize, sizeof(int*));
+    (*returnColumnSizes) = (int*)malloc(sizeof(int) * (firstListSize + secondListSize));
+
+    while (first < firstListSize && second < secondListSize) {
+        int start = (int)fmax(firstList[first][0], secondList[second][0]);
+        int end = (int)fmin(firstList[first][1], secondList[second][1]);
+        if (start <= end) {
+            ans[count] = (int*)malloc(sizeof(int) * 2);
+            (*returnColumnSizes)[count] = 2;
+            ans[count][0] = start;
+            ans[count][1] = end;
+            count++;
+        }
+        if (firstList[first][1] < secondList[second][1])
+            first++;
+        else if (firstList[first][1] > secondList[second][1])
+            second++;
+        else //equal
+        {
+            first++;
+            second++;
+        }
+    }
+
+    *returnSize = count;
+    return ans;
+}
+
 // 994. Rotting Oranges
 int infectable(int i, int j, int rows, int cols, int** grid) {
     if (i > 0 && grid[i - 1][j] == 2) return 1;
@@ -4487,6 +4574,61 @@ char* removeDuplicates(char* s)
     res[++idx] = '\0';
 
     return res;
+}
+
+// 1091. Shortest Path in Binary Matrix
+int eight[8][2] = { {1,1}, {1,0},{0,1},{-1,1},{1,-1},{-1,0},{0,-1},{-1,-1} };
+void  dfsBM(int** grid, int gridSize, int i, int j)
+{
+    int k, m, n;
+    if (i < 0 || i >= gridSize || j < 0 || j >= gridSize)
+        return ;
+    if (i == gridSize - 1 && j == gridSize - 1)
+    {
+        return ;
+    }
+    for (k = 0; k < 8; k++) {
+        m = i + eight[k][0];
+        n = j + eight[k][1];
+        if (m < 0 || m >= gridSize || n < 0 || n >= gridSize)
+            continue;
+        if (grid[m][n] != 0)
+            continue;
+
+        grid[m][n] = grid[i][j] + 1;
+        dfsBM(grid, gridSize, m, n);
+    }
+}
+int shortestPathBinaryMatrix(int** grid, int gridSize, int* gridColSize)
+{
+    if (grid[0][0] == 1 || grid[gridSize-1][gridSize-1] == 1)
+        return -1;
+
+    grid[0][0] = 1;
+    dfsBM(grid, gridSize, 0, 0);
+
+    return grid[gridSize - 1][gridSize - 1];
+}
+
+// 1143. Longest Common Subsequence
+int longestCommonSubsequence(char* text1, char* text2)
+{
+    int m = (int)strlen(text1), n = (int)strlen(text2);
+    int i, j;
+    int** ans = (int**)malloc((m+1) * sizeof(int*));
+    ans[0] = (int*)calloc((n + 1), sizeof(int));
+    for (i = 0; i < m; i++) {
+        ans[i + 1] = (int*)malloc((n + 1) * sizeof(int));
+        ans[i + 1][0] = ans[i][0];
+        for (j = 0; j < n; j++) {
+            ans[i + 1][j + 1] = text1[i] == text2[j] ? ans[i][j] + 1 : (int)fmax(ans[i + 1][j], ans[i][j + 1]);
+        }
+    }
+    int max = ans[m][n];
+    for (i = 0; i < m; i++)
+        free(ans[i]);
+    free(ans);
+    return max;
 }
 
 // 1239. Maximum Length of a Concatenated String with Unique Characters

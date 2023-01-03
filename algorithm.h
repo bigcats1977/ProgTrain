@@ -243,6 +243,8 @@ bool checkSubarraySum(int* nums, int numsSize, int k);
 char* reverseStr(char* s, int k);
 // 542. 01 Matrix
 int** updateMatrix(int** mat, int matSize, int* matColSize, int* returnSize, int** returnColumnSizes);
+// 547. Number of Provinces
+int findCircleNum(int** isConnected, int isConnectedSize, int* isConnectedColSize);
 // 557. Reverse Words in a String III
 char* reverseWordsIII(char* s);
 // 560. Subarray Sum Equals K
@@ -270,6 +272,8 @@ int search(int* nums, int numsSize, int target);
 // 706. Design HashMap
 // myself HashMap
 // 707. Design Linked List
+// 713. Subarray Product Less Than K
+int numSubarrayProductLessThanK(int* nums, int numsSize, int k);
 // MyLinkedList
 // 724. Find Pivot Index
 int pivotIndex(int* nums, int numsSize);
@@ -295,6 +299,8 @@ int totalFruit(int* fruits, int fruitsSize);
 int minDeletionSize(char** strs, int strsSize);
 // 977. Squares of a Sorted Array
 int* sortedSquares(int* nums, int numsSize, int* returnSize);
+// 986. Interval List Intersections
+int** intervalIntersection(int** firstList, int firstListSize, int* firstListColSize, int** secondList, int secondListSize, int* secondListColSize, int* returnSize, int** returnColumnSizes);
 // 994. Rotting Oranges
 int orangesRotting(int** grid, int gridSize, int* gridColSize);
 // 997. Find the Town Judge
@@ -303,6 +309,10 @@ int findJudge(int n, int** trust, int trustSize, int* trustColSize);
 int lastStoneWeight(int* stones, int stonesSize);
 // 1047. Remove All Adjacent Duplicates In String
 char* removeDuplicates(char* s);
+// 1091. Shortest Path in Binary Matrix
+int shortestPathBinaryMatrix(int** grid, int gridSize, int* gridColSize);
+// 1143. Longest Common Subsequence
+int longestCommonSubsequence(char* text1, char* text2);
 // 1239. Maximum Length of a Concatenated String with Unique Characters
 int maxLength(char** arr, int arrSize);
 // 1249. Minimum Remove to Make Valid Parentheses
