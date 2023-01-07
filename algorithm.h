@@ -108,6 +108,8 @@ int* getRow(int rowIndex, int* returnSize);
 int minimumTotal(int** triangle, int triangleSize, int* triangleColSize);
 // 121. Best Time to Buy and Sell Stock
 int maxProfit(int* prices, int pricesSize);
+// 134. Gas Station
+int canCompleteCircuit(int* gas, int gasSize, int* cost, int costSize);
 // 136. Single Number
 int singleNumber(int* nums, int numsSize);
 // 141. Linked List Cycle

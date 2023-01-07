@@ -1666,6 +1666,39 @@ int maxProfit(int* prices, int pricesSize)
     return max;
 }
 
+// 134. Gas Station
+int canCompleteCircuit(int* gas, int gasSize, int* cost, int costSize)
+{
+    int curSum = 0;
+    int totalSum = 0;
+    int start = 0;
+    for (int i = 0; i < gasSize; i++) {
+        curSum += gas[i] - cost[i];
+        totalSum += gas[i] - cost[i];
+        if (curSum < 0) {
+            start = i + 1;
+            curSum = 0;
+        }
+    }
+    if (totalSum < 0)
+        return -1;
+    return start;
+#if 0
+    for (int i = 0; i < gasSize; i++)
+    {
+        int rest = gas[i] - cost[i];
+        int index = (i+1) % gasSize;
+        while (rest > 0 && index != i) {
+            rest += gas[index] - cost[index];
+            int index = (i + 1) % gasSize;
+        }
+        if (rest >= 0 && index == i)
+            return i;
+    }
+    return -1;
+#endif
+}
+
 // 136. Single Number
 int singleNumber(int* nums, int numsSize)
 {
@@ -4006,12 +4039,13 @@ int search(int* nums, int numsSize, int target) {
 int numSubarrayProductLessThanK(int* nums, int numsSize, int k)
 {
     int count = 0;
-    if (k <= 1) return count;
+    if (k <= 1)
+        return count;
 
     int i1 = 0;
     int prod = 1;
 
-    for (int i2 = 0; i2 < numsSize; ++i2) {
+    for (int i2 = 0; i2 < numsSize; i2++) {
         prod *= nums[i2];
 
         while (prod >= k) {
