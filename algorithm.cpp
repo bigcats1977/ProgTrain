@@ -1666,6 +1666,59 @@ int maxProfit(int* prices, int pricesSize)
     return max;
 }
 
+// 130. Surrounded Regions
+int regions[4][2] = { {-1,0},{1,0},{0,-1},{0,1} };
+void regiondfs(char** board, bool** visited, int m, int n, int curx, int cury)
+{
+    visited[curx][cury] = true;
+    for (int i = 0; i < 4; i++)
+    {
+        int nrow = curx + regions[i][0];
+        int ncol = cury + regions[i][1];
+        if (nrow >= 0 && ncol >= 0 && nrow < m && ncol < n && board[nrow][ncol] != 'X' && !visited[nrow][ncol])
+            regiondfs(board, visited, m, n, nrow, ncol);
+    }
+}
+void solve(char** board, int boardSize, int* boardColSize)
+{
+    int i, j;
+    int m = boardSize;
+    int n = boardColSize[0];
+    bool** visited = (bool**)malloc(sizeof(bool*) * m);
+    for (i = 0; i < m; i++)
+        visited[i] = (bool*)calloc(n, sizeof(bool));
+
+    //l & r
+    for (i = 0; i < m; i++) {
+        if (board[i][0] != 'X' && !visited[i][0])   {
+            regiondfs(board, visited, m, n, i, 0);
+        }
+        if (board[i][n-1] != 'X' && !visited[i][n-1]) {
+            regiondfs(board, visited, m, n, i, n-1);
+        }
+    }
+    //u & d
+    for (j = 0; j < n; j++) {
+        if (board[0][j] != 'X' && !visited[0][j]) {
+            regiondfs(board, visited, m, n, 0, j);
+        }
+        if (board[m - 1][j] != 'X' && !visited[m - 1][j]) {
+            regiondfs(board, visited, m, n, m-1, j);
+        }
+    }
+
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < n; j++) {
+            if (board[i][j] != 'X' && !visited[i][j])
+                board[i][j] = 'X';
+        }
+    }
+    for (i = 0; i < m; i++) {
+        free(visited[i]);
+    }
+    free(visited);
+}
+
 // 134. Gas Station
 int canCompleteCircuit(int* gas, int gasSize, int* cost, int costSize)
 {

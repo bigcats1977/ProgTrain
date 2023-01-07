@@ -32,6 +32,7 @@ FUNCNAME g_tFuncName[] = {
     {113,   TestCase_113 },
     {118,   TestCase_118 },
     {120,   TestCase_120 },
+    {130,   TestCase_130 },
     {136,   TestCase_136 },
     {142,   TestCase_142 },
     {143,   TestCase_143 },
@@ -93,6 +94,25 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_130()
+{
+    vector<vector<char>> matrix;
+    char** p;
+    /*int row=4, col=4;
+    matrix = { {'X','X','X','X'} ,{'X','O','O','X'},{'X','X','O','X'},{'X','O','X','X'}};*/
+    int row = 2, col = 2;
+    matrix = { {'0','0'} ,{'0','0'} };
+    p = (char**)malloc(sizeof(char*) * row);
+    for (int i = 0; i < row; i++) {
+        p[i] = (char*)malloc(sizeof(char) * col);
+        for (int j = 0; j < col; j++) {
+            p[i][j] = matrix[i][j];
+        }
+    }
+
+    solve(p, row, &col);
+}
 
 void TestCase_1091()
 {
