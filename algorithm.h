@@ -291,6 +291,8 @@ int* partitionLabels(char* s, int* returnSize);
 bool isToeplitzMatrix(int** matrix, int matrixSize, int* matrixColSize);
 // 784. Letter Case Permutation
 char** letterCasePermutation(char* s, int* returnSize);
+// 797. All Paths From Source to Target
+int** allPathsSourceTarget(int** graph, int graphSize, int* graphColSize, int* returnSize, int** returnColumnSizes);
 // 841. Keys and Rooms
 bool canVisitAllRooms(int** rooms, int roomsSize, int* roomsColSize);
 // 844. Backspace String Compare

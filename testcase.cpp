@@ -78,6 +78,7 @@ FUNCNAME g_tFuncName[] = {
     {724,   TestCase_724 },
     {746,   TestCase_746 },
     {766,   TestCase_766 },
+    {797,   TestCase_797 },
     {784,   TestCase_784 },
     {844,   TestCase_844 },
     {904,   TestCase_904 },
@@ -95,6 +96,23 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_797()
+{
+    int** p=NULL;
+    int i;
+    int col[4] = { 2,1,1,0 };
+    int rrow, rcol;
+    int* rrcol = &rcol;
+    p = (int**)malloc(4 * sizeof(int*));
+    for (i = 0; i < 4; i++)
+        p[i] = (int*)calloc(4, sizeof(int));
+    p[0][0] = { 1 };
+    p[0][1] = { 2 };
+    p[1][0] = { 3 };
+    p[2][0] = { 3 };
+
+    allPathsSourceTarget(p, 4, &col[0], &rrow, &rrcol);
+}
 void TestCase_130()
 {
     vector<vector<char>> matrix;

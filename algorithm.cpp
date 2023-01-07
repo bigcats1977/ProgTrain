@@ -4297,6 +4297,39 @@ char** letterCasePermutation(char* s, int* returnSize)
     return LCAns;
 }
 
+// 797. All Paths From Source to Target
+int pathST[15] = { 0 };
+void searchAllPath(int** graph, int graphSize, int* graphColSize, int ** ans, int* returnSize, int** returnColumnSizes, int start, int *len)
+{
+    if (start == graphSize-1) {
+        pathST[(*len)++] = start;
+        ans[*returnSize] = (int*)calloc(*len, sizeof(int));
+        (*returnColumnSizes)[*returnSize] = *len;
+        memcpy(ans[*returnSize], &pathST[0], *len*sizeof(int));
+        (*returnSize)++; 
+        (*len)--;
+        return;
+    }
+    for (int i = 0; i < graphColSize[start]; i++)
+    {
+        pathST[(*len)++] = start;
+        searchAllPath(graph, graphSize, graphColSize, ans, returnSize, returnColumnSizes, graph[start][i], len);
+        (*len)--;
+    }
+}
+int** allPathsSourceTarget(int** graph, int graphSize, int* graphColSize, int* returnSize, int** returnColumnSizes)
+{
+    int STLen = 0;
+    int pathnum = 0;
+    int** ans = (int**)malloc(sizeof(int*) * 10000);
+    *returnSize = 0;
+    (*returnColumnSizes) = (int*)malloc(sizeof(int) * 10000);
+
+    searchAllPath(graph, graphSize, graphColSize, ans, returnSize, returnColumnSizes, 0, &STLen);
+
+    return ans;
+}
+
 // 841. Keys and Rooms
 void dfsroom(int** rooms, int* roomsColSize, int cur, bool* visited)
 {
