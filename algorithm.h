@@ -68,6 +68,8 @@ void sortColors(int* nums, int numsSize);
 char* minWindow(char* s, char* t);
 // 77. Combinations
 int** combine(int n, int k, int* returnSize, int** returnColumnSizes);
+// 78. Subsets
+int** subsets(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
 // 79. Word Search
 bool exist(char** board, int boardSize, int* boardColSize, char* word);
 // 82. Remove Duplicates from Sorted List II

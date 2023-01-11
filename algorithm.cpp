@@ -1127,6 +1127,38 @@ int** combine(int n, int k, int* returnSize, int** returnColumnSizes)
     return CombAns;
 }
 
+// 78. Subsets
+int subpath[10] = { 0 };
+int subpathsize = 0;
+void subsetbacktrack(int* nums, int numsSize, int start, int** ans, int** colsize, int* count)
+{
+    ans[*count] = (int*)malloc(sizeof(int*) * subpathsize);
+    (*colsize)[*count] = subpathsize;
+    memcpy(ans[*count], &subpath[0], sizeof(int) * subpathsize);
+    (*count)++;
+    if (start >= numsSize)
+        return;
+
+    for (int i = start; i < numsSize; i++) {
+
+        subpath[subpathsize++] = nums[i];
+        subsetbacktrack(nums, numsSize, i+1, ans, colsize, count);
+        subpathsize--;
+    }
+}
+int** subsets(int* nums, int numsSize, int* returnSize, int** returnColumnSizes)
+{
+    int count = (int)pow(2, numsSize);
+    *returnSize = count;
+    int** ans = (int**)malloc(sizeof(int*)* count);
+    (*returnColumnSizes) = (int*)malloc(sizeof(int) * count);
+    subpathsize = 0;
+    count = 0;
+    subsetbacktrack(nums, numsSize, 0, ans, returnColumnSizes, &count);
+
+    return ans;
+}
+
 // 79. Word Search
 int  searchpos[4][2] = { {-1,0,},{1,0},{0,-1},{0,1} };
 bool searchword(char** board, bool** bmark, int m, int n, int i, int j, char* word)

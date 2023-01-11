@@ -25,6 +25,7 @@ FUNCNAME g_tFuncName[] = {
     {75,    TestCase_75  },
     {76,    TestCase_76  },
     {77,    TestCase_77  },
+    {78,    TestCase_78  },
     {88,    TestCase_88  },
     {102,   TestCase_102 },
     {103,   TestCase_103 },
@@ -95,6 +96,15 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_78()
+{
+    int nums[3] = { 1,2,3 };
+    int rrow, rcol;
+    int* rrcol = &rcol;
+
+    subsets(&nums[0], 3, &rrow, &rrcol);
+}
 
 void TestCase_797()
 {
