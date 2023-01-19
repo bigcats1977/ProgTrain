@@ -1096,7 +1096,7 @@ void CombBackTrack(int n, int k, int start)
         memcpy(CombAns[CurComb++], CombPath, sizeof(int) * k);
         return;
     }
-    for (int i = start; i <= n - (k-CurPath) + 1; i++) {
+    for (int i = start; i <= n - (k - CurPath) + 1; i++) {
         CombPath[CurPath++] = i;
         CombBackTrack(n, k, i + 1);
         CurPath--;
@@ -1142,7 +1142,7 @@ void subsetbacktrack(int* nums, int numsSize, int start, int** ans, int** colsiz
     for (int i = start; i < numsSize; i++) {
 
         subpath[subpathsize++] = nums[i];
-        subsetbacktrack(nums, numsSize, i+1, ans, colsize, count);
+        subsetbacktrack(nums, numsSize, i + 1, ans, colsize, count);
         subpathsize--;
     }
 }
@@ -1150,7 +1150,7 @@ int** subsets(int* nums, int numsSize, int* returnSize, int** returnColumnSizes)
 {
     int count = (int)pow(2, numsSize);
     *returnSize = count;
-    int** ans = (int**)malloc(sizeof(int*)* count);
+    int** ans = (int**)malloc(sizeof(int*) * count);
     (*returnColumnSizes) = (int*)malloc(sizeof(int) * count);
     subpathsize = 0;
     count = 0;
@@ -1722,11 +1722,11 @@ void solve(char** board, int boardSize, int* boardColSize)
 
     //l & r
     for (i = 0; i < m; i++) {
-        if (board[i][0] != 'X' && !visited[i][0])   {
+        if (board[i][0] != 'X' && !visited[i][0]) {
             regiondfs(board, visited, m, n, i, 0);
         }
-        if (board[i][n-1] != 'X' && !visited[i][n-1]) {
-            regiondfs(board, visited, m, n, i, n-1);
+        if (board[i][n - 1] != 'X' && !visited[i][n - 1]) {
+            regiondfs(board, visited, m, n, i, n - 1);
         }
     }
     //u & d
@@ -1735,7 +1735,7 @@ void solve(char** board, int boardSize, int* boardColSize)
             regiondfs(board, visited, m, n, 0, j);
         }
         if (board[m - 1][j] != 'X' && !visited[m - 1][j]) {
-            regiondfs(board, visited, m, n, m-1, j);
+            regiondfs(board, visited, m, n, m - 1, j);
         }
     }
 
@@ -1772,7 +1772,7 @@ int canCompleteCircuit(int* gas, int gasSize, int* cost, int costSize)
     for (int i = 0; i < gasSize; i++)
     {
         int rest = gas[i] - cost[i];
-        int index = (i+1) % gasSize;
+        int index = (i + 1) % gasSize;
         while (rest > 0 && index != i) {
             rest += gas[index] - cost[index];
             int index = (i + 1) % gasSize;
@@ -4124,13 +4124,12 @@ int search(int* nums, int numsSize, int target) {
 int numSubarrayProductLessThanK(int* nums, int numsSize, int k)
 {
     int count = 0;
-    if (k <= 1)
-        return count;
+    if (k <= 1) return count;
 
     int i1 = 0;
     int prod = 1;
 
-    for (int i2 = 0; i2 < numsSize; i2++) {
+    for (int i2 = 0; i2 < numsSize; ++i2) {
         prod *= nums[i2];
 
         while (prod >= k) {
@@ -4331,14 +4330,14 @@ char** letterCasePermutation(char* s, int* returnSize)
 
 // 797. All Paths From Source to Target
 int pathST[15] = { 0 };
-void searchAllPath(int** graph, int graphSize, int* graphColSize, int ** ans, int* returnSize, int** returnColumnSizes, int start, int *len)
+void searchAllPath(int** graph, int graphSize, int* graphColSize, int** ans, int* returnSize, int** returnColumnSizes, int start, int* len)
 {
-    if (start == graphSize-1) {
+    if (start == graphSize - 1) {
         pathST[(*len)++] = start;
         ans[*returnSize] = (int*)calloc(*len, sizeof(int));
         (*returnColumnSizes)[*returnSize] = *len;
-        memcpy(ans[*returnSize], &pathST[0], *len*sizeof(int));
-        (*returnSize)++; 
+        memcpy(ans[*returnSize], &pathST[0], *len * sizeof(int));
+        (*returnSize)++;
         (*len)--;
         return;
     }

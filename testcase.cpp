@@ -108,7 +108,7 @@ void TestCase_78()
 
 void TestCase_797()
 {
-    int** p=NULL;
+    int** p = NULL;
     int i;
     int col[4] = { 2,1,1,0 };
     int rrow, rcol;
