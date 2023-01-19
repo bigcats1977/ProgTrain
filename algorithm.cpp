@@ -1085,47 +1085,82 @@ char* minWindow(char* s, char* t)
 }
 
 // 77. Combinations
-int** CombAns;
-int  CurComb;
-int* CombPath;
-int  CurPath;
-void CombBackTrack(int n, int k, int start)
+void BTcombine(int begin, int n, int k, int* Path, int* len, int** result, int* cursor)
 {
-    if (CurPath == k) {
-        CombAns[CurComb] = (int*)malloc(sizeof(int) * k);
-        memcpy(CombAns[CurComb++], CombPath, sizeof(int) * k);
+    if ((*len) == k)
+    {
+        memcpy(result[(*cursor)++], Path, sizeof(int) * k);
         return;
     }
-    for (int i = start; i <= n - (k - CurPath) + 1; i++) {
-        CombPath[CurPath++] = i;
-        CombBackTrack(n, k, i + 1);
-        CurPath--;
+    for (int i = begin; i <= n; i++) {
+        Path[(*len)++] = i;
+        BTcombine(i + 1, n, k, Path, len, result, cursor);
+        (*len)--;
     }
 }
 int** combine(int n, int k, int* returnSize, int** returnColumnSizes)
 {
-    int i, j;
-    int nums = 1;
-    for (i = n, j = 1; j <= k; i--, j++) {
-        nums *= i;
-        nums /= j;
+    int i;
+    int count = 1;
+    int Path[20] = { 0 };
+    int len = 0;
+    int** ans;
+    for (i = 1; i <= k; i++) {
+        count = count * (n - i + 1) / i;
     }
-
-    *returnSize = nums;
-    CombAns = (int**)malloc(sizeof(int*) * nums);
-    *returnColumnSizes = (int*)malloc(sizeof(int) * nums);
-    CombPath = (int*)malloc(sizeof(int) * k);
-    for (i = 0; i < nums; i++) {
+    ans = (int**)malloc(sizeof(int*) * count);
+    (*returnColumnSizes) = (int*)malloc(sizeof(int) * count);
+    for (i = 0; i < count; i++) {
+        ans[i] = (int*)malloc(sizeof(int) * k);
         (*returnColumnSizes)[i] = k;
     }
-    CurComb = 0;
-    CurPath = 0;
-    CombBackTrack(n, k, 1);
+    *returnSize = count;
 
-    free(CombPath);
-
-    return CombAns;
+    count = 0;
+    BTcombine(1, n, k, Path, &len, ans, &count);
+    return ans;
 }
+//int** CombAns;
+//int  CurComb;
+//int* CombPath;
+//int  CurPath;
+//void CombBackTrack(int n, int k, int start)
+//{
+//    if (CurPath == k) {
+//        CombAns[CurComb] = (int*)malloc(sizeof(int) * k);
+//        memcpy(CombAns[CurComb++], CombPath, sizeof(int) * k);
+//        return;
+//    }
+//    for (int i = start; i <= n - (k - CurPath) + 1; i++) {
+//        CombPath[CurPath++] = i;
+//        CombBackTrack(n, k, i + 1);
+//        CurPath--;
+//    }
+//}
+//int** combine(int n, int k, int* returnSize, int** returnColumnSizes)
+//{
+//    int i, j;
+//    int nums = 1;
+//    for (i = n, j = 1; j <= k; i--, j++) {
+//        nums *= i;
+//        nums /= j;
+//    }
+//
+//    *returnSize = nums;
+//    CombAns = (int**)malloc(sizeof(int*) * nums);
+//    *returnColumnSizes = (int*)malloc(sizeof(int) * nums);
+//    CombPath = (int*)malloc(sizeof(int) * k);
+//    for (i = 0; i < nums; i++) {
+//        (*returnColumnSizes)[i] = k;
+//    }
+//    CurComb = 0;
+//    CurPath = 0;
+//    CombBackTrack(n, k, 1);
+//
+//    free(CombPath);
+//
+//    return CombAns;
+//}
 
 // 78. Subsets
 int subpath[10] = { 0 };
