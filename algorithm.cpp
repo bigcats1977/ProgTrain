@@ -2574,37 +2574,34 @@ int findKthLargest(int* nums, int numsSize, int k)
 // 216. Combination Sum III
 int cbSumPath[9] = { 0 };
 int cbSumLen = 0;
-bool btcbSum3(int begin, int k, int n, int** ans, int *returnSize, int **returnColumnSizes)
+bool btcbSum3(int begin, int sum, int k, int n, int** ans, int *returnSize, int **returnColumnSizes)
 {
     bool bfind = false;
-    if (k == 1)
+    if (k == 0)
     {
-        if (n <= 9)
-        {
-            if (begin <= n)
-            {
-                cbSumPath[cbSumLen] = n;
-                ans[*returnSize] = (int*)malloc(sizeof(int) * (cbSumLen + 1));
-                (*returnColumnSizes)[*returnSize] = (cbSumLen + 1);
-                memcpy(ans[*returnSize], &cbSumPath[0], sizeof(int) * (cbSumLen + 1));
-                (*returnSize)++;
-                for (int i = 0; i <= cbSumLen; i++)
-                    printf("%d ", cbSumPath[i]);
-                printf("\r\n");
-                return true;
-            }
-            else
-                return false;
+        if (sum == n) {
+            //cbSumPath[cbSumLen] = n;
+            ans[*returnSize] = (int*)malloc(sizeof(int) * cbSumLen);
+            (*returnColumnSizes)[*returnSize] = cbSumLen;
+            memcpy(ans[*returnSize], &cbSumPath[0], sizeof(int) * cbSumLen);
+            (*returnSize)++;
+            for (int i = 0; i < cbSumLen; i++)
+                printf("%d ", cbSumPath[i]);
+            printf("\r\n");
+            return true;
         }
+        if (sum > n)
+            return false;
         return true;
     }
 
     for (int i = begin; i <= 9; i++) {
-
-        if (n < i)
+        if (n - sum < i)
             continue;
         cbSumPath[cbSumLen++] = i;
-        bfind = btcbSum3(i + 1, k - 1, n - i, ans, returnSize, returnColumnSizes);
+        sum += i;
+        bfind = btcbSum3(i + 1, sum, k - 1, n, ans, returnSize, returnColumnSizes);
+        sum -= i;
         cbSumLen--;
         if(!bfind)
             break;
@@ -2613,6 +2610,7 @@ bool btcbSum3(int begin, int k, int n, int** ans, int *returnSize, int **returnC
 }
 int** combinationSum3(int k, int n, int* returnSize, int** returnColumnSizes)
 {
+    int sum = 0;
     int** ans = (int**)malloc(sizeof(int*) * 100);
     (*returnColumnSizes) = (int*)malloc(sizeof(int) * 100);
     *returnSize = 0;
@@ -2621,7 +2619,7 @@ int** combinationSum3(int k, int n, int* returnSize, int** returnColumnSizes)
         return ans;
 
     cbSumLen = 0;
-    btcbSum3(1, k, n, ans, returnSize, returnColumnSizes);
+    btcbSum3(1, sum, k, n, ans, returnSize, returnColumnSizes);
 
     return ans;
 }
