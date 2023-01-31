@@ -1733,6 +1733,7 @@ int maxProfit(int* prices, int pricesSize)
     return max;
 }
 
+
 // 130. Surrounded Regions
 int regions[4][2] = { {-1,0},{1,0},{0,-1},{0,1} };
 void regiondfs(char** board, bool** visited, int m, int n, int curx, int cury)
@@ -2568,6 +2569,61 @@ int findKthLargest(int* nums, int numsSize, int k)
     qsort(nums, numsSize,sizeof(int), klargecmp);
 
     return nums[numsSize - k];
+}
+
+// 216. Combination Sum III
+int cbSumPath[9] = { 0 };
+int cbSumLen = 0;
+bool btcbSum3(int begin, int k, int n, int** ans, int *returnSize, int **returnColumnSizes)
+{
+    bool bfind = false;
+    if (k == 1)
+    {
+        if (n <= 9)
+        {
+            if (begin <= n)
+            {
+                cbSumPath[cbSumLen] = n;
+                ans[*returnSize] = (int*)malloc(sizeof(int) * (cbSumLen + 1));
+                (*returnColumnSizes)[*returnSize] = (cbSumLen + 1);
+                memcpy(ans[*returnSize], &cbSumPath[0], sizeof(int) * (cbSumLen + 1));
+                (*returnSize)++;
+                for (int i = 0; i <= cbSumLen; i++)
+                    printf("%d ", cbSumPath[i]);
+                printf("\r\n");
+                return true;
+            }
+            else
+                return false;
+        }
+        return true;
+    }
+
+    for (int i = begin; i <= 9; i++) {
+
+        if (n < i)
+            continue;
+        cbSumPath[cbSumLen++] = i;
+        bfind = btcbSum3(i + 1, k - 1, n - i, ans, returnSize, returnColumnSizes);
+        cbSumLen--;
+        if(!bfind)
+            break;
+    }
+    return true;
+}
+int** combinationSum3(int k, int n, int* returnSize, int** returnColumnSizes)
+{
+    int** ans = (int**)malloc(sizeof(int*) * 100);
+    (*returnColumnSizes) = (int*)malloc(sizeof(int) * 100);
+    *returnSize = 0;
+
+    if (n > 45 || k > n)
+        return ans;
+
+    cbSumLen = 0;
+    btcbSum3(1, k, n, ans, returnSize, returnColumnSizes);
+
+    return ans;
 }
 
 // 217. Contains Duplicate

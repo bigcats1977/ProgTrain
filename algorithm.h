@@ -168,6 +168,8 @@ int minSubArrayLen(int target, int* nums, int numsSize);
 char** findWords(char** board, int boardSize, int* boardColSize, char** words, int wordsSize, int* returnSize);
 // 215. Kth Largest Element in an Array
 int findKthLargest(int* nums, int numsSize, int k);
+// 216. Combination Sum III
+int** combinationSum3(int k, int n, int* returnSize, int** returnColumnSizes);
 // 217. Contains Duplicate
 bool containsDuplicate(int* nums, int numsSize);
 // 222. Count Complete Tree Nodes

@@ -49,6 +49,7 @@ FUNCNAME g_tFuncName[] = {
     {206,   TestCase_206 },
     {209,   TestCase_209 },
     {212,   TestCase_212 },
+    {216,   TestCase_216 },
     {217,   TestCase_217 },
     {240,   TestCase_240 },
     {242,   TestCase_242 },
@@ -96,6 +97,14 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_216()
+{
+    int rrow, rcol;
+    int* rrcol = &rcol;
+
+    combinationSum3(3, 15, &rrow, &rrcol);
+}
 
 void TestCase_78()
 {
