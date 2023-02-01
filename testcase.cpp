@@ -86,6 +86,7 @@ FUNCNAME g_tFuncName[] = {
     {904,   TestCase_904 },
     {977,   TestCase_977 },
     {1047,  TestCase_1047},
+    {1071,  TestCase_1071},
     {1091,  TestCase_1091},
     {1143,  TestCase_1143},
     {1239,  TestCase_1239},
@@ -97,6 +98,22 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_1071()
+{
+    char* result;
+    string s1 = "ABCABC", s2 = "ABC";
+    result = gcdOfStrings(&*s1.begin(), &*s2.begin());
+    printf("%s", result);
+
+    s1 = "ABABAB", s2 = "ABAB";
+    result = gcdOfStrings(&*s1.begin(), &*s2.begin());
+    printf("%s", result);
+
+    s1 = "LETF", s2 = "CODE";
+    result = gcdOfStrings(&*s1.begin(), &*s2.begin());
+    printf("%s", result);
+}
 
 void TestCase_216()
 {

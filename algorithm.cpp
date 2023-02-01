@@ -4816,6 +4816,53 @@ char* removeDuplicates(char* s)
     return res;
 }
 
+// 1071. Greatest Common Divisor of Strings
+char* gcdOfStrings(char* str1, char* str2)
+{
+    size_t i;
+    size_t len1 = strlen(str1), len2 = strlen(str2);
+    char* sum1 = (char*)calloc(1, len1 + len2 + 1);
+    char* sum2 = (char*)calloc(1, len1 + len2 + 1);
+    memcpy(sum1, str1, len1);
+    memcpy(sum2, str2, len2);
+    memcpy(&sum1[len1], str2, len2);
+    memcpy(&sum2[len2], str1, len1);
+    if (memcmp(sum1, sum2, len1 + len2) != 0)
+    {
+        free(sum1);
+        free(sum2); 
+        return NULL;
+    }
+
+    while (len1 != len2)
+    {
+        if (len1 > len2)
+            len1 -= len2;
+        if (len1 < len2)
+            len2 -= len1;
+    }
+    size_t minlen = len1;
+    char* str = (char*)calloc(1, minlen + 1);
+    for (i = 0; i < minlen; i++)
+        memcpy(str, str1, minlen);
+
+    for (i = 0; i < strlen(str1) / minlen; i++)
+        memcpy(&sum1[i * minlen], str, minlen);
+    for (i = 0; i < strlen(str2) / minlen; i++)
+        memcpy(&sum2[i * minlen], str, minlen);
+    if ((memcmp(str1, sum1, strlen(str1)) != 0) ||
+        (memcmp(str2, sum2, strlen(str2)) != 0))
+    {
+        free(sum1);
+        free(sum2);
+        free(str);
+        return NULL;
+    }
+    free(sum1);
+    free(sum2);
+    return str;
+}
+
 // 1091. Shortest Path in Binary Matrix
 int eight[8][2] = { {1,1}, {1,0},{0,1},{-1,1},{1,-1},{-1,0},{0,-1},{-1,-1} };
 void  dfsBM(int** grid, int gridSize, int i, int j)

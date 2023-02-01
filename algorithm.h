@@ -319,6 +319,8 @@ int findJudge(int n, int** trust, int trustSize, int* trustColSize);
 int lastStoneWeight(int* stones, int stonesSize);
 // 1047. Remove All Adjacent Duplicates In String
 char* removeDuplicates(char* s);
+// 1071. Greatest Common Divisor of Strings
+char* gcdOfStrings(char* str1, char* str2);
 // 1091. Shortest Path in Binary Matrix
 int shortestPathBinaryMatrix(int** grid, int gridSize, int* gridColSize);
 // 1143. Longest Common Subsequence
