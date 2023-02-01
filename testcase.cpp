@@ -6,6 +6,7 @@ FUNCNAME g_tFuncName[] = {
     {1,     TestCase_1   },
     {3,     TestCase_3   },
     {15,    TestCase_15  },
+    {17,    TestCase_17  },
     {19,    TestCase_19  },
     {20,    TestCase_20  },
     {24,    TestCase_24  },
@@ -99,6 +100,12 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_17()
+{
+    int count = 0;
+    string digits = "7";
+    letterCombinations(&*digits.begin(), &count);
+}
 void TestCase_1071()
 {
     char* result;

@@ -14,6 +14,8 @@ char* longestPalindromeI(char* s);
 int maxArea(int* height, int heightSize);
 // 15. 3Sum
 int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
+// 17. Letter Combinations of a Phone Number
+char** letterCombinations(char* digits, int* returnSize);
 // 19. Remove Nth Node From End of List
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n);
 // 20. Valid Parentheses

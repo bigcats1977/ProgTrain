@@ -176,6 +176,48 @@ int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes
     return ans;
 }
 
+// 17. Letter Combinations of a Phone Number
+char lettermap[8][4] = {
+    {'a','b','c', 0},
+    {'d','e','f', 0},
+    {'g','h','i', 0},
+    {'j','k','l', 0},
+    {'m','n','o', 0},
+    {'p','q','r', 's'},
+    {'t','u','v', 0},
+    {'w','x','y', 'z'},
+};
+char lc_path[4] = { 0 };
+void bt_letterComb(char* digits, int len, int pos, int* count, char** ans)
+{
+    if (pos == len)
+    {
+        ans[*count] = (char*)calloc(1, len+1);
+        memcpy(ans[*count], lc_path, len);
+        (*count)++;
+        return;
+    }
+
+    for (int i = 0; i < 4; i++)
+    {
+        char letter = lettermap[digits[pos] - '2'][i];
+        if (letter == 0)
+            continue;
+        lc_path[pos] = letter;
+        bt_letterComb(digits, len, pos + 1, count, ans);
+    }
+}
+char** letterCombinations(char* digits, int* returnSize)
+{
+    int len = (int)strlen(digits);
+    char** ans = (char**)malloc(sizeof(char*) * (int)pow(4, len));
+    *returnSize = 0;
+    if (len == 0)
+        return ans;
+    bt_letterComb(digits, len, 0, returnSize, ans);
+    return ans;
+}
+
 // 19. Remove Nth Node From End of List
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n)
 {
