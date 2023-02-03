@@ -590,6 +590,47 @@ int** combinationSum(int* candidates, int candidatesSize, int target, int* retur
 
     return ans;
 }
+
+// 40. Combination Sum II
+int cbSum2Path[30];
+int cbSum2Len;
+int cbSum2Cmp(const void* a, const void* b)
+{
+    return (*(int*)a - *(int*)b);
+}
+void btcbSum2(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes, int ** ans, int start, int sum)
+{
+    if (sum > target)
+        return;
+    if (sum == target) {
+        ans[*returnSize] = (int*)malloc(sizeof(int) * cbSum2Len);
+        (*returnColumnSizes)[*returnSize] = cbSum2Len;
+        memcpy(ans[*returnSize], cbSum2Path, cbSum2Len * sizeof(int));
+        *returnSize = cbSum2Len;
+        return;
+    }
+
+    for (int i = start; i < candidatesSize; i++) {
+        cbSum2Path[cbSum2Len++] = candidates[i];
+        sum += candidates[i];
+
+        btcbSum2(candidates, candidatesSize, target, returnSize, returnColumnSizes, ans, i+1, sum);
+        sum -= candidates[i];
+        cbSum2Len--;
+    }
+}
+int** combinationSum2(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes)
+{
+    int** ans = (int**)malloc(sizeof(int*) * 1000);
+    (*returnColumnSizes) = (int*)malloc(sizeof(int) * 1000);
+    cbSum2Len = 0;
+    *returnSize = 0;
+
+    qsort(candidates, candidatesSize, sizeof(int), cbSum2Cmp);
+    btcbSum2(candidates, candidatesSize, target, returnSize, returnColumnSizes, ans, 0, 0);
+
+    return ans;
+}
 // 43. Multiply Strings
 char* multiply(char* num1, char* num2)
 {

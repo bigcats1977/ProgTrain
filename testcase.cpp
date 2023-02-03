@@ -17,6 +17,7 @@ FUNCNAME g_tFuncName[] = {
     {34,    TestCase_34  },
     {35,    TestCase_35  },
     {39,    TestCase_39  },
+    {40,    TestCase_40  },
     {43,    TestCase_43  },
     {49,    TestCase_49  },
     {53,    TestCase_53  },
@@ -109,6 +110,16 @@ void TestCase_39()
     int* rrcol = &rcol;
 
     combinationSum(candidates.data(),(int)candidates.size(), target, &rrow, &rrcol);
+}
+
+void TestCase_40()
+{
+    vector<int> candidates = { 10,1,2,7,6,1,5 };
+    int target = 8;
+    int rrow, rcol;
+    int* rrcol = &rcol;
+
+    combinationSum2(candidates.data(), (int)candidates.size(), target, &rrow, &rrcol);
 }
 
 void TestCase_17()

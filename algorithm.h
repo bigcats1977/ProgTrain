@@ -42,6 +42,8 @@ int searchInsert(int* nums, int numsSize, int target);
 bool isValidSudoku(char** board, int boardSize, int* boardColSize);
 // 39. Combination Sum
 int** combinationSum(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes);
+// 40. Combination Sum II
+int** combinationSum2(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes);
 // 43. Multiply Strings
 char* multiply(char* num1, char* num2);
 // 46. Permutations
