@@ -545,6 +545,51 @@ int searchInsert(int* nums, int numsSize, int target)
     return left;
 }
 
+// 39. Combination Sum
+int cbPath[40];
+int cbPathLen;
+void btCombSum(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes, int ** ans, int start, int sum)
+{
+    int i = 0;
+    if (sum > target)
+    {
+        return;
+    }
+    if (sum == target) {
+        (*returnColumnSizes)[*returnSize] = cbPathLen;
+        ans[*returnSize] = (int*)malloc(sizeof(int) * cbPathLen);
+        memcpy(ans[*returnSize], cbPath, cbPathLen * sizeof(int));
+        for (i = 0; i < cbPathLen; i++) {
+            printf("%d ", cbPath[i]);
+        }
+        printf("\r\n");
+        (*returnSize)++;
+        return;
+    }
+    for (i = start; i < candidatesSize; i++) {
+        cbPath[cbPathLen++] = candidates[i];
+        sum += candidates[i];
+
+        btCombSum(candidates, candidatesSize, target, returnSize, returnColumnSizes, ans, i, sum);
+
+        sum -= candidates[i];
+        cbPathLen--;
+    }
+}
+int** combinationSum(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes)
+{
+    int** ans;
+    int Sum = 0;
+
+    cbPathLen = 0;
+    *returnSize = 0;
+    ans = (int**)malloc(sizeof(int*) * 1000);
+    (*returnColumnSizes) = (int*)malloc(sizeof(int) * 1000);
+
+    btCombSum(candidates, candidatesSize, target, returnSize, returnColumnSizes, ans, 0, Sum);
+
+    return ans;
+}
 // 43. Multiply Strings
 char* multiply(char* num1, char* num2)
 {
