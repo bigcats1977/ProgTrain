@@ -120,6 +120,10 @@ void TestCase_40()
     int* rrcol = &rcol;
 
     combinationSum2(candidates.data(), (int)candidates.size(), target, &rrow, &rrcol);
+
+    candidates = { 2, 5, 2, 1, 2 };
+    target = 5;
+    combinationSum2(candidates.data(), (int)candidates.size(), target, &rrow, &rrcol);
 }
 
 void TestCase_17()
