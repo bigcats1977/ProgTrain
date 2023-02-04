@@ -598,31 +598,29 @@ int cbSum2Cmp(const void* a, const void* b)
 {
     return (*(int*)a - *(int*)b);
 }
-void btcbSum2(int* candidates, int candidatesSize, bool *used, int target, int* returnSize, int** returnColumnSizes, int ** ans, int start, int sum)
+void btcbSum2(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes, int ** ans, int start, int sum)
 {
-    /*if (sum > target)
-        return;*/
     if (sum == target) {
         ans[*returnSize] = (int*)malloc(sizeof(int) * cbSum2Len);
         (*returnColumnSizes)[*returnSize] = cbSum2Len;
         memcpy(ans[*returnSize], cbSum2Path, cbSum2Len * sizeof(int));
         (*returnSize)++;
-        for (int i = 0; i < cbSum2Len; i++)
+        /*for (int i = 0; i < cbSum2Len; i++)
             printf("%d ", cbSum2Path[i]);
-        printf("\r\n");
+        printf("\r\n");*/
         return;
     }
 
     for (int i = start; i < candidatesSize && sum + candidates[i] <= target; i++) {
-        if (i > 0 && candidates[i] == candidates[i - 1] && used[i - 1] == false)
+        if (i > start && candidates[i] == candidates[i - 1] )
             continue;
         cbSum2Path[cbSum2Len++] = candidates[i];
         sum += candidates[i];
-        used[i] = true;
+        //used[i] = true;
 
-        btcbSum2(candidates, candidatesSize, used, target, returnSize, returnColumnSizes, ans, i+1, sum);
+        btcbSum2(candidates, candidatesSize, target, returnSize, returnColumnSizes, ans, i+1, sum);
         sum -= candidates[i];
-        used[i] = false;
+        //used[i] = false;
         cbSum2Len--;
     }
 }
@@ -632,12 +630,12 @@ int** combinationSum2(int* candidates, int candidatesSize, int target, int* retu
     (*returnColumnSizes) = (int*)malloc(sizeof(int) * 1000);
     cbSum2Len = 0;
     *returnSize = 0;
-    bool* used = (bool*)calloc(candidatesSize, sizeof(bool));
+    //bool* used = (bool*)calloc(candidatesSize, sizeof(bool));
 
     qsort(candidates, candidatesSize, sizeof(int), cbSum2Cmp);
-    btcbSum2(candidates, candidatesSize, used, target, returnSize, returnColumnSizes, ans, 0, 0);
+    btcbSum2(candidates, candidatesSize,target, returnSize, returnColumnSizes, ans, 0, 0);
 
-    free(used);
+    //free(used);
     return ans;
 }
 
