@@ -118,6 +118,8 @@ int minimumTotal(int** triangle, int triangleSize, int* triangleColSize);
 int maxProfit(int* prices, int pricesSize);
 // 130. Surrounded Regions
 void solve(char** board, int boardSize, int* boardColSize);
+// 131. Palindrome Partitioning
+char*** partition(char* s, int* returnSize, int** returnColumnSizes);
 // 134. Gas Station
 int canCompleteCircuit(int* gas, int gasSize, int* cost, int costSize);
 // 136. Single Number
