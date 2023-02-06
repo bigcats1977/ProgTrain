@@ -339,6 +339,8 @@ int maxLength(char** arr, int arrSize);
 char* minRemoveToMakeValid(char* s);
 // 1323. Maximum 69 Number
 int maximum69Number(int num);
+// 1470. Shuffle the Array
+int* shuffle(int* nums, int numsSize, int n, int* returnSize);
 // 1480. Running Sum of 1d Array
 int* runningSum(int* nums, int numsSize, int* returnSize);
 // 1544. Make The String Great

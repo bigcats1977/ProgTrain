@@ -5222,6 +5222,19 @@ int maximum69Number(int num)
     return num;
 }
 
+// 1470. Shuffle the Array
+int* shuffle(int* nums, int numsSize, int n, int* returnSize)
+{
+    int* ans = (int*)malloc(sizeof(int) * numsSize);
+    *returnSize = numsSize;
+    for (int i = 0; i < n; i++)
+    {
+        ans[2 * i] = nums[i];
+        ans[2 * i + 1] = nums[n + i];
+    }
+    return ans;
+}
+
 // 1480. Running Sum of 1d Array
 int* runningSum(int* nums, int numsSize, int* returnSize)
 {
