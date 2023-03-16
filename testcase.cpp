@@ -5,6 +5,7 @@
 FUNCNAME g_tFuncName[] = {
     {1,     TestCase_1   },
     {3,     TestCase_3   },
+    {7,     TestCase_7   },
     {15,    TestCase_15  },
     {17,    TestCase_17  },
     {19,    TestCase_19  },
@@ -101,6 +102,27 @@ FUNCNAME g_tFuncName[] = {
     {1832,  TestCase_1832},
     {8058,  TestCase_8058},
 };
+
+void TestCase_7()
+{
+    int x = 123;
+    int result = 0;
+
+    result = reverse(x);
+    COMPVALUE(321, result);
+
+    x = 120;
+    result = reverse(x);
+    COMPVALUE(21, result);
+
+    x = -123;
+    result = reverse(x);
+    COMPVALUE(-321, result);
+
+    x = 1534236469;
+    result = reverse(x);
+    COMPVALUE(9646324351, result);
+}
 
 void TestCase_39()
 {

@@ -10,6 +10,8 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2);
 int lengthOfLongestSubstring(char* s);
 // 5. Longest Palindromic Substring
 char* longestPalindromeI(char* s);
+// 7. Reverse Integer
+int reverse(int x);
 // 11. Container With Most Water
 int maxArea(int* height, int heightSize);
 // 15. 3Sum
