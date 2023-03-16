@@ -1656,6 +1656,36 @@ struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int in
     return root;
 }
 
+/*
+* Input: inorder = [9,3,15,20,7], postorder = [9,15,7,20,3]
+Output: [3,9,20,null,null,15,7]
+*/
+// 106. Construct Binary Tree from Inorder and Postorder Traversal
+struct TreeNode* buildTree106(int* inorder, int inorderSize, int* postorder, int postorderSize)
+{
+    if (postorderSize <= 0)
+        return NULL;
+
+    struct TreeNode* root = (struct TreeNode*)calloc(sizeof(struct TreeNode), 1);
+    int left, right, i;
+    root->val = postorder[postorderSize-1];
+    if (postorderSize == 1)
+        return root;
+
+    for (i = 0; i < inorderSize; i++) {
+        if (inorder[i] == root->val)
+        {
+            left = i;
+            right = inorderSize - i - 1;
+            break;
+        }
+    }
+
+    root->left = buildTree(&inorder[0], left, &postorder[0], left);
+    root->right = buildTree(&inorder[i + 1], right, &postorder[i], right);
+    return root;
+}
+
 // 108. Convert Sorted Array to Binary Search Tree
 struct TreeNode* sortedArrayToBST(int* nums, int numsSize)
 {

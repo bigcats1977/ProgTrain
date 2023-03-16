@@ -98,6 +98,8 @@ int** zigzagLevelOrder(struct TreeNode* root, int* returnSize, int** returnColum
 int maxDepth(struct TreeNode* root);
 // 105. Construct Binary Tree from Preorder and Inorder Traversal
 struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int inorderSize);
+// 106. Construct Binary Tree from Inorder and Postorder Traversal
+struct TreeNode* buildTree106(int* inorder, int inorderSize, int* postorder, int postorderSize);
 // 108. Convert Sorted Array to Binary Search Tree
 struct TreeNode* sortedArrayToBST(int* nums, int numsSize);
 // 112. Path Sum
