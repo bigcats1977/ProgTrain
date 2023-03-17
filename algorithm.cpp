@@ -116,23 +116,16 @@ char* longestPalindromeI(char* s)
 // 7. Reverse Integer
 int reverse(int x)
 {
-    int flag = 1;
     long long result = 0;
 
-    if (x < 0)
+    while (x)
     {
-        x *= -1;
-        flag = -1;
-    }
-    while (x > 0)
-    {
-        result *= 10;
-        if (result > pow(2, 31))
-            return 0;
-        result += x % 10;
+        result = result * 10 + x % 10;
         x = x / 10;
+        if (result > INT_MAX || result < INT_MIN)
+            return 0;
     }
-    return int(flag * result);
+    return result;
 }
 
 // 11. Container With Most Water
