@@ -361,26 +361,23 @@ struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2)
 // 24. Swap Nodes in Pairs
 struct ListNode* swapPairs(struct ListNode* head)
 {
-    struct ListNode * cur = head, *next, *prior;
-    struct ListNode* dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    struct ListNode* Dummy, *prior, * nextnode;
 
-    dummy->next = head;
-    prior = dummy;
-    cur = head;
-    while (cur && cur->next) {
-        next = cur->next;
-        prior->next = next;
-        cur->next = next->next;
-        next->next = cur;
-
-        prior = cur;
-        cur = cur->next;
+    Dummy = (struct ListNode*)calloc(1, sizeof(struct ListNode));
+    Dummy->next = head;
+    prior = Dummy;
+    while (prior->next != NULL && prior->next->next != NULL)
+    {
+        nextnode = prior->next->next;
+        prior->next->next = nextnode->next;
+        nextnode->next = prior->next;
+        prior->next = nextnode;
+        prior = nextnode->next;
     }
 
-    cur = dummy->next;
-    free(dummy);
-
-    return cur;
+    head = Dummy->next;
+    free(Dummy);
+    return head;
 }
 
 // 25. Reverse Nodes in k - Group
