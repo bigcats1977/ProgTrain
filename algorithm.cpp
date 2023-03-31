@@ -125,7 +125,7 @@ int reverse(int x)
         if (result > INT_MAX || result < INT_MIN)
             return 0;
     }
-    return result;
+    return (int)result;
 }
 
 // 11. Container With Most Water
@@ -236,29 +236,22 @@ char** letterCombinations(char* digits, int* returnSize)
 // 19. Remove Nth Node From End of List
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n)
 {
-    struct ListNode* dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
-    struct ListNode* fast = dummy, * slow = dummy;
+    struct ListNode* dummy = (struct ListNode*)calloc(1, sizeof(struct ListNode));
+    struct ListNode* fast = head, * slow = dummy, *temp;
     dummy->next = head;
-
-    while (fast && n> 0) {
-        n--;
+    for (int i = 0; i < n; i++)
         fast = fast->next;
-    }
-    fast = fast->next;
     while (fast)
     {
-        fast = fast->next;
         slow = slow->next;
+        fast = fast->next;
     }
-
-    fast = slow->next;
-    slow->next = slow->next->next;
-    free(fast);
-
-    slow = dummy->next;
+    temp = slow->next;
+    slow->next = temp->next;
+    free(temp);
+    head = dummy->next;
     free(dummy);
-
-    return slow;
+    return head;
 }
 
 // 20. Valid Parentheses
