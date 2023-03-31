@@ -2314,40 +2314,46 @@ void minStackFree(MinStack* obj) {
 // 160. Intersection of Two Linked Lists
 struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* headB)
 {
-    struct ListNode* nodeA = headA, * nodeB = headB;
-    int lenA = 0, lenB = 0, diff;
-
-    while (nodeA) {
-        lenA++;
-        nodeA = nodeA->next;
-    }
-    while (nodeB) {
-        lenB++;
-        nodeB = nodeB->next;
-    }
-    if (lenA > lenB) {
-        diff = lenA - lenB;
-        nodeA = headA;
-        nodeB = headB;
-    }
-    else {
-            diff = lenB - lenA;
-            nodeB = headA;
-            nodeA = headB;
-    }
-    while (diff) {
-        diff--;
-        nodeA = nodeA->next;
-    }
-    while (nodeB)
+    int lenA = 0, lenB = 0, gap = 0;
+    struct ListNode* curA, *curB;
+    curA = headA;
+    while (curA)
     {
-        if (nodeA == nodeB)
-            return nodeA;
-        nodeA = nodeA->next;
-        nodeB = nodeB->next;
+        lenA++;
+        curA = curA->next;
     }
-        
-    return nodeB;
+    curB = headB;
+    while (curB)
+    {
+        lenB++;
+        curB = curB->next;
+    }
+
+    if (lenA > lenB)
+    {
+        gap = lenA - lenB;
+        curA = headA;
+        curB = headB;
+    }
+    else
+    {
+        gap = lenB - lenA;
+        curA = headB;
+        curB = headA;
+    }
+    while (gap)
+    {
+        gap--;
+        curA = curA->next;
+    }
+    while (curA && curB)
+    {
+        if (curA == curB)
+            return curA;
+        curA = curA->next;
+        curB = curB->next;
+    }
+    return NULL;
 }
 
 // 162. Find Peak Element
