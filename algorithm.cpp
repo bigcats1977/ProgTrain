@@ -5591,11 +5591,22 @@ char* replacespace(char* s)
 }
 
 // ½£Ö¸ Offer 58 - II.×óĞı×ª×Ö·û´®
+// ÊäÈë: s = "abcdefg", k = 2
+// Êä³ö: "cdefgab"
 string reverseLeftWords(string s, int n)
 {
     reverseString(&*s.begin(), n);
     reverseString(&*s.begin() + n, (int)s.length() - n);
     reverseString(&*s.begin(), (int)s.length());
+    return s;
+}
 
+
+char* reverseLeftWords(char* s, int n)
+{
+    int len = (int)strlen(s);
+    reverseString(s, len);
+    reverseString(&s[0], len - n);
+    reverseString(&s[len-n], n);
     return s;
 }

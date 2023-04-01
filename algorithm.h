@@ -367,3 +367,4 @@ int longestPalindrome(char** words, int wordsSize);
 char* replacespace(char* s);
 // ½£Ö¸ Offer 58 - II.×óÐý×ª×Ö·û´®
 string reverseLeftWords(string s, int n);
+char* reverseLeftWords(char* s, int n);

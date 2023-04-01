@@ -1185,6 +1185,15 @@ void TestCase_8058()
     string s, expect;
 
     s = "abcdefg";
+    printf("%s\r\n", s.c_str());
+    reverseLeftWords(&*s.begin(), 2);
+    printf("%s\r\n", s.c_str());
+    s = "lrloseumgh";
+    printf("%s\r\n", s.c_str());
+    reverseLeftWords(&*s.begin(), 6);
+    printf("%s\r\n", s.c_str());
+
+    s = "abcdefg";
     expect = "cdefgab";
     cout << "expect:" << expect << endl;
     cout << "output:" << reverseLeftWords(s, 2) << endl;
