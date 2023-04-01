@@ -308,16 +308,31 @@ bool isValid(char* s)
         return false;
     return true;
 #else
-    int i, len = (int)strlen(s);
-    char* tempStack = (char*)malloc(len);
+    //int i, len = (int)strlen(s);
+    //char* tempStack = (char*)malloc(len);
+    //int top = -1;
+    //if (len % 2 == 1)
+    //    return false;
+    //for (i = 0; i < len; i++) {
+    //    tempStack[++top] = s[i];
+    //    top = checkParent(tempStack, top);
+    //}
+    //if (top > 0) return false;
+    //return true;
+    int len = strlen(s);
     int top = -1;
-    if (len % 2 == 1)
-        return false;
-    for (i = 0; i < len; i++) {
-        tempStack[++top] = s[i];
-        top = checkParent(tempStack, top);
+    char* stack = (char*)calloc(len, sizeof(char));
+    for (int i = 0; i < len; i++) {
+        if (s[i] == '(') stack[++top] = ')';
+        else if (s[i] == '[') stack[++top] = ']';
+        else if (s[i] == '{') stack[++top] = '}';
+        else if (top == -1 || stack[top] != s[i])
+            return false;
+        else
+            top--;
     }
-    if (top > 0) return false;
+    if (top >= 0)
+        return false;
     return true;
 #endif
 }
