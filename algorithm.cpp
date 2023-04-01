@@ -2189,6 +2189,43 @@ int* postorderTraversal(struct TreeNode* root, int* returnSize)
 }
 
 // 151. Reverse Words in a String
+void removespace(char* s)
+{
+    int slow = 0;
+    for (int i = 0; i < strlen(s); i++) {
+        if (s[i] != ' ') {
+            if (slow != 0) s[slow++] = ' ';
+            while (i < strlen(s) && s[i] != ' ')
+                s[slow++] = s[i++];
+        }
+    }
+    s[slow] = '\0';
+}
+void reverse(char* s, int len)
+{
+    for (int i = 0; i < len / 2; i++) {
+        s[i] ^= s[len - 1 - i];
+        s[len - 1 - i] ^= s[i];
+        s[i] ^= s[len - 1 - i];
+    }
+}
+char* reverseWords(char* s) {
+    removespace(s);
+    if (strlen(s) == 0)
+        return NULL;
+
+    int len = (int)strlen(s), left = 0;
+    reverse(s, len);
+    for (int i = 0; i <= len; i++) {
+        if (i == len || s[i] == ' ') {
+            reverse(&s[left], i - left);
+            left = i + 1;
+        }
+    }
+
+    return s;
+}
+#if 0
 int reverseExtraspace(char* s)
 {
     int len = (int)strlen(s);
@@ -2243,7 +2280,7 @@ char* reverseWords(char* s)
 
     return result;
 }
-
+#endif
 // 153. Find Minimum in Rotated Sorted Array
 int findMin(int* nums, int numsSize)
 {
