@@ -5121,23 +5121,36 @@ int lastStoneWeight(int* stones, int stones_length)
 // 1047. Remove All Adjacent Duplicates In String
 char* removeDuplicates(char* s)
 {
-    int i;
-    int idx = -1;
-    int len = (int)strlen(s);
+    //int i;
+    //int idx = -1;
+    //int len = (int)strlen(s);
 
-    char* res = (char*)malloc(len);
-    
-    for (i = 0; i < len; i++)
-    {
-        if (idx >= 0 && res[idx] == s[i])
-            idx--;
-        else {
-            res[++idx] = s[i];
-        }
+    //char* res = (char*)malloc(len);
+    //
+    //for (i = 0; i < len; i++)
+    //{
+    //    if (idx >= 0 && res[idx] == s[i])
+    //        idx--;
+    //    else {
+    //        res[++idx] = s[i];
+    //    }
+    //}
+    //res[++idx] = '\0';
+
+    //return res;
+    int len = strlen(s);
+    char* result = (char*)calloc(len + 1, sizeof(char));
+    int top = -1;
+    for (int i = 0; i < len; i++) {
+        if (top >= 0 && s[i] == result[top])
+            top--;
+        else
+            result[++top] = s[i];
     }
-    res[++idx] = '\0';
 
-    return res;
+    printf("top:%d", top);
+    result[++top] = '\0';
+    return result;
 }
 
 // 1071. Greatest Common Divisor of Strings
