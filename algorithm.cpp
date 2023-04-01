@@ -319,7 +319,7 @@ bool isValid(char* s)
     //}
     //if (top > 0) return false;
     //return true;
-    int len = strlen(s);
+    int len = (int)strlen(s);
     int top = -1;
     char* stack = (char*)calloc(len, sizeof(char));
     for (int i = 0; i < len; i++) {
@@ -2201,6 +2201,44 @@ int* postorderTraversal(struct TreeNode* root, int* returnSize)
     postorder(root, ans, &index);
     *returnSize = index;
     return ans;
+}
+
+// 150. Evaluate Reverse Polish Notation
+int evalRPN(char** tokens, int tokensSize) {
+    long result = 0;
+    long* stack = (long*)malloc(tokensSize * sizeof(long));
+    int top = -1;
+    for (int i = 0; i < tokensSize; i++)
+    {
+        if ((strlen(tokens[i]) == 1) && (tokens[i][0] == '+' || tokens[i][0] == '-' || tokens[i][0] == '*' || tokens[i][0] == '/'))
+        {
+            long num1, num2;
+            num2 = stack[top--];
+            num1 = stack[top--];
+            switch (tokens[i][0]) {
+            case '+':
+                stack[++top] = num1 + num2;
+                break;
+            case '-':
+                stack[++top] = num1 - num2;
+                break;
+            case '*':
+                stack[++top] = num1 * num2;
+                break;
+            case '/':
+                stack[++top] = num1 / num2;
+                break;
+            }
+        }
+        else
+        {
+            stack[++top] = atoi(tokens[i]);
+        }
+    }
+
+    result = stack[top];
+    free(stack);
+    return result;
 }
 
 // 151. Reverse Words in a String
@@ -5138,7 +5176,7 @@ char* removeDuplicates(char* s)
     //res[++idx] = '\0';
 
     //return res;
-    int len = strlen(s);
+    int len = (int)strlen(s);
     char* result = (char*)calloc(len + 1, sizeof(char));
     int top = -1;
     for (int i = 0; i < len; i++) {
@@ -5148,7 +5186,6 @@ char* removeDuplicates(char* s)
             result[++top] = s[i];
     }
 
-    printf("top:%d", top);
     result[++top] = '\0';
     return result;
 }

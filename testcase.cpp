@@ -41,6 +41,7 @@ FUNCNAME g_tFuncName[] = {
     {136,   TestCase_136 },
     {142,   TestCase_142 },
     {143,   TestCase_143 },
+    {150,   TestCase_150 },
     {151,   TestCase_151 },
     {153,   TestCase_153 },
     {160,   TestCase_160 },
@@ -104,6 +105,13 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_150()
+{
+    char* result;
+    string s = "We are happy.";
+    result = replacespace(&*s.begin());
+    printf("%s\r\n%s", s.c_str(), result);
+}
 
 void TestCase_8005()
 {
