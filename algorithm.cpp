@@ -2110,12 +2110,14 @@ bool hasCycle(struct ListNode* head)
 // 142. Linked List Cycle II
 struct ListNode* detectCycle(struct ListNode* head)
 {
-    struct ListNode* fast=head, * slow = head;
-
-    while (fast != NULL && fast->next != NULL) {
+    struct ListNode* fast, * slow;
+    fast = slow = head;
+    while (fast!= NULL && fast->next != NULL)
+    {
         slow = slow->next;
         fast = fast->next->next;
-        if (fast == slow) {
+        if (fast == slow)
+        {
             struct ListNode* index1 = fast;
             struct ListNode* index2 = head;
             while (index1 != index2)
@@ -2126,7 +2128,6 @@ struct ListNode* detectCycle(struct ListNode* head)
             return index1;
         }
     }
-
     return NULL;
 }
 
@@ -5523,6 +5524,33 @@ int longestPalindrome(char** words, int wordsSize)
     }
 
     return longPal;
+}
+
+// ½£Ö¸ Offer 05. Ìæ»»¿Õ¸ñ
+// ÊäÈë£ºs = "We are happy."
+// Êä³ö£º"We%20are%20happy."
+char* replacespace(char* s)
+{
+    int i = 0, len = (int)strlen(s);
+    int spacenum = 0;
+    for (i = 0; i < len; i++) {
+        if (s[i] == ' ')
+            spacenum++;
+    }
+    if (spacenum == 0)
+        return s;
+    char* result = (char*)malloc(sizeof(char) * (len + 2 * spacenum));
+    int j = len + 2 * spacenum - 1;
+    for (i = len - 1; i >= 0; i--) {
+        if (s[i] == ' ') {
+            result[j--] = '0';
+            result[j--] = '2';
+            result[j--] = '%';
+        }
+        else
+            result[j--] = s[i];
+    }
+    return result;
 }
 
 // ½£Ö¸ Offer 58 - II.×óÐý×ª×Ö·û´®

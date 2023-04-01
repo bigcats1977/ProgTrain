@@ -363,5 +363,7 @@ int findTheWinner(int n, int k);
 bool checkIfPangram(char* sentence);
 // 2131. Longest Palindrome by Concatenating Two Letter Words
 int longestPalindrome(char** words, int wordsSize);
+// ½£Ö¸ Offer 05. Ìæ»»¿Õ¸ñ
+char* replacespace(char* s);
 // ½£Ö¸ Offer 58 - II.×óÐý×ª×Ö·û´®
 string reverseLeftWords(string s, int n);
