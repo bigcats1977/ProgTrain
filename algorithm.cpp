@@ -3712,15 +3712,32 @@ char* reverseVowels(char* s)
 }
 
 // 347. Top K Frequent Elements
+struct tempMap {
+    int value;
+    int freq;
+};
+int mapcmp(const void* a, const void* b)
+{
+    struct tempMap* comp1 = (struct tempMap*)a;
+    struct tempMap* comp2 = (struct tempMap*)b;
+    return comp2->freq - comp1->freq;
+}
 int* topKFrequent(int* nums, int numsSize, int k, int* returnSize)
 {
-    int i;
-    int* freq = (int*)calloc(20001, sizeof(int));
+    *returnSize = k;
+    struct tempMap* myMap = (struct tempMap*)calloc(20002, sizeof(struct tempMap));
+    int* result = (int*)calloc(k, sizeof(int));
+    int i = 0;
     for (i = 0; i < numsSize; i++) {
-        freq[nums[i]]++;
+        myMap[nums[i] + 10000].value = nums[i] + 10000;
+        myMap[nums[i] + 10000].freq++;
     }
+    qsort(myMap, 20002, sizeof(struct tempMap), mapcmp);
 
-    return NULL;
+    for (i = 0; i < k; i++)
+        result[i] = myMap[i].value - 10000;
+    free(myMap);
+    return result;
 }
 
 // 349. Intersection of Two Arrays
