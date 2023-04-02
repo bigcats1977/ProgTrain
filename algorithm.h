@@ -203,6 +203,8 @@ struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p,
 struct TreeNode* lowestCommonAncestorBT(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q);
 // 238. Product of Array Except Self
 int* productExceptSelf(int* nums, int numsSize, int* returnSize);
+// 239. Sliding Window Maximum
+int* maxSlidingWindow(int* nums, int numsSize, int k, int* returnSize);
 // 240. Search a 2D Matrix II
 //bool searchMatrixII(int** matrix, int matrixSize, int* matrixColSize, int target);
 bool searchMatrixII(vector<vector<int>> matrix, int matrixSize, int* matrixColSize, int target);

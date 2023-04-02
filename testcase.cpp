@@ -56,6 +56,7 @@ FUNCNAME g_tFuncName[] = {
     {212,   TestCase_212 },
     {216,   TestCase_216 },
     {217,   TestCase_217 },
+    {239,   TestCase_239 },
     {240,   TestCase_240 },
     {242,   TestCase_242 },
     {283,   TestCase_283 },
@@ -104,6 +105,35 @@ FUNCNAME g_tFuncName[] = {
     {8005,  TestCase_8005},
     {8058,  TestCase_8058},
 };
+
+void TestCase_239()
+{
+    vector<int> nums;// = { 1,3,-1,-3,5,3,6,7 };
+    int i;
+    int k = 3;
+    int* result;
+    int resnum = 0;
+
+    nums = { 1,3,-1,-3,5,3,6,7 };
+    result = maxSlidingWindow(nums.data(), (int)nums.size(), k, &resnum);
+    for (i = 0; i < (int)nums.size(); i++)
+        printf("%6d", nums[i]);
+    printf("\r\n");
+    for (i = 0; i < resnum; i++)
+        printf("%6d", result[i]);
+    printf("\r\n");
+
+    nums = { 9, 10, 9, -7, -4, -8, 2, -6 };
+    k = 5;
+    result = maxSlidingWindow(nums.data(), (int)nums.size(), k, &resnum);
+    for (i = 0; i < (int)nums.size(); i++)
+        printf("%6d", nums[i]);
+    printf("\r\n");
+    for (i = 0; i < resnum; i++)
+        printf("%6d", result[i]);
+    printf("\r\n");
+    
+}
 
 void TestCase_150()
 {

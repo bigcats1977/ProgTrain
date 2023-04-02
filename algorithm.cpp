@@ -3253,6 +3253,48 @@ int* productExceptSelf(int* nums, int numsSize, int* returnSize)
     return ans;
 }
 
+// 239. Sliding Window Maximum
+#define INVALIDVAL -10001
+int front239 = 0;
+int queuelen = 0;
+void queuepush(int* queue, int val)
+{
+    while (queuelen > 0 && val > queue[front239+queuelen-1])
+        queuelen--;
+    queue[front239 + queuelen++] = val;
+}
+void queuepop(int* queue, int val)
+{
+    if (queuelen >= 0 && val == queue[front239])
+    {
+        front239++;
+        queuelen--;
+    }
+}
+int* maxSlidingWindow(int* nums, int numsSize, int k, int* returnSize) {
+    int i = 0, j = 0;
+
+    *returnSize = numsSize - k + 1;
+    if (k == 1)
+        return nums;
+    int* queue = (int*)malloc(sizeof(int) * numsSize);
+    front239 = 0;
+    queuelen = 0;
+    int* result = (int*)calloc(*returnSize, sizeof(int));
+    for (i = 0; i < k; i++) {
+        queuepush(queue, nums[i]);
+    }
+
+    result[j++] = queue[front239];
+    for (i = k; i < numsSize; i++) {
+        queuepop(queue, nums[i - k]);
+        queuepush(queue, nums[i]);
+        result[j++] = queue[front239];
+    }
+    free(queue);
+    return result;
+}
+
 // 240. Search a 2D Matrix II
 //bool searchMatrixII(int** matrix, int matrixSize, int* matrixColSize, int target)
 bool searchMatrixII(vector<vector<int>> matrix, int matrixSize, int* matrixColSize, int target)
