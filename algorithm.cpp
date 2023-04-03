@@ -4008,6 +4008,21 @@ char* decodeString(char* s)
     return result;
 }
 
+// 404. Sum of Left Leaves
+int sumOfLeftLeaves(struct TreeNode* root)
+{
+    int leftval, rightval;
+    if (!root)
+        return 0;
+    if (!root->left && !root->right)
+        return 0;
+    leftval = sumOfLeftLeaves(root->left);
+    if (root->left && !root->left->left && !root->left->right)
+        leftval = root->left->val;
+    rightval = sumOfLeftLeaves(root->right);
+    return leftval + rightval;
+}
+
 // 409. Longest Palindrome
 int longestPalindrome(char* s)
 {
