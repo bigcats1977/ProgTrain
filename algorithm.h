@@ -210,6 +210,8 @@ int* maxSlidingWindow(int* nums, int numsSize, int k, int* returnSize);
 bool searchMatrixII(vector<vector<int>> matrix, int matrixSize, int* matrixColSize, int target);
 // 242. Valid Anagram
 bool isAnagram(char* s, char* t);
+// 257. Binary Tree Paths
+char** binaryTreePaths(struct TreeNode* root, int* returnSize);
 // 263. Ugly Number
 bool isUgly(int n);
 // 278. First Bad Version

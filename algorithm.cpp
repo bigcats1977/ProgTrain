@@ -3346,6 +3346,63 @@ bool isAnagram(char* s, char* t)
     return true;
 }
 
+// 257. Binary Tree Paths
+int  BTpath[100] = { 0 };
+int  BTpathlen = 0;
+void printPath(char** path)
+{
+    char buffer[5] = { 0 };
+    char res[500] = { 0 };
+    char* pCur = &res[0];
+    size_t len = 0, i;
+    for (i = 0; i < BTpathlen - 1; i++) {
+        //itoa(BTpath[i], buffer, DECIMAL);
+        snprintf(buffer, 5, "%d", BTpath[i]);
+        len = strlen(buffer);
+        memcpy(pCur, buffer, len);
+        pCur += len;
+        memcpy(pCur, "->", 2);
+        pCur += 2;
+    }
+    snprintf(buffer, 5, "%d", BTpath[i]);
+    len = strlen(buffer);
+    memcpy(pCur, buffer, len);
+    pCur += len;
+    len = strlen(res);
+    *path = (char*)calloc(len+1, sizeof(char));
+    memcpy(*path, res, len);
+}
+void travelBTPath(struct TreeNode* root, char** result, int* count)
+{
+    if (!root)
+        return;
+    if (!root->left && !root->right) { //leaf
+        BTpath[BTpathlen++] = root->val;
+        printPath(&result[(*count)++]);
+        return;
+    }
+
+    BTpath[BTpathlen++] = root->val;
+    if (root->left) {
+        travelBTPath(root->left, result, count);
+        BTpathlen--;
+    }
+    if (root->right) {
+        travelBTPath(root->right, result, count);
+        BTpathlen--;
+    }
+}
+char** binaryTreePaths(struct TreeNode* root, int* returnSize)
+{
+    *returnSize = 0;
+    char** result = (char**)malloc(64 * sizeof(char*));
+    memset(BTpath, 0, sizeof(int) * 100);
+    BTpathlen = 0;
+
+    travelBTPath(root, result, returnSize);
+    return result;
+}
+
 // 263. Ugly Number
 bool isUgly(int n)
 {
