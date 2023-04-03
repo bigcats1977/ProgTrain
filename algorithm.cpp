@@ -1737,9 +1737,26 @@ void presum(struct TreeNode* root, int sum, bool* pFind)
 }
 bool hasPathSum(struct TreeNode* root, int targetSum)
 {
-    bool bFind = false;
-    presum(root, targetSum, &bFind);
-    return bFind;
+    //bool bFind = false;
+    //presum(root, targetSum, &bFind);
+    //return bFind;
+
+    if (!root)
+        return false;
+    if (!root->left && !root->right)
+    {
+        if (root->val == targetSum)
+            return true;
+        else
+            return false;
+    }
+    if (root->left)
+
+        if (root->left && hasPathSum(root->left, targetSum - root->val))
+            return true;
+    if (root->right && hasPathSum(root->right, targetSum - root->val))
+        return true;
+    return false;
 }
 
 // 113. Path Sum II
