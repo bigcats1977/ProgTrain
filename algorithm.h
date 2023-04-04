@@ -267,6 +267,8 @@ struct TreeNode* deleteNode(struct TreeNode* root, int key);
 int fib(int n);
 // 523. Continuous Subarray Sum
 bool checkSubarraySum(int* nums, int numsSize, int k);
+// 530. Minimum Absolute Difference in BST
+void traverse(struct TreeNode* root, int* array, int* count);
 // 541. Reverse String II
 char* reverseStr(char* s, int k);
 // 542. 01 Matrix

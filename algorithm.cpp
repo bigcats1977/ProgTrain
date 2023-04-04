@@ -4294,6 +4294,26 @@ bool checkSubarraySum(int* nums, int numsSize, int k)
     return false;
 }
 
+// 530. Minimum Absolute Difference in BST
+void traverse(struct TreeNode* root, int* array, int* count)
+{
+    if (!root)
+        return;
+    traverse(root->left, array, count);
+    array[(*count)++] = root->val;
+    traverse(root->right, array, count);
+
+}
+int getMinimumDifference(struct TreeNode* root) {
+    int* array = (int*)malloc(10000 * sizeof(int));
+    int count = 0, mindiff = INT_MAX;
+    traverse(root, array, &count);
+    for (int i = 1; i < count; i++) {
+        mindiff = mindiff <= (array[i] - array[i - 1]) ? mindiff : (array[i] - array[i - 1]);
+    }
+    return mindiff;
+}
+
 // 541. Reverse String II
 char* reverseStr(char* s, int k)
 {
