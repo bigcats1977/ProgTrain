@@ -4739,6 +4739,27 @@ struct TreeNode* constructMaximumBinaryTree(int* nums, int numsSize)
     return node;
 }
 
+// 669. Trim a Binary Search Tree
+struct TreeNode* trimBST(struct TreeNode* root, int low, int high)
+{
+    if (!root)
+        return root;
+
+    if (root->val < low)
+    {
+        root->right = trimBST(root->right, low, high);
+        return root->right;
+    }
+    else if (root->val > high)
+    {
+        root->left = trimBST(root->left, low, high);
+        return root->left;
+    }
+    root->left = trimBST(root->left, low, high);
+    root->right = trimBST(root->right, low, high);
+    return root;
+}
+
 // 695. Max Area of Island
 void depthIsland(int** grid, int row, int col, int sr, int sc, int* area)
 {
