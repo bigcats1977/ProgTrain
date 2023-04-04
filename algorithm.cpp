@@ -4222,29 +4222,35 @@ int* findAnagrams(char* s, char* p, int* returnSize)
 // 450. Delete Node in a BST
 struct TreeNode* deleteNode(struct TreeNode* root, int key)
 {
-    struct TreeNode* temp = NULL;
+    struct TreeNode* prenode;
     if (!root)
-        return root;
+        return NULL;
     if (root->val == key) {
         if (!root->left && !root->right)
             return NULL;
-        if (!root->left)
-            return root->right;
-        if (!root->right)
-            return root->left;
-
-        temp = root->right;
-        while (temp->left != NULL)
-            temp = temp->left;
-        temp->left = root->left;
-        return root->right;
+        if (!root->left) {
+            prenode = root->right;
+        }
+        else if (!root->right)
+        {
+            prenode = root->left;
+        }
+        else
+        {
+            prenode = root->right;
+            while (prenode->left) {
+                prenode = prenode->left;
+            }
+            prenode->left = root->left;
+            prenode = root->right;
+        }
+        free(root);
+        return prenode;
     }
-    if (root->val > key) {
+    else if (root->val > key)
         root->left = deleteNode(root->left, key);
-    }
-    else {
+    else
         root->right = deleteNode(root->right, key);
-    }
     return root;
 }
 
