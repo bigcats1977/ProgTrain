@@ -4248,6 +4248,40 @@ struct TreeNode* deleteNode(struct TreeNode* root, int key)
     return root;
 }
 
+// 501. Find Mode in Binary Search Tree
+void traverse501(struct TreeNode* root, int* array, int* count)
+{
+    if (!root)
+        return;
+    traverse501(root->left, array, count);
+    array[(*count)++] = root->val;
+    traverse501(root->right, array, count);
+}
+int* findMode(struct TreeNode* root, int* returnSize)
+{
+    int* array = (int*)malloc(10000 * sizeof(int));
+    int* result = (int*)malloc(10000 * sizeof(int));
+    int count = 0;
+    traverse501(root, array, &count);
+    int slow = 0, i = 0, maxfreq = 0;
+    *returnSize = 0;
+    for (int i = 0; i <= count; i++) {
+        if (i == count || array[i] != array[slow]) {
+            int freq = i - slow + 1;
+            if (freq == maxfreq)
+                result[(*returnSize)++] = array[slow];
+            else if (freq > maxfreq) {
+                maxfreq = freq;
+                *returnSize = 0;
+                result[(*returnSize)++] = array[slow];
+            }
+            freq = 1;
+            slow = i;
+        }
+    }
+    return result;
+}
+
 // 509. Fibonacci Number
 int fib(int n)
 {

@@ -263,6 +263,8 @@ int eraseOverlapIntervals(int** intervals, int intervalsSize, int* intervalsColS
 int* findAnagrams(char* s, char* p, int* returnSize);
 // 450. Delete Node in a BST
 struct TreeNode* deleteNode(struct TreeNode* root, int key);
+// 501. Find Mode in Binary Search Tree
+int* findMode(struct TreeNode* root, int* returnSize);
 // 509. Fibonacci Number
 int fib(int n);
 // 523. Continuous Subarray Sum
