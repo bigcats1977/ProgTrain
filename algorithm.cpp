@@ -4624,6 +4624,26 @@ bool findTarget(struct TreeNode* root, int k)
     return false;
 }
 
+// 654. Maximum Binary Tree
+struct TreeNode* constructMaximumBinaryTree(int* nums, int numsSize)
+{
+    if(numsSize == 0)
+        return NULL;
+    struct TreeNode* node = (struct TreeNode*)calloc(1, sizeof(struct TreeNode));
+
+    int max = nums[0], pos = 0;
+    for (int i = 1; i < numsSize; i++) {
+        if (nums[i] > max) {
+            max = nums[i];
+            pos = i;
+        }
+    }
+    node->val = max;
+    node->left = constructMaximumBinaryTree(nums, pos);
+    node->right = constructMaximumBinaryTree(&nums[pos + 1], numsSize - 1 - pos);
+    return node;
+}
+
 // 695. Max Area of Island
 void depthIsland(int** grid, int row, int col, int sr, int sc, int* area)
 {

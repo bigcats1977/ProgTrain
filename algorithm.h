@@ -289,6 +289,8 @@ int* preorder(struct Node* root, int* returnSize);
 struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2);
 // 653. Two Sum IV - Input is a BST
 bool findTarget(struct TreeNode* root, int k);
+// 654. Maximum Binary Tree
+struct TreeNode* constructMaximumBinaryTree(int* nums, int numsSize);
 // 695. Max Area of Island
 int maxAreaOfIsland(int** grid, int gridSize, int* gridColSize);
 // 700. Search in a Binary Search Tree
