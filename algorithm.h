@@ -271,6 +271,8 @@ int fib(int n);
 bool checkSubarraySum(int* nums, int numsSize, int k);
 // 530. Minimum Absolute Difference in BST
 void traverse(struct TreeNode* root, int* array, int* count);
+// 538. Convert BST to Greater Tree
+struct TreeNode* convertBST(struct TreeNode* root);
 // 541. Reverse String II
 char* reverseStr(char* s, int k);
 // 542. 01 Matrix

@@ -4389,6 +4389,23 @@ int getMinimumDifference(struct TreeNode* root) {
     return mindiff;
 }
 
+// 538. Convert BST to Greater Tree
+void reverseinorder(struct TreeNode* root, int* sum)
+{
+    if (!root)
+        return;
+    reverseinorder(root->right, sum);
+    (*sum) += root->val;
+    root->val = *sum;
+    reverseinorder(root->left, sum);
+}
+struct TreeNode* convertBST(struct TreeNode* root)
+{
+    int sum = 0;
+    reverseinorder(root, &sum);
+
+    return root;
+}
 // 541. Reverse String II
 char* reverseStr(char* s, int k)
 {
