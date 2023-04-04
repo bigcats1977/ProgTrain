@@ -4249,6 +4249,9 @@ struct TreeNode* deleteNode(struct TreeNode* root, int key)
 }
 
 // 501. Find Mode in Binary Search Tree
+struct TreeNode* Pre501 = NULL;
+int max501 = 0;
+int len501 = 0;
 void traverse501(struct TreeNode* root, int* array, int* count)
 {
     if (!root)
@@ -4257,12 +4260,43 @@ void traverse501(struct TreeNode* root, int* array, int* count)
     array[(*count)++] = root->val;
     traverse501(root->right, array, count);
 }
+void find501(struct TreeNode* root, int* result, int* count)
+{
+    if (!root)
+        return;
+    find501(root->left, result, count);
+    if (Pre501 == NULL || Pre501->val != root->val) {
+        *count = 1;
+    }
+    else if(Pre501->val == root->val) {
+        (*count)++;
+    }
+    Pre501 = root;
+
+    if (*count == max501) {
+        result[len501++] = root->val;
+    }
+    else if (*count > max501) {
+        max501 = *count;
+        len501 = 0;
+        result[len501++] = root->val;
+    }
+
+    //array[(*count)++] = root->val;
+
+    find501(root->right, result, count);
+}
 int* findMode(struct TreeNode* root, int* returnSize)
 {
-    int* array = (int*)malloc(10000 * sizeof(int));
+    //int* array = (int*)malloc(10000 * sizeof(int));
     int* result = (int*)malloc(10000 * sizeof(int));
     int count = 0;
-    traverse501(root, array, &count);
+    Pre501 = NULL;
+    max501 = 0;
+    len501 = 0;
+    find501(root, result, &count);
+    *returnSize = len501;
+#if 0
     int slow = 0, i = 0, maxfreq = 0;
     *returnSize = 0;
     for (int i = 0; i <= count; i++) {
@@ -4279,6 +4313,7 @@ int* findMode(struct TreeNode* root, int* returnSize)
             slow = i;
         }
     }
+#endif
     return result;
 }
 
