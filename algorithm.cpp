@@ -4025,6 +4025,32 @@ char* decodeString(char* s)
     return result;
 }
 
+// 401. Binary Watch
+int calBitCount(int n) {
+    int count = 0;
+    while (n) {
+        count += n & 1;
+        n >>= 1;
+    }
+    return count;
+}
+char** readBinaryWatch(int turnedOn, int* returnSize) {
+    int i, j;
+    char buffer[6] = { 0 };
+    *returnSize = 0;
+    char** result = (char**)malloc(720 * sizeof(char*));
+    for (i = 0; i < 12; i++)
+        for (j = 0; j < 60; j++) {
+            if (calBitCount(i) + calBitCount(j) != turnedOn)
+                continue;
+            snprintf(buffer, 6, "%d:%02d", i, j);
+            result[*returnSize] = (char*)calloc(strlen(buffer) + 1, sizeof(char));
+            memcpy(result[(*returnSize)++], buffer, strlen(buffer));
+        }
+
+    return result;
+}
+
 // 404. Sum of Left Leaves
 int sumOfLeftLeaves(struct TreeNode* root)
 {

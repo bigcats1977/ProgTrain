@@ -249,6 +249,8 @@ int firstUniqChar(char* s);
 bool isSubsequence(char* s, char* t);
 // 394. Decode String
 char* decodeString(char* s);
+// 401. Binary Watch
+char** readBinaryWatch(int turnedOn, int* returnSize);
 // 404. Sum of Left Leaves
 int sumOfLeftLeaves(struct TreeNode* root);
 // 409. Longest Palindrome
