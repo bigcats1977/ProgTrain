@@ -4245,6 +4245,23 @@ int* findAnagrams(char* s, char* p, int* returnSize)
     return res;
 }
 
+// 477. Total Hamming Distance
+int totalHammingDistance(int* nums, int numsSize) {
+    int sum = 0;
+    uint32_t comp = 1;
+    for (int pos = 0; pos < 32; pos++) {
+        int ones = 0, zeros = 0;
+        for (int i = 0; i < numsSize; i++)
+            if (nums[i] & comp)
+                zeros++;
+            else
+                ones++;
+        comp <<= 1;
+        sum += zeros * ones;
+    }
+    return sum;
+}
+
 // 450. Delete Node in a BST
 struct TreeNode* deleteNode(struct TreeNode* root, int key)
 {
