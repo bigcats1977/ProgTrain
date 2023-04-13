@@ -90,6 +90,7 @@ FUNCNAME g_tFuncName[] = {
     {784,   TestCase_784 },
     {844,   TestCase_844 },
     {904,   TestCase_904 },
+    {946,   TestCase_946 },
     {977,   TestCase_977 },
     {1047,  TestCase_1047},
     {1071,  TestCase_1071},
@@ -105,6 +106,13 @@ FUNCNAME g_tFuncName[] = {
     {8005,  TestCase_8005},
     {8058,  TestCase_8058},
 };
+void TestCase_946()
+{
+    vector<int> pushed, poped;
+    pushed = { 1,2,3,4,5 };
+    poped = { 4,5,3,2,1 };
+    validateStackSequences(pushed.data(), (int)pushed.size(), poped.data(), (int)poped.size());
+}
 
 void TestCase_239()
 {

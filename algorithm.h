@@ -341,6 +341,8 @@ struct ListNode* middleNode(struct ListNode* head);
 int totalFruit(int* fruits, int fruitsSize);
 // 944. Delete Columns to Make Sorted
 int minDeletionSize(char** strs, int strsSize);
+// 946. Validate Stack Sequences
+bool validateStackSequences(int* pushed, int pushedSize, int* popped, int poppedSize);
 // 977. Squares of a Sorted Array
 int* sortedSquares(int* nums, int numsSize, int* returnSize);
 // 986. Interval List Intersections

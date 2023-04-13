@@ -5291,6 +5291,25 @@ int minDeletionSize(char** strs, int strsSize)
     return ans;
 }
 
+// 946. Validate Stack Sequences
+bool validateStackSequences(int* pushed, int pushedSize, int* popped, int poppedSize)
+{
+    int stack[1000] = { 0 };
+    int top = -1;
+    int pos = 0;
+    
+    for (int i = 0; i < pushedSize; i++)
+    {
+        stack[++top] = pushed[i];
+        while (pos < poppedSize && top >= 0 && popped[pos] == stack[top]) {
+            pos++;
+            top--;
+        }
+    }
+
+    return (top < 0);
+}
+
 // 977. Squares of a Sorted Array
 int* sortedSquares(int* nums, int numsSize, int* returnSize) {
     int left = 0, right = numsSize - 1;
