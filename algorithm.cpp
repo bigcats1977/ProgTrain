@@ -4382,6 +4382,32 @@ int fib(int n)
     return ans;
 }
 
+// 516. Longest Palindromic Subsequence
+int longestPalindromeSubseq(char* s)
+{
+    int len = (int)strlen(s);
+    int i, j;
+    int ans;
+    int** dp = (int**)malloc(len * sizeof(int*));
+    for (i = 0; i < len; i++) {
+        dp[i] = (int*)calloc(len, sizeof(int));
+        dp[i][i] = 1;
+    }
+    for (i = len - 1; i >= 0; i--) {
+        for (j = i + 1; j < len; j++) {
+            if (s[i] == s[j])
+                dp[i][j] = dp[i + 1][j - 1] + 2;
+            else
+                dp[i][j] = (int)fmax(dp[i + 1][j], dp[i][j - 1]);
+        }
+    }
+    ans = dp[0][len - 1];
+    for (i = 0; i < len; i++)
+        free(dp[i]);
+    free(dp);
+    return ans;
+}
+
 // 523. Continuous Subarray Sum
 bool checkSubarraySum(int* nums, int numsSize, int k)
 {
