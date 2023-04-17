@@ -271,6 +271,8 @@ struct TreeNode* deleteNode(struct TreeNode* root, int key);
 int* findMode(struct TreeNode* root, int* returnSize);
 // 509. Fibonacci Number
 int fib(int n);
+// 516. Longest Palindromic Subsequence
+int longestPalindromeSubseq(char* s);
 // 523. Continuous Subarray Sum
 bool checkSubarraySum(int* nums, int numsSize, int k);
 // 530. Minimum Absolute Difference in BST
