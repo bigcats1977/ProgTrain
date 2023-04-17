@@ -5740,24 +5740,6 @@ int maximum69Number(int num)
     return num;
 }
 
-// 1431. Kids With the Greatest Number of Candies
-bool* kidsWithCandies(int* candies, int candiesSize, int extraCandies, int* returnSize)
-{
-    bool* result = (bool*)calloc(candiesSize, sizeof(bool));
-    *returnSize = candiesSize;
-    int max = candies[0];
-    int i;
-    for (i = 1; i < candiesSize; i++) {
-        max = max < candies[i] ? candies[i] : max;
-    }
-    for (i = 0; i < candiesSize; i++) {
-        if (candies[i] + extraCandies >= max)
-            result[i] = true;
-    }
-
-    return result;
-}
-
 // 1470. Shuffle the Array
 int* shuffle(int* nums, int numsSize, int n, int* returnSize)
 {
