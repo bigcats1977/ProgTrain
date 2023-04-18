@@ -5975,6 +5975,26 @@ bool halvesAreAlike(char* s)
     return false;
 }
 
+// 1768. Merge Strings Alternately
+char* mergeAlternately(char* word1, char* word2)
+{
+    int len1 = (int)strlen(word1), len2 = (int)strlen(word2);
+    int len = len1 + len2;
+    int pos = 0;
+    char* result = (char*)calloc(len + 1, sizeof(char));
+    for (int i = 0; i < (int)fmin(len1, len2); i++) {
+        result[pos++] = word1[i];
+        result[pos++] = word2[i];
+    }
+    if (len1 > len2) {
+        memcpy(&result[pos], &word1[len2], len1 - len2);
+    }
+    else if (len2 > len1) {
+        memcpy(&result[pos], &word2[len1], len2 - len1);
+    }
+    return result;
+}
+
 // 1823. Find the Winner of the Circular Game
 int findTheWinner(int n, int k)
 {
