@@ -303,6 +303,8 @@ struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2);
 bool findTarget(struct TreeNode* root, int k);
 // 654. Maximum Binary Tree
 struct TreeNode* constructMaximumBinaryTree(int* nums, int numsSize);
+// 662. Maximum Width of Binary Tree
+int widthOfBinaryTree(struct TreeNode* root);
 // 669. Trim a Binary Search Tree
 struct TreeNode* trimBST(struct TreeNode* root, int low, int high);
 // 695. Max Area of Island

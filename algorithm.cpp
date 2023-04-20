@@ -4825,6 +4825,47 @@ struct TreeNode* constructMaximumBinaryTree(int* nums, int numsSize)
     return node;
 }
 
+// 662. Maximum Width of Binary Tree
+int widthOfBinaryTree(struct TreeNode* root)
+{
+    if (!root)
+        return 0;
+    int width = 1;
+    struct TreeNode** treeque = (struct TreeNode**)malloc(3000 * sizeof(struct TreeNode*));
+    struct TreeNode* node;
+    int head = 0, tail = 0;
+    root->val = 0;
+    treeque[tail++] = root;
+    while (tail > head) {
+        int count = tail - head;
+        int val = 0;
+        int seq = 0;
+        int left = INT_MAX, right = INT_MIN;
+        for (int i = 0; i < count; i++) {
+            node = treeque[head++];
+            if (node->left) {
+                node->left->val = 2 * node->val;
+                val = node->left->val;
+                left = left < val ? left : val;
+                right = right > val ? right : val;
+                treeque[tail++] = node->left;
+            }
+            if (node->right) {
+                node->right->val = 2 * node->val + 1;
+                val = node->right->val;
+                left = left < val ? left : val;
+                right = right > val ? right : val;
+                treeque[tail++] = node->right;
+            }
+        }
+        if (left != INT_MAX && right != INT_MIN) {
+            width = width < (right - left + 1) ? (right - left + 1) : width;
+        }
+    }
+    free(treeque);
+    return width;
+}
+
 // 669. Trim a Binary Search Tree
 struct TreeNode* trimBST(struct TreeNode* root, int low, int high)
 {
