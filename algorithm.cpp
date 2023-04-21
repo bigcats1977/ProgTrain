@@ -5243,35 +5243,34 @@ char** letterCasePermutation(char* s, int* returnSize)
     return LCAns;
 }
 
-// 797. All Paths From Source to Target
-int pathST[15] = { 0 };
-void searchAllPath(int** graph, int graphSize, int* graphColSize, int** ans, int* returnSize, int** returnColumnSizes, int start, int* len)
+// 797. All Paths From Source to Targetint
+int path797s[50] = { 0 };
+int pathlen = 0;
+void dps(int** graph, int cur, int n, int* e, int* count, int** colCount, int** ans)
 {
-    if (start == graphSize - 1) {
-        pathST[(*len)++] = start;
-        ans[*returnSize] = (int*)calloc(*len, sizeof(int));
-        (*returnColumnSizes)[*returnSize] = *len;
-        memcpy(ans[*returnSize], &pathST[0], *len * sizeof(int));
-        (*returnSize)++;
-        (*len)--;
+    if (cur == n - 1) {
+        (*colCount)[*count] = pathlen;
+        ans[*count] = (int*)malloc(sizeof(int) * pathlen);
+        memcpy(ans[*count], path797s, pathlen * sizeof(int));
+        (*count)++;
         return;
     }
-    for (int i = 0; i < graphColSize[start]; i++)
-    {
-        pathST[(*len)++] = start;
-        searchAllPath(graph, graphSize, graphColSize, ans, returnSize, returnColumnSizes, graph[start][i], len);
-        (*len)--;
+
+    for (int i = 0; i < e[cur]; i++) {
+        path797s[pathlen++] = graph[cur][i];
+        dps(graph, graph[cur][i], n, e, count, colCount, ans);
+        pathlen--;
     }
 }
 int** allPathsSourceTarget(int** graph, int graphSize, int* graphColSize, int* returnSize, int** returnColumnSizes)
 {
-    int STLen = 0;
-    int pathnum = 0;
-    int** ans = (int**)malloc(sizeof(int*) * 10000);
     *returnSize = 0;
-    (*returnColumnSizes) = (int*)malloc(sizeof(int) * 10000);
+    pathlen = 0;
+    int** ans = (int**)malloc(sizeof(int*) * 10000);
+    *returnColumnSizes = (int*)malloc(sizeof(int) * 10000);
 
-    searchAllPath(graph, graphSize, graphColSize, ans, returnSize, returnColumnSizes, 0, &STLen);
+    path797s[pathlen++] = 0;
+    dps(graph, 0, graphSize, graphColSize, returnSize, returnColumnSizes, ans);
 
     return ans;
 }
