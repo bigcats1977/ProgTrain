@@ -566,47 +566,33 @@ int searchInsert(int* nums, int numsSize, int target)
 }
 
 // 39. Combination Sum
-int cbPath[40];
-int cbPathLen;
-void btCombSum(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes, int ** ans, int start, int sum)
+int cbpath[40] = { 0 };
+int cbplen = 0;
+void cbbacktrack(int* candidates, int start, int n, int target, int* count, int** col, int** ans)
 {
-    int i = 0;
-    if (sum > target)
+    if (target == 0)
     {
+        (*col)[*count] = cbplen;
+        ans[*count] = (int*)malloc(cbplen * sizeof(int));
+        memcpy(ans[(*count)++], cbpath, cbplen * sizeof(int));
         return;
     }
-    if (sum == target) {
-        (*returnColumnSizes)[*returnSize] = cbPathLen;
-        ans[*returnSize] = (int*)malloc(sizeof(int) * cbPathLen);
-        memcpy(ans[*returnSize], cbPath, cbPathLen * sizeof(int));
-        for (i = 0; i < cbPathLen; i++) {
-            printf("%d ", cbPath[i]);
-        }
-        printf("\r\n");
-        (*returnSize)++;
-        return;
-    }
-    for (i = start; i < candidatesSize; i++) {
-        cbPath[cbPathLen++] = candidates[i];
-        sum += candidates[i];
-
-        btCombSum(candidates, candidatesSize, target, returnSize, returnColumnSizes, ans, i, sum);
-
-        sum -= candidates[i];
-        cbPathLen--;
+    for (int i = start; i < n; i++)
+    {
+        if (target < candidates[i])
+            continue;
+        cbpath[cbplen++] = candidates[i];
+        cbbacktrack(candidates, i, n, target - candidates[i], count, col, ans);
+        cbplen--;
     }
 }
 int** combinationSum(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes)
 {
-    int** ans;
-    int Sum = 0;
-
-    cbPathLen = 0;
+    *returnColumnSizes = (int*)malloc(1000 * sizeof(int));
+    int** ans = (int**)malloc(1000 * sizeof(int*));
+    cbplen = 0;
     *returnSize = 0;
-    ans = (int**)malloc(sizeof(int*) * 1000);
-    (*returnColumnSizes) = (int*)malloc(sizeof(int) * 1000);
-
-    btCombSum(candidates, candidatesSize, target, returnSize, returnColumnSizes, ans, 0, Sum);
+    cbbacktrack(candidates, 0, candidatesSize, target, returnSize, returnColumnSizes, ans);
 
     return ans;
 }
