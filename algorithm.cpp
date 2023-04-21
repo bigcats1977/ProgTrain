@@ -737,6 +737,51 @@ int** permute(int* nums, int numsSize, int* returnSize, int** returnColumnSizes)
     return permuteAns;
 }
 
+// 47. Permutations II
+int path47s[8] = { 0 };
+int plen47s = 0;
+int cmpfun(const void* a, const void* b) {
+    return (*(int*)a) - (*(int*)b);
+}
+void backtrack(int* nums, int n, int* count, int** colnum, int** ans, bool* visited)
+{
+    if (plen47s == n) {
+        (*colnum)[*count] = n;
+        ans[*count] = (int*)malloc(n * sizeof(int));
+        memcpy(ans[(*count)++], path47s, n * sizeof(int));
+        return;
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        if (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1])
+            continue;
+        if (!visited[i]) {
+            visited[i] = true;
+            path47s[plen47s++] = nums[i];
+            backtrack(nums, n, count, colnum, ans, visited);
+            plen47s--;
+            visited[i] = false;
+        }
+    }
+}
+int** permuteUnique(int* nums, int numsSize, int* returnSize, int** returnColumnSizes) {
+    qsort(nums, numsSize, sizeof(int), cmpfun);
+    *returnSize = 0;
+    plen47s = 0;
+    int count = 1;
+    int i = 0;
+    for (i = 1; i <= numsSize; i++)
+        count *= i;
+    *returnColumnSizes = (int*)malloc(count * sizeof(int));
+    int** ans = (int**)malloc(count * sizeof(int*));
+    bool* visited = (bool*)calloc(count, sizeof(bool));
+    backtrack(nums, numsSize, returnSize, returnColumnSizes, ans, visited);
+    free(visited);
+
+    return ans;
+}
+
 // 48. Rotate Image
 void rotate(int** matrix, int matrixSize, int* matrixColSize)
 {
@@ -1504,8 +1549,7 @@ void backtrack(int* nums, int begin, int numsSize, int* count, int** colSize, in
         sublen--;
     }
 }
-
-int cmpfun(const void* a, const void* b) {
+int cmp47fun(const void* a, const void* b) {
     return (*(int*)a) - (*(int*)b);
 }
 int** subsetsWithDup(int* nums, int numsSize, int* returnSize, int** returnColumnSizes) {
@@ -1516,7 +1560,7 @@ int** subsetsWithDup(int* nums, int numsSize, int* returnSize, int** returnColum
     *returnSize = 0;
     sublen = 0;
 
-    qsort(nums, numsSize, sizeof(int), cmpfun);
+    qsort(nums, numsSize, sizeof(int), cmp47fun);
 
     backtrack(nums, 0, numsSize, returnSize, returnColumnSizes, ans, used);
 

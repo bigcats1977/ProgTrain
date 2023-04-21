@@ -50,6 +50,8 @@ int** combinationSum2(int* candidates, int candidatesSize, int target, int* retu
 char* multiply(char* num1, char* num2);
 // 46. Permutations
 int** permute(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
+// 47. Permutations II
+int** permuteUnique(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
 // 48. Rotate Image
 void rotate(int** matrix, int matrixSize, int* matrixColSize);
 // 49. Group Anagrams
