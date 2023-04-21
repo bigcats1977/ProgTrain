@@ -751,7 +751,6 @@ void backtrack(int* nums, int n, int* count, int** colnum, int** ans, bool* visi
         memcpy(ans[(*count)++], path47s, n * sizeof(int));
         return;
     }
-
     for (int i = 0; i < n; i++)
     {
         if (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1])
