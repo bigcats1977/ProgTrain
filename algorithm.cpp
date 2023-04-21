@@ -5720,37 +5720,57 @@ char* gcdOfStrings(char* str1, char* str2)
 }
 
 // 1091. Shortest Path in Binary Matrix
-int eight[8][2] = { {1,1}, {1,0},{0,1},{-1,1},{1,-1},{-1,0},{0,-1},{-1,-1} };
-void  dfsBM(int** grid, int gridSize, int i, int j)
-{
-    int k, m, n;
-    if (i < 0 || i >= gridSize || j < 0 || j >= gridSize)
-        return ;
-    if (i == gridSize - 1 && j == gridSize - 1)
-    {
-        return ;
-    }
-    for (k = 0; k < 8; k++) {
-        m = i + eight[k][0];
-        n = j + eight[k][1];
-        if (m < 0 || m >= gridSize || n < 0 || n >= gridSize)
-            continue;
-        if (grid[m][n] != 0)
-            continue;
-
-        grid[m][n] = grid[i][j] + 1;
-        dfsBM(grid, gridSize, m, n);
-    }
-}
-int shortestPathBinaryMatrix(int** grid, int gridSize, int* gridColSize)
-{
-    if (grid[0][0] == 1 || grid[gridSize-1][gridSize-1] == 1)
+struct coord {
+    int x;
+    int y;
+};
+int shortestPathBinaryMatrix(int** grid, int gridSize, int* gridColSize) {
+    int i, j;
+    int len = 0;
+    int n = gridSize;
+    if (grid[0][0] == 1 || grid[n - 1][n - 1] == 1)
         return -1;
+    if (n == 1)
+        return 1;
 
-    grid[0][0] = 1;
-    dfsBM(grid, gridSize, 0, 0);
+    int** visited = (int**)malloc(n * sizeof(int*));
+    for (i = 0; i < n; i++) {
+        visited[i] = (int*)calloc(n, sizeof(int));
+    }
 
-    return grid[gridSize - 1][gridSize - 1];
+    struct coord* pathqueue = (struct coord*)calloc(n * n, sizeof(struct coord));
+    int tail = 0;
+    int head = 0;
+    pathqueue[tail].x = 0;
+    pathqueue[tail++].y = 0;
+
+    visited[0][0] = 1;
+    while (tail > head) {
+        int count = tail - head;
+        for (int k = 0; k < count; k++)
+        {
+            struct coord temp = pathqueue[head++];
+            for (i = 1; i >= -1; i--)
+                for (j = 1; j >= -1; j--) {
+                    if (i == 0 && j == 0)
+                        continue;
+                    int x = temp.x + i;
+                    int y = temp.y + j;
+                    if (x >= 0 && x < n && y >= 0 && y < n && visited[x][y] == 0 && grid[x][y] == 0)
+                    {
+                        if (x == n - 1 && y == n - 1)
+                            return (len + 2);
+                        visited[x][y] = 1;
+                        pathqueue[tail].x = x;
+                        pathqueue[tail++].y = y;
+                    }
+                }
+        }
+        len++;
+    }
+    if (visited[n - 1][n - 1] == 0)
+        return -1;
+    return len;
 }
 
 // 1143. Longest Common Subsequence
