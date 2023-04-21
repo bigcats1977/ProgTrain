@@ -86,6 +86,8 @@ struct ListNode* deleteDuplicatesII(struct ListNode* head);
 struct ListNode* deleteDuplicates(struct ListNode* head);
 // 88. Merge Sorted Array
 void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n);
+// 90. Subsets II
+int** subsetsWithDup(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
 // 94. Binary Tree Inorder Traversal
 int* inorderTraversal(struct TreeNode* root, int* returnSize);
 // 98. Validate Binary Search Tree

@@ -1482,6 +1482,48 @@ void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n)
     }
 }
 
+// 90. Subsets II
+int subpath90[10] = { 0 };
+int sublen = 0;
+void backtrack(int* nums, int begin, int numsSize, int* count, int** colSize, int** ans, bool* used)
+{
+    (*colSize)[*count] = sublen;
+    ans[*count] = (int*)malloc(sizeof(int) * sublen);
+    memcpy(ans[*count], subpath90, sublen * sizeof(int));
+    (*count)++;
+    for (int i = begin; i < numsSize; i++)
+    {
+        if (i > 0 && nums[i - 1] == nums[i] && used[i - 1] == false)
+        {
+            continue;
+        }
+        subpath90[sublen++] = nums[i];
+        used[i] = true;
+        backtrack(nums, i + 1, numsSize, count, colSize, ans, used);
+        used[i] = false;
+        sublen--;
+    }
+}
+
+int cmpfun(const void* a, const void* b) {
+    return (*(int*)a) - (*(int*)b);
+}
+int** subsetsWithDup(int* nums, int numsSize, int* returnSize, int** returnColumnSizes) {
+    int count = (int)pow(2, numsSize);
+    bool* used = (bool*)calloc(numsSize, sizeof(bool));
+    (*returnColumnSizes) = (int*)malloc(sizeof(int) * count);
+    int** ans = (int**)malloc(count * sizeof(int*));
+    *returnSize = 0;
+    sublen = 0;
+
+    qsort(nums, numsSize, sizeof(int), cmpfun);
+
+    backtrack(nums, 0, numsSize, returnSize, returnColumnSizes, ans, used);
+
+    free(used);
+    return ans;
+}
+
 // 94. Binary Tree Inorder Traversal
 void inorder(struct TreeNode* root, int* ans, int* index)
 {
