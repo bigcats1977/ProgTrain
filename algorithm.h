@@ -24,6 +24,8 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n);
 bool isValid(char* s);
 // 21. Merge Two Sorted Lists
 struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2);
+// 22. Generate Parentheses
+char** generateParenthesis(int n, int* returnSize);
 // 24. Swap Nodes in Pairs
 struct ListNode* swapPairs(struct ListNode* head);
 // 25. Reverse Nodes in k - Group

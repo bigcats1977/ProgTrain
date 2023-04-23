@@ -368,6 +368,39 @@ struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2)
     return prenode;
 }
 
+// 22. Generate Parentheses
+char Parentpath[17] = { 0 };
+int  Parentplen = 0;
+void bpParent(int n, int left, int right, int* count, char** ans)
+{
+    if (left == 0 && right == 0)
+    {
+        ans[*count] = (char*)calloc(2 * n + 1, sizeof(char));
+        memcpy(ans[(*count)++], Parentpath, 2 * n * sizeof(char));
+        return;
+    }
+    if (left > 0)
+    {
+        Parentpath[Parentplen++] = '(';
+        bpParent(n, left - 1, right, count, ans);
+        Parentplen--;
+    }
+    if (right > 0 && right > left)
+    {
+        Parentpath[Parentplen++] = ')';
+        bpParent(n, left, right - 1, count, ans);
+        Parentplen--;
+    }
+}
+char** generateParenthesis(int n, int* returnSize) {
+    *returnSize = 0;
+    Parentplen = 0;
+    char** ans = (char**)malloc(10000 * sizeof(char*));
+
+    bpParent(n, n, n, returnSize, ans);
+    return ans;
+}
+
 // 24. Swap Nodes in Pairs
 struct ListNode* swapPairs(struct ListNode* head)
 {
