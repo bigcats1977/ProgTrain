@@ -207,8 +207,8 @@ void bt_letterComb(char* digits, int len, int pos, int* count, char** ans)
 {
     if (pos == len)
     {
-        ans[*count] = (char*)calloc(1, len+1);
-        memcpy(ans[*count], lc_path, len);
+        ans[*count] = (char*)calloc(len + 1, sizeof(char));
+        memcpy(ans[*count], lc_path, len * sizeof(char));
         (*count)++;
         return;
     }
@@ -218,17 +218,19 @@ void bt_letterComb(char* digits, int len, int pos, int* count, char** ans)
         char letter = lettermap[digits[pos] - '2'][i];
         if (letter == 0)
             continue;
-        lc_path[pos] = letter;
-        bt_letterComb(digits, len, pos + 1, count, ans);
+        lc_path[pos++] = letter;
+        bt_letterComb(digits, len, pos, count, ans);
+        pos--;
     }
 }
 char** letterCombinations(char* digits, int* returnSize)
 {
-    int len = (int)strlen(digits);
-    char** ans = (char**)malloc(sizeof(char*) * (int)pow(4, len));
     *returnSize = 0;
+    int len = (int)strlen(digits);
     if (len == 0)
-        return ans;
+        return NULL;
+
+    char** ans = (char**)malloc(sizeof(char*) * (int)pow(4, len));
     bt_letterComb(digits, len, 0, returnSize, ans);
     return ans;
 }
