@@ -3044,6 +3044,46 @@ char** findWords(char** board, int boardSize, int* boardColSize, char** words, i
     return ans;
 }
 
+// 213. House Robber II
+int rob1(int* nums, int count)
+{
+    if (count == 1)
+        return nums[0];
+    int* dp = (int*)calloc(count, sizeof(int));
+    dp[0] = nums[0];
+    dp[1] = (int)fmax(nums[0],nums[1]);
+    for (int i = 2; i < count; i++)
+        dp[i] = (int)fmax(dp[i - 2] + nums[i], dp[i - 1]);
+    int result = dp[count - 1];
+    free(dp);
+    return result;
+}
+int rob2(int* nums, int numsSize) {
+    if (numsSize == 1)
+        return nums[0];
+    int result1 = rob1(&nums[0], numsSize - 1);
+    int result2 = rob1(&nums[1], numsSize - 1);
+    return (int)fmax(result1, result2);
+}
+
+int robRange(vector<int>& nums, int start, int end) {
+    if (end == start) return nums[start];
+    vector<int> dp(nums.size());
+    dp[start] = nums[start];
+    dp[start + 1] = max(nums[start], nums[start + 1]);
+    for (int i = start + 2; i <= end; i++) {
+        dp[i] = max(dp[i - 2] + nums[i], dp[i - 1]);
+    }
+    return dp[end];
+}
+int robCCC(vector<int>& nums) {
+    if (nums.size() == 0) return 0;
+    if (nums.size() == 1) return nums[0];
+    int result1 = robRange(nums, 0, nums.size() - 2); // 情况二
+    int result2 = robRange(nums, 1, nums.size() - 1); // 情况三
+    return max(result1, result2);
+}
+
 // 215. Kth Largest Element in an Array
 int klargecmp(const void* a, const void* b)
 {

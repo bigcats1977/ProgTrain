@@ -54,6 +54,7 @@ FUNCNAME g_tFuncName[] = {
     {206,   TestCase_206 },
     {209,   TestCase_209 },
     {212,   TestCase_212 },
+    {213,   TestCase_213 },
     {216,   TestCase_216 },
     {217,   TestCase_217 },
     {239,   TestCase_239 },
@@ -106,6 +107,16 @@ FUNCNAME g_tFuncName[] = {
     {8005,  TestCase_8005},
     {8058,  TestCase_8058},
 };
+
+void TestCase_213()
+{
+    vector<int> nums;
+    nums = { 1,3,1,3,100 };
+    int ans1,ans2;
+    ans1 = rob2(nums.data(), (int)nums.size());
+    ans2 = robCCC(nums);
+}
+
 void TestCase_946()
 {
     vector<int> pushed, poped;

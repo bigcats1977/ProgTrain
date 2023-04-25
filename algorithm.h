@@ -186,6 +186,9 @@ struct ListNode* reverseList(struct ListNode* head);
 int minSubArrayLen(int target, int* nums, int numsSize);
 // 212. Word Search II
 char** findWords(char** board, int boardSize, int* boardColSize, char** words, int wordsSize, int* returnSize);
+// 213. House Robber II
+int rob2(int* nums, int numsSize);
+int robCCC(vector<int>& nums);
 // 215. Kth Largest Element in an Array
 int findKthLargest(int* nums, int numsSize, int k);
 // 216. Combination Sum III
