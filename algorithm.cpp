@@ -1043,6 +1043,21 @@ int maxSubArray(int* nums, int numsSize)
     return sum;
 }
 
+// 55. Jump Game
+bool canJump(int* nums, int numsSize)
+{
+    int Cover = 0;
+    if (numsSize == 1)
+        return true;
+    for (int i = 0; i <= Cover; i++)
+    {
+        Cover = (int)fmax(Cover, i + nums[i]);
+        if (Cover >= (numsSize - 1))
+            return true;
+    }
+    return false;
+}
+
 // 56. Merge Intervals
 void swapInter(int** inter1, int** inter2)
 {

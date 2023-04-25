@@ -22,6 +22,7 @@ FUNCNAME g_tFuncName[] = {
     {43,    TestCase_43  },
     {49,    TestCase_49  },
     {53,    TestCase_53  },
+    {55,    TestCase_55  },
     {56,    TestCase_56  },
     {59,    TestCase_59  },
     {62,    TestCase_62  },
@@ -107,6 +108,16 @@ FUNCNAME g_tFuncName[] = {
     {8005,  TestCase_8005},
     {8058,  TestCase_8058},
 };
+
+void TestCase_55()
+{
+    vector<int> nums;
+    bool ans1, ans2;
+    nums = { 2,3,1,1,4 };
+    ans1 = canJump(nums.data(), (int)nums.size());
+    nums = { 3,2,1,0,4 };
+    ans2 = canJump(nums.data(), (int)nums.size());
+}
 
 void TestCase_213()
 {
