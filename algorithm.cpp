@@ -4273,6 +4273,37 @@ int longestPalindrome(char* s)
     return longPal;
 }
 
+// 413. Arithmetic Slices
+bool maxSlice(int* nums, int numsSize, int* l, int* r)
+{
+    int dis = nums[*l] - nums[*l - 1];
+    if (dis != nums[*l + 1] - nums[*l])
+        return false;
+
+    while (*l > 0 && nums[*l] - nums[*l - 1] == dis)
+        (*l)--;
+    while (*r < numsSize - 1 && nums[*r + 1] - nums[*r] == dis)
+        (*r)++;
+    return true;
+}
+int numberOfArithmeticSlices(int* nums, int numsSize) {
+    int ans = 0;
+    int len = 0;
+    int l, r;
+    if (numsSize < 3)
+        return 0;
+    for (int i = 1; i < numsSize - 1; i++) {
+        l = r = i;
+        if (maxSlice(nums, numsSize, &l, &r))
+        {
+            len = r - l + 1 - 2;
+            ans += (len + 1) * len / 2;
+            i = r;
+        }
+    }
+    return ans;
+}
+
 // 415. Add Strings
 char* addStrings(char* num1, char* num2)
 {

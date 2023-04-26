@@ -268,6 +268,8 @@ char** readBinaryWatch(int turnedOn, int* returnSize);
 int sumOfLeftLeaves(struct TreeNode* root);
 // 409. Longest Palindrome
 int longestPalindrome(char* s);
+// 413. Arithmetic Slices
+int numberOfArithmeticSlices(int* nums, int numsSize);
 // 415. Add Strings
 char* addStrings(char* num1, char* num2);
 // 424. Longest Repeating Character Replacement
