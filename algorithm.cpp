@@ -711,6 +711,25 @@ char* multiply(char* num1, char* num2)
     return ans;
 }
 
+// 45. Jump Game II
+int jumpII(int* nums, int numsSize) {
+    double curDis = 0, NextDis = 0;
+    int ans = 0;
+    if (numsSize <= 1)
+        return ans;
+
+    for (int i = 0; i < numsSize; i++) {
+        NextDis = fmax(nums[i] + i, NextDis);
+        if (i == curDis) {
+            if (curDis >= numsSize - 1)
+                return ans;
+            ans++;
+            curDis = NextDis;
+        }
+    }
+    return ans;
+}
+
 // 46. Permutations
 int** permuteAns;
 int   CurPermute;
@@ -3094,8 +3113,8 @@ int robRange(vector<int>& nums, int start, int end) {
 int robCCC(vector<int>& nums) {
     if (nums.size() == 0) return 0;
     if (nums.size() == 1) return nums[0];
-    int result1 = robRange(nums, 0, nums.size() - 2); // 情况二
-    int result2 = robRange(nums, 1, nums.size() - 1); // 情况三
+    int result1 = robRange(nums, 0, (int)nums.size() - 2); // 情况二
+    int result2 = robRange(nums, 1, (int)nums.size() - 1); // 情况三
     return max(result1, result2);
 }
 

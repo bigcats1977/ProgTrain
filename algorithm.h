@@ -50,6 +50,8 @@ int** combinationSum(int* candidates, int candidatesSize, int target, int* retur
 int** combinationSum2(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes);
 // 43. Multiply Strings
 char* multiply(char* num1, char* num2);
+// 45. Jump Game II
+int jumpII(int* nums, int numsSize);
 // 46. Permutations
 int** permute(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
 // 47. Permutations II
