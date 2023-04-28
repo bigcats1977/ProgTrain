@@ -64,6 +64,7 @@ FUNCNAME g_tFuncName[] = {
     {283,   TestCase_283 },
     {290,   TestCase_290 },
     {297,   TestCase_297 },
+    {300,   TestCase_300 },
     {344,   TestCase_344 },
     {349,   TestCase_349 },
     {350,   TestCase_350 },
@@ -109,6 +110,12 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_300()
+{
+    vector<int> nums;
+    nums = { 10, 9, 2, 5, 3, 7, 101, 18 };
+    int res = lengthOfLIS(nums.data(), (int)nums.size());
+}
 void TestCase_55()
 {
     vector<int> nums;

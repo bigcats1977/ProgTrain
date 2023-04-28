@@ -3918,6 +3918,31 @@ char* getHint(char* secret, char* guess)
     return &ans[0];
 }
 
+// 300. Longest Increasing Subsequence
+int dpLIS(int* nums, int count, int** dp, int i, int prev)
+{
+    if (i >= count)
+        return 0;
+    if (dp[i][prev + 1] != -1)
+        return dp[i][prev + 1];
+    int take = 0;
+    int dontTake = dpLIS(nums, count, dp, i + 1, prev);
+    if (prev == -1 || nums[i] > nums[prev])
+        take = 1 + dpLIS(nums, count, dp, i + 1, i);
+    return dp[i][prev + 1] =(int)fmax(take, dontTake);
+}
+int lengthOfLIS(int* nums, int numsSize)
+{
+    int i = 0;
+    int** dp = (int**)malloc(numsSize * sizeof(int*));
+    for (i = 0; i < numsSize; i++) {
+        dp[i] = (int*)calloc((numsSize + 1), sizeof(int));
+        for (int j = 0; j <= numsSize; j++)
+            dp[i][j] = -1;
+    }
+    return dpLIS(nums, numsSize, dp, 0, -1);
+}
+
 // 344. Reverse String
 void reverseString(char* s, int sSize)
 {

@@ -240,6 +240,8 @@ char* serialize(struct TreeNode* root);
 struct TreeNode* deserialize(char* data);
 // 299. Bulls and Cows
 char* getHint(char* secret, char* guess);
+// 300. Longest Increasing Subsequence
+int lengthOfLIS(int* nums, int numsSize);
 // 344. Reverse String
 void reverseString(char* s, int sSize);
 // 345. Reverse Vowels of a String;
