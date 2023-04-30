@@ -260,6 +260,8 @@ bool isPerfectSquare(int num);
 int guessNumber(int n);
 // 383. Ransom Note
 bool canConstruct(char* ransomNote, char* magazine);
+// 384. Shuffle an Array
+
 // 387. First Unique Character in a String
 int firstUniqChar(char* s);
 // 392. Is Subsequence

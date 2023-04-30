@@ -4148,6 +4148,43 @@ bool canConstruct(char* ransomNote, char* magazine)
     return true;
 }
 
+// 384. Shuffle an Array
+typedef struct {
+    int* orignnums;
+    int count;
+} Solution;
+Solution* solutionCreate(int* nums, int numsSize) {
+    Solution* obj = (Solution*)calloc(1, sizeof(Solution));
+    obj->orignnums = (int*)malloc(numsSize * sizeof(int));
+    obj->count = numsSize;
+    memcpy(obj->orignnums, nums, numsSize * sizeof(int));
+    return obj;
+}
+int* solutionReset(Solution* obj, int* retSize) {
+    *retSize = obj->count;
+    return obj->orignnums;
+}
+int* solutionShuffle(Solution* obj, int* retSize) {
+    *retSize = obj->count;
+    int* ans = (int*)malloc(obj->count * sizeof(int));
+    memcpy(ans, obj->orignnums, obj->count * sizeof(int));
+    for (int i = obj->count - 1; i >= 0; i--) {
+        int r = rand() % (i + 1);
+        if (r == i)
+            continue;
+        ans[r] ^= ans[i];
+        ans[i] ^= ans[r];
+        ans[r] ^= ans[i];
+    }
+
+    return ans;
+}
+void solutionFree(Solution* obj) {
+    free(obj->orignnums);
+    obj->count = 0;
+    free(obj);
+}
+
 // 387. First Unique Character in a String
 int firstUniqChar(char* s)
 {
