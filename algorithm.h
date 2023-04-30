@@ -178,6 +178,8 @@ int rob(int* nums, int numsSize);
 int* rightSideView(struct TreeNode* root, int* returnSize);
 // 200. Number of Islands
 int numIslands(char** grid, int gridSize, int* gridColSize);
+// 201. Bitwise AND of Numbers Range
+int rangeBitwiseAnd(int left, int right);
 // 202. Happy Number
 bool isHappy(int n);
 // 203. Remove Linked List Elements
