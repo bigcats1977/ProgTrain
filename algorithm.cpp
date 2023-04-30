@@ -1622,6 +1622,26 @@ int** subsetsWithDup(int* nums, int numsSize, int* returnSize, int** returnColum
     return ans;
 }
 
+// 91. Decode Ways
+int numDecodings(char* s)
+{
+    int len = (int)strlen(s);
+    int* dp = (int*)calloc(len + 1, sizeof(int));
+    dp[len] = 1;
+    for (int i = len - 1; i >= 0; i--) {
+        if (s[i] == '0')
+            dp[i] = 0;
+        else {
+            dp[i] = dp[i + 1];
+            if (i < len - 1 && (s[i] == '1' || s[i] == '2' && s[i + 1] < '7'))
+                dp[i] += dp[i + 2];
+        }
+    }
+    int ans = len > 0 ? dp[0] : 0;
+    free(dp);
+    return ans;
+}
+
 // 94. Binary Tree Inorder Traversal
 void inorder(struct TreeNode* root, int* ans, int* index)
 {
