@@ -6361,6 +6361,21 @@ int* runningSum(int* nums, int numsSize, int* returnSize)
     return result;
 }
 
+// 1491.Average Salary Excluding the Minimumand Maximum Salary
+double average(int* salary, int salarySize)
+{
+    int min = INT_MAX, max = INT_MIN;
+    double sum = 0;
+    for (int i = 0; i < salarySize; i++) {
+        sum += salary[i];
+        max = salary[i] > max ? salary[i] : max;
+        min = salary[i] < min ? salary[i] : min;
+    }
+    sum -= max;
+    sum -= min;
+    return sum / (salarySize - 2);
+}
+
 // 1544. Make The String Great
 char* makeGood(char* s)
 {

@@ -414,6 +414,8 @@ bool* kidsWithCandies(int* candies, int candiesSize, int extraCandies, int* retu
 int* shuffle(int* nums, int numsSize, int n, int* returnSize);
 // 1480. Running Sum of 1d Array
 int* runningSum(int* nums, int numsSize, int* returnSize);
+// 1491.Average Salary Excluding the Minimumand Maximum Salary
+double average(int* salary, int salarySize);
 // 1544. Make The String Great
 char* makeGood(char* s);
 // 1557. Minimum Number of Vertices to Reach All Nodes
