@@ -328,6 +328,8 @@ int** matrixReshape(int** mat, int matSize, int* matColSize, int r, int c, int* 
 bool checkInclusion(char* s1, char* s2);
 // 572. Subtree of Another Tree
 bool isSubtree(struct TreeNode* root, struct TreeNode* subRoot);
+// 583. Delete Operation for Two Strings
+int minDelDistance(char* word1, char* word2);
 // 589. N - ary Tree Preorder Traversal
 int* preorder(struct Node* root, int* returnSize);
 // 617. Merge Two Binary Trees

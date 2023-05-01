@@ -5158,6 +5158,37 @@ bool isSubtree(struct TreeNode* root, struct TreeNode* subRoot)
     return false;
 }
 
+// 583. Delete Operation for Two Strings
+int minDelDistance(char* word1, char* word2)
+{
+    int i, j;
+    int ans;
+    int m = (int)strlen(word1), n = (int)strlen(word2);
+    int** dp = (int**)malloc((m + 1) * sizeof(int*));
+    for (i = 0; i < m + 1; i++)
+        dp[i] = (int*)calloc(n + 1, sizeof(int));
+    for (i = 0; i <= m; i++) {
+        for (j = 0; j <= n; j++) {
+            if (i == 0 || j == 0)
+                continue;
+            else {
+                if (word1[i - 1] == word2[j - 1]) {
+                    dp[i][j] = 1 + dp[i - 1][j - 1];
+                }
+                else {
+                    dp[i][j] = (int)fmax(dp[i - 1][j], dp[i][j - 1]);
+                }
+            }
+        }
+    }
+    ans = n + m - 2 * dp[m][n];
+
+    for (i = 0; i < m + 1; i++)
+        free(dp[i]);
+    free(dp);
+    return ans;
+}
+
 // 589. N - ary Tree Preorder Traversal
 void preTraver(struct NNode* root, int* result, int* count)
 {
