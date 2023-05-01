@@ -142,6 +142,8 @@ char*** partition(char* s, int* returnSize, int** returnColumnSizes);
 int canCompleteCircuit(int* gas, int gasSize, int* cost, int costSize);
 // 136. Single Number
 int singleNumber(int* nums, int numsSize);
+// 139. Word Break
+bool wordBreak(string s, vector<string>&wordDict);
 // 141. Linked List Cycle
 bool hasCycle(struct ListNode* head);
 // 142. Linked List Cycle II
