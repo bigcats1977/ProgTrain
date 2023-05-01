@@ -250,6 +250,8 @@ struct TreeNode* deserialize(char* data);
 char* getHint(char* secret, char* guess);
 // 300. Longest Increasing Subsequence
 int lengthOfLIS(int* nums, int numsSize);
+// 322. Coin Change
+int coinChange(vector<int>&coins, int amount);
 // 343. Integer Break
 int integerBreak(int n);
 // 344. Reverse String
