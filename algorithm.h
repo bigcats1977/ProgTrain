@@ -150,6 +150,8 @@ void reorderList(struct ListNode* head);
 int* preorderTraversal(struct TreeNode* root, int* returnSize);
 // 145. Binary Tree Postorder Traversal
 int* postorderTraversal(struct TreeNode* root, int* returnSize);
+// 149. Max Points on a Line
+int maxPoints(int** points, int pointsSize, int* pointsColSize);
 // 150. Evaluate Reverse Polish Notation
 int evalRPN(char ** tokens, int tokensSize);
 // 151. Reverse Words in a String

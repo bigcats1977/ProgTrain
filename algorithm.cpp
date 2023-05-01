@@ -2380,6 +2380,28 @@ int* postorderTraversal(struct TreeNode* root, int* returnSize)
     return ans;
 }
 
+// 149. Max Points on a Line
+int maxPoints(int** points, int pointsSize, int* pointsColSize)
+{
+    int ans = 0;
+    if (pointsSize <= 2)
+        return pointsSize;
+
+    for (int i = 0; i < pointsSize; i++)
+        for (int j = i + 1; j < pointsSize; j++) {
+            int x1 = points[i][0], x2 = points[j][0];
+            int y1 = points[i][1], y2 = points[j][1];
+            int total = 2;
+            for (int k = 0; k < pointsSize && k != i && k != j; k++) {
+                int x = points[k][0], y = points[k][1];
+                if ((y2 - y1) * (x - x1) == (x2 - x1) * (y - y1))
+                    total++;
+            }
+            ans = ans < total ? total : ans;
+        }
+    return ans;
+}
+
 // 150. Evaluate Reverse Polish Notation
 int evalRPN(char** tokens, int tokensSize) {
     long result = 0;
