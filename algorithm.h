@@ -76,6 +76,8 @@ int uniquePathsWithObstacles(int** obstacleGrid, int obstacleGridSize, int* obst
 int mySqrt(int x);
 // 70. Climbing Stairs
 int climbStairs(int n);
+// 72. Edit Distance
+int minDistance(char* word1, char* word2);
 // 74. Search a 2D Matrix
 bool searchMatrix(int** matrix, int matrixSize, int* matrixColSize, int target);
 // 75. Sort Colors

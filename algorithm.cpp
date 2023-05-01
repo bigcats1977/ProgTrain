@@ -1268,6 +1268,41 @@ int climbStairs(int n)
     return way;    
 }
 
+// 72. Edit Distance
+int minsolve(int i, int j, int m, int n, char* word1, char* word2, int** dp)
+{
+    if (i == m)
+        return n - j;
+    if (j == n)
+        return m - i;
+    if (dp[i][j] != -1)
+        return dp[i][j];
+    if (word1[i] == word2[j])
+        return dp[i][j] = minsolve(i + 1, j + 1, m, n, word1, word2, dp);
+    else {
+        int val = minsolve(i + 1, j, m, n, word1, word2, dp);
+        val = (int)fmin(val, minsolve(i, j + 1, m, n, word1, word2, dp));
+        val = (int)fmin(val, minsolve(i + 1, j + 1, m, n, word1, word2, dp));
+        return val + 1;
+    }
+}
+
+int minDistance(char* word1, char* word2) {
+    int i = 0, j = 0;
+    int m = (int)strlen(word1), n = (int)strlen(word2);
+    int** dp = (int**)malloc(m * sizeof(int*));
+    for (i = 0; i < m; i++) {
+        dp[i] = (int*)malloc(n * sizeof(int));
+        for (j = 0; j < n; j++)
+            dp[i][j] = -1;
+    }
+    int ans = minsolve(0, 0, m, n, word1, word2, dp);
+    for (i = 0; i < m; i++)
+        free(dp[i]);
+    free(dp);
+    return ans;
+}
+
 // 74. Search a 2D Matrix
 bool searchMatrix(int** matrix, int matrixSize, int* matrixColSize, int target)
 {
