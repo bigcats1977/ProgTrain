@@ -3999,6 +3999,21 @@ int lengthOfLIS(int* nums, int numsSize)
     return dpLIS(nums, numsSize, dp, 0, -1);
 }
 
+// 343. Integer Break
+int integerBreak(int n)
+{
+    int* dp = (int*)calloc(n + 1, sizeof(int));
+    dp[2] = 1;
+    for (int i = 3; i <= n; i++) {
+        for (int j = 1; j <= (i + 1) / 2; j++) {
+            dp[i] = (int)fmax(dp[i], fmax((i - j) * j, dp[i - j] * j));
+        }
+    }
+    int ans = dp[n];
+    free(dp);
+    return ans;
+}
+
 // 344. Reverse String
 void reverseString(char* s, int sSize)
 {
