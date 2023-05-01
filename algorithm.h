@@ -340,6 +340,8 @@ struct TreeNode* constructMaximumBinaryTree(int* nums, int numsSize);
 int widthOfBinaryTree(struct TreeNode* root);
 // 669. Trim a Binary Search Tree
 struct TreeNode* trimBST(struct TreeNode* root, int low, int high);
+// 673. Number of Longest Increasing Subsequence
+int findNumberOfLIS(int* nums, int numsSize);
 // 695. Max Area of Island
 int maxAreaOfIsland(int** grid, int gridSize, int* gridColSize);
 // 700. Search in a Binary Search Tree

@@ -5315,6 +5315,37 @@ struct TreeNode* trimBST(struct TreeNode* root, int low, int high)
     return root;
 }
 
+// 673. Number of Longest Increasing Subsequence
+int findNumberOfLIS(int* nums, int numsSize)
+{
+    int i, j;
+    int maxi = 1, ans = 0;
+    int* dp = (int*)malloc(numsSize * sizeof(int));
+    int* cnt = (int*)malloc(numsSize * sizeof(int));
+    for (i = 0; i < numsSize; i++) {
+        dp[i] = cnt[i] = 1;
+    }
+    for (i = 0; i < numsSize; i++) {
+        for (j = 0; j < i; j++) {
+            if (nums[i] > nums[j] && dp[i] < dp[j] + 1) {
+                dp[i] = 1 + dp[j];
+                cnt[i] = cnt[j];
+            }
+            else if (nums[i] > nums[j] && dp[i] == dp[j] + 1) {
+                cnt[i] += cnt[j];
+            }
+        }
+        maxi = (int)fmax(maxi, dp[i]);
+    }
+    for (i = 0; i < numsSize; i++) {
+        if (dp[i] == maxi)
+            ans += cnt[i];
+    }
+    free(dp);
+    free(cnt);
+    return ans;
+}
+
 // 695. Max Area of Island
 void depthIsland(int** grid, int row, int col, int sr, int sc, int* area)
 {
