@@ -6560,6 +6560,19 @@ char* mergeAlternately(char* word1, char* word2)
     return result;
 }
 
+// 1822. Sign of the Product of an Array
+int arraySign(int* nums, int numsSize)
+{
+    int count = 0;
+    for (int i = 0; i < numsSize; i++) {
+        if (nums[i] == 0)
+            return 0;
+        if (nums[i] < 0)
+            count++;
+    }
+    return count % 2 ? -1 : 1;
+}
+
 // 1823. Find the Winner of the Circular Game
 int findTheWinner(int n, int k)
 {

@@ -428,6 +428,8 @@ bool arrayStringsAreEqual(char** word1, int word1Size, char** word2, int word2Si
 bool halvesAreAlike(char* s);
 // 1768. Merge Strings Alternately
 char* mergeAlternately(char* word1, char* word2);
+// 1822. Sign of the Product of an Array
+int arraySign(int* nums, int numsSize);
 // 1823. Find the Winner of the Circular Game
 int findTheWinner(int n, int k);
 // 1832. Check if the Sentence Is Pangram
