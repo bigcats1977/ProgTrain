@@ -62,6 +62,8 @@ void rotate(int** matrix, int matrixSize, int* matrixColSize);
 char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnColumnSizes);
 // 53. Maximum Subarray
 int maxSubArray(int* nums, int numsSize);
+// 54. Spiral Matrix
+int* spiralOrder(int** matrix, int matrixSize, int* matrixColSize, int* returnSize);
 // 55. Jump Game
 bool canJump(int* nums, int numsSize);
 // 56. Merge Intervals

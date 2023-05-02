@@ -1062,6 +1062,44 @@ int maxSubArray(int* nums, int numsSize)
     return sum;
 }
 
+// 54. Spiral Matrix
+int* spiralOrder(int** matrix, int matrixSize, int* matrixColSize, int* returnSize)
+{
+    int m = matrixSize, n = matrixColSize[0];
+    int* ans = (int*)calloc(m * n, sizeof(int));
+    *returnSize = m * n;
+    int row, col;
+    int rowB = 0, rowE = m - 1, colB = 0, colE = n - 1;
+    int count = 0;
+    int dir = 0;
+    while (rowB <= rowE && colB <= colE) {
+        switch (dir) {
+        case 0:
+            for (col = rowB; col <= colE; col++)
+                ans[count++] = matrix[rowB][col];
+            rowB++;
+            break;
+        case 1:
+            for (row = rowB; row <= rowE; row++)
+                ans[count++] = matrix[row][colE];
+            colE--;
+            break;
+        case 2:
+            for (col = colE; col >= colB; col--)
+                ans[count++] = matrix[rowE][col];
+            rowE--;
+            break;
+        case 3:
+            for (row = rowE; row >= rowB; row--)
+                ans[count++] = matrix[row][colB];
+            colB++;
+            break;
+        }
+        dir = (dir + 1) % 4;
+    }
+    return ans;
+}
+
 // 55. Jump Game
 bool canJump(int* nums, int numsSize)
 {
