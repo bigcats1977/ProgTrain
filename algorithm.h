@@ -428,6 +428,8 @@ bool closeStrings(char* word1, char* word2);
 bool arrayStringsAreEqual(char** word1, int word1Size, char** word2, int word2Size);
 // 1704. Determine if String Halves Are Alike
 bool halvesAreAlike(char* s);
+// 1706. Where Will the Ball Fall
+int* findBall(int** grid, int gridSize, int* gridColSize, int* returnSize);
 // 1768. Merge Strings Alternately
 char* mergeAlternately(char* word1, char* word2);
 // 1822. Sign of the Product of an Array

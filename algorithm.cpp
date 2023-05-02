@@ -6578,6 +6578,35 @@ bool halvesAreAlike(char* s)
     return false;
 }
 
+// 1706. Where Will the Ball Fall
+int CheckPath(int** grid, int rows, int cols, int row, int col)
+{
+    if (row == rows)
+        return col;
+    if ((col == 0 && grid[row][col] == -1) ||
+        (col == cols - 1 && grid[row][col] == 1))
+        return -1;
+    if (col > 0 && grid[row][col - 1] == 1 && grid[row][col] == -1)
+        return -1;
+    if (col < cols - 1 && grid[row][col] == 1 && grid[row][col + 1] == -1)
+        return -1;
+    if (grid[row][col] == 1)
+        return CheckPath(grid, rows, cols, row + 1, col + 1);
+    else
+        return CheckPath(grid, rows, cols, row + 1, col - 1);
+}
+int* findBall(int** grid, int gridSize, int* gridColSize, int* returnSize)
+{
+    int col;
+    int rows = gridSize, cols = gridColSize[0];
+    int* ans = (int*)calloc(cols, sizeof(int));
+    *returnSize = cols;
+    for (col = 0; col < cols; col++) {
+        ans[col] = CheckPath(grid, rows, cols, 0, col);
+    }
+    return ans;
+}
+
 // 1768. Merge Strings Alternately
 char* mergeAlternately(char* word1, char* word2)
 {
