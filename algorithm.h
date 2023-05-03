@@ -14,6 +14,8 @@ char* longestPalindromeI(char* s);
 int reverse(int x);
 // 11. Container With Most Water
 int maxArea(int* height, int heightSize);
+// 14. Longest Common Prefix
+char* longestCommonPrefix(char** strs, int strsSize);
 // 15. 3Sum
 int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
 // 17. Letter Combinations of a Phone Number

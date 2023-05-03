@@ -146,6 +146,20 @@ int maxArea(int* height, int heightSize)
     return max;
 }
 
+// 14. Longest Common Prefix
+char* longestCommonPrefix(char** strs, int strsSize)
+{
+    int len = (int)strlen(strs[0]);
+    for (int i = 1; i < strsSize; i++) {
+        int j = 0;
+        while (j < (int)strlen(strs[i]) && strs[i][j] == strs[0][j])
+            j++;
+        len = (int)fmin(len, j);
+    }
+    strs[0][len] = 0;
+    return strs[0];
+}
+
 // 15. 3Sum
 int threeCmp(const void* a, const void* b)
 {
