@@ -6711,6 +6711,51 @@ int longestPalindrome(char** words, int wordsSize)
     return longPal;
 }
 
+// 2215. Find the Difference of Two Arrays
+int diffcmp(const void* a, const void* b) {
+    return (*(int*)a) - (*(int*)b);
+}
+int** findDifference(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize, int** returnColumnSizes)
+{
+    qsort(nums1, nums1Size, sizeof(int), diffcmp);
+    qsort(nums2, nums2Size, sizeof(int), diffcmp);
+    int** ans = (int**)malloc(2 * sizeof(int*));
+    (*returnColumnSizes) = (int*)malloc(2 * sizeof(int));
+    *returnSize = 2;
+    ans[0] = (int*)malloc(nums1Size * sizeof(int));
+    ans[1] = (int*)malloc(nums2Size * sizeof(int));
+    int i = 0, j = 0;
+    int c1 = 0, c2 = 0;
+    while (i < nums1Size && j < nums2Size) {
+        while (i < nums1Size - 1 && nums1[i] == nums1[i + 1])
+            i++;
+        while (j < nums2Size - 1 && nums2[j] == nums2[j + 1])
+            j++;
+        if (nums1[i] == nums2[j]) {
+            i++, j++;
+        }
+        else if (nums1[i] < nums2[j]) {
+            ans[0][c1++] = nums1[i++];
+        }
+        else {
+            ans[1][c2++] = nums2[j++];
+        }
+    }
+    while (i < nums1Size) {
+        while (i < nums1Size - 1 && nums1[i] == nums1[i + 1])
+            i++;
+        ans[0][c1++] = nums1[i++];
+    }
+    while (j < nums2Size) {
+        while (j < nums2Size - 1 && nums2[j] == nums2[j + 1])
+            j++;
+        ans[1][c2++] = nums2[j++];
+    }
+    (*returnColumnSizes)[0] = c1;
+    (*returnColumnSizes)[1] = c2;
+    return ans;
+}
+
 // 剑指 Offer 05. 替换空格
 // 输入：s = "We are happy."
 // 输出："We%20are%20happy."

@@ -105,6 +105,7 @@ void TestCase_1657();
 void TestCase_1662();
 void TestCase_1823();
 void TestCase_1832();
+void TestCase_2215();
 void TestCase_8005();
 void TestCase_8058();
 void TestCase(unsigned int caseno);

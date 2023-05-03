@@ -105,10 +105,20 @@ FUNCNAME g_tFuncName[] = {
     {1657,  TestCase_1657},
     {1662,  TestCase_1662},
     {1823,  TestCase_1823},
-    {1832,  TestCase_1832},
     {8005,  TestCase_8005},
+    {2215,  TestCase_2215},
     {8058,  TestCase_8058},
 };
+
+void TestCase_2215()
+{
+    vector<int> nums1,nums2;
+    int nr, nl;
+    int* nnl = &nl;
+    nums1 = { 11,-9,-6,-8,0,-6,2,10,1,-5,-9 };
+    nums2 = { 10,1,-2,-7,8,-1,-6,8,-11,8,7 };
+    findDifference(nums1.data(), (int)nums1.size(), nums2.data(), (int)nums2.size(), &nr, &nnl);
+}
 
 void TestCase_300()
 {
