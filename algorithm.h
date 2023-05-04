@@ -224,6 +224,8 @@ int kthSmallest(struct TreeNode* root, int k);
 // 231. Power of Two
 bool isPowerOfTwo(int n);
 // 232. Implement Queue using Stacks
+// 234. Palindrome Linked List
+bool isPalindrome(struct ListNode* head);
 // 235. Lowest Common Ancestor of a Binary Search Tree
 struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q);
 // 236. Lowest Common Ancestor of a Binary Tree

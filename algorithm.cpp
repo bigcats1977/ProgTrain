@@ -3563,6 +3563,28 @@ void myQueueFree(MyQueue* obj) {
  * myQueueFree(obj);
 */
 
+// 234. Palindrome Linked List
+bool isPalindrome(struct ListNode* head)
+{
+    int count = 0;
+    int* nodeval = (int*)malloc(100000*sizeof(int));
+    while (head)
+    {
+        nodeval[count++] = head->val;
+        head = head->next;
+    }
+    for (int i = 0; i < count / 2; i++)
+    {
+        if (nodeval[i] != nodeval[count - 1 - i])
+        {
+            free(nodeval);
+            return false;
+        }
+    }
+    free(nodeval);
+    return true;
+}
+
 // 235. Lowest Common Ancestor of a Binary Search Tree
 struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q)
 {
