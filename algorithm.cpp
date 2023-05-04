@@ -5304,6 +5304,24 @@ struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2)
     return root1;
 }
 
+// 649. Dota2 Senate
+char* predictPartyVictory(char* senate)
+{
+    int i, len = (int)strlen(senate);
+    int* QueueR = (int*)malloc(2 * len * sizeof(int));
+    int* QueueD = (int*)malloc(2 * len * sizeof(int));
+    int  headR = 0, tailR = 0, headD = 0, tailD = 0;
+
+    for (i = 0; i < len; i++)
+        senate[i] == 'R' ? (QueueR[headR++] = i) : (QueueD[headD++] = i);
+
+    while (headR > tailR && headD > tailD) {
+        int r_index = QueueR[tailR++], d_index = QueueD[tailD++];
+        r_index < d_index ? (QueueR[headR++] = r_index + len) : (QueueD[headD++] = d_index + len);
+    }
+    return ((headR - tailR) > (headD - tailD)) ? (char*)"Radiant" : (char*)"Dire";
+}
+
 // 653. Two Sum IV - Input is a BST
 void prefindtarget(struct TreeNode* root, int* vals, int* nums)
 {

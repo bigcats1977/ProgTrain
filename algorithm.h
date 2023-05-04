@@ -340,6 +340,8 @@ int minDelDistance(char* word1, char* word2);
 int* preorder(struct Node* root, int* returnSize);
 // 617. Merge Two Binary Trees
 struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2);
+// 649. Dota2 Senate
+char* predictPartyVictory(char* senate);
 // 653. Two Sum IV - Input is a BST
 bool findTarget(struct TreeNode* root, int k);
 // 654. Maximum Binary Tree
