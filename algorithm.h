@@ -418,6 +418,8 @@ char* minRemoveToMakeValid(char* s);
 int maximum69Number(int num);
 // 1431. Kids With the Greatest Number of Candies
 bool* kidsWithCandies(int* candies, int candiesSize, int extraCandies, int* returnSize);
+// 1456. Maximum Number of Vowels in a Substring of Given Length
+int maxVowels(char* s, int k);
 // 1470. Shuffle the Array
 int* shuffle(int* nums, int numsSize, int n, int* returnSize);
 // 1480. Running Sum of 1d Array

@@ -6423,6 +6423,30 @@ bool* kidsWithCandies(int* candies, int candiesSize, int extraCandies, int* retu
     return result;
 }
 
+// 1456. Maximum Number of Vowels in a Substring of Given Length
+bool IsVowelChar(char c) {
+    if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
+        return true;
+    return false;
+}
+int maxVowels(char* s, int k) {
+    int count = 0;
+    int i, slow = 0;
+    for (i = 0; i < k; i++) {
+        if (IsVowelChar(s[i]))
+            count++;
+    }
+    int maxNum = count;
+    for (; i < strlen(s); i++) {
+        if (IsVowelChar(s[slow++]))
+            count--;
+        if (IsVowelChar(s[i]))
+            count++;
+        maxNum = maxNum < count ? count : maxNum;
+    }
+    return maxNum;
+}
+
 // 1470. Shuffle the Array
 int* shuffle(int* nums, int numsSize, int n, int* returnSize)
 {
