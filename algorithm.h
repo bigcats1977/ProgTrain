@@ -260,6 +260,8 @@ char* getHint(char* secret, char* guess);
 int lengthOfLIS(int* nums, int numsSize);
 // 322. Coin Change
 int coinChange(vector<int>&coins, int amount);
+// 328. Odd Even Linked List
+struct ListNode* oddEvenList(struct ListNode* head);
 // 343. Integer Break
 int integerBreak(int n);
 // 344. Reverse String

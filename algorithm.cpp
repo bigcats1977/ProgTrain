@@ -4154,6 +4154,32 @@ int coinChange(vector<int>& coins, int amount)
     return dp[--amount] == INT_MAX ? -1 : dp[amount];
 }
 
+// 328. Odd Even Linked List
+struct ListNode* oddEvenList(struct ListNode* head)
+{
+    int count = 1;
+    if (!head)
+        return NULL;
+    struct ListNode* dummy = (struct ListNode*)calloc(1, sizeof(struct ListNode));
+    struct ListNode* prior = head;
+    struct ListNode* evenhead = dummy;
+    while (head->next) {
+        if ((count++ % 2)) {
+            evenhead->next = head->next;
+            head->next = evenhead->next->next;
+            evenhead = evenhead->next;
+            evenhead->next = NULL;
+        }
+        else {
+            //prior = head;
+            head = head->next;
+        }
+    }
+    head->next = dummy->next;
+    free(dummy);
+    return prior;
+}
+
 // 343. Integer Break
 int integerBreak(int n)
 {
