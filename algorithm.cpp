@@ -2492,6 +2492,50 @@ int* postorderTraversal(struct TreeNode* root, int* returnSize)
     return ans;
 }
 
+// 148. Sort List
+struct ListNode* mergeListNode(struct ListNode* l1, struct ListNode* l2)
+{
+    struct ListNode* dummy = (struct ListNode*)calloc(1, sizeof(struct ListNode));
+    struct ListNode* cur = dummy;
+    while (l1 && l2) {
+        if (l1->val <= l2->val) {
+            cur->next = l1;
+            l1 = l1->next;
+        }
+        else {
+            cur->next = l2;
+            l2 = l2->next;
+        }
+        cur = cur->next;
+    }
+    if (l1)
+        cur->next = l1;
+    if (l2)
+        cur->next = l2;
+    cur = dummy->next;
+    free(dummy);
+    return cur;
+}
+struct ListNode* sortList(struct ListNode* head)
+{
+    // one point
+    if (!head || !head->next)
+        return head;
+
+    ListNode* temp = NULL;
+    ListNode* slow = head;
+    ListNode* fast = head;
+    while (fast && fast->next) {
+        temp = slow;
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    temp->next = NULL;
+    temp = sortList(head);
+    fast = sortList(slow);
+    return mergeListNode(temp, fast);
+}
+
 // 149. Max Points on a Line
 int maxPoints(int** points, int pointsSize, int* pointsColSize)
 {
