@@ -5374,6 +5374,41 @@ struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2)
     return root1;
 }
 
+// 621. Task Scheduler
+int taskcmp(const void* a, const void* b) {
+    return(*(int*)b) - (*(int*)a);
+}
+int leastInterval(char* tasks, int tasksSize, int n) {
+    if (n == 0)
+        return tasksSize;
+
+    int i;
+    int base[26] = { 0 };
+    int info[26] = { 0 };
+    for (i = 0; i < tasksSize; i++) {
+        info[tasks[i] - 'A']++;
+    }
+    int interval = 0;
+    int k = n + 1;
+    int iend;
+    while (1) {
+        qsort(&info[0], 26, sizeof(int), taskcmp);
+        for (i = 0; i<k&&i<26; i++)
+        {
+            if (info[i] == 0) {
+                break;
+            }
+            info[i]--;
+            interval++;
+        }
+        if (0 == memcmp(info, base, sizeof(int)*26))
+            return interval;
+        if (i < k)
+            interval += (k - i);
+    }
+    return interval;
+}
+
 // 649. Dota2 Senate
 char* predictPartyVictory(char* senate)
 {

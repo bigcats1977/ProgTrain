@@ -82,6 +82,7 @@ FUNCNAME g_tFuncName[] = {
     {557,   TestCase_557 },
     {566,   TestCase_566 },
     {567,   TestCase_567 },
+    {621,   TestCase_621 },
     {704,   TestCase_704 },
     {706,   TestCase_706 },
     {707,   TestCase_707 },
@@ -109,6 +110,24 @@ FUNCNAME g_tFuncName[] = {
     {2215,  TestCase_2215},
     {8058,  TestCase_8058},
 };
+
+void TestCase_621()
+{
+    string tasks = "AAABBB";
+    int n , out, exp ;
+
+    /*tasks = "AAABBB";
+    n = 2;
+    exp = 8;
+    out = leastInterval(&*tasks.begin(), (int)tasks.length(), 2);
+    COMPVALUE(exp, out);*/
+
+    tasks = "AAAAAABCDEFG";
+    n = 2;
+    exp = 16;
+    out = leastInterval(&*tasks.begin(), (int)tasks.length(), 2);
+    COMPVALUE(exp, out);
+}
 
 void TestCase_2215()
 {

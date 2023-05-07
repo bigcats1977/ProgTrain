@@ -344,6 +344,8 @@ int minDelDistance(char* word1, char* word2);
 int* preorder(struct Node* root, int* returnSize);
 // 617. Merge Two Binary Trees
 struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2);
+// 621. Task Scheduler
+int leastInterval(char* tasks, int tasksSize, int n);
 // 649. Dota2 Senate
 char* predictPartyVictory(char* senate);
 // 653. Two Sum IV - Input is a BST
