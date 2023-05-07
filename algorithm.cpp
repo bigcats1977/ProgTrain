@@ -1965,6 +1965,26 @@ struct TreeNode* sortedArrayToBST(int* nums, int numsSize)
     return root;
 }
 
+// 110. Balanced Binary Tree
+int getHeight(struct TreeNode* root) {
+    if (!root)
+        return 0;
+    int left = getHeight(root->left);
+    if (left == -1)
+        return -1;
+    int right = getHeight(root->right);
+    if (right == -1)
+        return -1;
+    if (fabs(left - right) > 1)
+        return -1;
+    return (int)fmax(left, right) + 1;
+}
+bool isBalanced(struct TreeNode* root) {
+    if (getHeight(root) < 0)
+        return false;
+    return true;
+}
+
 // 112. Path Sum
 void presum(struct TreeNode* root, int sum, bool* pFind)
 {
@@ -5390,7 +5410,6 @@ int leastInterval(char* tasks, int tasksSize, int n) {
     }
     int interval = 0;
     int k = n + 1;
-    int iend;
     while (1) {
         qsort(&info[0], 26, sizeof(int), taskcmp);
         for (i = 0; i<k&&i<26; i++)

@@ -122,6 +122,8 @@ struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int in
 struct TreeNode* buildTree106(int* inorder, int inorderSize, int* postorder, int postorderSize);
 // 108. Convert Sorted Array to Binary Search Tree
 struct TreeNode* sortedArrayToBST(int* nums, int numsSize);
+// 110. Balanced Binary Tree
+bool isBalanced(struct TreeNode* root);
 // 112. Path Sum
 bool hasPathSum(struct TreeNode* root, int targetSum);
 // 113. Path Sum II
