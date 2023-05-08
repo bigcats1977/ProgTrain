@@ -5175,6 +5175,25 @@ int** updateMatrix(int** matrix, int matrixSize, int* matrixColSize, int* return
 }
 #endif
 
+// 543. Diameter of Binary Tree
+int GetHeight(struct TreeNode* root)
+{
+    if (!root)
+        return 0;
+    return (int)(fmax(GetHeight(root->left), GetHeight(root->right)) + 1);
+}
+int diameterOfBinaryTree(struct TreeNode* root) {
+    if (!root)
+        return 0;
+    int lh = GetHeight(root->left);
+    int rh = GetHeight(root->right);
+    int left = diameterOfBinaryTree(root->left);
+    int right = diameterOfBinaryTree(root->right);
+    int diameter = left > right ? left : right;
+    diameter = (lh + rh) > diameter ? (lh + rh) : diameter;
+    return diameter;
+}
+
 // 547. Number of Provinces
 void dfsProvinces(int** isConnected, int isConnectedSize, int* isConnectedColSize, int index)
 {
@@ -5412,7 +5431,7 @@ int leastInterval(char* tasks, int tasksSize, int n) {
     int k = n + 1;
     while (1) {
         qsort(&info[0], 26, sizeof(int), taskcmp);
-        for (i = 0; i<k&&i<26; i++)
+        for (i = 0; i < k && i < 26; i++)
         {
             if (info[i] == 0) {
                 break;
@@ -5420,7 +5439,7 @@ int leastInterval(char* tasks, int tasksSize, int n) {
             info[i]--;
             interval++;
         }
-        if (0 == memcmp(info, base, sizeof(int)*26))
+        if (0 == memcmp(info, base, sizeof(int) * 26))
             return interval;
         if (i < k)
             interval += (k - i);

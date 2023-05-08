@@ -114,7 +114,7 @@ FUNCNAME g_tFuncName[] = {
 void TestCase_621()
 {
     string tasks = "AAABBB";
-    int n , out, exp ;
+    int n, out, exp;
 
     /*tasks = "AAABBB";
     n = 2;
