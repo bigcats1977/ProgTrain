@@ -6672,6 +6672,20 @@ int* findSmallestSetOfVertices(int n, int** edges, int edgesSize, int* edgesColS
     return ans;
 }
 
+// 1572. Matrix Diagonal Sum
+int diagonalSum(int** mat, int matSize, int* matColSize)
+{
+    int sum = 0;
+    for (int i = 0; i < matSize; i++)
+    {
+        sum += mat[i][i];
+        sum += mat[i][matSize - i - 1];
+    }
+    if (matSize % 2 == 1)
+        sum -= mat[matSize / 2][matSize / 2];
+    return sum;
+}
+
 // 1657. Determine if Two Strings Are Close
 int cmpfunc(const void* a, const void* b) {
     return (*(int*)a - *(int*)b);

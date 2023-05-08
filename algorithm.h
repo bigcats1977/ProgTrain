@@ -440,6 +440,8 @@ double average(int* salary, int salarySize);
 char* makeGood(char* s);
 // 1557. Minimum Number of Vertices to Reach All Nodes
 int* findSmallestSetOfVertices(int n, int** edges, int edgesSize, int* edgesColSize, int* returnSize);
+// 1572. Matrix Diagonal Sum
+int diagonalSum(int** mat, int matSize, int* matColSize);
 // 1657. Determine if Two Strings Are Close
 bool closeStrings(char* word1, char* word2);
 // 1662. Check If Two String Arrays are Equivalent
