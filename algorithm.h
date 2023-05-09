@@ -308,10 +308,12 @@ int characterReplacement(char* s, int k);
 int eraseOverlapIntervals(int** intervals, int intervalsSize, int* intervalsColSize);
 // 438. Find All Anagrams in a String
 int* findAnagrams(char* s, char* p, int* returnSize);
-// 477. Total Hamming Distance
-int totalHammingDistance(int* nums, int numsSize);
 // 450. Delete Node in a BST
 struct TreeNode* deleteNode(struct TreeNode* root, int key);
+// 437. Path Sum III
+int pathSumIII(struct TreeNode* root, int targetSum);
+// 477. Total Hamming Distance
+int totalHammingDistance(int* nums, int numsSize);
 // 501. Find Mode in Binary Search Tree
 int* findMode(struct TreeNode* root, int* returnSize);
 // 509. Fibonacci Number

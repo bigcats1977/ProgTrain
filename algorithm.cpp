@@ -4834,21 +4834,26 @@ int* findAnagrams(char* s, char* p, int* returnSize)
     return res;
 }
 
-// 477. Total Hamming Distance
-int totalHammingDistance(int* nums, int numsSize) {
-    int sum = 0;
-    uint32_t comp = 1;
-    for (int pos = 0; pos < 32; pos++) {
-        int ones = 0, zeros = 0;
-        for (int i = 0; i < numsSize; i++)
-            if (nums[i] & comp)
-                zeros++;
-            else
-                ones++;
-        comp <<= 1;
-        sum += zeros * ones;
-    }
-    return sum;
+// 437. Path Sum III
+int PathIII = 0;
+void solvePathSum(struct TreeNode* root, int target)
+{
+    if (!root)
+        return;
+    if (root->val == target)
+        PathIII++;
+    solvePathSum(root->left, target - root->val);
+    solvePathSum(root->right, target - root->val);
+}
+int pathSumIII(struct TreeNode* root, int targetSum)
+{
+    PathIII = 0;
+    if (!root)
+        return 0;
+    solvePathSum(root, targetSum);
+    pathSumIII(root->left, targetSum);
+    pathSumIII(root->right, targetSum);
+    return PathIII;
 }
 
 // 450. Delete Node in a BST
@@ -4884,6 +4889,23 @@ struct TreeNode* deleteNode(struct TreeNode* root, int key)
     else
         root->right = deleteNode(root->right, key);
     return root;
+}
+
+// 477. Total Hamming Distance
+int totalHammingDistance(int* nums, int numsSize) {
+    int sum = 0;
+    uint32_t comp = 1;
+    for (int pos = 0; pos < 32; pos++) {
+        int ones = 0, zeros = 0;
+        for (int i = 0; i < numsSize; i++)
+            if (nums[i] & comp)
+                zeros++;
+            else
+                ones++;
+        comp <<= 1;
+        sum += zeros * ones;
+    }
+    return sum;
 }
 
 // 501. Find Mode in Binary Search Tree
