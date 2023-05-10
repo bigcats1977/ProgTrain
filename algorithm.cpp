@@ -4835,25 +4835,29 @@ int* findAnagrams(char* s, char* p, int* returnSize)
 }
 
 // 437. Path Sum III
-int PathIII = 0;
-void solvePathSum(struct TreeNode* root, int target)
+void solvePathSum(struct TreeNode* root, long long current, int* pathNum)
 {
     if (!root)
         return;
-    if (root->val == target)
-        PathIII++;
-    solvePathSum(root->left, target - root->val);
-    solvePathSum(root->right, target - root->val);
+    if (root->val == current)
+        (*pathNum)++;
+    solvePathSum(root->left, current - root->val, pathNum);
+    solvePathSum(root->right, current - root->val, pathNum);
+}
+void pathSumDET(struct TreeNode* root, long long targetSum, int* pathNum)
+{
+    if (!root)
+        return;
+    solvePathSum(root, targetSum, pathNum);
+
+    pathSumDET(root->left, targetSum, pathNum);
+    pathSumDET(root->right, targetSum, pathNum);
 }
 int pathSumIII(struct TreeNode* root, int targetSum)
 {
-    PathIII = 0;
-    if (!root)
-        return 0;
-    solvePathSum(root, targetSum);
-    pathSumIII(root->left, targetSum);
-    pathSumIII(root->right, targetSum);
-    return PathIII;
+    int pathNum = 0;
+    pathSumDET(root, targetSum, &pathNum);
+    return pathNum;
 }
 
 // 450. Delete Node in a BST
