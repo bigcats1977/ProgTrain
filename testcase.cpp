@@ -97,6 +97,7 @@ FUNCNAME g_tFuncName[] = {
     {904,   TestCase_904 },
     {946,   TestCase_946 },
     {977,   TestCase_977 },
+    {1035,  TestCase_1035},
     {1047,  TestCase_1047},
     {1071,  TestCase_1071},
     {1091,  TestCase_1091},
@@ -112,6 +113,28 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_1035()
+{
+    vector<int> nums1, nums2;
+    int expect, out;
+    nums1 = { 1,4,2 };
+    nums2 = { 1,2,4 };
+    expect = 2;
+    out = maxUncrossedLines(nums1.data(), (int)nums1.size(), nums2.data(), (int)nums2.size());
+    COMPVALUE(expect, out);
+
+    nums1 = { 2,5,1,2,5 };
+    nums2 = { 10,5,2,1,5,2 };
+    expect = 3;
+    out = maxUncrossedLines(nums1.data(), (int)nums1.size(), nums2.data(), (int)nums2.size());
+    COMPVALUE(expect, out);
+
+    nums1 = { 1,3,7,1,7,5 };
+    nums2 = { 1,9,2,5,1 };
+    expect = 2;
+    out = maxUncrossedLines(nums1.data(), (int)nums1.size(), nums2.data(), (int)nums2.size());
+    COMPVALUE(expect, out);
+}
 void TestCase_417()
 {
     vector<vector<int>> matrix;

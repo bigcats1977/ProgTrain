@@ -6300,7 +6300,23 @@ int findJudge(int n, int** trust, int trustSize, int* trustColSize)
 // 1035. Uncrossed Lines
 int maxUncrossedLines(int* nums1, int nums1Size, int* nums2, int nums2Size)
 {
-    return 0;
+    int i, j;
+    int maxnum = nums1Size > nums2Size ? nums1Size : nums2Size;
+    int** dp = (int**)malloc((maxnum + 1) * sizeof(int*));
+    for (i = 0; i <= maxnum; i++) {
+        dp[i] = (int*)malloc((maxnum + 1) * sizeof(int));
+        memset(dp[i], -1, (maxnum + 1) * sizeof(int));
+        dp[0][i] = 0;
+        dp[i][0] = 0;
+    }
+    for (i = 1; i <= nums1Size; i++)
+        for (j = 1; j <= nums2Size; j++) {
+            if (nums1[i - 1] == nums2[j - 1])
+                dp[i][j] = 1 + dp[i - 1][j - 1];
+            else
+                dp[i][j] = dp[i - 1][j] > dp[i][j - 1] ? dp[i - 1][j] : dp[i][j - 1];
+        }
+    return dp[nums1Size][nums2Size];
 }
 
 // 1046. Last Stone Weight
