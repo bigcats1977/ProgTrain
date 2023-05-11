@@ -4711,6 +4711,63 @@ char* addStrings(char* num1, char* num2)
     return &ans[len];
 }
 
+// 417. Pacific Atlantic Water Flow
+int fourneight[4][2] = { {-1,0},{1,0},{0,-1},{0,1} };
+bool FlowOcean(int** heights, int row, int col, int x, int y, bool* visited, bool* pacific, bool* atlantic)
+{
+    visited[x*col+y] = true;
+    if (x == 0 || y == 0)
+        *pacific = true;
+    if (x == row - 1 || y == col - 1)
+        *atlantic = true;
+    if (*pacific && *atlantic)
+        return true;
+
+    for (int i = 0; i < 4; i++) {
+        int nx = x + fourneight[i][0];
+        int ny = y + fourneight[i][1];
+        if (nx < 0 || nx >= row || ny < 0 || ny >= col)
+            continue;
+        if (visited[nx*col+ny])
+            continue;
+        if (heights[nx][ny] <= heights[x][y])
+        {
+            if (FlowOcean(heights, row, col, nx, ny, visited, pacific, atlantic))
+                return true;
+        }
+    }
+
+    return false;
+}
+int** pacificAtlantic(int** heights, int heightsSize, int* heightsColSize, int* returnSize, int** returnColumnSizes)
+{
+    int row = heightsSize, col = heightsColSize[0];
+    bool* visited = (bool*)malloc(row * col*sizeof(bool));
+    int count = 0;
+    (*returnColumnSizes) = (int*)malloc(row * col*sizeof(int));
+    int** ans = (int**)malloc(row * col*sizeof(int*));
+    int i, j;
+    for(i=0;i<row;i++)
+        for (j = 0; j < col; j++) 
+        {
+            //i = 4, j = 0;
+            bool pacific = false, atlantic = false;
+            memset(visited, false, row * col * sizeof(bool));
+            if (FlowOcean(heights, row, col, i, j, visited, &pacific, &atlantic))
+            {
+                (*returnColumnSizes)[count] = 2;
+                ans[count] = (int*)malloc(2 * sizeof(int));
+                ans[count][0] = i;
+                ans[count][1] = j;
+                count++;
+                printf("%d, %d;", i, j);
+            }
+        }
+    free(visited);
+    *returnSize = count;
+    return ans;
+}
+
 // 424. Longest Repeating Character Replacement
 int characterReplacement(char* s, int k)
 {
@@ -6238,6 +6295,12 @@ int findJudge(int n, int** trust, int trustSize, int* trustColSize)
             return i;
     }
     return -1;
+}
+
+// 1035. Uncrossed Lines
+int maxUncrossedLines(int* nums1, int nums1Size, int* nums2, int nums2Size)
+{
+    return 0;
 }
 
 // 1046. Last Stone Weight

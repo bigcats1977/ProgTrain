@@ -302,6 +302,8 @@ int longestPalindrome(char* s);
 int numberOfArithmeticSlices(int* nums, int numsSize);
 // 415. Add Strings
 char* addStrings(char* num1, char* num2);
+// 417. Pacific Atlantic Water Flow
+int** pacificAtlantic(int** heights, int heightsSize, int* heightsColSize, int* returnSize, int** returnColumnSizes);
 // 424. Longest Repeating Character Replacement
 int characterReplacement(char* s, int k);
 // 435. Non - overlapping Intervals
@@ -412,6 +414,8 @@ int** intervalIntersection(int** firstList, int firstListSize, int* firstListCol
 int orangesRotting(int** grid, int gridSize, int* gridColSize);
 // 997. Find the Town Judge
 int findJudge(int n, int** trust, int trustSize, int* trustColSize);
+// 1035. Uncrossed Lines
+int maxUncrossedLines(int* nums1, int nums1Size, int* nums2, int nums2Size);
 // 1046. Last Stone Weight
 int lastStoneWeight(int* stones, int stonesSize);
 // 1047. Remove All Adjacent Duplicates In String

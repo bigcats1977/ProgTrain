@@ -73,6 +73,7 @@ FUNCNAME g_tFuncName[] = {
     {387,   TestCase_387 },
     {392,   TestCase_392 },
     {415,   TestCase_415 },
+    {417,   TestCase_417 },
     {435,   TestCase_435 },
     {438,   TestCase_438 },
     {509,   TestCase_509 },
@@ -111,6 +112,24 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_417()
+{
+    vector<vector<int>> matrix;
+    int** p;
+    int row, col;
+    int rrow, rcol;
+    int* rrcol = &rcol;
+
+    matrix = { {1} };
+    row = 1, col = 1;
+    p = matrix2addr(matrix);
+    pacificAtlantic(p, row, &col, &rrow, &rrcol);
+
+    matrix = { {1,2,2,3,5},{3,2,3,4,4},{2,4,5,3,1},{6,7,1,4,5} ,{5,1,1,2,4} };
+    row = 5, col =5;
+    p = matrix2addr(matrix);
+    pacificAtlantic(p, row, &col, &rrow, &rrcol);
+}
 void TestCase_621()
 {
     string tasks = "AAABBB";
