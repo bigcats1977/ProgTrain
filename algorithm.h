@@ -468,6 +468,8 @@ bool checkIfPangram(char* sentence);
 int longestPalindrome(char** words, int wordsSize);
 // 2215. Find the Difference of Two Arrays
 int** findDifference(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize, int** returnColumnSizes);
+// 2466. Count Ways To Build Good Strings
+int countGoodStrings(int low, int high, int zero, int one);
 // ½£Ö¸ Offer 05. Ìæ»»¿Õ¸ñ
 char* replacespace(char* s);
 // ½£Ö¸ Offer 58 - II.×óÐý×ª×Ö·û´®

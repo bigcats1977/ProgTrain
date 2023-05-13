@@ -7093,6 +7093,30 @@ int** findDifference(int* nums1, int nums1Size, int* nums2, int nums2Size, int* 
     return ans;
 }
 
+// 2466. Count Ways To Build Good Strings
+int mod = (int)(1e9 + 7);
+int goodstring(int target, int zero, int one, int* dp) {
+    if (target == 0)
+        return 1;
+    if (target < 0)
+        return 0;
+    if (dp[target] != -1)
+        return dp[target];
+    long long sum;
+    sum = goodstring(target - one, zero, one, dp) + goodstring(target - zero, zero, one, dp);
+    return dp[target] = sum % mod;
+}
+int countGoodStrings(int low, int high, int zero, int one) {
+    int ans = 0;
+    int* dp = (int*)malloc((high + 1) * sizeof(int));
+    memset(dp, -1, (high + 1) * sizeof(int));
+    for (int i = low; i <= high; i++) {
+        ans = (ans + goodstring(i, zero, one, dp)) % mod;
+    }
+    free(dp);
+    return ans;
+}
+
 // 剑指 Offer 05. 替换空格
 // 输入：s = "We are happy."
 // 输出："We%20are%20happy."
