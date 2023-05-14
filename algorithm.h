@@ -168,6 +168,8 @@ int maxPoints(int** points, int pointsSize, int* pointsColSize);
 int evalRPN(char ** tokens, int tokensSize);
 // 151. Reverse Words in a String
 char* reverseWords(char* s);
+// 152. Maximum Product Subarray
+int maxProduct(int* nums, int numsSize);
 // 153. Find Minimum in Rotated Sorted Array
 int findMin(int* nums, int numsSize);
 // 155. Min Stack

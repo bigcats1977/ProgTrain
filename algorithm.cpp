@@ -2709,6 +2709,22 @@ char* reverseWords(char* s)
     return result;
 }
 #endif
+
+// 152. Maximum Product Subarray
+int maxProduct(int* nums, int numsSize)
+{
+    int curmax = nums[0];
+    int curmin = nums[0];
+    int curpro = nums[0];
+    for (int i = 1; i < numsSize; i++) {
+        int temp = curmax;
+        curmax = (int)(fmax(fmax(curmin * nums[i], curmax * nums[i]), nums[i]));
+        curmin = (int)(fmin(fmin(curmin * nums[i], temp * nums[i]), nums[i]));
+        curpro = (int)(fmax(curmax, curpro));
+        //printf("%d: %d %d %d\r\n", i, curmax,curmin,curpro);
+    }
+    return curpro;
+}
 // 153. Find Minimum in Rotated Sorted Array
 int findMin(int* nums, int numsSize)
 {
