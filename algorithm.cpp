@@ -6964,6 +6964,48 @@ char* mergeAlternately(char* word1, char* word2)
     return result;
 }
 
+// 1799. Maximize Score After N Operations
+int gcd(int a, int b)
+{
+    if (a < b) {
+        a ^= b;
+        b ^= a;
+        a ^= b;
+    }
+    int c = a % b;
+    while (c) {
+        a = b;
+        b = c;
+        c = a % b;
+    }
+    return b;
+}
+int dpScore(int* nums, int m, int op, int mask, int* dp)
+{
+    int n = m / 2;
+    if (op > n)
+        return 0;
+    if (dp[mask] != 0)
+        return dp[mask];
+    for (int i = 0; i < m; i++) {
+        if (mask & (1 << i)) continue;
+        for (int j = i + 1; j < m; j++) {
+            if (mask & (1 << j)) continue;
+            int newmask = (1 << i) | (1 << j) | mask;
+            int score = op * gcd(nums[i], nums[j]) + dpScore(nums, m, op + 1, newmask, dp);
+            dp[mask] = dp[mask] > score ? dp[mask] : score;
+        }
+    }
+    return dp[mask];
+}
+int maxScore(int* nums, int numsSize) {
+    int* dp = (int*)calloc(1 << 14, sizeof(int));
+    int ans;
+    ans = dpScore(nums, numsSize, 1, 0, dp);
+    free(dp);
+    return ans;
+}
+
 // 1822. Sign of the Product of an Array
 int arraySign(int* nums, int numsSize)
 {

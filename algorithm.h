@@ -458,6 +458,8 @@ bool halvesAreAlike(char* s);
 int* findBall(int** grid, int gridSize, int* gridColSize, int* returnSize);
 // 1768. Merge Strings Alternately
 char* mergeAlternately(char* word1, char* word2);
+// 1799. Maximize Score After N Operations
+int maxScore(int* nums, int numsSize);
 // 1822. Sign of the Product of an Array
 int arraySign(int* nums, int numsSize);
 // 1823. Find the Winner of the Circular Game
