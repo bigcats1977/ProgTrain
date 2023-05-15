@@ -1,5 +1,7 @@
 #include "algorithm.h"
-
+int cmpfun(const void* a, const void* b) {
+    return (*(int*)a) - (*(int*)b);
+}
 // 1. Two Sum
 int* twoSum(int* nums, int numsSize, int target, int* returnSize)
 {
@@ -204,6 +206,30 @@ int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes
 
     return ans;
 }
+
+// 16. 3Sum Closest
+int threeSumClosest(int* nums, int numsSize, int target)
+{
+    long long res = INT_MAX;
+    qsort(nums, numsSize, sizeof(int), cmpfun);
+
+    for (int i = 0; i < numsSize - 2; i++)
+    {
+        int l = i + 1, h = numsSize - 1;
+        while (l < h) {
+            long long sum = nums[i] + nums[l] + nums[h];
+            if (fabs(target - sum) < fabs(target - res)) {
+                res = sum;
+            }
+            else if (sum > target)
+                h--;
+            else
+                l++;
+        }
+    }
+    return res;
+}
+
 
 // 17. Letter Combinations of a Phone Number
 char lettermap[8][4] = {
@@ -791,9 +817,7 @@ int** permute(int* nums, int numsSize, int* returnSize, int** returnColumnSizes)
 // 47. Permutations II
 int path47s[8] = { 0 };
 int plen47s = 0;
-int cmpfun(const void* a, const void* b) {
-    return (*(int*)a) - (*(int*)b);
-}
+
 void backtrack(int* nums, int n, int* count, int** colnum, int** ans, bool* visited)
 {
     if (plen47s == n) {

@@ -18,6 +18,8 @@ int maxArea(int* height, int heightSize);
 char* longestCommonPrefix(char** strs, int strsSize);
 // 15. 3Sum
 int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
+// 16. 3Sum Closest
+int threeSumClosest(int* nums, int numsSize, int target);
 // 17. Letter Combinations of a Phone Number
 char** letterCombinations(char* digits, int* returnSize);
 // 19. Remove Nth Node From End of List
