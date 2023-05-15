@@ -6960,6 +6960,30 @@ int* findBall(int** grid, int gridSize, int* gridColSize, int* returnSize)
     return ans;
 }
 
+// 1721. Swapping Nodes in a Linked List
+struct ListNode* swapNodes(struct ListNode* head, int k)
+{
+    struct ListNode* first, * last, * cur;
+    int temp = 0;
+    cur = head;
+    for (int i = 0; i < k - 1; i++)
+    {
+        cur = cur->next;
+    }
+    first = cur;
+    last = head;
+    while (cur->next) {
+        last = last->next;
+        cur = cur->next;
+    }
+    //printf("%d, %d\r\n", first->val, last->val);
+    temp = first->val;
+    first->val = last->val;
+    last->val = temp;
+
+    return head;
+}
+
 // 1768. Merge Strings Alternately
 char* mergeAlternately(char* word1, char* word2)
 {

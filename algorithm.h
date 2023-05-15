@@ -458,6 +458,8 @@ bool arrayStringsAreEqual(char** word1, int word1Size, char** word2, int word2Si
 bool halvesAreAlike(char* s);
 // 1706. Where Will the Ball Fall
 int* findBall(int** grid, int gridSize, int* gridColSize, int* returnSize);
+// 1721. Swapping Nodes in a Linked List
+struct ListNode* swapNodes(struct ListNode* head, int k);
 // 1768. Merge Strings Alternately
 char* mergeAlternately(char* word1, char* word2);
 // 1799. Maximize Score After N Operations
