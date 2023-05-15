@@ -72,8 +72,6 @@ int lengthOfLongestSubstring(char* s)
     int max = 0;
     int slow = -1, fast = 0;
     int pos[256];
-    if (s == NULL || strlen(s) == 0)
-        return 0;
     memset(&pos[0], -1, sizeof(int) * 256);
     for (fast = 0; fast < (int)strlen(s); fast++)
     {
@@ -227,7 +225,7 @@ int threeSumClosest(int* nums, int numsSize, int target)
                 l++;
         }
     }
-    return res;
+    return (int)res;
 }
 
 
