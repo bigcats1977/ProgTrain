@@ -3086,29 +3086,25 @@ int hammingWeight(uint32_t n)
 int* rightSideView(struct TreeNode* root, int* returnSize)
 {
     *returnSize = 0;
-    if (!root) {
+    if (!root)
         return NULL;
-    }
-    int* ans = (int*)malloc(sizeof(int) * 100);
-    struct TreeNode* Queue[100], *node = NULL;
-    int start =0, index = 0, height = 0;
-    Queue[index++] = root;
-    while (start < index)
-    {
-        int end = index;
-        node = NULL;
-        for (int i = start; i < end; i++) {
-            node = Queue[i];
-            if (node->left)
-                Queue[index++] = node->left;
-            if (node->right)
-                Queue[index++] = node->right;
+    struct TreeNode* treeque[100] = { 0 };
+    struct TreeNode* temp;
+    int head = 0, tail = 0, count = 0;
+    int* ans = (int*)malloc(100 * sizeof(int));
+    treeque[tail++] = root;
+    while (tail > head) {
+        int len = tail - head;
+        for (int i = 0; i < len; i++) {
+            temp = treeque[head++];
+            if (temp->left)
+                treeque[tail++] = temp->left;
+            if (temp->right)
+                treeque[tail++] = temp->right;
         }
-        if(node)
-            ans[height++] = node->val;
-        start = end;
+        ans[count++] = temp->val;
     }
-    *returnSize = height;
+    (*returnSize) = count;
     return ans;
 }
 
