@@ -110,6 +110,8 @@ int numDecodings(char* s);
 int* inorderTraversal(struct TreeNode* root, int* returnSize);
 // 98. Validate Binary Search Tree
 bool isValidBST(struct TreeNode* root);
+// 100. Same Tree
+bool isSameTree(struct TreeNode* p, struct TreeNode* q);
 // 101. Symmetric Tree
 bool isSymmetric(struct TreeNode* root);
 // 102. Binary Tree Level Order Traversal

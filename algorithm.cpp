@@ -1784,6 +1784,22 @@ bool isValidBST(struct TreeNode* root)
     return pretravel(root, &preval);
 }
 
+// 100. Same Tree
+bool isSameTree(struct TreeNode* p, struct TreeNode* q)
+{
+    if (!p && !q)
+        return true;
+    if ((!p && q) || (p && !q))
+        return false;
+    if (p->val != q->val)
+        return false;
+    if (!isSameTree(p->left, q->left))
+        return false;
+    if (!isSameTree(p->right, q->right))
+        return false;
+    return true;
+}
+
 // 101. Symmetric Tree
 bool CompTree(struct TreeNode* left, struct TreeNode *right)
 {
