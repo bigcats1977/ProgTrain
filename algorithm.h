@@ -308,6 +308,8 @@ int longestPalindrome(char* s);
 int numberOfArithmeticSlices(int* nums, int numsSize);
 // 415. Add Strings
 char* addStrings(char* num1, char* num2);
+// 416. Partition Equal Subset Sum
+bool canPartition(int* nums, int numsSize);
 // 417. Pacific Atlantic Water Flow
 int** pacificAtlantic(int** heights, int heightsSize, int* heightsColSize, int* returnSize, int** returnColumnSizes);
 // 424. Longest Repeating Character Replacement

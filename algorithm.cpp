@@ -3089,7 +3089,7 @@ int* rightSideView(struct TreeNode* root, int* returnSize)
     if (!root)
         return NULL;
     struct TreeNode* treeque[100] = { 0 };
-    struct TreeNode* temp;
+    struct TreeNode* temp = NULL;
     int head = 0, tail = 0, count = 0;
     int* ans = (int*)malloc(100 * sizeof(int));
     treeque[tail++] = root;
@@ -4759,6 +4759,46 @@ char* addStrings(char* num1, char* num2)
     if (val > 0)
         ans[len-- - 1] = '1';
     return &ans[len];
+}
+
+
+// 416. Partition Equal Subset Sum
+bool canPartition(int* nums, int numsSize)
+{
+    if (numsSize < 2)
+        return false;
+    int sum = 0;
+    int i, j;
+    for (i = 0; i < numsSize; i++)
+    {
+        sum += nums[i];
+    }
+    if (sum % 2 == 1)
+        return false;
+    sum /= 2;
+
+    bool** dp = (bool**)malloc((numsSize + 1) * sizeof(bool*));
+    for (i = 0; i <= numsSize; i++) {
+        dp[i] = (bool*)calloc(sum + 1, sizeof(bool));
+        if (i != 0)
+            dp[i][0] = true;
+    }
+    for (i = 1; i <= numsSize; i++) {
+        for (j = 1; j <= sum; j++)
+        {
+            if (nums[i - 1] <= j)
+                dp[i][j] = dp[i - 1][j - nums[i - 1]] || dp[i - 1][j];
+            else
+                dp[i][j] = dp[i - 1][j];
+            printf("%d ", dp[i][j]);
+        }
+        printf("\r\n");
+    }
+    bool ans = dp[numsSize][sum];
+    for (i = 0; i <= numsSize; i++)
+        free(dp[i]);
+    free(dp);
+    return ans;
 }
 
 // 417. Pacific Atlantic Water Flow
