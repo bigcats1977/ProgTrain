@@ -271,6 +271,7 @@ char* getHint(char* secret, char* guess);
 // 300. Longest Increasing Subsequence
 int lengthOfLIS(int* nums, int numsSize);
 // 322. Coin Change
+int coinChange(int* coins, int coinsSize, int amount);
 int coinChange(vector<int>&coins, int amount);
 // 328. Odd Even Linked List
 struct ListNode* oddEvenList(struct ListNode* head);

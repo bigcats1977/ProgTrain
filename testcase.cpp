@@ -65,6 +65,7 @@ FUNCNAME g_tFuncName[] = {
     {290,   TestCase_290 },
     {297,   TestCase_297 },
     {300,   TestCase_300 },
+    {322,   TestCase_322 },
     {344,   TestCase_344 },
     {349,   TestCase_349 },
     {350,   TestCase_350 },
@@ -112,6 +113,16 @@ FUNCNAME g_tFuncName[] = {
     {2215,  TestCase_2215},
     {8058,  TestCase_8058},
 };
+
+void TestCase_322()
+{
+    vector<int> nums1;
+    int expect, out, amount = 11;
+    nums1 = { 1,2,5 };
+    expect = 3;
+    out = coinChange(nums1.data(), (int)nums1.size(), 11);
+    COMPVALUE(expect, out);
+}
 
 void TestCase_1035()
 {

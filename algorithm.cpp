@@ -2,6 +2,9 @@
 int cmpfun(const void* a, const void* b) {
     return (*(int*)a) - (*(int*)b);
 }
+int Rcmpfun(const void* a, const void* b) {
+    return (*(int*)b) - (*(int*)a);
+}
 // 1. Two Sum
 int* twoSum(int* nums, int numsSize, int target, int* returnSize)
 {
@@ -4330,6 +4333,23 @@ int lengthOfLIS(int* nums, int numsSize)
 }
 
 // 322. Coin Change
+int coinChange(int* coins, int coinsSize, int amount) 
+{
+    int* dp = (int*)calloc(amount + 1, sizeof(int));
+    qsort(coins, coinsSize, sizeof(int), cmpfun);
+
+    for (int i = 1; i <= amount; i++) {
+        dp[i] = INT_MAX;
+        for (int j = 0; j < coinsSize; j++) {
+            if (i - coins[j] < 0)
+                break;
+            if (dp[i - coins[j]] != INT_MAX)
+                dp[i] = dp[i] < (1 + dp[i - coins[j]]) ? dp[i] : (1 + dp[i - coins[j]]);
+        }
+        printf("%d:%d\r\n", i, dp[i]);
+    }
+    return dp[amount] == INT_MAX ? -1 : dp[amount];
+}
 int coinChange(vector<int>& coins, int amount)
 {
     // creating the base dp array, with first value set to 0
