@@ -3324,6 +3324,53 @@ struct ListNode* reverseList(struct ListNode* head)
     return node;
 }
 
+// 208. Implement Trie(Prefix Tree)
+typedef struct TrieNode {
+    bool isComplete;
+    struct TrieNode* children[26];
+}TIRENODE;
+typedef struct {
+    TIRENODE* root;
+} Trie;
+Trie* trieCreate() {
+    Trie* obj = (Trie*)malloc(sizeof(Trie));
+    obj->root = (TIRENODE*)calloc(1, sizeof(TIRENODE));
+    return obj;
+}
+void trieInsert(Trie* obj, char* word) {
+    TIRENODE* node = obj->root;
+    for (size_t i = 0; i < strlen(word); i++) {
+        int index = word[i] - 'a';
+        if (!node->children[index])
+            node->children[index] = (TIRENODE*)calloc(1, sizeof(TIRENODE));
+        node = node->children[index];
+    }
+    node->isComplete = true;
+}
+bool trieSearch(Trie* obj, char* word) {
+    TIRENODE* node = obj->root;
+    for (size_t i = 0; i < strlen(word); i++) {
+        int index = word[i] - 'a';
+        if (!node->children[index])
+            return false;
+        node = node->children[index];
+    }
+    return node->isComplete;
+}
+bool trieStartsWith(Trie* obj, char* prefix) {
+    TIRENODE* node = obj->root;
+    for (size_t i = 0; i < strlen(prefix); i++) {
+        int index = prefix[i] - 'a';
+        if (!node->children[index])
+            return false;
+        node = node->children[index];
+    }
+    return true;
+}
+void trieFree(Trie* obj) {
+    free(obj);
+}
+
 // 209. Minimum Size Subarray Sum
 int minSubArrayLen(int target, int* nums, int numsSize)
 {
