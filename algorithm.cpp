@@ -2788,48 +2788,83 @@ int findMin(int* nums, int numsSize)
 // 155. Min Stack
 #define MAXNUM 30000
 typedef struct {
-    int minstack[MAXNUM];
+    int val[MAXNUM];
+    int min[MAXNUM];
     int top;
-    int minval;
+    int curmin;
 } MinStack;
 MinStack* minStackCreate() {
-    MinStack* obj = (MinStack*)calloc(sizeof(MinStack), 1);
+    MinStack* obj = (MinStack*)malloc(sizeof(MinStack));
     obj->top = -1;
-    obj->minval = INT_MAX;
+    obj->curmin = INT_MAX;
     return obj;
 }
 void minStackPush(MinStack* obj, int val) {
-    if (obj->top < MAXNUM) {
-        obj->minstack[++(obj->top)] = val;
-        if (obj->minval > val)
-            obj->minval = val;
-    }
+    obj->val[++obj->top] = val;
+    obj->curmin = obj->curmin > val ? val : obj->curmin;
+    obj->min[obj->top] = obj->curmin;
 }
 void minStackPop(MinStack* obj) {
-    if (obj->top < 0)
-        return;
-    if (obj->minval == obj->minstack[obj->top])
-    {
-        obj->minval = INT_MAX;
-        for (int i = 0; i < obj->top; i++) {
-            if (obj->minval > obj->minstack[i])
-                obj->minval = obj->minstack[i];
-        }
+    if (obj->val[obj->top] == obj->curmin) {
+        if (obj->top == 0)
+            obj->curmin = INT_MAX;
+        else
+            obj->curmin = obj->min[obj->top - 1];
     }
     obj->top--;
 }
 int minStackTop(MinStack* obj) {
-    if (obj->top < 0 || obj->top >= MAXNUM)
-        return -1;
-    return obj->minstack[obj->top];
+    return obj->val[obj->top];
 }
 int minStackGetMin(MinStack* obj) {
-    return obj->minval;
+    return obj->curmin;
 }
 void minStackFree(MinStack* obj) {
-    obj->top = -1;
-    obj->minval = INT_MAX;
+    free(obj);
 }
+//typedef struct {
+//    int minstack[MAXNUM];
+//    int top;
+//    int minval;
+//} MinStack;
+//MinStack* minStackCreate() {
+//    MinStack* obj = (MinStack*)calloc(sizeof(MinStack), 1);
+//    obj->top = -1;
+//    obj->minval = INT_MAX;
+//    return obj;
+//}
+//void minStackPush(MinStack* obj, int val) {
+//    if (obj->top < MAXNUM) {
+//        obj->minstack[++(obj->top)] = val;
+//        if (obj->minval > val)
+//            obj->minval = val;
+//    }
+//}
+//void minStackPop(MinStack* obj) {
+//    if (obj->top < 0)
+//        return;
+//    if (obj->minval == obj->minstack[obj->top])
+//    {
+//        obj->minval = INT_MAX;
+//        for (int i = 0; i < obj->top; i++) {
+//            if (obj->minval > obj->minstack[i])
+//                obj->minval = obj->minstack[i];
+//        }
+//    }
+//    obj->top--;
+//}
+//int minStackTop(MinStack* obj) {
+//    if (obj->top < 0 || obj->top >= MAXNUM)
+//        return -1;
+//    return obj->minstack[obj->top];
+//}
+//int minStackGetMin(MinStack* obj) {
+//    return obj->minval;
+//}
+//void minStackFree(MinStack* obj) {
+//    obj->top = -1;
+//    obj->minval = INT_MAX;
+//}
 
 // 160. Intersection of Two Linked Lists
 struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* headB)
