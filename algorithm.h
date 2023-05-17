@@ -476,6 +476,8 @@ int arraySign(int* nums, int numsSize);
 int findTheWinner(int n, int k);
 // 1832. Check if the Sentence Is Pangram
 bool checkIfPangram(char* sentence);
+// 2130. Maximum Twin Sum of a Linked List
+int pairSum(struct ListNode* head);
 // 2131. Longest Palindrome by Concatenating Two Letter Words
 int longestPalindrome(char** words, int wordsSize);
 // 2215. Find the Difference of Two Arrays

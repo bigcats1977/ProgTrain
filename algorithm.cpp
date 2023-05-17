@@ -7176,6 +7176,48 @@ bool checkIfPangram(char* sentence)
     return count > 0 ? false : true;
 }
 
+// 2130. Maximum Twin Sum of a Linked List
+struct ListNode*  x;
+void stacktraverse(struct ListNode* half, int* ans)
+{
+    int sum = 0;
+    if (!half)
+        return;
+    stacktraverse(half->next, ans);
+    sum = half->val + x->val;
+    (*ans) = (*ans) > sum ? (*ans) : sum;
+    x = x->next;
+}
+int pairSum(struct ListNode* head) {
+    struct ListNode* fast = head, * slow = head;
+    x = head;
+    int ans = 0;
+    while (fast && fast->next)
+    {
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+    stacktraverse(slow, &ans);
+    return ans;
+}
+//int pairSum(struct ListNode* head)
+//{
+//    int* nodeval = (int*)calloc(100000, sizeof(int));
+//    int count = 0;
+//    int maxsum = 0;
+//    while (head)
+//    {
+//        nodeval[count++] = head->val;
+//        head = head->next;
+//    }
+//    for (int i = 0; i < count / 2; i++) {
+//        int sum = nodeval[i] + nodeval[count - 1 - i];
+//        maxsum = maxsum < sum ? sum : maxsum;
+//    }
+//    free(nodeval);
+//    return maxsum;
+//}
+
 // 2131. Longest Palindrome by Concatenating Two Letter Words
 int longestPalindrome(char** words, int wordsSize)
 {
