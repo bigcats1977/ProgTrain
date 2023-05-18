@@ -413,6 +413,8 @@ int** allPathsSourceTarget(int** graph, int graphSize, int* graphColSize, int* r
 bool canVisitAllRooms(int** rooms, int roomsSize, int* roomsColSize);
 // 844. Backspace String Compare
 bool backspaceCompare(char* s, char* t);
+// 872. Leaf - Similar Trees
+bool leafSimilar(struct TreeNode* root1, struct TreeNode* root2);
 // 876. Middle of the Linked List
 struct ListNode* middleNode(struct ListNode* head);
 // 904. Fruit Into Baskets

@@ -6305,6 +6305,38 @@ int** allPathsSourceTarget(int** graph, int graphSize, int* graphColSize, int* r
     return ans;
 }
 
+// 872. Leaf - Similar Trees
+void leafdfs(struct TreeNode* root, int* leaves, int* count)
+{
+    if (!root)
+        return;
+    if (!root->left && !root->right)
+    {
+        leaves[(*count)++] = root->val;
+        return;
+    }
+    leafdfs(root->left, leaves, count);
+    leafdfs(root->right, leaves, count);
+
+}
+bool leafSimilar(struct TreeNode* root1, struct TreeNode* root2)
+{
+    bool ans = false;
+    int* leaves1 = (int*)malloc(200 * sizeof(int));
+    int* leaves2 = (int*)malloc(200 * sizeof(int));
+    int count1 = 0, count2 = 0;
+    leafdfs(root1, leaves1, &count1);
+    leafdfs(root2, leaves2, &count2);
+    if (count1 == count2) {
+        if (0 == memcmp(leaves1, leaves2, count1 * sizeof(int)))
+            ans = true;
+    }
+
+    free(leaves1);
+    free(leaves2);
+    return ans;
+}
+
 // 841. Keys and Rooms
 void dfsroom(int** rooms, int* roomsColSize, int cur, bool* visited)
 {
