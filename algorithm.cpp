@@ -1209,6 +1209,48 @@ int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* retu
     return ans;
 }
 
+// 57. Insert Interval
+int** insert(int** intervals, int intervalsSize, int* intervalsColSize, int* newInterval, int newIntervalSize, int* returnSize, int** returnColumnSizes)
+{
+    int count = 0;
+    int** ans = (int**)malloc((intervalsSize + 1) * sizeof(int*));
+    *returnSize = 0;
+    *returnColumnSizes = (int*)malloc((intervalsSize + 1) * sizeof(int));
+    int i = 0;
+    while (i < intervalsSize) {
+        if (newInterval[1] < intervals[i][0])
+        {
+            ans[count] = (int*)malloc(2 * sizeof(int));
+            (*returnColumnSizes)[count] = 2;
+            memcpy(ans[count++], newInterval, 2 * sizeof(int));
+            while (i < intervalsSize) {
+                ans[count] = (int*)malloc(2 * sizeof(int));
+                (*returnColumnSizes)[count] = 2;
+                memcpy(ans[count++], intervals[i++], 2 * sizeof(int));
+            }
+            *returnSize = count;
+            return ans;
+        }
+        else if (newInterval[0] > intervals[i][1]) {
+            ans[count] = (int*)malloc(2 * sizeof(int));
+            (*returnColumnSizes)[count] = 2;
+            memcpy(ans[count++], intervals[i++], 2 * sizeof(int));
+        }
+        else {
+            newInterval[0] = newInterval[0] < intervals[i][0] ? newInterval[0] : intervals[i][0];
+            newInterval[1] = newInterval[1] > intervals[i][1] ? newInterval[1] : intervals[i][1];
+            i++;
+        }
+    }
+
+    ans[count] = (int*)malloc(2 * sizeof(int));
+    (*returnColumnSizes)[count] = 2;
+    memcpy(ans[count++], newInterval, 2 * sizeof(int));
+
+    *returnSize = count;
+    return ans;
+}
+
 // 59. Spiral Matrix II
 int** generateMatrix(int n, int* returnSize, int** returnColumnSizes)
 {

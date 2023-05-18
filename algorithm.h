@@ -72,6 +72,8 @@ int* spiralOrder(int** matrix, int matrixSize, int* matrixColSize, int* returnSi
 bool canJump(int* nums, int numsSize);
 // 56. Merge Intervals
 int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* returnSize, int** returnColumnSizes);
+// 57. Insert Interval
+int** insert(int** intervals, int intervalsSize, int* intervalsColSize, int* newInterval, int newIntervalSize, int* returnSize, int** returnColumnSizes);
 // 59. Spiral Matrix II
 int** generateMatrix(int n, int* returnSize, int** returnColumnSizes);
 // 62. Unique Paths
