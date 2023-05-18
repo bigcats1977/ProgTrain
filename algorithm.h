@@ -363,6 +363,8 @@ bool isSubtree(struct TreeNode* root, struct TreeNode* subRoot);
 int minDelDistance(char* word1, char* word2);
 // 589. N - ary Tree Preorder Traversal
 int* preorder(struct Node* root, int* returnSize);
+// 605. Can Place Flowers
+bool canPlaceFlowers(int* flowerbed, int flowerbedSize, int n);
 // 617. Merge Two Binary Trees
 struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2);
 // 621. Task Scheduler

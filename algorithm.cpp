@@ -5716,6 +5716,39 @@ int* preorder(struct NNode* root, int* returnSize)
     return result;
 }
 
+// 605. Can Place Flowers
+bool canPlaceFlowers(int* flowerbed, int flowerbedSize, int n)
+{
+    int nullbed = 0;
+    if (n == 0)
+        return true;
+    if (flowerbedSize == 1)
+    {
+        if (flowerbed[0] == 1)
+            return false;
+        return true;
+    }
+    for (int i = 0; i < flowerbedSize; i++) {
+        if (flowerbed[i] == 1) {
+            nullbed = 0;
+            continue;
+        }
+        nullbed++;
+        if (i == 1 && nullbed == 2) {
+            n--; nullbed = 1;
+        }
+        else if (nullbed >= 3)
+        {
+            n--; nullbed = 1;
+        }
+        if (n == 0)
+            return true;
+    }
+    if (nullbed == 2 && n == 1)
+        return true;
+    return n > 0 ? false : true;
+}
+
 // 617. Merge Two Binary Trees
 struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2)
 {
