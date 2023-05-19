@@ -6158,6 +6158,35 @@ int** floodFill(int** image, int imageSize, int* imageColSize, int sr, int sc, i
     return image;
 }
 
+// 735. Asteroid Collision
+int* asteroidCollision(int* asteroids, int asteroidsSize, int* returnSize)
+{
+    int* ans = (int*)malloc(asteroidsSize * sizeof(int));
+    int top = 0;
+    for (int i = 0; i < asteroidsSize; i++) {
+        if (top == 0)
+        {
+            ans[top++] = asteroids[i];
+            continue;
+        }
+        if ((asteroids[i] * ans[top - 1] > 0) ||
+            (ans[top - 1] < 0 && asteroids[i]> 0)) {
+            ans[top++] = asteroids[i];
+            continue;
+        }
+        if (fabs(ans[top - 1]) == fabs(asteroids[i])) {
+            top--;
+        }
+        else if (fabs(ans[top - 1]) < fabs(asteroids[i]))
+        {
+            top--;
+            i--;
+        }
+    }
+    *returnSize = top;
+    return ans;
+}
+
 // 746. Min Cost Climbing Stairs
 int minCostClimbingStairs(int* cost, int costSize)
 {

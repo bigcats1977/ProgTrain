@@ -399,6 +399,8 @@ int numSubarrayProductLessThanK(int* nums, int numsSize, int k);
 int pivotIndex(int* nums, int numsSize);
 // 733. Flood Fill
 int** floodFill(int** image, int imageSize, int* imageColSize, int sr, int sc, int color, int* returnSize, int** returnColumnSizes);
+// 735. Asteroid Collision
+int* asteroidCollision(int* asteroids, int asteroidsSize, int* returnSize);
 // 746. Min Cost Climbing Stairs
 int minCostClimbingStairs(int* cost, int costSize);
 // 763. Partition Labels

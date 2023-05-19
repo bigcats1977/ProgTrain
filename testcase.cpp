@@ -90,6 +90,7 @@ FUNCNAME g_tFuncName[] = {
     {707,   TestCase_707 },
     {713,   TestCase_713 },
     {724,   TestCase_724 },
+    {735,   TestCase_735 },
     {746,   TestCase_746 },
     {766,   TestCase_766 },
     {797,   TestCase_797 },
@@ -113,6 +114,14 @@ FUNCNAME g_tFuncName[] = {
     {2215,  TestCase_2215},
     {8058,  TestCase_8058},
 };
+
+void TestCase_735()
+{
+    vector<int> nums1;
+    int count;
+    nums1 = { 1,-2,-2,-2 };
+    asteroidCollision(nums1.data(), (int)nums1.size(), &count);
+}
 
 void TestCase_322()
 {
