@@ -3439,6 +3439,27 @@ int minSubArrayLen(int target, int* nums, int numsSize)
     return len;
 }
 
+// 210. Course Schedule II
+int* findOrder(int numCourses, int** prerequisites, int prerequisitesSize, int* prerequisitesColSize, int* returnSize)
+{
+    return NULL;
+    /*int i, j;
+    int V = numCourses;
+    int** adj = (int**)malloc(V * sizeof(int*));
+    int* topo = (int*)calloc(V, sizeof(int));
+    int* indegree = (int*)calloc(V, sizeof(int));
+
+    for (i = 0; i < V; i++)
+        adj[i] = (int*)calloc(V, sizeof(int));
+    for (i = 0; i < prerequisitesSize; i++)
+        adj[prerequisites[i][1]][prerequisites[i][0]] = 1;
+    for (i = 0; i < V; i++)
+        for (j = 0; j < V; j++) {
+            if(adj[i][j])
+        }*/
+
+}
+
 // 212. Word Search II
 void DepthFindWord(char** board, int r, int c, int sr, int sc, char* word, bool *bfind)
 {
@@ -3709,16 +3730,90 @@ struct TreeNode* invertTree(struct TreeNode* root)
 }
 
 // 227. Basic Calculator II
+void calcuvalue(int* numstack, int *topnum, char* operstack, int *topoper, bool one)
+{
+    while ((*topoper) > 0)
+    {
+        int num2 = numstack[--(*topnum)];
+        int num1 = numstack[--(*topnum)];
+        char ch = operstack[--(*topoper)];
+
+        int res = 0;
+        switch (ch)
+        {
+        case '+':
+            res = num1 + num2;
+            break;
+        case '-':
+            res =  num1 - num2;
+            break;
+        case '*':
+            res =  num1 * num2;
+            break;
+        case '/':
+            res =  num1 / num2;
+            break;
+        }
+        numstack[(*topnum)++] = res;
+        if (one)
+            return;
+    }
+    return;
+}
 int calculate(char* s)
 {
     int len = (int)strlen(s);
-    int* stack = (int*)malloc(len / 2 * sizeof(int));
-    int top = -1;
-    int num1, num2, result;
+    int* numstack = (int*)calloc((len+1)/2, sizeof(int));
+    char* operstack = (char*)calloc((len+1)/2, sizeof(char));
+    int topnum = 0, topoper = 0;
+    int ans;
+    int num;
+    char digits[12] = { 0 };
+    int pos = 0;
+    
     for (int i = 0; i < len; i++) {
-        
+        if (s[i] >= '0' && s[i] <= '9')
+        {
+            digits[pos++] = s[i];
+            continue;
+        }
+        else if (pos > 0) {
+            digits[pos] = '\0';
+            num = atoi(digits);
+            numstack[topnum++] = atoi(digits);
+            pos = 0;
+        }
+        switch (s[i]) {
+        case '+':
+        case '-':
+            calcuvalue(numstack, &topnum, operstack, &topoper, false);
+            operstack[topoper++] = s[i];
+            break;
+        case '*':
+        case '/':
+            if (topoper > 0 && (operstack[topoper-1] == '*' || operstack[topoper-1] == '/'))
+            {
+                calcuvalue(numstack, &topnum, operstack, &topoper, true);
+            }
+            operstack[topoper++] = s[i];
+            break;
+        case ' ':
+            break;
+        default:
+            break;
+        }
     }
-    return stack[0];
+    if (pos > 0) {
+        digits[pos] = '\0';
+        num = atoi(digits);
+        numstack[topnum++] = atoi(digits);
+    }
+    calcuvalue(numstack, &topnum, operstack, &topoper, false);
+    ans = numstack[0];
+
+    free(numstack);
+    free(operstack);
+    return ans;
 }
 
 // 230. Kth Smallest Element in a BST

@@ -216,6 +216,8 @@ struct ListNode* reverseList(struct ListNode* head);
 
 // 209. Minimum Size Subarray Sum
 int minSubArrayLen(int target, int* nums, int numsSize);
+// 210. Course Schedule II
+int* findOrder(int numCourses, int** prerequisites, int prerequisitesSize, int* prerequisitesColSize, int* returnSize);
 // 212. Word Search II
 char** findWords(char** board, int boardSize, int* boardColSize, char** words, int wordsSize, int* returnSize);
 // 213. House Robber II
