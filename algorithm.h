@@ -373,6 +373,8 @@ bool canPlaceFlowers(int* flowerbed, int flowerbedSize, int n);
 struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2);
 // 621. Task Scheduler
 int leastInterval(char* tasks, int tasksSize, int n);
+// 643. Maximum Average Subarray I
+double findMaxAverage(int* nums, int numsSize, int k);
 // 649. Dota2 Senate
 char* predictPartyVictory(char* senate);
 // 653. Two Sum IV - Input is a BST

@@ -5905,6 +5905,23 @@ int leastInterval(char* tasks, int tasksSize, int n) {
     return interval;
 }
 
+// 643. Maximum Average Subarray I
+double findMaxAverage(int* nums, int numsSize, int k)
+{
+    int i;
+    double maxave = 0;
+    int sum = 0, slow = 0;
+    for (int i = 0; i < k; i++)
+        maxave += nums[i];
+    sum = maxave;
+    for (i = k; i < numsSize; i++) {
+        sum -= nums[slow++];
+        sum += nums[i];
+        maxave = maxave < sum ? sum : maxave;
+    }
+    return maxave / k;
+}
+
 // 649. Dota2 Senate
 char* predictPartyVictory(char* senate)
 {
