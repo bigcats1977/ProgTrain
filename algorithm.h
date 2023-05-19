@@ -233,6 +233,8 @@ int countNodes(struct TreeNode* root);
 int computeArea(int ax1, int ay1, int ax2, int ay2, int bx1, int by1, int bx2, int by2);
 // 226. Invert Binary Tree
 struct TreeNode* invertTree(struct TreeNode* root);
+// 227. Basic Calculator II
+int calculate(char* s);
 // 230. Kth Smallest Element in a BST
 int kthSmallest(struct TreeNode* root, int k);
 // 231. Power of Two

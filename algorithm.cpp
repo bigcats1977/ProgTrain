@@ -3708,6 +3708,19 @@ struct TreeNode* invertTree(struct TreeNode* root)
     return root;
 }
 
+// 227. Basic Calculator II
+int calculate(char* s)
+{
+    int len = (int)strlen(s);
+    int* stack = (int*)malloc(len / 2 * sizeof(int));
+    int top = -1;
+    int num1, num2, result;
+    for (int i = 0; i < len; i++) {
+        
+    }
+    return stack[0];
+}
+
 // 230. Kth Smallest Element in a BST
 void midtrace(struct TreeNode* root, int * kth, int *k)
 {
