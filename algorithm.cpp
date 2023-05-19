@@ -6410,6 +6410,42 @@ char** letterCasePermutation(char* s, int* returnSize)
     return LCAns;
 }
 
+// 785. Is Graph Bipartite ?
+bool isBipartite(int** graph, int graphSize, int* graphColSize)
+{
+    int n = graphSize;
+    int* colors = (int*)calloc(n, sizeof(int));
+    int* q = (int*)calloc(n, sizeof(int));
+    int head =0, tail = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (colors[i]) continue;
+
+        colors[i] = 1;
+        q[tail++] = i;
+
+        while (tail > head) {
+            int temp = q[head++];
+
+            for (int j = 0; j < graphColSize[temp]; j++) {
+                int neighbor = graph[temp][j];
+                // Color neighbor with opposite color
+                if (!colors[neighbor]) {
+                    colors[neighbor] = -1*colors[temp];
+                    q[tail++] = neighbor;
+                }
+
+                // If the neighbor has the same color - can't bipartite.
+                else if (colors[neighbor] == colors[temp])
+                    return false;
+            }
+            //q.pop();
+        }
+    }
+    return true;
+
+}
+
 // 797. All Paths From Source to Targetint
 int path797s[50] = { 0 };
 int pathlen = 0;
