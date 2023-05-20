@@ -99,6 +99,7 @@ FUNCNAME g_tFuncName[] = {
     {844,   TestCase_844 },
     {904,   TestCase_904 },
     {946,   TestCase_946 },
+    {947,   TestCase_947 },
     {977,   TestCase_977 },
     {1035,  TestCase_1035},
     {1047,  TestCase_1047},
@@ -116,6 +117,17 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
 };
 
+void TestCase_947()
+{
+    vector<vector<int>> stones;
+    int** p;
+    int size, col;
+
+    stones = {{0, 0}, {0, 1}, {1, 0}, {1, 2}, {2, 1}, {2, 2}};
+    size = (int)stones.size(), col = 2;
+    p = matrix2addr(stones);
+    removeStones(p, size, &col);
+}
 void TestCase_227()
 {
     string s ;

@@ -433,6 +433,8 @@ int totalFruit(int* fruits, int fruitsSize);
 int minDeletionSize(char** strs, int strsSize);
 // 946. Validate Stack Sequences
 bool validateStackSequences(int* pushed, int pushedSize, int* popped, int poppedSize);
+// 947. Most Stones Removed with Same Row or Column
+int removeStones(int** stones, int stonesSize, int* stonesColSize);
 // 977. Squares of a Sorted Array
 int* sortedSquares(int* nums, int numsSize, int* returnSize);
 // 986. Interval List Intersections

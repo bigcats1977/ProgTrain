@@ -6670,6 +6670,29 @@ bool validateStackSequences(int* pushed, int pushedSize, int* popped, int popped
     return (top < 0);
 }
 
+// 947. Most Stones Removed with Same Row or Column
+void dfsStone(int** stones, int n, bool* visited, int index) {
+    visited[index] = 1;
+
+    for (int i = 0; i < n; i++) {
+        if (!visited[i]) {
+            if (stones[i][0] == stones[index][0] || stones[i][1] == stones[index][1])
+                dfsStone(stones, n, visited, i);
+        }
+    }
+}
+int removeStones(int** stones, int stonesSize, int* stonesColSize) {
+    int count = 0;
+    bool* visited = (bool*)calloc(stonesSize, sizeof(bool));
+    for (int i = 0; i < stonesSize; i++) {
+        if (!visited[i]) {
+            count++;
+            dfsStone(stones, stonesSize, visited, i);
+        }
+    }
+    return stonesSize - count;
+}
+
 // 977. Squares of a Sorted Array
 int* sortedSquares(int* nums, int numsSize, int* returnSize) {
     int left = 0, right = numsSize - 1;
