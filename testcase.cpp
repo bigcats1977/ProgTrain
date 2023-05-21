@@ -115,8 +115,26 @@ FUNCNAME g_tFuncName[] = {
     {8005,  TestCase_8005},
     {2215,  TestCase_2215},
     {8058,  TestCase_8058},
+    {9999,  TestCase_9999},
 };
 
+void TestCase_9999()
+{
+    string src, word;
+    int expect, out;
+
+    src = "mdlldltxdy";
+    word = "mdl";
+    expect = 4;
+    out = FindSubFrequence(&*src.begin(), &*word.begin());
+    COMPVALUE(expect, out);
+
+    src = "mmmdddllltql";
+    word = "mdl";
+    expect = 36;
+    out = FindSubFrequence(&*src.begin(), &*word.begin());
+    COMPVALUE(expect, out);
+}
 void TestCase_947()
 {
     vector<vector<int>> stones;

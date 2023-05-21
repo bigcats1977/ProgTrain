@@ -5908,10 +5908,9 @@ int leastInterval(char* tasks, int tasksSize, int n) {
 // 643. Maximum Average Subarray I
 double findMaxAverage(int* nums, int numsSize, int k)
 {
-    int i;
-    double maxave = 0;
-    int sum = 0, slow = 0;
-    for (int i = 0; i < k; i++)
+    int i, slow = 0;
+    double maxave = 0, sum = 0;
+    for (i = 0; i < k; i++)
         maxave += nums[i];
     sum = maxave;
     for (i = k; i < numsSize; i++) {
@@ -7783,4 +7782,60 @@ char* reverseLeftWords(char* s, int n)
     reverseString(&s[0], len - n);
     reverseString(&s[len-n], n);
     return s;
+}
+
+
+// 9999 字符串长度 3 < n < 10000000 寻找的单词长度为3
+// ABCDEFABCDEBC
+// 
+// 这只是一道很简单的字符串问题，从给定的一个字符串中寻找一个单词出现的个数，
+// 当然这个单词在字符串中是可以被拆开的，但出现字母的顺序必须要正确。
+// 举个栗子，在 “mdlldltxdy” 这个字符串中，mdl就出现了四次。（下标123，124，126，156），
+// 我们只需要把这个次数4输出就可以了。结果可能过大，对mod 1e9+7即可。
+// （这里的单词可能会出现一些奇奇怪怪的东西，像
+// mdlldltxdy
+// mdl
+// 4
+
+//mmmdddllltql
+//mdl
+
+//输出样例#2：
+//36
+const int N = 10000;
+//int mod = (int)(1e9 + 7);
+int FindSubFrequence(char* s, char* word)
+{
+    int len, i, ans = 0;
+    len = (int)strlen(s);
+
+    //for (i = 0; i < len - 2; i++)
+    //{
+    //    for (int m = i + 1; m < len - 1; m++)
+    //        for (int n = m + 1; n < len; n++)
+    //            if (s[i] == word[0] && s[m] == word[1] && s[n] == word[2])
+    //                ans++;
+    //}
+    //return ans;
+
+    int* cnt = (int*)calloc(len, sizeof(int));
+    for (i = 0; i < len; i++)
+    {
+        if (i != 0)
+            cnt[i] = cnt[i - 1];
+        if (s[i] == word[0])
+            cnt[i]++;
+    }
+    int right = 0;
+    // mmmdddllltql
+    for (i = len - 1; i > 0; i--)
+    {
+        if (s[i] == word[2])
+            right++;
+        if (s[i] == word[1])
+            ans += right * cnt[i];
+        //ans %= mod;
+    }
+    free(cnt);
+    return ans;
 }
