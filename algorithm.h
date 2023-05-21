@@ -487,6 +487,8 @@ bool halvesAreAlike(char* s);
 int* findBall(int** grid, int gridSize, int* gridColSize, int* returnSize);
 // 1721. Swapping Nodes in a Linked List
 struct ListNode* swapNodes(struct ListNode* head, int k);
+// 1732. Find the Highest Altitude
+int largestAltitude(int* gain, int gainSize);
 // 1768. Merge Strings Alternately
 char* mergeAlternately(char* word1, char* word2);
 // 1799. Maximize Score After N Operations

@@ -7479,6 +7479,19 @@ struct ListNode* swapNodes(struct ListNode* head, int k)
     return head;
 }
 
+// 1732. Find the Highest Altitude
+int largestAltitude(int* gain, int gainSize)
+{
+    int altitude = 0;
+    int ans = 0;
+    for (int i = 0; i < gainSize; i++)
+    {
+        altitude += gain[i];
+        ans = altitude > ans ? altitude : ans;
+    }
+    return ans;
+}
+
 // 1768. Merge Strings Alternately
 char* mergeAlternately(char* word1, char* word2)
 {
