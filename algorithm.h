@@ -12,6 +12,8 @@ int lengthOfLongestSubstring(char* s);
 char* longestPalindromeI(char* s);
 // 7. Reverse Integer
 int reverse(int x);
+// 8. String to Integer (atoi)
+int myAtoi(char* s);
 // 11. Container With Most Water
 int maxArea(int* height, int heightSize);
 // 14. Longest Common Prefix

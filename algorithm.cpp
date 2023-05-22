@@ -131,6 +131,45 @@ int reverse(int x)
     return (int)result;
 }
 
+// 8. String to Integer (atoi)
+int myAtoi(char* s) {
+    long long min = (long long)pow(2, 31);
+    long long max = (long long)pow(2, 31) - 1;
+    long long ans = 0;
+    bool digit = false;
+    int flag = 0;
+    for (int i = 0; i < strlen(s); i++) {
+        if (s[i] >= '0' && s[i] <= '9') {
+            digit = true;
+            ans = ans * 10 + s[i] - '0';
+            if (ans > min)
+                break;
+            continue;
+        }
+        if (digit)
+            break;
+        if (s[i] == '+' || s[i] == '-') {
+            if (flag != 0)
+                return 0;
+            flag = 1;
+            if (s[i] == '-')
+                flag = -1;
+            continue;
+        }
+        if (s[i] != ' ')
+            return 0;
+        if (flag != 0)
+            return 0;
+    }
+    if (flag != 0)
+        ans *= flag;
+    min *= -1;
+    //printf("ans%d,max %d, min %d", ans,max,min);
+    ans = ans > max ? max : ans;
+    ans = ans < min ? min : ans;
+    return ans;
+}
+
 // 11. Container With Most Water
 int maxArea(int* height, int heightSize)
 {
