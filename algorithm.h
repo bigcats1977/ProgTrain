@@ -509,6 +509,8 @@ int longestPalindrome(char** words, int wordsSize);
 int** findDifference(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize, int** returnColumnSizes);
 // 2466. Count Ways To Build Good Strings
 int countGoodStrings(int low, int high, int zero, int one);
+// 2542. Maximum Subsequence Score
+long long maxScore(int* nums1, int nums1Size, int* nums2, int nums2Size, int k);
 // ½£Ö¸ Offer 05. Ìæ»»¿Õ¸ñ
 char* replacespace(char* s);
 // ½£Ö¸ Offer 58 - II.×óÐý×ª×Ö·û´®

@@ -167,7 +167,7 @@ int myAtoi(char* s) {
     //printf("ans%d,max %d, min %d", ans,max,min);
     ans = ans > max ? max : ans;
     ans = ans < min ? min : ans;
-    return ans;
+    return (int)ans;
 }
 
 // 11. Container With Most Water
@@ -7785,6 +7785,64 @@ int countGoodStrings(int low, int high, int zero, int one) {
         ans = (ans + goodstring(i, zero, one, dp)) % mod;
     }
     free(dp);
+    return ans;
+}
+
+// 2542. Maximum Subsequence Score
+// overtime
+/*
+Input: nums1 = [1,3,3,2], nums2 = [2,1,3,4], k = 3
+Output: 12
+Explanation:
+The four possible subsequence scores are:
+- We choose the indices 0, 1, and 2 with score = (1+3+3) * min(2,1,3) = 7.
+- We choose the indices 0, 1, and 3 with score = (1+3+2) * min(2,1,4) = 6.
+- We choose the indices 0, 2, and 3 with score = (1+3+2) * min(2,3,4) = 12.
+- We choose the indices 1, 2, and 3 with score = (3+3+2) * min(1,3,4) = 8.
+Therefore, we return the max score, which is 12.
+*/
+int ScoreSum[100000] = { 0 };
+int ScoreMin[100000] = { 0 };
+int ScoreLen = 0;
+void backtrackScore(int* num1, int* num2, int n, int k, int start, bool* visited, long long* ans)
+{
+    long long sum = 0;
+    int minval = INT_MAX;
+    int i;
+    if (ScoreLen == k)
+    {
+        for (i = 0; i < k; i++) {
+            sum += ScoreSum[i];
+            minval = minval > ScoreMin[i] ? ScoreMin[i] : minval;
+            //printf("%d,%d; ", ScoreSum[i], ScoreMin[i]);
+        }
+        sum *= minval;
+        *ans = *ans < sum ? sum : *ans;
+        //printf("s:%d, ans %d\r\n ", sum, *ans);
+        return;
+    }
+
+    for (i = start; i < n; i++)
+    {
+        if (visited[i])
+            continue;
+
+        visited[i] = true;
+        ScoreSum[ScoreLen] = num1[i];
+        ScoreMin[ScoreLen++] = num2[i];
+        backtrackScore(num1, num2, n, k, i, visited, ans);
+        ScoreLen--;
+        visited[i] = false;
+    }
+}
+long long maxScore(int* nums1, int nums1Size, int* nums2, int nums2Size, int k)
+{
+    long long ans = 0;
+    bool* visited = (bool*)calloc(nums1Size, sizeof(bool));
+
+    ScoreLen = 0;
+    backtrackScore(nums1, nums2, nums1Size, k, 0, visited, &ans);
+
     return ans;
 }
 
