@@ -5350,6 +5350,22 @@ int totalHammingDistance(int* nums, int numsSize) {
     return sum;
 }
 
+// 485. Max Consecutive Ones
+int findMaxConsecutiveOnes(int* nums, int numsSize)
+{
+    int i = 0, j = 0;
+    int ans = 0;
+    while (j < numsSize) {
+        if (nums[j] == 0) {
+            ans = ans < (j - i) ? (j - i) : ans;
+            i = j + 1;
+        }
+        j++;
+    }
+    ans = ans < (j - i) ? (j - i) : ans;
+    return ans;
+}
+
 // 501. Find Mode in Binary Search Tree
 struct TreeNode* Pre501 = NULL;
 int max501 = 0;

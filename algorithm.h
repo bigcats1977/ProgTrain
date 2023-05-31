@@ -335,6 +335,8 @@ struct TreeNode* deleteNode(struct TreeNode* root, int key);
 int pathSumIII(struct TreeNode* root, int targetSum);
 // 477. Total Hamming Distance
 int totalHammingDistance(int* nums, int numsSize);
+// 485. Max Consecutive Ones
+int findMaxConsecutiveOnes(int* nums, int numsSize);
 // 501. Find Mode in Binary Search Tree
 int* findMode(struct TreeNode* root, int* returnSize);
 // 509. Fibonacci Number
