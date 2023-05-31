@@ -6847,6 +6847,27 @@ int findJudge(int n, int** trust, int trustSize, int* trustColSize)
     return -1;
 }
 
+// 1004. Max Consecutive Ones III
+int longestOnes(int* nums, int numsSize, int k)
+{
+    int left = 0, right = 0;
+    int maxnum = 0, zeros = 0;
+
+    while (right < numsSize) {
+        if (nums[right] == 0)
+            zeros++;
+        while (zeros > k) {
+            if (nums[left] == 0)
+                zeros--;
+            left++;
+        }
+
+        maxnum = maxnum > (right - left + 1) ? maxnum : (right - left + 1);
+        right++;
+    }
+    return maxnum;
+}
+
 // 1035. Uncrossed Lines
 int maxUncrossedLines(int* nums1, int nums1Size, int* nums2, int nums2Size)
 {

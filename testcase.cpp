@@ -101,6 +101,7 @@ FUNCNAME g_tFuncName[] = {
     {946,   TestCase_946 },
     {947,   TestCase_947 },
     {977,   TestCase_977 },
+    {1004,  TestCase_1004},
     {1035,  TestCase_1035},
     {1047,  TestCase_1047},
     {1071,  TestCase_1071},
@@ -117,6 +118,22 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_1004()
+{
+    vector<int> nums1;
+    int expect, out;
+
+    nums1 = { 0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1 };
+    expect = 10;
+    out = longestOnes(nums1.data(), (int)nums1.size(), 3);
+    COMPVALUE(expect, out);
+
+    nums1 = { 1,1,1,0,0,0,1,1,1,1,0 };
+    expect = 6;
+    out = longestOnes(nums1.data(), (int)nums1.size(), 2);
+    COMPVALUE(expect, out);
+}
 
 void TestCase_9999()
 {
