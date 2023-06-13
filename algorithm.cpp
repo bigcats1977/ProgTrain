@@ -7801,6 +7801,29 @@ int** findDifference(int* nums1, int nums1Size, int* nums2, int nums2Size, int* 
     return ans;
 }
 
+// 2352. Equal Row and Column Pairs
+int equalPairs(int** grid, int gridSize, int* gridColSize)
+{
+    int i = 0, j = 0;
+    int ans = 0;
+    int** transpose = (int**)malloc(gridSize * sizeof(int*));
+    for (i = 0; i < gridSize; i++) {
+        transpose[i] = (int*)malloc(gridSize * sizeof(int));
+        for (j = 0; j < gridSize; j++)
+            transpose[i][j] = grid[j][i];
+    }
+    for (i = 0; i < gridSize; i++) {
+        for (j = 0; j < gridSize; j++)
+            if (memcmp(grid[i], transpose[j], sizeof(int) * gridSize) == 0)
+                ans++;
+    }
+
+    for (i = 0; i < gridSize; i++)
+        free(transpose[i]);
+    free(transpose);
+    return ans;
+}
+
 // 2466. Count Ways To Build Good Strings
 int mod = (int)(1e9 + 7);
 int goodstring(int target, int zero, int one, int* dp) {

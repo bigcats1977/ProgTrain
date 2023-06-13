@@ -511,6 +511,8 @@ int pairSum(struct ListNode* head);
 int longestPalindrome(char** words, int wordsSize);
 // 2215. Find the Difference of Two Arrays
 int** findDifference(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize, int** returnColumnSizes);
+// 2352. Equal Row and Column Pairs
+int equalPairs(int** grid, int gridSize, int* gridColSize);
 // 2466. Count Ways To Build Good Strings
 int countGoodStrings(int low, int high, int zero, int one);
 // 2542. Maximum Subsequence Score
