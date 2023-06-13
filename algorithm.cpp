@@ -7670,6 +7670,7 @@ int findTheWinner(int n, int k)
     free(found);
     return i==0?n:i;
 }
+
 // 1832. Check if the Sentence Is Pangram
 bool checkIfPangram(char* sentence)
 {
@@ -7684,6 +7685,27 @@ bool checkIfPangram(char* sentence)
         }
     }
     return count > 0 ? false : true;
+}
+
+// 2095. Delete the Middle Node of a Linked List
+struct ListNode* deleteMiddle(struct ListNode* head)
+{
+    struct ListNode* dummy = (struct ListNode*)calloc(1, sizeof(struct ListNode));
+    struct ListNode* slow = dummy;
+    dummy->next = head;
+    while (head && head->next) {
+        head = head->next->next;
+        slow = slow->next;
+    }
+    if (slow->next != NULL)
+    {
+        head = slow->next;
+        slow->next = slow->next->next;
+        free(head);
+    }
+    slow = dummy->next;
+    free(dummy);
+    return slow;
 }
 
 // 2130. Maximum Twin Sum of a Linked List
