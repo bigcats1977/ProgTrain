@@ -6884,6 +6884,32 @@ int longestOnes(int* nums, int numsSize, int k)
     return maxnum;
 }
 
+// 1027. Longest Arithmetic Subsequence
+int longestArithSeqLength(int* nums, int numsSize)
+{
+    int i, j, ans = 0,diff;
+    int** dp = (int**)malloc((numsSize+1) * sizeof(int*));
+    for (i = 0; i < numsSize; i++)
+    {
+        dp[i] = (int*)calloc(1001, sizeof(int));
+    }
+    for (i = 1; i < numsSize; i++) {
+        for (j = 0; j < i; j++)
+        {
+            diff = nums[i] - nums[j];
+            dp[i][diff + 500] = dp[i][diff + 500] > (dp[j][diff + 500] + 1) ? dp[i][diff + 500] : (dp[j][diff + 500] + 1);
+            ans = dp[i][diff + 500] > ans ? dp[i][diff + 500] : ans;
+        }
+    }
+    for (i = 0; i < numsSize; i++)
+    {
+        free(dp[i]);
+    }
+    free(dp);
+
+    return ans + 1;
+}
+
 // 1035. Uncrossed Lines
 int maxUncrossedLines(int* nums1, int nums1Size, int* nums2, int nums2Size)
 {

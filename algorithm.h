@@ -449,6 +449,8 @@ int orangesRotting(int** grid, int gridSize, int* gridColSize);
 int findJudge(int n, int** trust, int trustSize, int* trustColSize);
 // 1004. Max Consecutive Ones III
 int longestOnes(int* nums, int numsSize, int k);
+// 1027. Longest Arithmetic Subsequence
+int longestArithSeqLength(int* nums, int numsSize);
 // 1035. Uncrossed Lines
 int maxUncrossedLines(int* nums1, int nums1Size, int* nums2, int nums2Size);
 // 1046. Last Stone Weight
