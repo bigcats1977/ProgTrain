@@ -2513,6 +2513,30 @@ int singleNumber(int* nums, int numsSize)
     return number;
 }
 
+// 137. Single Number II
+int singlecmp(const void* a, const void* b)
+{
+    long pa = *(int*)a;
+    long pb = *(int*)b;
+    if (pa - pb < 0)
+        return -1;
+    return 1;
+}
+int singleNumberII(int* nums, int numsSize) {
+    int index = 0;
+    if (numsSize == 1)
+        return nums[0];
+    qsort(nums, numsSize, sizeof(int), singlecmp);
+
+    while (index < numsSize - 1) {
+        if (nums[index] == nums[index + 1])
+            index += 3;
+        else
+            break;
+    }
+    return nums[index];
+}
+
 // 139. Word Break
 bool wordBreak(string s, vector<string>& wordDict)
 {
