@@ -2523,6 +2523,13 @@ int singlecmp(const void* a, const void* b)
     return 1;
 }
 int singleNumberII(int* nums, int numsSize) {
+    int ones = 0, twos = 0;
+    for (int i = 0; i < numsSize; i++) {
+        ones = (ones ^ nums[i]) & ~twos;
+        twos = (twos ^ nums[i]) & ~ones;
+    }
+    return ones;
+
     int index = 0;
     if (numsSize == 1)
         return nums[0];
