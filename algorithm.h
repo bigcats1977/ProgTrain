@@ -481,6 +481,8 @@ int* shuffle(int* nums, int numsSize, int n, int* returnSize);
 int* runningSum(int* nums, int numsSize, int* returnSize);
 // 1491.Average Salary Excluding the Minimumand Maximum Salary
 double average(int* salary, int salarySize);
+// 1493. Longest Subarray of 1's After Deleting One Element
+int longestSubarray(int* nums, int numsSize);
 // 1544. Make The String Great
 char* makeGood(char* s);
 // 1557. Minimum Number of Vertices to Reach All Nodes

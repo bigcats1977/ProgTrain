@@ -7381,6 +7381,12 @@ double average(int* salary, int salarySize)
     return sum / (salarySize - 2);
 }
 
+// 1493. Longest Subarray of 1's After Deleting One Element
+int longestSubarray(int* nums, int numsSize)
+{
+    return 0;
+}
+
 // 1544. Make The String Great
 char* makeGood(char* s)
 {
