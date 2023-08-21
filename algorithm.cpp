@@ -2513,6 +2513,37 @@ int singleNumber(int* nums, int numsSize)
     return number;
 }
 
+// 137. Single Number II
+int singlecmp(const void* a, const void* b)
+{
+    long pa = *(int*)a;
+    long pb = *(int*)b;
+    if (pa - pb < 0)
+        return -1;
+    return 1;
+}
+int singleNumberII(int* nums, int numsSize) {
+    int ones = 0, twos = 0;
+    for (int i = 0; i < numsSize; i++) {
+        ones = (ones ^ nums[i]) & ~twos;
+        twos = (twos ^ nums[i]) & ~ones;
+    }
+    return ones;
+
+    int index = 0;
+    if (numsSize == 1)
+        return nums[0];
+    qsort(nums, numsSize, sizeof(int), singlecmp);
+
+    while (index < numsSize - 1) {
+        if (nums[index] == nums[index + 1])
+            index += 3;
+        else
+            break;
+    }
+    return nums[index];
+}
+
 // 139. Word Break
 bool wordBreak(string s, vector<string>& wordDict)
 {
@@ -6894,6 +6925,32 @@ int longestOnes(int* nums, int numsSize, int k)
     return maxnum;
 }
 
+// 1027. Longest Arithmetic Subsequence
+int longestArithSeqLength(int* nums, int numsSize)
+{
+    int i, j, ans = 0,diff;
+    int** dp = (int**)malloc((numsSize+1) * sizeof(int*));
+    for (i = 0; i < numsSize; i++)
+    {
+        dp[i] = (int*)calloc(1001, sizeof(int));
+    }
+    for (i = 1; i < numsSize; i++) {
+        for (j = 0; j < i; j++)
+        {
+            diff = nums[i] - nums[j];
+            dp[i][diff + 500] = dp[i][diff + 500] > (dp[j][diff + 500] + 1) ? dp[i][diff + 500] : (dp[j][diff + 500] + 1);
+            ans = dp[i][diff + 500] > ans ? dp[i][diff + 500] : ans;
+        }
+    }
+    for (i = 0; i < numsSize; i++)
+    {
+        free(dp[i]);
+    }
+    free(dp);
+
+    return ans + 1;
+}
+
 // 1035. Uncrossed Lines
 int maxUncrossedLines(int* nums1, int nums1Size, int* nums2, int nums2Size)
 {
@@ -7334,6 +7391,12 @@ double average(int* salary, int salarySize)
     return sum / (salarySize - 2);
 }
 
+// 1493. Longest Subarray of 1's After Deleting One Element
+int longestSubarray(int* nums, int numsSize)
+{
+    return 0;
+}
+
 // 1544. Make The String Great
 char* makeGood(char* s)
 {
@@ -7680,6 +7743,7 @@ int findTheWinner(int n, int k)
     free(found);
     return i==0?n:i;
 }
+
 // 1832. Check if the Sentence Is Pangram
 bool checkIfPangram(char* sentence)
 {
@@ -7694,6 +7758,27 @@ bool checkIfPangram(char* sentence)
         }
     }
     return count > 0 ? false : true;
+}
+
+// 2095. Delete the Middle Node of a Linked List
+struct ListNode* deleteMiddle(struct ListNode* head)
+{
+    struct ListNode* dummy = (struct ListNode*)calloc(1, sizeof(struct ListNode));
+    struct ListNode* slow = dummy;
+    dummy->next = head;
+    while (head && head->next) {
+        head = head->next->next;
+        slow = slow->next;
+    }
+    if (slow->next != NULL)
+    {
+        head = slow->next;
+        slow->next = slow->next->next;
+        free(head);
+    }
+    slow = dummy->next;
+    free(dummy);
+    return slow;
 }
 
 // 2130. Maximum Twin Sum of a Linked List
@@ -7808,6 +7893,29 @@ int** findDifference(int* nums1, int nums1Size, int* nums2, int nums2Size, int* 
     }
     (*returnColumnSizes)[0] = c1;
     (*returnColumnSizes)[1] = c2;
+    return ans;
+}
+
+// 2352. Equal Row and Column Pairs
+int equalPairs(int** grid, int gridSize, int* gridColSize)
+{
+    int i = 0, j = 0;
+    int ans = 0;
+    int** transpose = (int**)malloc(gridSize * sizeof(int*));
+    for (i = 0; i < gridSize; i++) {
+        transpose[i] = (int*)malloc(gridSize * sizeof(int));
+        for (j = 0; j < gridSize; j++)
+            transpose[i][j] = grid[j][i];
+    }
+    for (i = 0; i < gridSize; i++) {
+        for (j = 0; j < gridSize; j++)
+            if (memcmp(grid[i], transpose[j], sizeof(int) * gridSize) == 0)
+                ans++;
+    }
+
+    for (i = 0; i < gridSize; i++)
+        free(transpose[i]);
+    free(transpose);
     return ans;
 }
 

@@ -156,6 +156,8 @@ char*** partition(char* s, int* returnSize, int** returnColumnSizes);
 int canCompleteCircuit(int* gas, int gasSize, int* cost, int costSize);
 // 136. Single Number
 int singleNumber(int* nums, int numsSize);
+// 137. Single Number II
+int singleNumberII(int* nums, int numsSize);
 // 139. Word Break
 bool wordBreak(string s, vector<string>&wordDict);
 // 141. Linked List Cycle
@@ -451,6 +453,8 @@ int orangesRotting(int** grid, int gridSize, int* gridColSize);
 int findJudge(int n, int** trust, int trustSize, int* trustColSize);
 // 1004. Max Consecutive Ones III
 int longestOnes(int* nums, int numsSize, int k);
+// 1027. Longest Arithmetic Subsequence
+int longestArithSeqLength(int* nums, int numsSize);
 // 1035. Uncrossed Lines
 int maxUncrossedLines(int* nums1, int nums1Size, int* nums2, int nums2Size);
 // 1046. Last Stone Weight
@@ -479,6 +483,8 @@ int* shuffle(int* nums, int numsSize, int n, int* returnSize);
 int* runningSum(int* nums, int numsSize, int* returnSize);
 // 1491.Average Salary Excluding the Minimumand Maximum Salary
 double average(int* salary, int salarySize);
+// 1493. Longest Subarray of 1's After Deleting One Element
+int longestSubarray(int* nums, int numsSize);
 // 1544. Make The String Great
 char* makeGood(char* s);
 // 1557. Minimum Number of Vertices to Reach All Nodes
@@ -507,12 +513,16 @@ int arraySign(int* nums, int numsSize);
 int findTheWinner(int n, int k);
 // 1832. Check if the Sentence Is Pangram
 bool checkIfPangram(char* sentence);
+// 2095. Delete the Middle Node of a Linked List
+struct ListNode* deleteMiddle(struct ListNode* head);
 // 2130. Maximum Twin Sum of a Linked List
 int pairSum(struct ListNode* head);
 // 2131. Longest Palindrome by Concatenating Two Letter Words
 int longestPalindrome(char** words, int wordsSize);
 // 2215. Find the Difference of Two Arrays
 int** findDifference(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize, int** returnColumnSizes);
+// 2352. Equal Row and Column Pairs
+int equalPairs(int** grid, int gridSize, int* gridColSize);
 // 2466. Count Ways To Build Good Strings
 int countGoodStrings(int low, int high, int zero, int one);
 // 2542. Maximum Subsequence Score
