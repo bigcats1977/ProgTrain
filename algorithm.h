@@ -263,6 +263,8 @@ bool isAnagram(char* s, char* t);
 char** binaryTreePaths(struct TreeNode* root, int* returnSize);
 // 263. Ugly Number
 bool isUgly(int n);
+// 268. Missing Number
+int missingNumber(int* nums, int numsSize);
 // 278. First Bad Version
 int firstBadVersion(int n);
 // 283. Move Zeroes

@@ -62,6 +62,7 @@ FUNCNAME g_tFuncName[] = {
     {239,   TestCase_239 },
     {240,   TestCase_240 },
     {242,   TestCase_242 },
+    {268,   TestCase_268 },
     {283,   TestCase_283 },
     {290,   TestCase_290 },
     {297,   TestCase_297 },
@@ -118,6 +119,17 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_268()
+{
+    vector<int> nums1;
+    int expect, out;
+
+    nums1 = { 9,6,4,2,3,5,7,0,1 };
+    expect = 8;
+    out = missingNumber(nums1.data(), (int)nums1.size());
+    COMPVALUE(expect, out);
+}
 
 void TestCase_1004()
 {

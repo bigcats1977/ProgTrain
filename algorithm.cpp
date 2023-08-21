@@ -4199,6 +4199,16 @@ bool isUgly(int n)
     return false;
 }
 
+// 268. Missing Number
+int missingNumber(int* nums, int numsSize)
+{
+    long long sum = 0;
+    sum = (numsSize + 1) * numsSize / 2;
+    for (int i = 0; i < numsSize; i++)
+        sum -= nums[i];
+    return sum;
+}
+
 // 278. First Bad Version
 bool isBadVersion(int version)
 {
