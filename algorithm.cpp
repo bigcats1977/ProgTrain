@@ -5282,6 +5282,32 @@ int eraseOverlapIntervals(int** intervals, int intervalsSize, int* intervalsColS
     return ans;
 }
 
+// 437. Path Sum III
+void solvePathSum(struct TreeNode* root, long long current, int* pathNum)
+{
+    if (!root)
+        return;
+    if (root->val == current)
+        (*pathNum)++;
+    solvePathSum(root->left, current - root->val, pathNum);
+    solvePathSum(root->right, current - root->val, pathNum);
+}
+void pathSumDET(struct TreeNode* root, long long targetSum, int* pathNum)
+{
+    if (!root)
+        return;
+    solvePathSum(root, targetSum, pathNum);
+
+    pathSumDET(root->left, targetSum, pathNum);
+    pathSumDET(root->right, targetSum, pathNum);
+}
+int pathSumIII(struct TreeNode* root, int targetSum)
+{
+    int pathNum = 0;
+    pathSumDET(root, targetSum, &pathNum);
+    return pathNum;
+}
+
 // 438. Find All Anagrams in a String
 int* findAnagrams(char* s, char* p, int* returnSize)
 {
@@ -5311,32 +5337,6 @@ int* findAnagrams(char* s, char* p, int* returnSize)
     }
     *returnSize = nums;
     return res;
-}
-
-// 437. Path Sum III
-void solvePathSum(struct TreeNode* root, long long current, int* pathNum)
-{
-    if (!root)
-        return;
-    if (root->val == current)
-        (*pathNum)++;
-    solvePathSum(root->left, current - root->val, pathNum);
-    solvePathSum(root->right, current - root->val, pathNum);
-}
-void pathSumDET(struct TreeNode* root, long long targetSum, int* pathNum)
-{
-    if (!root)
-        return;
-    solvePathSum(root, targetSum, pathNum);
-
-    pathSumDET(root->left, targetSum, pathNum);
-    pathSumDET(root->right, targetSum, pathNum);
-}
-int pathSumIII(struct TreeNode* root, int targetSum)
-{
-    int pathNum = 0;
-    pathSumDET(root, targetSum, &pathNum);
-    return pathNum;
 }
 
 // 450. Delete Node in a BST
@@ -5372,6 +5372,29 @@ struct TreeNode* deleteNode(struct TreeNode* root, int key)
     else
         root->right = deleteNode(root->right, key);
     return root;
+}
+
+// 459. Repeated Substring Pattern
+bool repeatedSubstringPattern(char* s)
+{
+    int len = strlen(s);
+    int i = 1;
+    int x = 0;
+
+    while (i <= len / 2) {
+        x = 0;
+        if (len % i == 0) {
+            while (x < len) {
+                if (s[x % i] != s[x])
+                    break;
+                x++;
+            }
+            if (x == len)
+                return true;
+        }
+        i++;
+    }
+    return false;
 }
 
 // 477. Total Hamming Distance

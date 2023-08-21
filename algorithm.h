@@ -331,12 +331,14 @@ int** pacificAtlantic(int** heights, int heightsSize, int* heightsColSize, int* 
 int characterReplacement(char* s, int k);
 // 435. Non - overlapping Intervals
 int eraseOverlapIntervals(int** intervals, int intervalsSize, int* intervalsColSize);
+// 437. Path Sum III
+int pathSumIII(struct TreeNode* root, int targetSum);
 // 438. Find All Anagrams in a String
 int* findAnagrams(char* s, char* p, int* returnSize);
 // 450. Delete Node in a BST
 struct TreeNode* deleteNode(struct TreeNode* root, int key);
-// 437. Path Sum III
-int pathSumIII(struct TreeNode* root, int targetSum);
+// 459. Repeated Substring Pattern
+bool repeatedSubstringPattern(char* s);
 // 477. Total Hamming Distance
 int totalHammingDistance(int* nums, int numsSize);
 // 485. Max Consecutive Ones
