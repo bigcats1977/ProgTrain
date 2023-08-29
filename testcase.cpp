@@ -116,10 +116,41 @@ FUNCNAME g_tFuncName[] = {
     {1823,  TestCase_1823},
     {8005,  TestCase_8005},
     {2215,  TestCase_2215},
+    {2483,  TestCase_2483},
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
 
+void TestCase_2483()
+{
+    string customers;
+    int expect, out;
+
+    customers = "NYNNNYYN";
+    expect = 0;
+    out = bestClosingTime(customers);
+    COMPVALUE(expect, out);
+
+    customers = "YYNY";
+    expect = 2;
+    out = bestClosingTime(customers);
+    COMPVALUE(expect, out);
+    
+    customers = "NNNYNN";
+    expect = 0;
+    out = bestClosingTime(customers);
+    COMPVALUE(expect, out);
+
+    customers = "NNNN";
+    expect = 0;
+    out = bestClosingTime(customers);
+    COMPVALUE(expect, out);
+
+    customers = "YYYY";
+    expect = 4;
+    out = bestClosingTime(customers);
+    COMPVALUE(expect, out);
+}
 void TestCase_268()
 {
     vector<int> nums1;

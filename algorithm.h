@@ -527,6 +527,8 @@ int** findDifference(int* nums1, int nums1Size, int* nums2, int nums2Size, int* 
 int equalPairs(int** grid, int gridSize, int* gridColSize);
 // 2466. Count Ways To Build Good Strings
 int countGoodStrings(int low, int high, int zero, int one);
+// 2483. Minimum Penalty for a Shop
+int bestClosingTime(string customers);
 // 2542. Maximum Subsequence Score
 long long maxScore(int* nums1, int nums1Size, int* nums2, int nums2Size, int k);
 // ½£Ö¸ Offer 05. Ìæ»»¿Õ¸ñ

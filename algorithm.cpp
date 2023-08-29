@@ -4237,7 +4237,7 @@ int missingNumber(int* nums, int numsSize)
     sum = (numsSize + 1) * numsSize / 2;
     for (int i = 0; i < numsSize; i++)
         sum -= nums[i];
-    return sum;
+    return (int)sum;
 }
 
 // 278. First Bad Version
@@ -5377,7 +5377,7 @@ struct TreeNode* deleteNode(struct TreeNode* root, int key)
 // 459. Repeated Substring Pattern
 bool repeatedSubstringPattern(char* s)
 {
-    int len = strlen(s);
+    int len = (int)strlen(s);
     int i = 1;
     int x = 0;
 
@@ -7966,6 +7966,33 @@ int countGoodStrings(int low, int high, int zero, int one) {
     return ans;
 }
 
+// 2483. Minimum Penalty for a Shop
+int bestClosingTime(string customers)
+{
+    int len = (int)customers.size();
+    vector<int> penalty(len + 1);
+    int i;
+    for (i = len - 1; i >= 0; i--) {
+        penalty[i] = penalty[i + 1];
+        if (customers[i] == 'Y')
+            penalty[i]++;
+    }
+    int min = penalty[0];
+    int j = 0;
+    int NN = 0;
+    for (i = 1; i <= len; i++) {
+        penalty[i] += NN;
+        if (customers[i - 1] == 'N') {
+            NN++;
+            penalty[i]++;
+        }
+        if (penalty[i] < min) {
+            min = penalty[i];
+            j = i;
+        }
+    }
+    return j;
+}
 // 2542. Maximum Subsequence Score
 // overtime
 /*
