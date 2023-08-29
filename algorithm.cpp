@@ -7357,6 +7357,19 @@ bool* kidsWithCandies(int* candies, int candiesSize, int extraCandies, int* retu
 
     return result;
 }
+vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies)
+{
+    int len = (int)candies.size();
+    vector<bool> res(len);
+    int max = candies[0];
+    int i;
+    for (i = 1; i < len; i++)
+        max = candies[i] > max ? candies[i] : max;
+    for (i = 0; i < len; i++)
+        if (candies[i] + extraCandies >= max)
+            res[i] = true;
+    return res;
+}
 
 // 1456. Maximum Number of Vowels in a Substring of Given Length
 bool IsVowelChar(char c) {
