@@ -7180,6 +7180,16 @@ char* gcdOfStrings(char* str1, char* str2)
     free(sum2);
     return str;
 }
+string gcdOfStrings(string str1, string str2)
+{
+    string res;
+
+    if ((str1 + str2) != (str2 + str1))
+        return "";
+    int gcdlen = gcd((int)str1.size(), (int)str2.size());
+
+    return str1.substr(0, gcdlen);
+}
 
 // 1091. Shortest Path in Binary Matrix
 struct coord {

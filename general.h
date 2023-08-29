@@ -7,6 +7,7 @@
 #include <stack>
 #include <queue>
 #include <unordered_map>
+#include <numeric>
 
 using namespace std;
 
@@ -54,6 +55,7 @@ void swap(int* val1, int* val2);
 void quicksort(int* nums, int left, int right);
 
 int** matrix2addr(vector<vector<int>> matrix);
+int gcd(int a, int b);
 
 
 #define COMPVALUE(exp, out)     {                                               \
