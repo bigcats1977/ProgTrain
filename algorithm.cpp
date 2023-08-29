@@ -4687,6 +4687,21 @@ char* reverseVowels(char* s)
     }
     return s;
 }
+string reverseVowels(string s)
+{
+    int left = 0, right = (int)s.size() - 1;
+    char ch;
+    while (left < right) {
+        while (left < right && !isVowel(s[left]))
+            left++;
+        while (left < right && !isVowel(s[right]))
+            right--;
+        ch = s[left];
+        s[left++] = s[right];
+        s[right--] = ch;
+    }
+    return s;
+}
 
 // 347. Top K Frequent Elements
 struct tempMap {

@@ -293,6 +293,7 @@ int integerBreak(int n);
 void reverseString(char* s, int sSize);
 // 345. Reverse Vowels of a String;
 char* reverseVowels(char* s);
+string reverseVowels(string s);
 // 347. Top K Frequent Elements
 int* topKFrequent(int* nums, int numsSize, int k, int* returnSize);
 // 349. Intersection of Two Arrays
