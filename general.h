@@ -47,6 +47,12 @@ struct Node {
     struct Node* next;
 };
 
+struct RNode {
+    int val;
+    struct RNode* next;
+    struct RNode* random;
+};
+
 ListNode* CreateListNode(vector<int> nums);
 
 TreeNode* CreateBinaryTree(vector<int> nums, int invalidval=-1);

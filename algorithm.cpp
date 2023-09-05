@@ -2544,6 +2544,42 @@ int singleNumberII(int* nums, int numsSize) {
     return nums[index];
 }
 
+// 138. Copy List with Random Pointer
+RNode* copyRandomList(RNode* head)
+{
+    if (!head)
+        return head;
+    RNode* newhead = new RNode;
+    RNode* newcur = newhead;
+    RNode* cur = head;
+    unordered_map<RNode*, RNode*> umap;
+
+    while (cur) {
+        RNode* temp = new RNode;
+        temp->val = cur->val;
+
+        umap.insert({ cur, temp });
+
+        newcur->next = temp;
+        newcur = newcur->next;
+        cur = cur->next;
+    }
+    cur = head;
+    newcur = newhead->next;
+
+    while (cur) {
+        RNode* random = cur->random;
+        RNode* newNode = umap[random];
+        newcur->random = newNode;
+
+        newcur = newcur->next;
+        cur = cur->next;
+    }
+
+    return newhead->next;
+}
+
+
 // 139. Word Break
 bool wordBreak(string s, vector<string>& wordDict)
 {

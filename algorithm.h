@@ -158,6 +158,8 @@ int canCompleteCircuit(int* gas, int gasSize, int* cost, int costSize);
 int singleNumber(int* nums, int numsSize);
 // 137. Single Number II
 int singleNumberII(int* nums, int numsSize);
+// 138. Copy List with Random Pointer
+Node* copyRandomList(Node* head);
 // 139. Word Break
 bool wordBreak(string s, vector<string>&wordDict);
 // 141. Linked List Cycle
