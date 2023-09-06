@@ -6422,6 +6422,43 @@ int pivotIndex(int* nums, int numsSize)
 #endif
 }
 
+// 725. Split Linked List in Parts
+vector<ListNode*> splitListToParts(ListNode* head, int k)
+{
+    vector<ListNode*> res(k);
+    float total = 0;
+    int i, split;
+    for (i = 0; i < k; i++)
+        res[i] = NULL;
+
+    ListNode* cur = head, * tail;
+    while (cur) {
+        total++;
+        cur = cur->next;
+    }
+    split = (int)ceil(total / k);
+    int index = 0;
+    cur = head;
+
+    while (cur) {
+        res[index] = cur;
+        tail = cur;
+        total -= split;
+        while (cur && split) {
+            tail = cur;
+            cur = cur->next;
+            split--;
+        }
+        tail->next = NULL;
+        index++; k--;
+        if (k > 0) {
+            split = (int)ceil(total / k * 1.0);
+        }
+    }
+
+    return res;
+}
+
 // 733. Flood Fill
 void depthTravel(int** image, int row, int col, int srcClr, int sr, int sc, int color)
 {

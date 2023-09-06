@@ -416,6 +416,8 @@ int numSubarrayProductLessThanK(int* nums, int numsSize, int k);
 // MyLinkedList
 // 724. Find Pivot Index
 int pivotIndex(int* nums, int numsSize);
+// 725. Split Linked List in Parts
+vector<ListNode*> splitListToParts(ListNode* head, int k);
 // 733. Flood Fill
 int** floodFill(int** image, int imageSize, int* imageColSize, int sr, int sc, int color, int* returnSize, int** returnColumnSizes);
 // 735. Asteroid Collision
