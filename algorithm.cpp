@@ -1832,6 +1832,41 @@ int numDecodings(char* s)
     return ans;
 }
 
+// 92. Reverse Linked List II
+ListNode* reverseBetween(ListNode* head, int left, int right)
+{
+    ListNode* dummy = (ListNode*)calloc(1, sizeof(ListNode));
+    dummy->next = head;
+    ListNode* cur= head, * pre= dummy, * next = NULL;
+    ListNode* first = NULL;
+    int index = 1;
+    while (cur)
+    {
+        if (index == left) {
+            first = pre;
+            pre = cur;
+            cur = cur->next;
+        }
+        else if (index > left && index < right) {
+            pre = cur->next;
+            next = first->next;
+            first->next = cur;
+            cur->next = next;
+            cur = pre;
+        }
+        else if (index > right)
+        {
+            break;
+        }
+        else
+        {
+            pre = cur;
+            cur = cur->next;
+        }
+    }
+    return dummy->next;
+}
+
 // 94. Binary Tree Inorder Traversal
 void inorder(struct TreeNode* root, int* ans, int* index)
 {
