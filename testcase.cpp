@@ -32,6 +32,7 @@ FUNCNAME g_tFuncName[] = {
     {77,    TestCase_77  },
     {78,    TestCase_78  },
     {88,    TestCase_88  },
+    {92,    TestCase_92  },
     {102,   TestCase_102 },
     {103,   TestCase_103 },
     {108,   TestCase_108 },
@@ -120,6 +121,17 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+void TestCase_92()
+{
+    vector<int> nums1;
+
+    ListNode* output = NULL;
+    struct ListNode* headA;
+
+    nums1 = { 1,2,3,4,5 };
+    headA = CreateListNode(nums1);
+    headA = reverseBetween(headA, 2, 4);
+}
 
 void TestCase_2483()
 {
@@ -1131,8 +1143,8 @@ void TestCase_3()
 
 void TestCase_118()
 {
-    int nr, nl;
-    int* nnl = &nl;
+    /*int nr, nl;
+    int* nnl = &nl;*/
     //generate(5, &nr, &nnl);
     generate(5);
 }

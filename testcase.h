@@ -31,6 +31,7 @@ void TestCase_76();
 void TestCase_77();
 void TestCase_78();
 void TestCase_88();
+void TestCase_92();
 void TestCase_102();
 void TestCase_103();
 void TestCase_108();

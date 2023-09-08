@@ -1833,11 +1833,15 @@ int numDecodings(char* s)
 }
 
 // 92. Reverse Linked List II
+/*
+Input: head = [1,2,3,4,5], left = 2, right = 4
+Output: [1,4,3,2,5]
+*/
 ListNode* reverseBetween(ListNode* head, int left, int right)
 {
     ListNode* dummy = (ListNode*)calloc(1, sizeof(ListNode));
     dummy->next = head;
-    ListNode* cur= head, * pre= dummy, * next = NULL;
+    ListNode* cur= head, * pre= dummy, * temp = NULL;
     ListNode* first = NULL;
     int index = 1;
     while (cur)
@@ -1847,12 +1851,11 @@ ListNode* reverseBetween(ListNode* head, int left, int right)
             pre = cur;
             cur = cur->next;
         }
-        else if (index > left && index < right) {
-            pre = cur->next;
-            next = first->next;
+        else if (index > left && index <= right) {
+            temp = cur->next;
+            cur->next = first->next;
             first->next = cur;
-            cur->next = next;
-            cur = pre;
+            cur = pre->next = temp;
         }
         else if (index > right)
         {
@@ -1863,6 +1866,7 @@ ListNode* reverseBetween(ListNode* head, int left, int right)
             pre = cur;
             cur = cur->next;
         }
+        index++;
     }
     return dummy->next;
 }
