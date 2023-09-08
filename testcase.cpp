@@ -1133,7 +1133,8 @@ void TestCase_118()
 {
     int nr, nl;
     int* nnl = &nl;
-    generate(5, &nr, &nnl);
+    //generate(5, &nr, &nnl);
+    generate(5);
 }
 
 void TestCase_566()

@@ -2285,6 +2285,24 @@ int** generate(int numRows, int* returnSize, int** returnColumnSizes)
 
     return ans;
 }
+// [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
+vector<vector<int>> generate(int numRows)
+{
+    vector<vector<int>> res;
+    vector<int> row;
+    for (int i = 0; i < numRows; i++) {
+        row.clear();
+        row.resize(i+1);
+        row[0] = 1;
+        row[i] = 1;
+        for (int j = 1; j < i; j++) {
+            row[j] = res[i - 1][j - 1] + res[i - 1][j];
+        }
+        res.push_back(row);
+    }
+
+    return res;
+}
 
 // 119. Pascal's Triangle II
 int* getRow(int rowIndex, int* returnSize)

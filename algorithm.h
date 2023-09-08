@@ -144,6 +144,7 @@ struct Node* connect(struct Node* root);
 struct Node* connect2(struct Node* root);
 // 118. Pascal's Triangle
 int** generate(int numRows, int* returnSize, int** returnColumnSizes);
+vector<vector<int>> generate(int numRows);
 // 119. Pascal's Triangle II
 int* getRow(int rowIndex, int* returnSize);
 // 120. Triangle
