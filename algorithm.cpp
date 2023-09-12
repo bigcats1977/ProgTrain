@@ -7642,6 +7642,30 @@ int diagonalSum(int** mat, int matSize, int* matColSize)
     return sum;
 }
 
+// 1647. Minimum Deletions to Make Character Frequencies Unique
+int minDeletions(string s)
+{
+    int i;
+    int freq[26] = { 0 };
+    for (i = 0; i < s.size(); i++) {
+        freq[s[i] - 'a']++;
+    }
+    sort(freq, freq + 26);
+    int res = 0;
+    int k;
+    for (i = 24; i >= 0; i--) {
+        if (freq[i] <= 0)
+            break;
+        if (freq[i] >= freq[i + 1]) {
+            k = freq[i] - freq[i + 1] + 1;
+            k = min(freq[i], k);
+            res += k;
+            freq[i] -= k;
+        }
+    }
+    return res;
+}
+
 // 1657. Determine if Two Strings Are Close
 int cmpfunc(const void* a, const void* b) {
     return (*(int*)a - *(int*)b);

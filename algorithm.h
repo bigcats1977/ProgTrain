@@ -503,6 +503,8 @@ char* makeGood(char* s);
 int* findSmallestSetOfVertices(int n, int** edges, int edgesSize, int* edgesColSize, int* returnSize);
 // 1572. Matrix Diagonal Sum
 int diagonalSum(int** mat, int matSize, int* matColSize);
+// 1647. Minimum Deletions to Make Character Frequencies Unique
+int minDeletions(string s);
 // 1657. Determine if Two Strings Are Close
 bool closeStrings(char* word1, char* word2);
 // 1662. Check If Two String Arrays are Equivalent

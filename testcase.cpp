@@ -112,6 +112,7 @@ FUNCNAME g_tFuncName[] = {
     {1239,  TestCase_1239},
     {1480,  TestCase_1480},
     {1544,  TestCase_1544},
+    {1647,  TestCase_1647},
     {1657,  TestCase_1657},
     {1662,  TestCase_1662},
     {1823,  TestCase_1823},
@@ -121,6 +122,14 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_1647()
+{
+    string s;
+
+    s = "bbcebab";
+    minDeletions(s);
+}
 void TestCase_92()
 {
     vector<int> nums1;
