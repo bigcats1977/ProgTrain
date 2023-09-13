@@ -2560,6 +2560,31 @@ int canCompleteCircuit(int* gas, int gasSize, int* cost, int costSize)
 #endif
 }
 
+// 135. Candy
+int candy(vector<int>& ratings)
+{
+    int i;
+    int sum = 0;
+    int count = (int)ratings.size();
+    vector<int> vec(count, 1);
+
+    for (i = 1; i < count; i++)
+    {
+        if (ratings[i] > ratings[i - 1])
+            vec[i] = vec[i - 1] + 1;
+    }
+
+    for (i = count - 2; i >= 0; i--)
+    {
+        if (ratings[i] > ratings[i + 1])
+            vec[i] = max(vec[i], vec[i + 1] + 1);
+    }
+
+    for (i = 0; i < count; i++)
+        sum += vec[i];
+    return sum;
+}
+
 // 136. Single Number
 int singleNumber(int* nums, int numsSize)
 {

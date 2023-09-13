@@ -157,6 +157,8 @@ void solve(char** board, int boardSize, int* boardColSize);
 char*** partition(char* s, int* returnSize, int** returnColumnSizes);
 // 134. Gas Station
 int canCompleteCircuit(int* gas, int gasSize, int* cost, int costSize);
+// 135. Candy
+int candy(vector<int>& ratings);
 // 136. Single Number
 int singleNumber(int* nums, int numsSize);
 // 137. Single Number II
