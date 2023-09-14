@@ -4744,6 +4744,56 @@ struct ListNode* oddEvenList(struct ListNode* head)
     return prior;
 }
 
+// Input: tickets = [["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]]
+// Output: ["JFK", "MUC", "LHR", "SFO", "SJC"]
+// 332. Reconstruct Itinerary
+bool ticketdfs(string from, int max, map<string, int>& mapLoc, vector<vector<int>>& matrix, vector<string>& res)
+{
+    map<string, int>::iterator it;
+    int row = mapLoc[from];
+    bool finish = false;
+    for (it = mapLoc.begin(); it != mapLoc.end(); it++) {
+        if (matrix[row][it->second] != 0)
+        {
+            finish = true;
+            res.push_back(it->first);
+            matrix[row][it->second] = 0;
+            if (!ticketdfs(it->first, max, mapLoc, matrix, res))
+            {
+                finish = false;
+                matrix[row][it->second] = 1;
+                res.pop_back();
+            }
+        }
+    }
+    return finish;
+}
+vector<string> findItinerary(vector<vector<string>>& tickets)
+{
+    size_t i, j;
+    int index = 0;
+    map<string,int> mapLoc;
+    map<string, int>::iterator it;
+    vector<string> res;
+    vector<vector<int>> matrix(300, vector<int>(300, 0));
+    for (i = 0; i < tickets.size(); i++) {
+        for (j = 0; j < 2; j++) {
+            if (mapLoc.count(tickets[i][j]) <= 0)
+                mapLoc[tickets[i][j]] = 0;
+        }
+    }
+    for (it = mapLoc.begin(); it != mapLoc.end(); it++)
+        it->second = index++;
+
+    for (i = 0; i < tickets.size(); i++) {
+        matrix[mapLoc[tickets[i][0]]][mapLoc[tickets[i][1]]] = 1;
+    }
+
+    res.push_back("JFK");
+    ticketdfs("JFK", index, mapLoc, matrix, res);
+    return res;
+}
+
 // 343. Integer Break
 int integerBreak(int n)
 {

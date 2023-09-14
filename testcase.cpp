@@ -69,6 +69,7 @@ FUNCNAME g_tFuncName[] = {
     {297,   TestCase_297 },
     {300,   TestCase_300 },
     {322,   TestCase_322 },
+    {332,   TestCase_332 },
     {344,   TestCase_344 },
     {349,   TestCase_349 },
     {350,   TestCase_350 },
@@ -122,6 +123,13 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_332()
+{
+    //vector<vector<string>> tickets = { {"MUC","LHR"},{"JFK","MUC"},{"SFO","SJC"},{"LHR","SFO"} };
+    vector<vector<string>> tickets = { {"JFK","KUL"},{"JFK","NRT"},{"NRT","JFK"}};
+    findItinerary(tickets);
+}
 
 void TestCase_1647()
 {
