@@ -488,6 +488,8 @@ int maxLength(char** arr, int arrSize);
 char* minRemoveToMakeValid(char* s);
 // 1323. Maximum 69 Number
 int maximum69Number(int num);
+// 1337. The K Weakest Rows in a Matrix
+vector<int> kWeakestRows(vector<vector<int>>& mat, int k);
 // 1431. Kids With the Greatest Number of Candies
 bool* kidsWithCandies(int* candies, int candiesSize, int extraCandies, int* returnSize);
 vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies);

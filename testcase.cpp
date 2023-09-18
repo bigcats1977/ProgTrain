@@ -111,6 +111,7 @@ FUNCNAME g_tFuncName[] = {
     {1091,  TestCase_1091},
     {1143,  TestCase_1143},
     {1239,  TestCase_1239},
+    {1337,  TestCase_1337},
     {1480,  TestCase_1480},
     {1544,  TestCase_1544},
     {1647,  TestCase_1647},
@@ -123,6 +124,17 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_1337()
+{
+    vector<vector<int>> mat = { { 1,1,0,0,0} ,
+        { 1,1,1,1,0},
+        {1,0,0,0,0 },
+        {1, 1, 0, 0, 0},
+        {1,1,1,1,1} };
+
+    kWeakestRows(mat, 3);
+}
 
 void TestCase_332()
 {

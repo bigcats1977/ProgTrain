@@ -7560,6 +7560,29 @@ int maximum69Number(int num)
     return num;
 }
 
+// 1337. The K Weakest Rows in a Matrix
+vector<int> kWeakestRows(vector<vector<int>>& mat, int k)
+{
+    set<pair<int, int>>s;
+
+    for (int i = 0; i < (int)mat.size(); i++) {
+        int count = (int)mat[i].size();
+        for (int j = 0; j < (int)mat[i].size(); j++) {
+            if (mat[i][j] == 0)
+            {
+                count = j;
+                break;
+            }
+        }
+        s.insert({ count, i });
+    }
+    vector<int> res;
+    for (auto x = s.begin(); k > 0; k--, x++) {
+        res.push_back(x->second);
+    }
+    return res;
+}
+
 // 1431. Kids With the Greatest Number of Candies
 bool* kidsWithCandies(int* candies, int candiesSize, int extraCandies, int* returnSize)
 {
