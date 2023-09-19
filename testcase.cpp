@@ -65,6 +65,7 @@ FUNCNAME g_tFuncName[] = {
     {242,   TestCase_242 },
     {268,   TestCase_268 },
     {283,   TestCase_283 },
+    {287,   TestCase_287 },
     {290,   TestCase_290 },
     {297,   TestCase_297 },
     {300,   TestCase_300 },
@@ -124,6 +125,14 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_287()
+{
+    vector<int> nums;
+
+    nums = { 1,3,4,2,2 };
+    findDuplicate(nums);
+}
 
 void TestCase_1337()
 {

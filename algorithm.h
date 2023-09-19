@@ -278,6 +278,8 @@ int missingNumber(int* nums, int numsSize);
 int firstBadVersion(int n);
 // 283. Move Zeroes
 void moveZeroes(int* nums, int numsSize);
+// 287. Find the Duplicate Number
+int findDuplicate(vector<int>&nums);
 // 290. Word Pattern
 bool wordPattern(char* pattern, char* s);
 // 297. Serialize and Deserialize Binary Tree

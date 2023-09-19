@@ -4390,6 +4390,18 @@ void moveZeroes(int* nums, int numsSize)
         nums[slow] = 0;
 }
 
+// 287. Find the Duplicate Number
+int findDuplicate(vector<int>& nums)
+{
+    sort(nums.begin(), nums.end());
+
+    for (size_t i = 1; i < nums.size(); i++) {
+        if (nums[i] == nums[i - 1])
+            return nums[i];
+    }
+    return 0;
+}
+
 // 290. Word Pattern
 bool wordPattern(char* pattern, char* s)
 {
