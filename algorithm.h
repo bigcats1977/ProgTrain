@@ -298,6 +298,8 @@ int coinChange(vector<int>&coins, int amount);
 struct ListNode* oddEvenList(struct ListNode* head);
 // 332. Reconstruct Itinerary
 vector<string> findItinerary(vector<vector<string>>&tickets);
+// 334. Increasing Triplet Subsequence
+bool increasingTriplet(int* nums, int numsSize);
 // 343. Integer Break
 int integerBreak(int n);
 // 344. Reverse String

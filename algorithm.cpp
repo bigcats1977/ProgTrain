@@ -4806,6 +4806,34 @@ vector<string> findItinerary(vector<vector<string>>& tickets)
     return res;
 }
 
+// 334. Increasing Triplet Subsequence
+bool increasingTriplet(int* nums, int numsSize)
+{
+    bool* judge = (bool*)calloc(numsSize, sizeof(bool));
+    int i = 0;
+    int temp = nums[0];
+    if (numsSize < 3)
+        return false;
+    for (i = 1; i < numsSize; i++) {
+        if (nums[i] > nums[i - 1] || nums[i] > temp){
+            judge[i] = true;
+        }
+        temp = nums[i] > temp ? temp : nums[i];
+    }
+    temp = nums[numsSize - 1];
+    for (i = numsSize - 2; i >= 0; i--)
+    {
+        if (nums[i] < nums[i + 1] || nums[i] < temp)
+        {
+            if (judge[i])
+                return true;
+        }
+        temp = nums[i] < temp ? temp : nums[i];
+    }
+
+    return false;
+}
+
 // 343. Integer Break
 int integerBreak(int n)
 {

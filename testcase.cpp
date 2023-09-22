@@ -71,6 +71,7 @@ FUNCNAME g_tFuncName[] = {
     {300,   TestCase_300 },
     {322,   TestCase_322 },
     {332,   TestCase_332 },
+    {334,   TestCase_334 },
     {344,   TestCase_344 },
     {349,   TestCase_349 },
     {350,   TestCase_350 },
@@ -125,6 +126,14 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_334()
+{
+    vector<int> nums;
+
+    nums = { 20,100,10,12,5,13 };
+    increasingTriplet(nums.data(), (int)nums.size());
+}
 
 void TestCase_287()
 {
