@@ -4847,6 +4847,19 @@ vector<string> findItinerary(vector<vector<string>>& tickets)
 // 334. Increasing Triplet Subsequence
 bool increasingTriplet(int* nums, int numsSize)
 {
+    int left = INT_MAX, mid = INT_MAX;
+    if (numsSize < 3)
+        return false;
+    for (int i = 0; i < numsSize; i++) {
+        if (nums[i] > mid)
+            return true;
+        if (nums[i] < left)
+            left = nums[i];
+        if (nums[i] > left && nums[i] < mid)
+            mid = nums[i];
+    }
+    return false;
+#if 0
     bool* judge = (bool*)calloc(numsSize, sizeof(bool));
     int i = 0;
     int temp = nums[0];
@@ -4868,7 +4881,7 @@ bool increasingTriplet(int* nums, int numsSize)
         }
         temp = nums[i] < temp ? temp : nums[i];
     }
-
+#endif
     return false;
 }
 
