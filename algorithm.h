@@ -8,6 +8,8 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize);
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2);
 // 3. Longest Substring Without Repeating Characters
 int lengthOfLongestSubstring(char* s);
+// 4. Median of Two Sorted Arrays
+double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size);
 // 5. Longest Palindromic Substring
 char* longestPalindromeI(char* s);
 // 7. Reverse Integer

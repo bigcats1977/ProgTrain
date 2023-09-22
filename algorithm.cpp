@@ -90,6 +90,44 @@ int lengthOfLongestSubstring(char* s)
     return max;
 }
 
+// 4. Median of Two Sorted Arrays
+double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size)
+{
+    if (nums1Size > nums2Size)
+        return findMedianSortedArrays(nums2, nums2Size, nums1, nums1Size);
+
+    int m = nums1Size;
+    int n = nums2Size;
+    int left = 0, right = m;
+
+    while (left <= right) {
+        int partition1 = (left + right) / 2;
+        int partition2 = (m + n + 1) / 2 - partition1;
+
+        int maxLeft1 = (partition1 == 0) ? INT_MIN : nums1[partition1 - 1];
+        int minRight1 = (partition1 == m) ? INT_MAX : nums1[partition1];
+
+        int maxLeft2 = (partition2 == 0) ? INT_MIN : nums2[partition2 - 1];
+        int minRight2 = (partition2 == n) ? INT_MAX : nums2[partition2];
+
+        if (maxLeft1 <= minRight2 && maxLeft2 <= minRight1) {
+            if ((m + n) % 2 == 0) {
+                return (double)(fmax(maxLeft1, maxLeft2) + fmin(minRight1, minRight2)) / 2;
+            }
+            else {
+                return (double)fmax(maxLeft1, maxLeft2);
+            }
+        }
+        else if (maxLeft1 > minRight2) {
+            right = partition1 - 1;
+        }
+        else {
+            left = partition1 + 1;
+        }
+    }
+    return 0;
+}
+
 // 5. Longest Palindromic Substring
 int maxpalstr(char* s, int l, int r)
 {
@@ -5120,6 +5158,7 @@ int firstUniqChar(char* s)
 // 392. Is Subsequence
 bool isSubsequence(char* s, char* t)
 {
+#if 0
     char* slow = s, * fast = t;
     if (*slow == 0)
         return true;
@@ -5136,6 +5175,24 @@ bool isSubsequence(char* s, char* t)
         fast++;
     }
     return false;
+#else
+    size_t i, j;
+    size_t slen = strlen(s);
+    size_t tlen = strlen(t);
+    if (tlen < slen)
+        return false;
+    if (slen == 0)
+        return true;
+    j = 0;
+    for (i = 0; i < tlen; i++) {
+        if (t[i] == s[j]) {
+            j++;
+            if (s[j] == '\0')
+                return true;
+        }
+    }
+    return false;
+#endif
 }
 
 // 394. Decode String
