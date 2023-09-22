@@ -5130,6 +5130,7 @@ int firstUniqChar(char* s)
 // 392. Is Subsequence
 bool isSubsequence(char* s, char* t)
 {
+#if 0
     char* slow = s, * fast = t;
     if (*slow == 0)
         return true;
@@ -5146,6 +5147,24 @@ bool isSubsequence(char* s, char* t)
         fast++;
     }
     return false;
+#else
+    size_t i, j;
+    size_t slen = strlen(s);
+    size_t tlen = strlen(t);
+    if (tlen < slen)
+        return false;
+    if (slen == 0)
+        return true;
+    j = 0;
+    for (i = 0; i < tlen; i++) {
+        if (t[i] == s[j]) {
+            j++;
+            if (s[j] == '\0')
+                return true;
+        }
+    }
+    return false;
+#endif
 }
 
 // 394. Decode String
