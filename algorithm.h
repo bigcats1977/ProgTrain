@@ -481,6 +481,8 @@ int maxUncrossedLines(int* nums1, int nums1Size, int* nums2, int nums2Size);
 int lastStoneWeight(int* stones, int stonesSize);
 // 1047. Remove All Adjacent Duplicates In String
 char* removeDuplicates(char* s);
+// 1048. Longest String Chain
+int longestStrChain(vector<string>& words);
 // 1071. Greatest Common Divisor of Strings
 char* gcdOfStrings(char* str1, char* str2);
 string gcdOfStrings(string str1, string str2);

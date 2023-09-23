@@ -7464,6 +7464,30 @@ char* removeDuplicates(char* s)
     return result;
 }
 
+// 1048. Longest String Chain
+static bool cmpstrlen(const string& strA, const string& strB)
+{
+    return strA.length() < strB.length();
+}
+int longestStrChain(vector<string>& words)
+{
+    unordered_map<string, int> ump;
+    int ans = 0;
+    sort(words.begin(), words.end(), cmpstrlen);
+
+    for (string w : words) {
+        int longest = 0;
+        for (int i = 0; i < w.length(); i++) {
+            string sub = w;
+            sub.erase(i, 1);
+            longest = max(longest, ump[sub] + 1);
+        }
+        ump[w] = longest;
+        ans = max(ans, longest);
+    }
+    return ans;
+}
+
 // 1071. Greatest Common Divisor of Strings
 char* gcdOfStrings(char* str1, char* str2)
 {

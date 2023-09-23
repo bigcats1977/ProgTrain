@@ -109,6 +109,7 @@ FUNCNAME g_tFuncName[] = {
     {1004,  TestCase_1004},
     {1035,  TestCase_1035},
     {1047,  TestCase_1047},
+    {1048,  TestCase_1048},
     {1071,  TestCase_1071},
     {1091,  TestCase_1091},
     {1143,  TestCase_1143},
@@ -126,6 +127,16 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_1048()
+{
+    vector<string> words = { "a","b","ba","bca","bda","bdca" };
+    //longestStrChain(words);
+
+    words = { "xbc","pcxbcf","xb","cxbc","pcxbc" };
+    longestStrChain(words);
+
+}
 
 void TestCase_334()
 {
