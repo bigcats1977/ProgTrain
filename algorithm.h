@@ -447,6 +447,8 @@ char** letterCasePermutation(char* s, int* returnSize);
 bool isBipartite(int** graph, int graphSize, int* graphColSize);
 // 797. All Paths From Source to Target
 int** allPathsSourceTarget(int** graph, int graphSize, int* graphColSize, int* returnSize, int** returnColumnSizes);
+// 799. Champagne Tower
+double champagneTower(int poured, int query_row, int query_glass);
 // 841. Keys and Rooms
 bool canVisitAllRooms(int** rooms, int roomsSize, int* roomsColSize);
 // 844. Backspace String Compare

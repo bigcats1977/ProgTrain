@@ -6975,6 +6975,34 @@ bool leafSimilar(struct TreeNode* root1, struct TreeNode* root2)
     return ans;
 }
 
+// 799. Champagne Tower
+double chtower[101][101];
+double dpChampagne(double poured, int row, int glass)
+{
+    double left, right;
+    if (row<0 || glass > row || glass < 0)
+        return 0;
+    if (row == 0 && glass == 0)
+        return poured;
+
+    if (chtower[row][glass] > -1)
+        return chtower[row][glass];
+    left = (dpChampagne(poured, row - 1, glass - 1) - 1) / 2;
+    left = left < 0 ? 0 : left;
+    right = (dpChampagne(poured, row - 1, glass) - 1) / 2;
+    right = right < 0 ? 0 : right;
+    
+    return chtower[row][glass] = left + right;
+}
+double champagneTower(int poured, int query_row, int query_glass)
+{
+    memset(chtower, -1, sizeof(chtower));
+
+    double res = dpChampagne(poured, query_row, query_glass);
+    
+    return res = res > 1 ? 1 : res;
+}
+
 // 841. Keys and Rooms
 void dfsroom(int** rooms, int* roomsColSize, int cur, bool* visited)
 {
