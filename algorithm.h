@@ -325,6 +325,8 @@ bool canConstruct(char* ransomNote, char* magazine);
 
 // 387. First Unique Character in a String
 int firstUniqChar(char* s);
+// 389. Find the Difference
+char findTheDifference(char* s, char* t);
 // 392. Is Subsequence
 bool isSubsequence(char* s, char* t);
 // 394. Decode String

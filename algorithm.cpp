@@ -5168,6 +5168,25 @@ int firstUniqChar(char* s)
     return min == INT_MAX ? -1 : min;
 }
 
+// 389. Find the Difference
+char findTheDifference(char* s, char* t)
+{
+    size_t len = strlen(s), i = 0;
+    int sfreq[26] = { 0 }, tfreq[26] = { 0 };
+
+    for (i = 0; i < len; i++){
+        sfreq[s[i] - 'a']++;
+        tfreq[t[i] - 'a']++;
+    }
+    tfreq[t[len] - 'a']++;
+    
+    for (i = 0; i < 26; i++) {
+        if (sfreq[i] < tfreq[i])
+            return (char)(i + 'a');
+    }
+    return '\0';
+}
+
 // 392. Is Subsequence
 bool isSubsequence(char* s, char* t)
 {
