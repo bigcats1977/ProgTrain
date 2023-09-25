@@ -8391,6 +8391,32 @@ int** findDifference(int* nums1, int nums1Size, int* nums2, int nums2Size, int* 
 }
 vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2)
 {
+    map<int, int> map1, map2;
+    int len1 = (int)nums1.size(), len2 = (int)nums2.size();
+    int i = 0, j = 0;
+    vector<vector<int>> res;
+    vector<int> diff1, diff2;
+    
+    while (i < len1) {
+        map1[nums1[i]]++;
+    }
+    while (i < len2) {
+        map2[nums2[i]]++;
+    }
+    for (auto m : map1) {
+        if (map2.find(m.first) == map2.end()) {
+            diff1.push_back(m.first);
+        }
+    }
+    for (auto m : map2) {
+        if (map1.find(m.first) == map1.end()) {
+            diff2.push_back(m.first);
+        }
+    }
+    res.push_back(diff1);
+    res.push_back(diff2);
+    return res;
+#if 0
     vector<vector<int>> res;
     vector<int> diff1, diff2;
     int len1 = (int)nums1.size(), len2 = (int)nums2.size();
@@ -8430,6 +8456,7 @@ vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2)
     res.push_back(diff2);
     res.push_back(diff1);
     return res;
+#endif
 }
 
 // 2352. Equal Row and Column Pairs

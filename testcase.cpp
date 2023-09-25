@@ -390,7 +390,8 @@ void TestCase_2215()
     int* nnl = &nl;
     nums1 = { 11,-9,-6,-8,0,-6,2,10,1,-5,-9 };
     nums2 = { 10,1,-2,-7,8,-1,-6,8,-11,8,7 };
-    findDifference(nums1.data(), (int)nums1.size(), nums2.data(), (int)nums2.size(), &nr, &nnl);
+    //findDifference(nums1.data(), (int)nums1.size(), nums2.data(), (int)nums2.size(), &nr, &nnl);
+    findDifference(nums1, nums2);
 }
 
 void TestCase_300()
