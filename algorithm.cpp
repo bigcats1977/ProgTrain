@@ -8389,6 +8389,48 @@ int** findDifference(int* nums1, int nums1Size, int* nums2, int nums2Size, int* 
     (*returnColumnSizes)[1] = c2;
     return ans;
 }
+vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2)
+{
+    vector<vector<int>> res;
+    vector<int> diff1, diff2;
+    int len1 = (int)nums1.size(), len2 = (int)nums2.size();
+    int i = 0, j = 0;
+    sort(nums1.begin(), nums1.end());
+    sort(nums2.begin(), nums2.end());
+    
+    while (i < len1 && j < len2) {
+        while (i < len1 - 1 && nums1[i] == nums1[i + 1])
+            i++;
+        while (j < len2 - 1 && nums2[j] == nums2[j + 1])
+            j++;
+        if (nums1[i] == nums2[j]) {
+            i++, j++;
+        }
+        else if (nums1[i] > nums2[j]) {
+            diff1.push_back(nums2[j]);
+            j++;
+        }
+        else if (nums1[i] < nums2[j]) {
+            diff2.push_back(nums1[i]);
+            i++;
+        }
+    }
+    while (i < len1) {
+        while (i < len1 - 1 && nums1[i] == nums1[i + 1])
+            i++;
+        diff2.push_back(nums1[i]);
+        i++;
+    }
+    while (j < len2) {
+        while (j < len2 - 1 && nums2[j] == nums2[j + 1])
+            j++;
+        diff1.push_back(nums2[j]);
+        j++;
+    }
+    res.push_back(diff2);
+    res.push_back(diff1);
+    return res;
+}
 
 // 2352. Equal Row and Column Pairs
 int equalPairs(int** grid, int gridSize, int* gridColSize)
