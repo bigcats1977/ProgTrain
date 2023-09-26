@@ -4730,6 +4730,36 @@ int lengthOfLIS(int* nums, int numsSize)
     return dpLIS(nums, numsSize, dp, 0, -1);
 }
 
+// 316. Remove Duplicate Letters
+char* removeDuplicateLetters(char* s)
+{
+    char stack[26] = { 0 };
+    int seen[26];
+    int lastpos[26];
+    int top = -1;
+    int index, i;
+    memset(seen, -1, 26*sizeof(int));
+    memset(lastpos, -1, 26*sizeof(int));
+
+    for (i = 0; i < strlen(s); i++) {
+        lastpos[s[i] - 'a'] = i;
+    }
+
+    for (i = 0; i < strlen(s); i++) {
+        index = s[i] - 'a';
+        if (seen[index] == -1) {
+            while (top != -1 && s[i] < stack[top] && i < lastpos[stack[top] - 'a']){
+                seen[stack[top--]-'a'] = -1;
+            }   
+            seen[index] = i;
+            stack[++top] = s[i];
+        }
+    }
+    char* res = (char*)calloc(top + 2, sizeof(char));
+    memcpy(res, stack, top + 1);
+    return res;
+}
+
 // 322. Coin Change
 int coinChange(int* coins, int coinsSize, int amount) 
 {

@@ -293,6 +293,8 @@ struct TreeNode* deserialize(char* data);
 char* getHint(char* secret, char* guess);
 // 300. Longest Increasing Subsequence
 int lengthOfLIS(int* nums, int numsSize);
+// 316. Remove Duplicate Letters
+char* removeDuplicateLetters(char* s);
 // 322. Coin Change
 int coinChange(int* coins, int coinsSize, int amount);
 int coinChange(vector<int>&coins, int amount);

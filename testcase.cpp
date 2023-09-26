@@ -69,6 +69,7 @@ FUNCNAME g_tFuncName[] = {
     {290,   TestCase_290 },
     {297,   TestCase_297 },
     {300,   TestCase_300 },
+    {316,   TestCase_316 },
     {322,   TestCase_322 },
     {332,   TestCase_332 },
     {334,   TestCase_334 },
@@ -128,6 +129,12 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_316()
+{
+    string s = "cbacdcbc";
+    removeDuplicateLetters(&*s.begin());
+}
 
 void TestCase_389()
 {
