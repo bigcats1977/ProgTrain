@@ -105,6 +105,7 @@ FUNCNAME g_tFuncName[] = {
     {784,   TestCase_784 },
     {844,   TestCase_844 },
     {904,   TestCase_904 },
+    {905,   TestCase_905 },
     {946,   TestCase_946 },
     {947,   TestCase_947 },
     {977,   TestCase_977 },
@@ -129,6 +130,13 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_905()
+{
+    int retSize = 0;
+    vector<int> nums = { 0,2,1,4 };
+    sortArrayByParity(nums.data(), (int)nums.size(), &retSize);
+}
 
 void TestCase_316()
 {

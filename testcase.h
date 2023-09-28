@@ -104,6 +104,7 @@ void TestCase_797();
 void TestCase_784();
 void TestCase_844();
 void TestCase_904();
+void TestCase_905();
 void TestCase_946();
 void TestCase_947();
 void TestCase_977();

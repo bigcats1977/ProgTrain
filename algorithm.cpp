@@ -7163,6 +7163,7 @@ int* sortArrayByParity(int* nums, int numsSize, int* returnSize)
 {
     int left = 0, right = numsSize - 1;
     *returnSize = numsSize;
+#if 0
     int* res = (int*)calloc(numsSize, sizeof(int));
     for (int i = 0; i < numsSize; i++) {
         if (nums[i] % 2 == 0)
@@ -7171,7 +7172,24 @@ int* sortArrayByParity(int* nums, int numsSize, int* returnSize)
             res[right--] = nums[i];
     }
     return res;
+#else
+    while (left < right) {
+        while (nums[left] % 2 == 0 && left < right)
+            left++;
+        while (nums[right] % 2 == 1 && left < right)
+            right--;
+        if (left >= right)
+            break;
+        //swap(nums[left], nums[right]);
+        nums[left] = nums[left] ^ nums[right];
+        nums[right] = nums[left] ^ nums[right];
+        nums[left] = nums[left] ^ nums[right];
+        left++, right--;
+    }
+    return nums;
+#endif
 }
+
 
 // 944. Delete Columns to Make Sorted
 int minDeletionSize(char** strs, int strsSize)
