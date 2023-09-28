@@ -393,7 +393,7 @@ void TestCase_621()
 void TestCase_2215()
 {
     vector<int> nums1,nums2;
-    int nr, nl;
+    int nr = 0, nl;
     int* nnl = &nl;
     nums1 = { 11,-9,-6,-8,0,-6,2,10,1,-5,-9 };
     nums2 = { 10,1,-2,-7,8,-1,-6,8,-11,8,7 };

@@ -463,6 +463,8 @@ bool leafSimilar(struct TreeNode* root1, struct TreeNode* root2);
 struct ListNode* middleNode(struct ListNode* head);
 // 904. Fruit Into Baskets
 int totalFruit(int* fruits, int fruitsSize);
+// 905. Sort Array By Parity
+int* sortArrayByParity(int* nums, int numsSize, int* returnSize);
 // 944. Delete Columns to Make Sorted
 int minDeletionSize(char** strs, int strsSize);
 // 946. Validate Stack Sequences

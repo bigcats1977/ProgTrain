@@ -7158,6 +7158,21 @@ int totalFruit(int* fruits, int fruitsSize)
     return result;
 }
 
+// 905. Sort Array By Parity
+int* sortArrayByParity(int* nums, int numsSize, int* returnSize)
+{
+    int left = 0, right = numsSize - 1;
+    *returnSize = numsSize;
+    int* res = (int*)calloc(numsSize, sizeof(int));
+    for (int i = 0; i < numsSize; i++) {
+        if (nums[i] % 2 == 0)
+            res[left++] = nums[i];
+        else
+            res[right--] = nums[i];
+    }
+    return res;
+}
+
 // 944. Delete Columns to Make Sorted
 int minDeletionSize(char** strs, int strsSize)
 {
