@@ -431,6 +431,8 @@ int search(int* nums, int numsSize, int target);
 // 713. Subarray Product Less Than K
 int numSubarrayProductLessThanK(int* nums, int numsSize, int k);
 // MyLinkedList
+// 722. Remove Comments
+char** removeComments(char** source, int sourceSize, int* returnSize);
 // 724. Find Pivot Index
 int pivotIndex(int* nums, int numsSize);
 // 725. Split Linked List in Parts
