@@ -6673,82 +6673,58 @@ int numSubarrayProductLessThanK(int* nums, int numsSize, int k)
     return count;
 }
 
-//// 722. Remove Comments
-//int findComment(char* line, int& pos) {
-//    char* c = line;
-//    while (*c != '\n') {
-//        if (*c == '/'){
-//            if (*(c + 1) == '/') {
-//                pos = c - line;
-//                return 1;
-//            }
-//            if (*(c + 1) == '*') {
-//                pos = c - line;
-//                return 2;
-//            }
-//        }
-//        if (*c = '*' && *(c + 1) == '/') {
-//            pos = c - line;
-//            return 3;
-//        }
-//        c++;
-//    }
-//    return 0;
-//}
-//int findCommentEnd(char* line) {
-//    char* c = line;
-//    while (*c != '\n') {
-//        if (*c == '/') {
-//            if (*(c + 1) == '/') {
-//                pos = c - line;
-//                return 1;
-//            }
-//            if (*(c + 1) == '*') {
-//                pos = c - line;
-//                return 2;
-//            }
-//        }
-//        c++;
-//    }
-//    return -1;
-//}
+// 722. Remove Comments
+bool isLineComment(char* s, int col) {
+    if (s[col] == '/' && col + 1 != strlen(s) && s[col + 1] == '/')
+        return true;
+    return false;
+}
+bool isMultiCommentStart(char* s, int col) {
+    if (s[col] == '/' && col + 1 != strlen(s) && s[col + 1] == '*')
+        return true;
+    return false;
+}
+bool isMultiCommentEnd(char* s, int col) {
+    if (s[col] == '*' && col + 1 != strlen(s) && s[col + 1] == '/')
+        return true;
+    return false;
+}
 char** removeComments(char** source, int sourceSize, int* returnSize)
 {
     char** res = (char**)malloc(sourceSize * sizeof(char*));
-    int size = 0;
-    char* c, *head;
-    int flag;
-    int row, col;
-    for (int i = 0; i < sourceSize; i++) {
-        c = head = source[i];
-        flag = 0;
-        while (*c != '\n') {
-            if (*c == '/') {
-                if (*(c + 1) == '/') {
-                    flag = 1;
-                    break;
-                }
-                if (*(c + 1) == '*') {
-                    row = i, col = (int)(c - head);
-                    flag = 2;
-                    break;
+    *returnSize = 0;
+    for (int line = 0; line < sourceSize;) {
+        char curLine[81] = { 0 };
+        int  curcol = 0;
+        for (int col = 0; col < strlen(source[line]);) {
+            if (isLineComment(source[line], col))
+                break;
+            else if (isMultiCommentStart(source[line], col)) {
+                col += 2;
+                while (1) {
+                    if (col >= strlen(source[line])) {
+                        line++;
+                        col = 0;
+                    }
+                    if (isMultiCommentEnd(source[line], col)) {
+                        col += 2;
+                        break;
+                    }
+                    else {
+                        col++;
+                    }
                 }
             }
-            c++;
-        }
-
-        if ((flag == 1 && c!= head) || flag == 0) {
-            res[size] = (char*)calloc(c - head + 1, sizeof(char));
-            memcpy(res[size], source[i], c-head);
-            res[size][c - head] = '\n';
-            size++;
-        }
-        else if (flag == 2) {
-            int row = i, col = (int)(c - head);
-            while (i < sourceSize) {
-                
+            else {
+                curLine[curcol++] = source[line][col++];
             }
         }
+        if (curcol > 0) {
+            res[*returnSize] = (char*)calloc(curcol + 1, sizeof(char));
+            memcpy(res[*returnSize], curLine, curcol);
+            (*returnSize)++;
+        }
+        line++;
     }
 
     return res;
