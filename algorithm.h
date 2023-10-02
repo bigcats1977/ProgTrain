@@ -551,6 +551,8 @@ int arraySign(int* nums, int numsSize);
 int findTheWinner(int n, int k);
 // 1832. Check if the Sentence Is Pangram
 bool checkIfPangram(char* sentence);
+// 2038. Remove Colored Pieces if Both Neighbors are the Same Color
+bool winnerOfGame(char* colors);
 // 2095. Delete the Middle Node of a Linked List
 struct ListNode* deleteMiddle(struct ListNode* head);
 // 2130. Maximum Twin Sum of a Linked List

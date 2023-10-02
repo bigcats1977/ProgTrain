@@ -6673,45 +6673,45 @@ int numSubarrayProductLessThanK(int* nums, int numsSize, int k)
     return count;
 }
 
-// 722. Remove Comments
-int findComment(char* line, int& pos) {
-    char* c = line;
-    while (*c != '\n') {
-        if (*c == '/'){
-            if (*(c + 1) == '/') {
-                pos = c - line;
-                return 1;
-            }
-            if (*(c + 1) == '*') {
-                pos = c - line;
-                return 2;
-            }
-        }
-        if (*c = '*' && *(c + 1) == '/') {
-            pos = c - line;
-            return 3;
-        }
-        c++;
-    }
-    return 0;
-}
-int findCommentEnd(char* line) {
-    char* c = line;
-    while (*c != '\n') {
-        if (*c == '/') {
-            if (*(c + 1) == '/') {
-                pos = c - line;
-                return 1;
-            }
-            if (*(c + 1) == '*') {
-                pos = c - line;
-                return 2;
-            }
-        }
-        c++;
-    }
-    return -1;
-}
+//// 722. Remove Comments
+//int findComment(char* line, int& pos) {
+//    char* c = line;
+//    while (*c != '\n') {
+//        if (*c == '/'){
+//            if (*(c + 1) == '/') {
+//                pos = c - line;
+//                return 1;
+//            }
+//            if (*(c + 1) == '*') {
+//                pos = c - line;
+//                return 2;
+//            }
+//        }
+//        if (*c = '*' && *(c + 1) == '/') {
+//            pos = c - line;
+//            return 3;
+//        }
+//        c++;
+//    }
+//    return 0;
+//}
+//int findCommentEnd(char* line) {
+//    char* c = line;
+//    while (*c != '\n') {
+//        if (*c == '/') {
+//            if (*(c + 1) == '/') {
+//                pos = c - line;
+//                return 1;
+//            }
+//            if (*(c + 1) == '*') {
+//                pos = c - line;
+//                return 2;
+//            }
+//        }
+//        c++;
+//    }
+//    return -1;
+//}
 char** removeComments(char** source, int sourceSize, int* returnSize)
 {
     char** res = (char**)malloc(sourceSize * sizeof(char*));
@@ -6729,7 +6729,7 @@ char** removeComments(char** source, int sourceSize, int* returnSize)
                     break;
                 }
                 if (*(c + 1) == '*') {
-                    row = i, col = c - head;
+                    row = i, col = (int)(c - head);
                     flag = 2;
                     break;
                 }
@@ -6744,7 +6744,7 @@ char** removeComments(char** source, int sourceSize, int* returnSize)
             size++;
         }
         else if (flag == 2) {
-            int row = i, col = c - head;
+            int row = i, col = (int)(c - head);
             while (i < sourceSize) {
                 
             }
@@ -8396,6 +8396,30 @@ bool checkIfPangram(char* sentence)
         }
     }
     return count > 0 ? false : true;
+}
+
+// 2038. Remove Colored Pieces if Both Neighbors are the Same Color
+bool winnerOfGame(char* colors)
+{
+    int len = (int)strlen(colors);
+    int countA = 0, countB = 0;
+
+    for (int i = 0; i < len; i++) {
+        char x = colors[i];
+        int count = 0;
+        while (i < len && colors[i] == x) {
+            i++;
+            count++;
+        }
+        count = (count - 2) > 0 ? (count - 2) : 0;
+        if (x == 'A')
+            countA += count;
+        else if (x == 'B')
+            countB += count;
+        i--;
+    }
+
+    return (countA > countB);
 }
 
 // 2095. Delete the Middle Node of a Linked List
