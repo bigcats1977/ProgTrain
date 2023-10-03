@@ -5681,6 +5681,36 @@ int* findAnagrams(char* s, char* p, int* returnSize)
     return res;
 }
 
+// 443. String Compression
+int compress(char* chars, int charsSize)
+{
+    int slow = 0,fast = 0;
+    char cur = chars[0];
+    int freq = 1;
+    char strFreq[5] = { 0 };
+    
+    for(int fast = 1; fast <= charsSize; fast++) {
+        if (fast < charsSize && chars[fast] == cur) {
+            freq++;
+            continue;
+        }
+
+        chars[slow++] = cur;
+
+        if (freq > 1)
+        {
+            //_itoa(freq, strFreq, 10);
+            sprintf(strFreq, "%d", freq);
+            for (int j = 0; j < strlen(strFreq); j++)
+                chars[slow++] = strFreq[j];
+        }
+        freq = 1;
+        if(fast < charsSize)
+            cur = chars[fast];
+    }
+    return slow;
+}
+
 // 450. Delete Node in a BST
 struct TreeNode* deleteNode(struct TreeNode* root, int key)
 {

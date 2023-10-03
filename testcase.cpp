@@ -85,6 +85,7 @@ FUNCNAME g_tFuncName[] = {
     {417,   TestCase_417 },
     {435,   TestCase_435 },
     {438,   TestCase_438 },
+    {443,   TestCase_443 },
     {509,   TestCase_509 },
     {523,   TestCase_523 },
     {541,   TestCase_541 },
@@ -132,6 +133,12 @@ FUNCNAME g_tFuncName[] = {
     {9999,  TestCase_9999},
 };
 
+
+void TestCase_443()
+{
+    string chars = "abbbbbbbbbbbb";
+    compress(&*chars.begin(), (int)chars.size());
+}
 
 void TestCase_2001()
 {

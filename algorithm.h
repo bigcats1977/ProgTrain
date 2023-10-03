@@ -355,6 +355,8 @@ int eraseOverlapIntervals(int** intervals, int intervalsSize, int* intervalsColS
 int pathSumIII(struct TreeNode* root, int targetSum);
 // 438. Find All Anagrams in a String
 int* findAnagrams(char* s, char* p, int* returnSize);
+// 443. String Compression
+int compress(char* chars, int charsSize);
 // 450. Delete Node in a BST
 struct TreeNode* deleteNode(struct TreeNode* root, int key);
 // 459. Repeated Substring Pattern
