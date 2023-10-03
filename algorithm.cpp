@@ -7987,6 +7987,21 @@ int longestSubarray(int* nums, int numsSize)
     return 0;
 }
 
+// 1512. Number of Good Pairs
+int numIdenticalPairs(int* nums, int numsSize)
+{
+    int freq[101] = { 0 };
+    int i, res = 0;
+    for (i = 0; i < numsSize; i++) {
+        freq[nums[i]]++;
+    }
+    for (i = 1; i <= 100; i++) {
+        if (freq[i] > 1)
+            res += (freq[i] * (freq[i] - 1)) / 2;
+    }
+    return res;
+}
+
 // 1544. Make The String Great
 char* makeGood(char* s)
 {
