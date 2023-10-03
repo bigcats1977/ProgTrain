@@ -125,11 +125,20 @@ FUNCNAME g_tFuncName[] = {
     {1662,  TestCase_1662},
     {1823,  TestCase_1823},
     {8005,  TestCase_8005},
+    {2001,  TestCase_2001},
     {2215,  TestCase_2215},
     {2483,  TestCase_2483},
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+
+void TestCase_2001()
+{
+    int retSize = 0;
+    vector<vector<int>> rectangles = { {4,8} ,{3,6},{10,20},{15,30} };
+    interchangeableRectangles(rectangles);
+}
 
 void TestCase_905()
 {

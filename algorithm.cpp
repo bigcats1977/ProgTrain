@@ -8389,6 +8389,25 @@ bool checkIfPangram(char* sentence)
     return count > 0 ? false : true;
 }
 
+// 2001. Number of Pairs of Interchangeable Rectangles
+long long interchangeableRectangles(vector<vector<int>>& rectangles)
+{
+    map<double, int> freq;
+    map<double, int>::iterator it;
+    double ratio;
+    long long res = 0;
+    for (int i = 0; i < rectangles.size(); i++) {
+        ratio = rectangles[i][0] * 1.0 / rectangles[i][1];
+        it = freq.find(ratio);
+        if (it != freq.end()) {
+            res += it->second;
+            it->second++;
+        }
+        else
+            freq.insert({ ratio, 1 });
+    }
+    return res;
+}
 // 2038. Remove Colored Pieces if Both Neighbors are the Same Color
 bool winnerOfGame(char* colors)
 {
