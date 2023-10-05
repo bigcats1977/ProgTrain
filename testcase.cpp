@@ -60,6 +60,7 @@ FUNCNAME g_tFuncName[] = {
     {216,   TestCase_216 },
     {217,   TestCase_217 },
     {227,   TestCase_227 },
+    {229,   TestCase_229 },
     {239,   TestCase_239 },
     {240,   TestCase_240 },
     {242,   TestCase_242 },
@@ -133,6 +134,12 @@ FUNCNAME g_tFuncName[] = {
     {9999,  TestCase_9999},
 };
 
+void TestCase_229()
+{
+    int count = 0;
+    vector<int> nums = { 6,5,5 };
+    majorityElement(nums.data(), (int)nums.size(), &count);
+}
 
 void TestCase_443()
 {

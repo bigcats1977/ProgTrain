@@ -4042,6 +4042,39 @@ int calculate(char* s)
     return ans;
 }
 
+// 229. Majority Element II
+int majorityCmp(const void* a, const void* b)
+{
+    return (*(int*)a - *(int*)b);
+}
+int* majorityElement(int* nums, int numsSize, int* returnSize)
+{
+    int maxcount = (int)floor(numsSize / 3.0);
+    int freq = 1;
+    *returnSize = 0;
+    int* res = (int*)malloc(numsSize * sizeof(int));
+
+    qsort(nums, numsSize, sizeof(int), majorityCmp);
+    int prior = nums[0];
+    for (int i = 1; i <= numsSize; i++) {
+        if (i < numsSize && nums[i] == prior) {
+            freq++;
+        }
+        else
+        {
+            if (freq > maxcount) {
+                res[(*returnSize)++] = prior;
+            }
+            if (i < numsSize) {
+                prior = nums[i];
+                freq = 1;
+            }
+        }
+    }
+
+    return res;
+}
+
 // 230. Kth Smallest Element in a BST
 void midtrace(struct TreeNode* root, int * kth, int *k)
 {
