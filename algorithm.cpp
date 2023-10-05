@@ -7880,6 +7880,35 @@ int longestCommonSubsequence(char* text1, char* text2)
     return max;
 }
 
+// 1207. Unique Number of Occurrences
+int OccurCmp(const void* a, const void* b)
+{
+    return (*(int*)a) - (*(int*)b);
+}
+bool uniqueOccurrences(int* arr, int arrSize)
+{
+    int* arrFreq = (int*)malloc((arrSize + 1) * sizeof(int));
+    memset(arrFreq, 0x11, sizeof(int) * (arrSize + 1));
+    qsort(arr, arrSize, sizeof(int), OccurCmp);
+
+    int cur = arr[0];
+    int freq = 1;
+    for (int i = 1; i <= arrSize; i++) {
+        if (i < arrSize && cur == arr[i]) {
+            freq++;
+            continue;
+        }
+        if (arrFreq[freq] < 1000)
+            return false;
+        arrFreq[freq] = cur;
+        if (i < arrSize) {
+            cur = arr[i];
+            freq = 1;
+        }
+    }
+    return true;
+}
+
 // 1239. Maximum Length of a Concatenated String with Unique Characters
 int maxLength(char** arr, int arrSize)
 {

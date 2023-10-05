@@ -505,6 +505,8 @@ string gcdOfStrings(string str1, string str2);
 int shortestPathBinaryMatrix(int** grid, int gridSize, int* gridColSize);
 // 1143. Longest Common Subsequence
 int longestCommonSubsequence(char* text1, char* text2);
+// 1207. Unique Number of Occurrences
+bool uniqueOccurrences(int* arr, int arrSize);
 // 1239. Maximum Length of a Concatenated String with Unique Characters
 int maxLength(char** arr, int arrSize);
 // 1249. Minimum Remove to Make Valid Parentheses

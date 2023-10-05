@@ -118,6 +118,7 @@ FUNCNAME g_tFuncName[] = {
     {1071,  TestCase_1071},
     {1091,  TestCase_1091},
     {1143,  TestCase_1143},
+    {1207,  TestCase_1207},
     {1239,  TestCase_1239},
     {1337,  TestCase_1337},
     {1480,  TestCase_1480},
@@ -133,6 +134,18 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_1207()
+{
+    vector<int> arr = { 1, 2, 2, 1, 1, 3 };
+    //uniqueOccurrences(arr.data(), (int)arr.size());
+
+    //arr = { 1,2 };
+    //uniqueOccurrences(arr.data(), (int)arr.size());
+
+    arr = { -3,0,1,-3,1,1,1,-3,10,0 };
+    uniqueOccurrences(arr.data(), (int)arr.size());
+}
 
 void TestCase_229()
 {
