@@ -225,6 +225,21 @@ int maxArea(int* height, int heightSize)
     }
     return max;
 }
+int maxArea(vector<int>& height)
+{
+    int left = 0, right = (int)height.size() - 1;
+    int area = 0;
+    int cur;
+    while (left < right) {
+        cur = (right - left) * min(height[left], height[right]);
+        area = area > cur ? area : cur;
+        if (height[left] > height[right])
+            right--;
+        else
+            left++;
+    }
+    return area;
+}
 
 // 14. Longest Common Prefix
 char* longestCommonPrefix(char** strs, int strsSize)

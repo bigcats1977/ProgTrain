@@ -18,6 +18,7 @@ int reverse(int x);
 int myAtoi(char* s);
 // 11. Container With Most Water
 int maxArea(int* height, int heightSize);
+int maxArea(vector<int>& height);
 // 14. Longest Common Prefix
 char* longestCommonPrefix(char** strs, int strsSize);
 // 15. 3Sum
