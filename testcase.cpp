@@ -2098,11 +2098,17 @@ void TestCase_34()
     int target;
     vector<int> expect;
     int* output;
+    vector<int> output2;
     int retsize = 0;
+
+    nums = { 1};
+    target = 1;
+    output2 = searchRange(nums, target);
 
     nums = { 5,7,7,8,8,10 };
     target = 8;
     expect = { 3, 4 };
+    output2 = searchRange(nums, target);
     output = searchRange(nums.data(), (int)nums.size(), target, &retsize);
     COMPARRAY(expect.data(), (int)expect.size(), output, retsize);
     FREEMEM(output);

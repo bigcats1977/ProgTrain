@@ -713,6 +713,35 @@ int* searchRange(int* nums, int numsSize, int target, int* returnSize)
 
     return result;
 }
+vector<int> searchRange(vector<int>& nums, int target)
+{
+    vector<int> res(2, -1);
+    int left = 0, right = (int)nums.size() - 1;
+    int mid;
+    if (right < 0)
+        return res;
+    while (left <= right) {
+        mid = left + (right - left) / 2;
+        if (nums[mid] == target)
+            break;
+        else if (nums[mid] > target)
+            right = mid - 1;
+        else
+            left = mid + 1;
+    }
+    if (left > right)
+        return res;
+
+    left = mid - 1;
+    while (left >= 0 && nums[left] == target)
+        left--;
+    right = mid + 1;
+    while (right < (int)nums.size() && nums[right] == target)
+        right++;
+    res[0] = left + 1, res[1] = right - 1;
+
+    return res;
+}
 
 // 35. Search Insert Position
 int searchInsert(int* nums, int numsSize, int target)

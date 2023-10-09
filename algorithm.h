@@ -49,6 +49,7 @@ int strStr(char* haystack, char* needle);
 int searchRotated(int* nums, int numsSize, int target);
 // 34. Find First and Last Position of Element in Sorted Array
 int* searchRange(int* nums, int numsSize, int target, int* returnSize);
+vector<int> searchRange(vector<int>& nums, int target);
 // 35. Search Insert Position
 int searchInsert(int* nums, int numsSize, int target);
 // 36. Valid Sudoku
