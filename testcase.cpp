@@ -129,11 +129,18 @@ FUNCNAME g_tFuncName[] = {
     {1823,  TestCase_1823},
     {8005,  TestCase_8005},
     {2001,  TestCase_2001},
+    {2009,  TestCase_2009},
     {2215,  TestCase_2215},
     {2483,  TestCase_2483},
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_2009()
+{
+    vector<int> nums = { 1,2,3,5,6 };
+    minOperations(nums);
+}
 
 void TestCase_1207()
 {

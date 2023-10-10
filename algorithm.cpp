@@ -8559,6 +8559,36 @@ long long interchangeableRectangles(vector<vector<int>>& rectangles)
     }
     return res;
 }
+
+// 2009. Minimum Number of Operations to Make Array Continuous
+int minopercmp(const void* a, const void* b)
+{
+    return (*(int*)a) - (*(int*)a);
+}
+int minOperations(int* nums, int numsSize)
+{
+    int res = numsSize - 1;
+
+    qsort(nums, numsSize, sizeof(int), minopercmp);
+    return res;
+}
+int minOperations(std::vector<int>& nums) {
+    int n = nums.size();
+    std::sort(nums.begin(), nums.end());
+    std::vector<int> uniqueNums(nums.begin(), std::unique(nums.begin(), nums.end()));
+    int ans = std::numeric_limits<int>::max();
+
+    for (int i = 0; i < uniqueNums.size(); ++i) {
+        int s = uniqueNums[i];
+        int e = s + n - 1;
+        auto it = std::upper_bound(uniqueNums.begin(), uniqueNums.end(), e);
+
+        int idx = std::distance(uniqueNums.begin(), it);
+        ans = std::min(ans, n - (idx - i));
+    }
+    return ans;
+}
+
 // 2038. Remove Colored Pieces if Both Neighbors are the Same Color
 bool winnerOfGame(char* colors)
 {

@@ -563,6 +563,9 @@ int findTheWinner(int n, int k);
 bool checkIfPangram(char* sentence);
 // 2001. Number of Pairs of Interchangeable Rectangles
 long long interchangeableRectangles(vector<vector<int>>& rectangles);
+// 2009. Minimum Number of Operations to Make Array Continuous
+int minOperations(int* nums, int numsSize);
+int minOperations(std::vector<int>& nums);
 // 2038. Remove Colored Pieces if Both Neighbors are the Same Color
 bool winnerOfGame(char* colors);
 // 2095. Delete the Middle Node of a Linked List
