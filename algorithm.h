@@ -335,6 +335,7 @@ int firstUniqChar(char* s);
 char findTheDifference(char* s, char* t);
 // 392. Is Subsequence
 bool isSubsequence(char* s, char* t);
+bool isSubsequence(string s, string t);
 // 394. Decode String
 char* decodeString(char* s);
 // 401. Binary Watch

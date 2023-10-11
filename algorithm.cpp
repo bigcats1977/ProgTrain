@@ -5333,6 +5333,23 @@ bool isSubsequence(char* s, char* t)
     return false;
 #endif
 }
+bool isSubsequence(string s, string t)
+{
+    int i = 0, j = 0;
+    int slen = (int)s.length(), tlen = (int)t.length();
+    if (slen == 0)
+        return true;
+    if (slen > tlen)
+        return false;
+    for (i = 0; i < tlen; i++) {
+        if (s[j] == t[i]) {
+            j++;
+            if (s[j] == '\0')
+                return true;
+        }
+    }
+    return false;
+}
 
 // 394. Decode String
 char* decodeString(char* s)
