@@ -8573,7 +8573,7 @@ int minOperations(int* nums, int numsSize)
     return res;
 }
 int minOperations(std::vector<int>& nums) {
-    int n = nums.size();
+    int n = (int)nums.size();
     std::sort(nums.begin(), nums.end());
     std::vector<int> uniqueNums(nums.begin(), std::unique(nums.begin(), nums.end()));
     int ans = std::numeric_limits<int>::max();
@@ -8583,7 +8583,7 @@ int minOperations(std::vector<int>& nums) {
         int e = s + n - 1;
         auto it = std::upper_bound(uniqueNums.begin(), uniqueNums.end(), e);
 
-        int idx = std::distance(uniqueNums.begin(), it);
+        int idx = (int)std::distance(uniqueNums.begin(), it);
         ans = std::min(ans, n - (idx - i));
     }
     return ans;
@@ -8816,6 +8816,63 @@ vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2)
     res.push_back(diff1);
     return res;
 #endif
+}
+
+// 2251. Number of Flowers in Full Bloom
+int flowercmp(const void* a, const void* b)
+{
+    return (*(int*)a) - (*(int*)b);
+}
+int* fullBloomFlowers(int** flowers, int flowersSize, int* flowersColSize, int* people, int peopleSize, int* returnSize)
+{
+    int* ans = (int*)malloc(peopleSize * sizeof(int));
+
+    int* flower_starts = (int*)malloc(flowersSize * 2 * sizeof(int));
+    int* flower_ends = flower_starts + flowersSize;
+
+    for (int i = 0; i < flowersSize; i++) {
+        flower_starts[i] = flowers[i][0];
+        flower_ends[i] = flowers[i][1] + 1;
+    }
+
+    int* people_with_id = (int*)malloc(peopleSize * 2 * sizeof(int));
+
+    for (int i = 0; i < peopleSize; i++) {
+        people_with_id[i * 2] = people[i];
+        people_with_id[i * 2 + 1] = i;
+    }
+
+    // Sort the arrays
+    qsort(flower_starts, flowersSize, sizeof(int), flowercmp);
+    qsort(flower_ends, flowersSize, sizeof(int), flowercmp);
+    qsort(people_with_id, peopleSize, 2 * sizeof(int), flowercmp);
+
+    int next_flower_start = 0;
+    int next_flower_end = 0;
+    int num_flowers = 0;
+
+    for (int i = 0; i < peopleSize; i++) {
+        int target_time = people_with_id[i * 2];
+        int person_id = people_with_id[i * 2 + 1];
+
+        while (next_flower_start < flowersSize && flower_starts[next_flower_start] <= target_time) {
+            num_flowers++;
+            next_flower_start++;
+        }
+
+        while (next_flower_end < flowersSize && flower_ends[next_flower_end] <= target_time) {
+            num_flowers--;
+            next_flower_end++;
+        }
+
+        ans[person_id] = num_flowers;
+    }
+
+    free(flower_starts);
+    free(people_with_id);
+
+    *returnSize = peopleSize;
+    return ans;
 }
 
 // 2352. Equal Row and Column Pairs

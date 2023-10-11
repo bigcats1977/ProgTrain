@@ -577,6 +577,8 @@ int longestPalindrome(char** words, int wordsSize);
 // 2215. Find the Difference of Two Arrays
 int** findDifference(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize, int** returnColumnSizes);
 vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2);
+// 2251. Number of Flowers in Full Bloom
+int* fullBloomFlowers(int** flowers, int flowersSize, int* flowersColSize, int* people, int peopleSize, int* returnSize);
 // 2352. Equal Row and Column Pairs
 int equalPairs(int** grid, int gridSize, int* gridColSize);
 // 2466. Count Ways To Build Good Strings

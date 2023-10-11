@@ -131,10 +131,24 @@ FUNCNAME g_tFuncName[] = {
     {2001,  TestCase_2001},
     {2009,  TestCase_2009},
     {2215,  TestCase_2215},
+    {2251,  TestCase_2251},
     {2483,  TestCase_2483},
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_2251()
+{
+    vector<vector<int>> flowers = { {1,6} ,{3,7},{9,12},{4,13} };
+    vector<int> peoples = { 2,3,7,11 };
+    int** p;
+    int size, col;
+
+    size = (int)flowers.size(), col = 2;
+    p = matrix2addr(flowers);
+
+    fullBloomFlowers(p, size, &col, peoples.data(), (int)peoples.size(), &size);
+}
 
 void TestCase_2009()
 {
