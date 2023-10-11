@@ -103,6 +103,7 @@ FUNCNAME g_tFuncName[] = {
     {735,   TestCase_735 },
     {746,   TestCase_746 },
     {766,   TestCase_766 },
+    {792,   TestCase_792 },
     {797,   TestCase_797 },
     {784,   TestCase_784 },
     {844,   TestCase_844 },
@@ -136,6 +137,23 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_792()
+{
+    string s = "abcde";
+    vector<string> vstr = {"a", "bb", "acd", "ace"};
+    char** strs;
+
+    strs = (char**)malloc(sizeof(char*) * vstr.size());
+    for (int i = 0; i < (int)vstr.size(); i++) {
+        int len = (int)vstr[i].size();
+        strs[i] = (char*)malloc(len + 1);
+        memcpy(strs[i], vstr[i].c_str(), len);
+        strs[i][len] = '\0';
+    }
+
+    numMatchingSubseq(&*s.begin(), strs, (int)vstr.size());
+}
 
 void TestCase_2251()
 {

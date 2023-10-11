@@ -458,6 +458,8 @@ bool isToeplitzMatrix(int** matrix, int matrixSize, int* matrixColSize);
 char** letterCasePermutation(char* s, int* returnSize);
 // 785. Is Graph Bipartite ?
 bool isBipartite(int** graph, int graphSize, int* graphColSize);
+// 792. Number of Matching Subsequences
+int numMatchingSubseq(char* s, char** words, int wordsSize);
 // 797. All Paths From Source to Target
 int** allPathsSourceTarget(int** graph, int graphSize, int* graphColSize, int* returnSize, int** returnColumnSizes);
 // 799. Champagne Tower

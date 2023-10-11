@@ -7156,6 +7156,50 @@ bool isBipartite(int** graph, int graphSize, int* graphColSize)
 
 }
 
+// 792. Number of Matching Subsequences
+//bool isSubsequence(char* s, char* t);
+int numMatchingSubseq(char* s, char** words, int wordsSize)
+{
+    int res = 0;
+    int slen = (int)strlen(s);
+    int wordlen;
+    int* seqno = (int*)calloc(wordsSize, sizeof(int));
+    for (int i = 0; i < wordsSize; i++) {
+        if (strlen(words[i]) > slen)
+            continue;
+        int j = 0;
+        for (j = 0; j < i; j++) {
+            if (strcmp(words[i], words[j]) == 0)
+            {
+                res += seqno[j];
+                break;
+            }
+        }
+        if (j == i) {
+            seqno[i] = isSubsequence(words[i], s);
+            res += seqno[i];
+        }
+    }
+#if 0
+    for (int i = 0; i < slen; i++) {
+        for (int j = 0; j < wordsSize; j++) {
+            if (seqno[j] < 0)
+                continue;
+            if (strlen(words[j]) > slen)
+                seqno[j] = -1;
+            if (s[i] == words[j][seqno[j]]) {
+                seqno[j]++;
+                if (words[j][seqno[j]] == '\0') {
+                    res++;
+                    seqno[j] = -1;
+                }
+            }
+        }
+    }
+#endif
+    return res;
+}
+
 // 797. All Paths From Source to Targetint
 int path797s[50] = { 0 };
 int pathlen = 0;
