@@ -8959,6 +8959,23 @@ int equalPairs(int** grid, int gridSize, int* gridColSize)
     return ans;
 }
 
+// 2390. Removing Stars From a String
+char* removeStars(char* s)
+{
+    int len = (int)strlen(s);
+    char* res = (char*)calloc(len+1, sizeof(char));
+    int top = 0;
+    for (int i = 0; i < len; i++)
+    {
+        if (s[i] != '*')
+            res[top++] = s[i];
+        else if(top > 0)
+            top--;
+    }
+    res[top] = '\0';
+    return res;
+}
+
 // 2466. Count Ways To Build Good Strings
 int mod = (int)(1e9 + 7);
 int goodstring(int target, int zero, int one, int* dp) {
