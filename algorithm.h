@@ -365,6 +365,7 @@ int* findAnagrams(char* s, char* p, int* returnSize);
 int compress(char* chars, int charsSize);
 // 450. Delete Node in a BST
 struct TreeNode* deleteNode(struct TreeNode* root, int key);
+TreeNode* deleteNode(TreeNode* root, int key);
 // 452. Minimum Number of Arrows to Burst Balloons
 int findMinArrowShots(int** points, int pointsSize, int* pointsColSize);
 // 459. Repeated Substring Pattern
