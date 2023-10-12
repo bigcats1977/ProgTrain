@@ -102,6 +102,7 @@ FUNCNAME g_tFuncName[] = {
     {707,   TestCase_707 },
     {713,   TestCase_713 },
     {724,   TestCase_724 },
+    {726,   TestCase_726 },
     {735,   TestCase_735 },
     {746,   TestCase_746 },
     {766,   TestCase_766 },
@@ -139,6 +140,20 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_726()
+{
+    string formula;
+    string res;
+    string output;
+
+    formula = "Kzzz4(ON(SxxOppp3)25)2";
+    res = countOfAtoms(formula);
+
+    formula = "K4(ON(SO3)2)2";
+    res = countOfAtoms(formula);
+    output = "K4N2O14S4";
+}
 
 void TestCase_394()
 {

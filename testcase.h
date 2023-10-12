@@ -101,6 +101,7 @@ void TestCase_706();
 void TestCase_707();
 void TestCase_713();
 void TestCase_724();
+void TestCase_726();
 void TestCase_735();
 void TestCase_746();
 void TestCase_766();

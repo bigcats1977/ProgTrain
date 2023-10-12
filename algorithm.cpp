@@ -7008,6 +7008,59 @@ vector<ListNode*> splitListToParts(ListNode* head, int k)
     return res;
 }
 
+// 726. Number of Atoms
+string countOfAtoms(string formula)
+{
+    map<string, int> atoms;
+    string ans;
+    int cnt = 0, mult = 1;
+    stack<int> st;
+    string name;
+
+    for (int i = (int)(formula.size() - 1); i >= 0; i--) {
+        if (islower(formula[i])) {
+            int len = 2;
+            i--;
+            while (i >= 0 && islower(formula[i])) {
+                i--;
+                len++;
+            }
+            name = formula.substr(i, len);
+            atoms[name] += max(cnt, 1) * mult;
+            cnt = 0;
+        }
+        else if (isupper(formula[i])) {
+            name = formula.substr(i, 1);
+            atoms[name] += max(cnt, 1) * mult;
+            cnt = 0;
+        }
+        else if (isdigit(formula[i])) {
+            cnt = formula[i] - '0';
+            int p = 10;
+            while (i > 1 && isdigit(formula[i - 1])) {
+                cnt += p * (formula[--i] - '0');
+                p *= 10;
+            }
+        }
+        else if (formula[i] == ')') {
+            st.push(mult);
+            mult *= max(cnt, 1);
+            cnt = 0;
+        }
+        else {      // '('
+            mult = st.top();
+            st.pop();
+        }
+    }
+
+    for (auto atom : atoms) {
+        ans += atom.first;
+        if (atom.second > 1)
+            ans += to_string(atom.second);
+    }
+    return ans;
+}
+
 // 733. Flood Fill
 void depthTravel(int** image, int row, int col, int srcClr, int sr, int sc, int color)
 {
