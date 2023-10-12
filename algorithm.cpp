@@ -6786,6 +6786,18 @@ struct TreeNode* searchBST(struct TreeNode* root, int val)
     }
     return NULL;
 }
+TreeNode* searchBST(TreeNode* root, int val)
+{
+    if (!root)
+        return NULL;
+
+    if (root->val == val)
+        return root;
+    else if (root->val > val)
+        return searchBST(root->left, val);
+    else
+        return searchBST(root->right, val);
+}
 
 // 701. Insert into a Binary Search Tree
 struct TreeNode* insertIntoBST(struct TreeNode* root, int val)

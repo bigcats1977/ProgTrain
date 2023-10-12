@@ -431,6 +431,7 @@ int findNumberOfLIS(int* nums, int numsSize);
 int maxAreaOfIsland(int** grid, int gridSize, int* gridColSize);
 // 700. Search in a Binary Search Tree
 struct TreeNode* searchBST(struct TreeNode* root, int val);
+TreeNode* searchBST(TreeNode* root, int val);
 // 701. Insert into a Binary Search Tree
 struct TreeNode* insertIntoBST(struct TreeNode* root, int val);
 // 704. Binary Search
