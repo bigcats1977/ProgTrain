@@ -450,6 +450,7 @@ vector<ListNode*> splitListToParts(ListNode* head, int k);
 int** floodFill(int** image, int imageSize, int* imageColSize, int sr, int sc, int color, int* returnSize, int** returnColumnSizes);
 // 735. Asteroid Collision
 int* asteroidCollision(int* asteroids, int asteroidsSize, int* returnSize);
+vector<int> asteroidCollision(vector<int>& asteroids);
 // 746. Min Cost Climbing Stairs
 int minCostClimbingStairs(int* cost, int costSize);
 // 763. Partition Labels

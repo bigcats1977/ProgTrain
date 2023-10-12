@@ -7031,6 +7031,30 @@ int* asteroidCollision(int* asteroids, int asteroidsSize, int* returnSize)
     *returnSize = top;
     return ans;
 }
+vector<int> asteroidCollision(vector<int>& asteroids)
+{
+    vector<int> res;
+    int last = 0;
+    for (size_t i = 0; i < asteroids.size(); i++) {
+        if (res.size() == 0)
+        {
+            res.push_back(asteroids[i]);
+            continue;
+        }
+        last = res.back();
+        if (last * asteroids[i] > 0 ||
+            last < 0 && asteroids[i] > 0)
+            res.push_back(asteroids[i]);
+        else if (fabs(last) < fabs(asteroids[i])) {
+            res.pop_back();
+            i--;
+        }
+        else if (fabs(last) == fabs(asteroids[i])) {
+            res.pop_back();
+        }
+    }
+    return res;
+}
 
 // 746. Min Cost Climbing Stairs
 int minCostClimbingStairs(int* cost, int costSize)
