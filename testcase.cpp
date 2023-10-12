@@ -82,6 +82,7 @@ FUNCNAME g_tFuncName[] = {
     {387,   TestCase_387 },
     {389,   TestCase_389 },
     {392,   TestCase_392 },
+    {394,   TestCase_394 },
     {415,   TestCase_415 },
     {417,   TestCase_417 },
     {435,   TestCase_435 },
@@ -138,6 +139,24 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_394()
+{
+    string s; 
+    string res;
+
+    s = "100[leetcode]";
+    res = decodeString(s);
+
+    s = "3[a]2[bc]";
+    res = decodeString(s);
+
+    s = "3[a2[c]]";
+    res = decodeString(s);
+
+    s = "2[abc]3[cd]ef";
+    res = decodeString(s);
+}
 
 void TestCase_452()
 {

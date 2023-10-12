@@ -5400,6 +5400,41 @@ char* decodeString(char* s)
     }
     return result;
 }
+string decodeString(string s)
+{
+    stack<char> st;
+    for (size_t i = 0; i < s.size(); i++) {
+        if (s[i] != ']')
+        {
+            st.push(s[i]);
+            continue;
+        }
+        string curstr = "";
+        while (st.top() != '[') {
+            curstr = st.top() + curstr;
+            st.pop();
+        }
+        st.pop(); // '['
+        
+        string numstr = "";
+        while (!st.empty() && isdigit(st.top())) {
+            numstr = st.top() + numstr;
+            st.pop();
+        }
+        int num = stoi(numstr);
+        while (num--) {
+            for (int p = 0; p < curstr.size(); p++) {
+                st.push(curstr[p]);
+            }
+        }
+    }
+    string res = "";
+    while (!st.empty()) {
+        res = st.top() + res;
+        st.pop();
+    }
+    return res;
+}
 
 // 401. Binary Watch
 int calBitCount(int n) {

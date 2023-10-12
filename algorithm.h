@@ -338,6 +338,7 @@ bool isSubsequence(char* s, char* t);
 bool isSubsequence(string s, string t);
 // 394. Decode String
 char* decodeString(char* s);
+string decodeString(string s);
 // 401. Binary Watch
 char** readBinaryWatch(int turnedOn, int* returnSize);
 // 404. Sum of Left Leaves
