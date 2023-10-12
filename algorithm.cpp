@@ -5840,6 +5840,33 @@ struct TreeNode* deleteNode(struct TreeNode* root, int key)
     return root;
 }
 
+// 452. Minimum Number of Arrows to Burst Balloons
+int arrowcmp(const void* a, const void* b)
+{
+    int* t1 = *(int**)a;
+    int* t2 = *(int**)b;
+    if (t1[0] == t2[0])
+        return t1[1] > t2[1] ? 1 : (t1[1] == t2[1] ? 0 : -1);
+    else
+        return t1[0] > t2[0] ? 1 : -1;
+}
+int findMinArrowShots(int** points, int pointsSize, int* pointsColSize)
+{
+    qsort(points, pointsSize, sizeof(int *), arrowcmp);
+
+    int lastpoint = points[0][1];
+    int res = 1;
+    for (int i = 0; i < pointsSize; i++) {
+        if (points[i][0] > lastpoint) {
+            res++;
+            lastpoint = points[i][1];
+        }
+        else
+            lastpoint = lastpoint > points[i][1] ? points[i][1] : lastpoint;
+    }
+    return res;
+}
+
 // 459. Repeated Substring Pattern
 bool repeatedSubstringPattern(char* s)
 {

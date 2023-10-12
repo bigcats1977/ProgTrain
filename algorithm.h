@@ -364,6 +364,8 @@ int* findAnagrams(char* s, char* p, int* returnSize);
 int compress(char* chars, int charsSize);
 // 450. Delete Node in a BST
 struct TreeNode* deleteNode(struct TreeNode* root, int key);
+// 452. Minimum Number of Arrows to Burst Balloons
+int findMinArrowShots(int** points, int pointsSize, int* pointsColSize);
 // 459. Repeated Substring Pattern
 bool repeatedSubstringPattern(char* s);
 // 477. Total Hamming Distance
@@ -510,8 +512,8 @@ int shortestPathBinaryMatrix(int** grid, int gridSize, int* gridColSize);
 // 1095. Find in Mountain Array
 class MountainArray {
 public:
-    int get(int index);
-    int length();
+    int get(int index) { return 1; }
+    int length() { return 1; }
 };
 int findInMountainArray(int target, MountainArray& mountainArr);
 // 1143. Longest Common Subsequence

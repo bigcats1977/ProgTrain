@@ -87,6 +87,7 @@ FUNCNAME g_tFuncName[] = {
     {435,   TestCase_435 },
     {438,   TestCase_438 },
     {443,   TestCase_443 },
+    {452,   TestCase_452 },
     {509,   TestCase_509 },
     {523,   TestCase_523 },
     {541,   TestCase_541 },
@@ -137,6 +138,20 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_452()
+{
+    vector<vector<int>> points = {{9, 12}, {1, 10}, {4, 11}, {8, 12}, {3, 9}, {6, 9}, {6, 7}};
+
+    int** p;
+    int size, col;
+
+    points = { {-2147483646,-2147483645} ,{2147483646,2147483647} };
+    size = (int)points.size(), col = 2;
+    p = matrix2addr(points);
+
+    findMinArrowShots(p, size, &col);
+}
 
 void TestCase_792()
 {
