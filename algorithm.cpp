@@ -7162,7 +7162,6 @@ int numMatchingSubseq(char* s, char** words, int wordsSize)
 {
     int res = 0;
     int slen = (int)strlen(s);
-    int wordlen;
     int* seqno = (int*)calloc(wordsSize, sizeof(int));
     for (int i = 0; i < wordsSize; i++) {
         if (strlen(words[i]) > slen)
@@ -7947,6 +7946,50 @@ int shortestPathBinaryMatrix(int** grid, int gridSize, int* gridColSize) {
     if (visited[n - 1][n - 1] == 0)
         return -1;
     return len;
+}
+
+// 1095. Find in Mountain Array
+int findInMountainArray(int target, MountainArray& mountainArr)
+{
+    int len = mountainArr.length();
+    int left = 0, right = len - 1;
+    int mid;
+    while (left < right) {
+        mid = left + (right - left) / 2;
+        if (mountainArr.get(mid) < mountainArr.get(mid + 1))
+            left = mid + 1;
+        else
+            right = mid;
+    }
+    int peak = left;
+    left = 0, right = peak;
+    int midval;
+    while (left <= right) {
+        mid = left + (right - left) / 2;
+        midval = mountainArr.get(mid);
+        if (midval == target)
+        {
+            return  mid;
+        }
+        else if (midval < target)
+            left = mid + 1;
+        else
+            right = mid - 1;
+    }
+
+    left = peak, right = len - 1;
+    while (left <= right) {
+        mid = left + (right - left) / 2;
+        midval = mountainArr.get(mid);
+        if (midval == target) {
+            return mid;
+        }
+        else if (midval < target)
+            right = mid - 1;
+        else
+            left = mid + 1;
+    }
+    return -1;
 }
 
 // 1143. Longest Common Subsequence

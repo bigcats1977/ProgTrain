@@ -507,6 +507,13 @@ char* gcdOfStrings(char* str1, char* str2);
 string gcdOfStrings(string str1, string str2);
 // 1091. Shortest Path in Binary Matrix
 int shortestPathBinaryMatrix(int** grid, int gridSize, int* gridColSize);
+// 1095. Find in Mountain Array
+class MountainArray {
+public:
+    int get(int index);
+    int length();
+};
+int findInMountainArray(int target, MountainArray& mountainArr);
 // 1143. Longest Common Subsequence
 int longestCommonSubsequence(char* text1, char* text2);
 // 1207. Unique Number of Occurrences
