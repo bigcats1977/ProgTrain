@@ -3432,6 +3432,23 @@ int hammingWeight(uint32_t n)
     return num;
 }
 
+// 198. House Robber
+int rob(int* nums, int numsSize)
+{
+    if (numsSize == 1)
+        return nums[0];
+    int* robval = (int*)calloc(numsSize, sizeof(int));
+    robval[0] = nums[0];
+    robval[1] = (int)fmax(nums[0], nums[1]);
+    //int robs0 = nums[0], robs1 = nums[1];
+    for (int i = 2; i < numsSize; i++) {
+        robval[i] = (int)fmax(robval[i - 2] + nums[i], robval[i - 1]);
+    }
+    int ans = robval[numsSize - 1];
+    free(robval);
+    return ans;
+}
+
 // 199. Binary Tree Right Side View
 int* rightSideView(struct TreeNode* root, int* returnSize)
 {
@@ -3457,22 +3474,27 @@ int* rightSideView(struct TreeNode* root, int* returnSize)
     (*returnSize) = count;
     return ans;
 }
-
-// 198. House Robber
-int rob(int* nums, int numsSize)
+vector<int> rightSideView(TreeNode* root)
 {
-    if (numsSize == 1)
-        return nums[0];
-    int* robval = (int*)calloc(numsSize, sizeof(int));
-    robval[0] = nums[0];
-    robval[1] = (int)fmax(nums[0], nums[1]);
-    //int robs0 = nums[0], robs1 = nums[1];
-    for (int i = 2; i < numsSize; i++) {
-        robval[i] = (int)fmax(robval[i - 2] + nums[i], robval[i - 1]);
+    vector<int> res;
+    queue<TreeNode*> qu;
+    if (root)
+        qu.push(root);
+    while (!qu.empty()) {
+        int size = (int)qu.size();
+        for (int i = 0; i < size; i++)
+        {
+            TreeNode* node = qu.front();
+            qu.pop();
+            if (node->left)
+                qu.push(node->left);
+            if (node->right)
+                qu.push(node->right);
+            if (i == (size - 1))
+                res.push_back(node->val);
+        }
     }
-    int ans = robval[numsSize - 1];
-    free(robval);
-    return ans;
+    return res;
 }
 
 // 200. Number of Islands

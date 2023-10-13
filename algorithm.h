@@ -215,6 +215,7 @@ int hammingWeight(uint32_t n);
 int rob(int* nums, int numsSize);
 // 199. Binary Tree Right Side View
 int* rightSideView(struct TreeNode* root, int* returnSize);
+vector<int> rightSideView(TreeNode* root);
 // 200. Number of Islands
 int numIslands(char** grid, int gridSize, int* gridColSize);
 // 201. Bitwise AND of Numbers Range
