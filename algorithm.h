@@ -524,6 +524,8 @@ public:
 int findInMountainArray(int target, MountainArray& mountainArr);
 // 1143. Longest Common Subsequence
 int longestCommonSubsequence(char* text1, char* text2);
+// 1161. Maximum Level Sum of a Binary Tree
+int maxLevelSum(struct TreeNode* root);
 // 1207. Unique Number of Occurrences
 bool uniqueOccurrences(int* arr, int arrSize);
 // 1239. Maximum Length of a Concatenated String with Unique Characters

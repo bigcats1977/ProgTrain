@@ -8185,6 +8185,21 @@ int longestCommonSubsequence(char* text1, char* text2)
     return max;
 }
 
+// 1161. Maximum Level Sum of a Binary Tree
+int maxLevelSum(struct TreeNode* root)
+{
+    int res = 1;
+    int level = 1;
+    int sum = INT_MIN;
+    int front = 0, end = 0;
+    struct TreeNode* qu[5000] = { 0 };
+    if (root)
+        qu[front++] = root;
+
+    while(front-end)
+
+}
+
 // 1207. Unique Number of Occurrences
 int OccurCmp(const void* a, const void* b)
 {
