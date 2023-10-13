@@ -456,6 +456,7 @@ int* asteroidCollision(int* asteroids, int asteroidsSize, int* returnSize);
 vector<int> asteroidCollision(vector<int>& asteroids);
 // 746. Min Cost Climbing Stairs
 int minCostClimbingStairs(int* cost, int costSize);
+int minCostClimbingStairs(vector<int>& cost);
 // 763. Partition Labels
 int* partitionLabels(char* s, int* returnSize);
 // 766. Toeplitz Matrix

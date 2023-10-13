@@ -7155,6 +7155,17 @@ int minCostClimbingStairs(int* cost, int costSize)
     }
     return dp1;
 }
+int minCostClimbingStairs(vector<int>& cost)
+{
+    int dp0 = 0, dp1 = 0;
+    for (int i = 2; i <= cost.size(); i++)
+    {
+        int dpi = (int)min(dp0 + cost[i - 2], dp1 + cost[i - 1]);
+        dp0 = dp1;
+        dp1 = dpi;
+    }
+    return dp1;
+}
 
 // 763. Partition Labels
 int* partitionLabels(char* s, int* returnSize)
