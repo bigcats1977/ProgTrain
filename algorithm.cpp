@@ -5874,35 +5874,6 @@ struct TreeNode* deleteNode(struct TreeNode* root, int key)
         root->right = deleteNode(root->right, key);
     return root;
 }
-TreeNode* deleteNode(TreeNode* root, int key)
-{
-    struct TreeNode* prenode;
-
-    if (!root)
-        return NULL;
-    if (root->val == key) {
-        if (!root->left && !root->right)
-            prenode = NULL;
-        else if (!root->left)
-            prenode = root->right;
-        else if (!root->right)
-            prenode = root->left;
-        else {
-            prenode = root->right;
-            while (prenode->left)
-                prenode = prenode->left;
-            prenode->left = root->left;
-            prenode = root->right;
-        }
-        //free(root);
-        return prenode;
-    }
-    else if (root->val > key)
-        root->left = deleteNode(root->left, key);
-    else
-        root->right = deleteNode(root->right, key);
-    return root;
-}
 
 // 452. Minimum Number of Arrows to Burst Balloons
 int arrowcmp(const void* a, const void* b)
@@ -6814,18 +6785,6 @@ struct TreeNode* searchBST(struct TreeNode* root, int val)
             root = root->right;
     }
     return NULL;
-}
-TreeNode* searchBST(TreeNode* root, int val)
-{
-    if (!root)
-        return NULL;
-
-    if (root->val == val)
-        return root;
-    else if (root->val > val)
-        return searchBST(root->left, val);
-    else
-        return searchBST(root->right, val);
 }
 
 // 701. Insert into a Binary Search Tree
