@@ -136,6 +136,7 @@ void TestCase_2009();
 void TestCase_2215();
 void TestCase_2251();
 void TestCase_2483();
+void TestCase_2742();
 void TestCase_8005();
 void TestCase_8058();
 void TestCase_9999();

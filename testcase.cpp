@@ -137,9 +137,18 @@ FUNCNAME g_tFuncName[] = {
     {2215,  TestCase_2215},
     {2251,  TestCase_2251},
     {2483,  TestCase_2483},
+    {2742,  TestCase_2742},
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_2742()
+{
+    vector<int> costs, times;
+    costs = { 1,2,3,2 };
+    times = { 1,2,3,2 };
+    paintWalls(costs.data(), (int)costs.size(), times.data(), (int)times.size());
+}
 
 void TestCase_726()
 {

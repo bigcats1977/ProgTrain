@@ -609,6 +609,8 @@ int countGoodStrings(int low, int high, int zero, int one);
 int bestClosingTime(string customers);
 // 2542. Maximum Subsequence Score
 long long maxScore(int* nums1, int nums1Size, int* nums2, int nums2Size, int k);
+// 2742. Painting the Walls
+int paintWalls(int* cost, int costSize, int* time, int timeSize);
 // ½£Ö¸ Offer 05. Ìæ»»¿Õ¸ñ
 char* replacespace(char* s);
 // ½£Ö¸ Offer 58 - II.×óÐý×ª×Ö·û´®

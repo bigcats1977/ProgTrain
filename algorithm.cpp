@@ -8196,7 +8196,8 @@ int maxLevelSum(struct TreeNode* root)
     if (root)
         qu[front++] = root;
 
-    while(front-end)
+    while (front - end) {}
+    return res;
 
 }
 
@@ -9313,6 +9314,37 @@ long long maxScore(int* nums1, int nums1Size, int* nums2, int nums2Size, int k)
     backtrackScore(nums1, nums2, nums1Size, k, 0, visited, &ans);
 
     return ans;
+}
+
+// 2742. Painting the Walls
+int paintdp(int* cost, int costSize, int* time, int timeSize, int cindex, int tindex, int** dp)
+{
+    if (tindex <= 0)
+        return 0;
+    if (cindex >= costSize)
+        return (int)1e9;
+    if (dp[cindex][tindex] != -1)
+        return dp[cindex][tindex];
+
+    int nottake = paintdp(cost, costSize, time, timeSize, cindex + 1, tindex, dp);
+    int take = cost[cindex] + paintdp(cost, costSize, time, timeSize, cindex + 1, tindex - time[cindex] - 1, dp);
+    return dp[cindex][tindex] = nottake > take ? take : nottake;
+}
+int paintWalls(int* cost, int costSize, int* time, int timeSize)
+{
+    int res;
+    //int dp[501][501] = { -1 };
+    int** dp = (int**)malloc((costSize + 1) * sizeof(int*));
+    for (int i = 0; i <= costSize; i++)
+    {
+        dp[i] = (int*)malloc((timeSize + 1) * sizeof(int));
+        memset(dp[i], -1, (timeSize+1) * sizeof(int));
+    }
+    res = paintdp(cost, costSize, time, timeSize, 0, timeSize, &(&dp[0])[0]);
+    for (int i = 0; i <= costSize; i++)
+        free(dp[i]);
+    free(dp);
+    return res;
 }
 
 // ½£Ö¸ Offer 05. Ìæ»»¿Õ¸ñ
