@@ -2403,6 +2403,16 @@ int* getRow(int rowIndex, int* returnSize)
     }
     return ans;
 }
+vector<int> getRow(int rowIndex)
+{
+    vector<int> res(rowIndex+1, 1);
+    int temp = 1;
+    for (int i = 0; i <= rowIndex; i++) {
+        res[i] = temp;
+        temp = (temp * (rowIndex - i) / (i + 1));
+    }
+    return res;
+}
 
 // 120. Triangle
 //[[-1], [2, 3], [1, -1, -3]]

@@ -151,6 +151,7 @@ int** generate(int numRows, int* returnSize, int** returnColumnSizes);
 vector<vector<int>> generate(int numRows);
 // 119. Pascal's Triangle II
 int* getRow(int rowIndex, int* returnSize);
+vector<int> getRow(int rowIndex);
 // 120. Triangle
 int minimumTotal(int** triangle, int triangleSize, int* triangleColSize);
 // 121. Best Time to Buy and Sell Stock
