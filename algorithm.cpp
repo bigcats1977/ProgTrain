@@ -8200,15 +8200,31 @@ int maxLevelSum(struct TreeNode* root)
 {
     int res = 1;
     int level = 1;
-    int sum = INT_MIN;
-    int front = 0, end = 0;
-    struct TreeNode* qu[5000] = { 0 };
+    int maxSum = INT_MIN;
+    int front = 0, tail = 0;
+    struct TreeNode* qu[10000] = { 0 };
     if (root)
         qu[front++] = root;
 
-    while (front - end) {}
+    while (front - tail > 0) {
+        int sum = 0;
+        int size = front - tail;
+        struct TreeNode* node;
+        for (int i = 0; i < size; i++) {
+            node = qu[tail++];
+            sum += node->val;
+            if (node->left)
+                qu[front++] = node->left;
+            if (node->right)
+                qu[front++] = node->right;
+        }
+        if (sum > maxSum) {
+            maxSum = sum;
+            res = level;
+        }
+        level++;
+    }
     return res;
-
 }
 
 // 1207. Unique Number of Occurrences
