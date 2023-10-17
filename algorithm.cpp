@@ -6016,6 +6016,58 @@ int findMaxConsecutiveOnes(int* nums, int numsSize)
     return ans;
 }
 
+// 496. Next Greater Element I
+int* nextGreaterElement(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize)
+{
+#if 1
+    *returnSize = nums1Size;
+    int* res = (int*)malloc(nums1Size * sizeof(int));
+    int* st = (int*)malloc(nums2Size * sizeof(int));
+    int* next = (int*)malloc(nums2Size*sizeof(int));
+    memset(next, -1, nums2Size * sizeof(int));
+
+    int top = -1;
+    int i, j;
+
+    for (i = 0; i < nums2Size; i++) {
+        while (top >= 0 && nums2[st[top]] < nums2[i]) {
+            j = st[top--];
+            next[j] = nums2[i];
+        }
+        st[++top] = i;
+    }
+
+    for (i = 0; i < nums1Size; i++) {
+        res[i] = -1;
+        int j = 0;
+        while (nums2[j] != nums1[i]) j++;
+        if (next[j] >= 0)
+            res[i] = next[j];
+    }
+
+    free(st);
+    free(next);
+
+    return res;
+#else
+    int* res = (int*)malloc(nums1Size * sizeof(int));
+    for (int i = 0; i < nums1Size; i++) {
+        res[i] = -1;
+        int j = 0;
+        while (nums2[j] != nums1[i]) j++;
+        for (; j < nums2Size; j++) {
+            if (nums2[j] > nums1[i])
+            {
+                res[i] = nums2[j];
+                break;
+            }
+        }
+    }
+
+    return res;
+#endif
+}
+
 // 501. Find Mode in Binary Search Tree
 struct TreeNode* Pre501 = NULL;
 int max501 = 0;

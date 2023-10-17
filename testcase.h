@@ -88,6 +88,7 @@ void TestCase_435();
 void TestCase_438();
 void TestCase_443();
 void TestCase_452();
+void TestCase_496();
 void TestCase_509();
 void TestCase_523();
 void TestCase_541();

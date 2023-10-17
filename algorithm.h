@@ -377,6 +377,8 @@ bool repeatedSubstringPattern(char* s);
 int totalHammingDistance(int* nums, int numsSize);
 // 485. Max Consecutive Ones
 int findMaxConsecutiveOnes(int* nums, int numsSize);
+// 496. Next Greater Element I
+int* nextGreaterElement(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize);
 // 501. Find Mode in Binary Search Tree
 int* findMode(struct TreeNode* root, int* returnSize);
 // 509. Fibonacci Number
