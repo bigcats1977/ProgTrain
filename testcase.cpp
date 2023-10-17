@@ -125,6 +125,7 @@ FUNCNAME g_tFuncName[] = {
     {1207,  TestCase_1207},
     {1239,  TestCase_1239},
     {1337,  TestCase_1337},
+    {1361,  TestCase_1361},
     {1480,  TestCase_1480},
     {1544,  TestCase_1544},
     {1647,  TestCase_1647},
@@ -141,6 +142,23 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_1361()
+{
+    vector<int> left, right;
+    int n;
+    bool res;
+
+    left = { 3,-1,1,-1 };
+    right = { -1,-1,0,-1 };
+    n = (int)left.size();
+    res = validateBinaryTreeNodes(n, left.data(), n, right.data(), n);
+
+    left = { 1,-1,-1,4,-1,-1 };
+    right = { 2,-1,-1,5,-1,-1 };
+    n = (int)left.size();
+    res = validateBinaryTreeNodes(n, left.data(), n, right.data(), n);
+}
 
 void TestCase_2742()
 {

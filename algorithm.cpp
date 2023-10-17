@@ -8353,6 +8353,65 @@ vector<int> kWeakestRows(vector<vector<int>>& mat, int k)
     return res;
 }
 
+// 1361. Validate Binary Tree Nodes
+bool bfs1361(int n, int begin, int* left, int* right, int* visited) 
+{
+    if (begin >= n)
+        return false;
+    if (visited[begin] > 1)
+        return false;
+
+    visited[begin]++;
+    if (left[begin] != -1)
+    {
+        visited[begin]++;
+        if (!bfs1361(n, left[begin], left, right, visited))
+            return false;
+    }
+    if (right[begin] != -1)
+    {
+        visited[begin]++;
+        if (!bfs1361(n, right[begin], left, right, visited))
+            return false;
+    }
+    return true;
+}
+bool validateBinaryTreeNodes(int n, int* leftChild, int leftChildSize, int* rightChild, int rightChildSize)
+{
+    int i;
+    int root = -1;
+    int* visited = (int*)calloc(n, sizeof(int));
+    memset(visited, 0, sizeof(int) * n);
+    for (i = 0; i < n; i++) {
+        if (leftChild[i] != -1) {
+            if (visited[leftChild[i]] == -1)
+                return false;
+            visited[leftChild[i]] = -1;
+        }
+        if (rightChild[i] != -1) {
+            if (visited[rightChild[i]] == -1)
+                return false;
+            visited[rightChild[i]] = -1;
+        }
+    }
+    for (i = 0; i < n; i++) {
+        if (visited[i] == 0) {
+            if (root >= 0)
+                return false;
+            root = i;
+            visited[i] = -1;
+        }
+    }
+    if (root == -1)
+        return false;
+    if (!bfs1361(n, root, leftChild, rightChild, visited))
+        return false;
+    for (int i = 0; i < n; i++)
+        if (visited[i] < 0 || visited[i] > 2)
+            return false;
+    return true;
+}
+
 // 1431. Kids With the Greatest Number of Candies
 bool* kidsWithCandies(int* candies, int candiesSize, int extraCandies, int* returnSize)
 {

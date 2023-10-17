@@ -537,6 +537,8 @@ char* minRemoveToMakeValid(char* s);
 int maximum69Number(int num);
 // 1337. The K Weakest Rows in a Matrix
 vector<int> kWeakestRows(vector<vector<int>>& mat, int k);
+// 1361. Validate Binary Tree Nodes
+bool validateBinaryTreeNodes(int n, int* leftChild, int leftChildSize, int* rightChild, int rightChildSize);
 // 1431. Kids With the Greatest Number of Candies
 bool* kidsWithCandies(int* candies, int candiesSize, int extraCandies, int* returnSize);
 vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies);
