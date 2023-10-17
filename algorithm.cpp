@@ -6137,6 +6137,29 @@ int* findMode(struct TreeNode* root, int* returnSize)
     return result;
 }
 
+// 503. Next Greater Element II
+int* nextGreaterElements(int* nums, int numsSize, int* returnSize)
+{
+    *returnSize = numsSize;
+    int* res = (int*)malloc(numsSize * sizeof(int));
+    int* st = (int*)malloc(numsSize * 2 * sizeof(int));
+    int top = -1;
+    int i, j;
+    memset(res, -1, numsSize * sizeof(int));
+
+    for (i = 0; i < 2*numsSize; i++) {
+        while (top >= 0 && nums[st[top]%numsSize] < nums[i%numsSize])
+        {
+            j = st[top--] % numsSize;
+            res[j] = nums[i % numsSize];
+        }
+        st[++top] = i;
+    }
+    free(st);
+
+    return res;
+}
+
 // 509. Fibonacci Number
 int fib(int n)
 {

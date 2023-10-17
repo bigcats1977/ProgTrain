@@ -90,6 +90,7 @@ FUNCNAME g_tFuncName[] = {
     {443,   TestCase_443 },
     {452,   TestCase_452 },
     {496,   TestCase_496 },
+    {503,   TestCase_503 },
     {509,   TestCase_509 },
     {523,   TestCase_523 },
     {541,   TestCase_541 },
@@ -144,6 +145,16 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+
+void TestCase_503()
+{
+    vector<int> nums;
+    int count;
+
+    nums = { 1,2,3,4,3 };
+    nextGreaterElements(nums.data(), (int)nums.size(), &count);
+}
 
 void TestCase_496()
 {

@@ -381,6 +381,8 @@ int findMaxConsecutiveOnes(int* nums, int numsSize);
 int* nextGreaterElement(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize);
 // 501. Find Mode in Binary Search Tree
 int* findMode(struct TreeNode* root, int* returnSize);
+// 503. Next Greater Element II
+int* nextGreaterElements(int* nums, int numsSize, int* returnSize);
 // 509. Fibonacci Number
 int fib(int n);
 // 516. Longest Palindromic Subsequence
