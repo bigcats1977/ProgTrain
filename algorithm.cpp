@@ -5024,6 +5024,26 @@ bool increasingTriplet(int* nums, int numsSize)
     return false;
 }
 
+// 338. Counting Bits
+int countBit(int n)
+{
+    int res = 0;
+    while (n) {
+        if (n & 1)
+            res++;
+        n >>= 1;
+    }
+    return res;
+}
+int* countBits(int n, int* returnSize)
+{
+    *returnSize = n + 1;
+    int* res = (int*)malloc((n + 1) * sizeof(int));
+    for (int i = 0; i <= n; i++)
+        res[i] = countBit(i);
+    return res;
+}
+
 // 343. Integer Break
 int integerBreak(int n)
 {

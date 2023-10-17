@@ -310,6 +310,8 @@ struct ListNode* oddEvenList(struct ListNode* head);
 vector<string> findItinerary(vector<vector<string>>&tickets);
 // 334. Increasing Triplet Subsequence
 bool increasingTriplet(int* nums, int numsSize);
+// 338. Counting Bits
+int* countBits(int n, int* returnSize);
 // 343. Integer Break
 int integerBreak(int n);
 // 344. Reverse String
