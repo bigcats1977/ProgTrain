@@ -104,6 +104,7 @@ FUNCNAME g_tFuncName[] = {
     {724,   TestCase_724 },
     {726,   TestCase_726 },
     {735,   TestCase_735 },
+    {739,   TestCase_739 },
     {746,   TestCase_746 },
     {766,   TestCase_766 },
     {792,   TestCase_792 },
@@ -142,6 +143,15 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_739()
+{
+    vector<int> temperatures;
+    int count;
+
+    temperatures = { 73,74,75,71,69,72,76,73 };
+    dailyTemperatures(temperatures.data(), (int)temperatures.size(), &count);
+}
 
 void TestCase_1361()
 {

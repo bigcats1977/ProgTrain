@@ -458,6 +458,8 @@ int** floodFill(int** image, int imageSize, int* imageColSize, int sr, int sc, i
 // 735. Asteroid Collision
 int* asteroidCollision(int* asteroids, int asteroidsSize, int* returnSize);
 vector<int> asteroidCollision(vector<int>& asteroids);
+// 739. Daily Temperatures
+int* dailyTemperatures(int* temperatures, int temperaturesSize, int* returnSize);
 // 746. Min Cost Climbing Stairs
 int minCostClimbingStairs(int* cost, int costSize);
 int minCostClimbingStairs(vector<int>& cost);

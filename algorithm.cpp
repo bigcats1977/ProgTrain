@@ -7202,6 +7202,25 @@ vector<int> asteroidCollision(vector<int>& asteroids)
     return res;
 }
 
+// 739. Daily Temperatures
+int* dailyTemperatures(int* temperatures, int temperaturesSize, int* returnSize)
+{
+    int* res = (int*)malloc(temperaturesSize*sizeof(int));
+    int* st = (int*)malloc(temperaturesSize*sizeof(int));
+    int top = -1;
+    for (int i = 0; i < temperaturesSize; i++) {
+        while (top >= 0 && temperatures[st[top]] < temperatures[i]) {
+            int j = st[top--];
+            res[j] = i - j;
+        }
+        st[++top] = i;
+    }
+    free(st);
+    *returnSize = temperaturesSize;
+
+    return res;
+}
+
 // 746. Min Cost Climbing Stairs
 int minCostClimbingStairs(int* cost, int costSize)
 {
