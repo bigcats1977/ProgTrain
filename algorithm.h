@@ -401,6 +401,8 @@ int** updateMatrix(int** mat, int matSize, int* matColSize, int* returnSize, int
 int diameterOfBinaryTree(struct TreeNode* root);
 // 547. Number of Provinces
 int findCircleNum(int** isConnected, int isConnectedSize, int* isConnectedColSize);
+// 556. Next Greater Element III
+int nextGreaterElement(int n);
 // 557. Reverse Words in a String III
 char* reverseWordsIII(char* s);
 // 560. Subarray Sum Equals K

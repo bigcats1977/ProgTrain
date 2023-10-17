@@ -6429,6 +6429,29 @@ int findCircleNum(int** isConnected, int isConnectedSize, int* isConnectedColSiz
     return count;
 }
 
+// 556. Next Greater Element III
+/*
+Example 1:
+
+Input: n = 12
+Output: 21
+Example 2:
+
+Input: n = 21
+Output: -1
+*/
+int nextGreaterElement(int n)
+{
+    int digits[11] = { -1 };
+    int count = 0;
+    long res = -1;
+    while (n > 0) {
+        digits[count++] = n % 10;
+        n /= 10;
+    }
+    return res > 2e32 ? -1: res;
+}
+
 // 557. Reverse Words in a String III
 //reverseString(s, size);
 char* reverseWordsIII(char* s)

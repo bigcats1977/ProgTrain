@@ -95,6 +95,7 @@ FUNCNAME g_tFuncName[] = {
     {523,   TestCase_523 },
     {541,   TestCase_541 },
     {542,   TestCase_542 },
+    {556,   TestCase_556 },
     {557,   TestCase_557 },
     {566,   TestCase_566 },
     {567,   TestCase_567 },
@@ -146,6 +147,11 @@ FUNCNAME g_tFuncName[] = {
     {9999,  TestCase_9999},
 };
 
+void TestCase_556()
+{
+    int n = 556;
+    nextGreaterElement(n);
+}
 
 void TestCase_503()
 {
