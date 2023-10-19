@@ -9337,29 +9337,25 @@ int pairSum(struct ListNode* head) {
     stacktraverse(slow, &ans);
     return ans;
 }
-ListNode* twin;
-void calTwins(ListNode* half, int* max)
-{
-    int sum = 0;
-    if (!half || !max)
-        return;
-    calTwins(half->next, max);
-    sum = twin->val + half->val;
-    *max = *max > sum ? *max : sum;
-    twin = twin->next;
-}
 int pairSum2(ListNode* head)
 {
-    ListNode* fast = head, *slow = head;
-    while (fast && fast->next) {
-        slow = slow->next;
-        fast = fast->next->next;
+    stack<int> vals;
+    ListNode* node = head;
+    int half = 0, res = INT_MIN;
+    while (node && node->next) {
+        half++;
+        vals.push(node->val);
+        vals.push(node->next->val);
+        node = node->next->next;
     }
-    twin = head;
-    int sum = 0;
-    calTwins(slow, &sum);
+    node = head;
+    for (int i = 0; i < half; i++) {
+        res = max(res, node->val + vals.top());
+        node = node->next;
+        vals.pop();
+    }
 
-    return sum;
+    return res;
 }
 //int pairSum(struct ListNode* head)
 //{
