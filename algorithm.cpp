@@ -8708,6 +8708,28 @@ vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies)
     return res;
 }
 
+// 1448. Count Good Nodes in Binary Tree
+void calGoodNodes(struct TreeNode* node, int max, int* count)
+{
+    if (!node)
+        return;
+    if (node->val >= max) {
+        max = node->val;
+        (*count)++;
+    }
+    calGoodNodes(node->left, max, count);
+    calGoodNodes(node->right, max, count);
+}
+int goodNodes(struct TreeNode* root)
+{
+    int count = 0;
+    int max = INT_MIN;
+
+    calGoodNodes(root, max, &count);
+
+    return count;
+}
+
 // 1456. Maximum Number of Vowels in a Substring of Given Length
 bool IsVowelChar(char c) {
     if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')

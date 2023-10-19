@@ -558,6 +558,8 @@ bool validateBinaryTreeNodes(int n, int* leftChild, int leftChildSize, int* righ
 // 1431. Kids With the Greatest Number of Candies
 bool* kidsWithCandies(int* candies, int candiesSize, int extraCandies, int* returnSize);
 vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies);
+// 1448. Count Good Nodes in Binary Tree
+int goodNodes(struct TreeNode* root);
 // 1456. Maximum Number of Vowels in a Substring of Given Length
 int maxVowels(char* s, int k);
 // 1470. Shuffle the Array
