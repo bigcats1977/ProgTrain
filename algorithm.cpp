@@ -3734,6 +3734,21 @@ struct ListNode* reverseList(struct ListNode* head)
     free(dummy);
     return node;
 }
+ListNode* reverseList2(ListNode* head)
+{
+    ListNode* Dummy = (ListNode*)malloc(sizeof(ListNode));
+    ListNode* node;
+    Dummy->next = NULL;
+    while (head) {
+        node = head;
+        head = head->next;
+        node->next = Dummy->next;
+        Dummy->next = node;
+    }
+    head = Dummy->next;
+    free(Dummy);
+    return head;
+}
 
 // 208. Implement Trie(Prefix Tree)
 typedef struct TrieNode {
@@ -9321,6 +9336,30 @@ int pairSum(struct ListNode* head) {
     }
     stacktraverse(slow, &ans);
     return ans;
+}
+ListNode* twin;
+void calTwins(ListNode* half, int* max)
+{
+    int sum = 0;
+    if (!half || !max)
+        return;
+    calTwins(half->next, max);
+    sum = twin->val + half->val;
+    *max = *max > sum ? *max : sum;
+    twin = twin->next;
+}
+int pairSum2(ListNode* head)
+{
+    ListNode* fast = head, *slow = head;
+    while (fast && fast->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    twin = head;
+    int sum = 0;
+    calTwins(slow, &sum);
+
+    return sum;
 }
 //int pairSum(struct ListNode* head)
 //{

@@ -234,6 +234,7 @@ ListNode* removeElements(ListNode* head, int val);
 bool isIsomorphic(char* s, char* t);
 // 206. Reverse Linked List
 struct ListNode* reverseList(struct ListNode* head);
+ListNode* reverseList2(ListNode* head);
 // 208. Implement Trie (Prefix Tree)
 
 // 209. Minimum Size Subarray Sum
@@ -613,6 +614,7 @@ bool winnerOfGame(char* colors);
 struct ListNode* deleteMiddle(struct ListNode* head);
 // 2130. Maximum Twin Sum of a Linked List
 int pairSum(struct ListNode* head);
+int pairSum2(ListNode* head);
 // 2131. Longest Palindrome by Concatenating Two Letter Words
 int longestPalindrome(char** words, int wordsSize);
 // 2215. Find the Difference of Two Arrays
