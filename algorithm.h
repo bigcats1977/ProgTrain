@@ -43,6 +43,7 @@ struct ListNode* reverseKGroup(struct ListNode* head, int k);
 int removeDuplicates(int* nums, int numsSize);
 // 27. Remove Element
 int removeElement(int* nums, int numsSize, int val);
+int removeElement(vector<int>& nums, int val);
 // 28. Find the Index of the First Occurrence in a String
 int strStr(char* haystack, char* needle);
 // 33. Search in Rotated Sorted Array
@@ -110,6 +111,7 @@ struct ListNode* deleteDuplicatesII(struct ListNode* head);
 struct ListNode* deleteDuplicates(struct ListNode* head);
 // 88. Merge Sorted Array
 void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n);
+void merge(vector<int>& nums1, int m, vector<int>& nums2, int n);
 // 90. Subsets II
 int** subsetsWithDup(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
 // 91. Decode Ways

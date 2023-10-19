@@ -620,6 +620,15 @@ int removeElement(int* nums, int numsSize, int val)
 
     return pos;
 }
+int removeElement(vector<int>& nums, int val)
+{
+    int slow = 0;
+    for (int i = 0; i < (int)nums.size(); i++) {
+        if (nums[i] != val)
+            nums[slow++] = nums[i];
+    }
+    return slow;
+}
 
 // 28. Find the Index of the First Occurrence in a String
 void getNext(int* next, char* s)
@@ -1848,6 +1857,23 @@ void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n)
         }
         else if (cur2 >= 0)
             nums1[i] = nums2[cur2--];
+        else
+            break;
+    }
+}
+void merge(vector<int>& nums1, int m, vector<int>& nums2, int n)
+{
+    int i = m + n - 1;
+    int cur1 = m - 1, cur2 = n - 1;
+    while (i >= 0) {
+        if (cur1 >= 0 && cur2 >= 0) {
+            if (nums1[cur1] > nums2[cur2])
+                nums1[i--] = nums1[cur1--];
+            else
+                nums1[i--] = nums2[cur2--];
+        }
+        else if (cur2 >= 0)
+            nums1[i--] = nums2[cur2--];
         else
             break;
     }
