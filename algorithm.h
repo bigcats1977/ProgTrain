@@ -41,6 +41,7 @@ struct ListNode* swapPairs(struct ListNode* head);
 struct ListNode* reverseKGroup(struct ListNode* head, int k);
 // 26. Remove Duplicates from Sorted Array
 int removeDuplicates(int* nums, int numsSize);
+int removeDuplicates(vector<int>& nums);
 // 27. Remove Element
 int removeElement(int* nums, int numsSize, int val);
 int removeElement(vector<int>& nums, int val);
@@ -105,6 +106,8 @@ int** combine(int n, int k, int* returnSize, int** returnColumnSizes);
 int** subsets(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
 // 79. Word Search
 bool exist(char** board, int boardSize, int* boardColSize, char* word);
+// 80. Remove Duplicates from Sorted Array II
+int removeDuplicatesII(int* nums, int numsSize);
 // 82. Remove Duplicates from Sorted List II
 struct ListNode* deleteDuplicatesII(struct ListNode* head);
 // 83. Remove Duplicates from Sorted List

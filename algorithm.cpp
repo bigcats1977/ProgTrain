@@ -606,6 +606,15 @@ int removeDuplicates(int* nums, int numsSize)
     }
     return slow+1;
 }
+int removeDuplicates(vector<int>& nums)
+{
+    int slow = 0;
+    for (int i = 1; i < (int)nums.size(); i++) {
+        if (nums[slow] != nums[i])
+            nums[++slow] = nums[i];
+    }
+    return slow + 1;
+}
 
 // 27. Remove Element
 int removeElement(int* nums, int numsSize, int val)
@@ -1778,6 +1787,35 @@ bool exist(char** board, int boardSize, int* boardColSize, char* word)
         }
     }
     return false;
+}
+
+// 80. Remove Duplicates from Sorted Array II
+int removeDuplicatesII(int* nums, int numsSize)
+{
+#if 0
+    int slow = 0, cur = 0;
+    int i;
+    for (i = 1; i <= numsSize; i++) {
+        if (nums[cur] != nums[i]) {
+            nums[slow++] = nums[cur];
+            if (i - cur >= 2)
+                nums[slow++] = nums[cur + 1];
+            cur = i;
+        }
+    }
+    if (i - cur > 0)
+        nums[slow++] = nums[cur];
+    if (i - cur > 1)
+        nums[slow++] = nums[cur + 1];
+
+    return slow;
+#endif
+    int res = 0;
+    for (int i = 0; i < numsSize; i++) {
+        if (res<2 || nums[i] > nums[res - 2])
+            nums[res++] = nums[i];
+    }
+    return res;
 }
 
 // 82. Remove Duplicates from Sorted List II
