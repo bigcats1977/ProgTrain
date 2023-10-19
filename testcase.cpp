@@ -2135,6 +2135,17 @@ void TestCase_977()
 void TestCase_844()
 {
     bool expect;
+    string s, t;
+
+    s = "bxj##tw";
+    t = "bxo#j##tw";
+    expect = true;
+    COMPVALUE(expect, backspaceCompare(s, t));
+
+    s = "ab#c";
+    t = "ad#c";
+    expect = true;
+    COMPVALUE(expect, backspaceCompare(s, t));
         
     char s0[] = "rheyggodcclgstf";
     char t0[] = "#rheyggodcclgstf";

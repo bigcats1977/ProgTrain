@@ -7675,6 +7675,42 @@ bool backspaceCompare(char* s, char* t)
     
     return true;
 }
+void processbp(string s, int& pos) {
+    int bpnum = 0;
+    while (pos >= 0 && (s[pos] == '#' || bpnum > 0)) {
+        if (s[pos] == '#') {
+            bpnum++;
+            pos--;
+            continue;
+        }
+        if (bpnum > 0) {
+            bpnum--;
+            pos--;
+        }
+    }
+}
+bool backspaceCompare(string s, string t)
+{
+    int si = (int)s.size() - 1;
+    int ti = (int)t.size() - 1;
+    
+    while(si >= 0 && ti >= 0) {        
+        processbp(s, si);
+        processbp(t, ti);
+        if (si < 0 || ti < 0)
+            break;
+        if (s[si] != t[ti])
+            return false;
+        si--, ti--;
+    }
+    if (si >= 0)
+        processbp(s, si);
+    if (ti >= 0)
+        processbp(t, ti);
+    if (si >= 0 || ti >= 0)
+        return false;
+    return true;
+}
 
 // 876. Middle of the Linked List
 struct ListNode* middleNode(struct ListNode* head)

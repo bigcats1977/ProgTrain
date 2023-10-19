@@ -487,6 +487,7 @@ double champagneTower(int poured, int query_row, int query_glass);
 bool canVisitAllRooms(int** rooms, int roomsSize, int* roomsColSize);
 // 844. Backspace String Compare
 bool backspaceCompare(char* s, char* t);
+bool backspaceCompare(string s, string t);
 // 872. Leaf - Similar Trees
 bool leafSimilar(struct TreeNode* root1, struct TreeNode* root2);
 // 876. Middle of the Linked List
