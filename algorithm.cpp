@@ -6456,26 +6456,48 @@ int findCircleNum(int** isConnected, int isConnectedSize, int* isConnectedColSiz
 }
 
 // 556. Next Greater Element III
-/*
-Example 1:
-
-Input: n = 12
-Output: 21
-Example 2:
-
-Input: n = 21
-Output: -1
-*/
+int cmpnextgen(const void* a, const void* b)
+{
+    return (*(int*)b) - (*(int*)a);
+}
 int nextGreaterElement(int n)
 {
     int digits[11] = { -1 };
     int count = 0;
     long res = -1;
+    int i, j;
     while (n > 0) {
         digits[count++] = n % 10;
         n /= 10;
     }
-    return res > 2e32 ? -1: res;
+    for (i = 1; i < count; i++) {
+        if (digits[i - 1] > digits[i]) {
+            break;
+        }
+    }
+
+    if (i < count) {
+        int second = digits[i - 1], pos = i - 1;
+        for (j = i - 2; j >= 0; j--) {
+            if (digits[j] > digits[i] && digits[j] < second) {
+                second = digits[j];
+                pos = j;
+            }
+        }
+        digits[pos] ^= digits[i];
+        digits[i] ^= digits[pos];
+        digits[pos] ^= digits[i];
+
+        qsort(&digits[0], i, sizeof(int), cmpnextgen);
+        res = 0;
+        for (i = count - 1; i >= 0; i--)
+            res = res * 10 + digits[i];
+    }
+    if (fabs(res) < pow(2, 31))
+    {
+        return res;
+    }
+    return -1;
 }
 
 // 557. Reverse Words in a String III

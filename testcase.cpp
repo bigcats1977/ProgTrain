@@ -149,8 +149,27 @@ FUNCNAME g_tFuncName[] = {
 
 void TestCase_556()
 {
-    int n = 556;
-    nextGreaterElement(n);
+    int n, expect, out;
+
+    n = 2147483486;
+    expect = -1;
+    out = nextGreaterElement(n);
+    COMPVALUE(expect, out);
+
+    n = 2302431;
+    expect = 2303124;
+    out = nextGreaterElement(n);
+    COMPVALUE(expect, out);
+
+    n = 1234;
+    expect = 1243;
+    out = nextGreaterElement(n);
+    COMPVALUE(expect, out);
+
+    n = 556;
+    expect = 565;
+    out = nextGreaterElement(n);
+    COMPVALUE(expect, out);
 }
 
 void TestCase_503()
