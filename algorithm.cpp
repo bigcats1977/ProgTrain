@@ -5160,6 +5160,76 @@ int* countBits(int n, int* returnSize)
     return res;
 }
 
+// 341. Flatten Nested List Iterator
+bool NestedIntegerIsInteger(struct NestedInteger* ni) { return true; };
+int NestedIntegerGetInteger(struct NestedInteger* ni) { return 0; };
+struct NestedInteger** NestedIntegerGetList(struct NestedInteger* ni) { 
+    struct NestedInteger* temp = NULL;
+    return &ni; };
+int NestedIntegerGetListSize(struct NestedInteger* ni) { return 1; };
+struct NestedIterator {
+    int val;
+    struct NestedIterator* next;
+};
+void createlist(struct NestedInteger* data, struct NestedIterator** prior)
+{
+    struct NestedIterator* node;
+
+    if (!data || !prior)
+        return;
+
+    if (NestedIntegerIsInteger(data)) {
+        node = (struct NestedIterator*)malloc(sizeof(struct NestedIterator));
+        node->val = NestedIntegerGetInteger(data);
+        node->next = NULL;
+        (*prior)->next = node;
+        (*prior) = (*prior)->next;
+    }
+    else {
+        struct NestedInteger** listNI = NestedIntegerGetList(data);
+        for (int i = 0; i < NestedIntegerGetListSize(data); i++) {
+            createlist(listNI[i], prior);
+        }
+    }
+}
+struct NestedIterator* nestedIterCreate(struct NestedInteger** nestedList, int nestedListSize) {
+    struct NestedIterator* dummy = (struct NestedIterator*)malloc(sizeof(struct NestedIterator));
+    dummy->val = INT_MIN;
+    dummy->next = NULL;
+    struct NestedIterator* prior = dummy;
+    for (int i = 0; i < nestedListSize; i++) {
+        createlist(nestedList[i], &prior);
+    }
+    return dummy;
+}
+bool nestedIterHasNext(struct NestedIterator* iter) {
+    if (!iter->next)
+        return false;
+    return true;
+}
+int nestedIterNext(struct NestedIterator* iter) {
+    int res = INT_MIN;
+    if (iter->next) {
+        struct NestedIterator* node = iter->next;
+        iter->next = node->next;
+        res = node->val;
+        printf("node: %d,", node->val);
+
+        free(node);
+    }
+
+    return res;
+}
+/** Deallocates memory previously allocated for the iterator */
+void nestedIterFree(struct NestedIterator* iter) {
+    struct NestedIterator* node = iter;
+    while (iter) {
+        node = iter;
+        iter = iter->next;
+        free(node);
+    }
+}
+
 // 343. Integer Break
 int integerBreak(int n)
 {
