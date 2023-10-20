@@ -3837,6 +3837,19 @@ int minSubArrayLen(int target, int* nums, int numsSize)
         return 0;
     return len;
 }
+int minSubArrayLen(int target, vector<int>& nums)
+{
+    int slow = 0, fast = 0;
+    int sum = 0, minlen = INT_MAX;
+    for (fast = 0; fast < (int)nums.size(); fast++) {
+        sum += nums[fast];
+        while (sum >= target) {
+            minlen = (fast - slow + 1) < minlen ? (fast - slow + 1) : minlen;
+            sum -= nums[slow++];
+        }
+    }
+    return minlen == INT_MAX ? 0 : minlen;
+}
 
 // 210. Course Schedule II
 int* findOrder(int numCourses, int** prerequisites, int prerequisitesSize, int* prerequisitesColSize, int* returnSize)

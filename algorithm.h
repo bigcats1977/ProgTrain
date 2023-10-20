@@ -240,6 +240,7 @@ ListNode* reverseList2(ListNode* head);
 
 // 209. Minimum Size Subarray Sum
 int minSubArrayLen(int target, int* nums, int numsSize);
+int minSubArrayLen(int target, vector<int>& nums);
 // 210. Course Schedule II
 int* findOrder(int numCourses, int** prerequisites, int prerequisitesSize, int* prerequisitesColSize, int* returnSize);
 // 212. Word Search II
