@@ -860,6 +860,24 @@ int** combinationSum2(int* candidates, int candidatesSize, int target, int* retu
     return ans;
 }
 
+// 42. Trapping Rain Water
+int trap(int* height, int heightSize)
+{
+    int left = 0, right = heightSize - 1;
+    int res = 0, min = 0, mx = 0;
+    while (left <= right) {
+        min = height[left] < height[right] ? height[left] : height[right];
+        mx = mx < min ? min : mx;
+        res += mx - min;
+
+        if (height[left] < height[right])
+            left++;
+        else
+            right--;
+    }
+    return res;
+}
+
 // 43. Multiply Strings
 char* multiply(char* num1, char* num2)
 {
@@ -5163,9 +5181,9 @@ int* countBits(int n, int* returnSize)
 // 341. Flatten Nested List Iterator
 bool NestedIntegerIsInteger(struct NestedInteger* ni) { return true; };
 int NestedIntegerGetInteger(struct NestedInteger* ni) { return 0; };
-struct NestedInteger** NestedIntegerGetList(struct NestedInteger* ni) { 
-    struct NestedInteger* temp = NULL;
-    return &ni; };
+struct NestedInteger* temp = (struct NestedInteger*)malloc(10);
+struct NestedInteger** NestedIntegerGetList(struct NestedInteger* ni) {    
+    return &temp; };
 int NestedIntegerGetListSize(struct NestedInteger* ni) { return 1; };
 struct NestedIterator {
     int val;

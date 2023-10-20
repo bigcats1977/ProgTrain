@@ -60,6 +60,8 @@ bool isValidSudoku(char** board, int boardSize, int* boardColSize);
 int** combinationSum(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes);
 // 40. Combination Sum II
 int** combinationSum2(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes);
+// 42. Trapping Rain Water
+int trap(int* height, int heightSize);
 // 43. Multiply Strings
 char* multiply(char* num1, char* num2);
 // 45. Jump Game II

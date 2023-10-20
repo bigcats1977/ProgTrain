@@ -19,6 +19,7 @@ FUNCNAME g_tFuncName[] = {
     {35,    TestCase_35  },
     {39,    TestCase_39  },
     {40,    TestCase_40  },
+    {42,    TestCase_42  },
     {43,    TestCase_43  },
     {49,    TestCase_49  },
     {53,    TestCase_53  },
@@ -146,6 +147,14 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_42()
+{
+    vector<int> height;
+
+    height = { 0,1,0,2,1,0,1,3,2,1,2,1 };
+    trap(height.data(), (int)height.size());
+}
 
 void TestCase_556()
 {
