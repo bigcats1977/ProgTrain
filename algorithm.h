@@ -207,6 +207,7 @@ struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* he
 int findPeakElement(int* nums, int numsSize);
 // 167. Two Sum II - Input Array Is Sorted
 int* twoSumII(int* numbers, int numbersSize, int target, int* returnSize);
+vector<int> twoSum(vector<int>& numbers, int target);
 // 169. Majority Element
 int majorityElement(int* nums, int numsSize);
 // 187. Repeated DNA Sequences

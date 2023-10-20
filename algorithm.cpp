@@ -3368,6 +3368,24 @@ int* twoSumII(int* numbers, int numbersSize, int target, int* returnSize)
 #endif
     return result;
 }
+vector<int> twoSum(vector<int>& numbers, int target)
+{
+    int left = 0, right = (int)numbers.size() - 1;
+    int sum = 0;
+    vector<int> res;
+    while (left < right) {
+        sum = numbers[left] + numbers[right];
+        if (sum == target) {
+            res.push_back(left+1);
+            res.push_back(right+1);
+            break;
+        }
+        else if (sum > target)
+            right--;
+        else left++;
+    }
+    return res;
+}
 
 // 169. Majority Element
 int majorityElement(int* nums, int numsSize)
