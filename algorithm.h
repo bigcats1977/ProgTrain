@@ -39,6 +39,7 @@ char** generateParenthesis(int n, int* returnSize);
 struct ListNode* swapPairs(struct ListNode* head);
 // 25. Reverse Nodes in k - Group
 struct ListNode* reverseKGroup(struct ListNode* head, int k);
+ListNode* reverseKGroup2(ListNode* head, int k);
 // 26. Remove Duplicates from Sorted Array
 int removeDuplicates(int* nums, int numsSize);
 int removeDuplicates(vector<int>& nums);
