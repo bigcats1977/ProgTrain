@@ -213,6 +213,7 @@ int* twoSumII(int* numbers, int numbersSize, int target, int* returnSize);
 vector<int> twoSum(vector<int>& numbers, int target);
 // 169. Majority Element
 int majorityElement(int* nums, int numsSize);
+int majorityElement(vector<int>& nums);
 // 187. Repeated DNA Sequences
 char** findRepeatedDnaSequences(char* s, int* returnSize);
 // 189. Rotate Array
@@ -344,6 +345,7 @@ bool isPerfectSquare(int num);
 int guessNumber(int n);
 // 383. Ransom Note
 bool canConstruct(char* ransomNote, char* magazine);
+bool canConstruct(string ransomNote, string magazine);
 // 384. Shuffle an Array
 
 // 387. First Unique Character in a String
@@ -563,6 +565,8 @@ int maximum69Number(int num);
 vector<int> kWeakestRows(vector<vector<int>>& mat, int k);
 // 1361. Validate Binary Tree Nodes
 bool validateBinaryTreeNodes(int n, int* leftChild, int leftChildSize, int* rightChild, int rightChildSize);
+// 1425. Constrained Subsequence Sum
+int constrainedSubsetSum(int* nums, int numsSize, int k);
 // 1431. Kids With the Greatest Number of Candies
 bool* kidsWithCandies(int* candies, int candiesSize, int extraCandies, int* returnSize);
 vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies);
@@ -602,6 +606,8 @@ struct ListNode* swapNodes(struct ListNode* head, int k);
 int largestAltitude(int* gain, int gainSize);
 // 1768. Merge Strings Alternately
 char* mergeAlternately(char* word1, char* word2);
+// 1793. Maximum Score of a Good Subarray
+int maximumScore(int* nums, int numsSize, int k);
 // 1799. Maximize Score After N Operations
 int maxScore(int* nums, int numsSize);
 // 1822. Sign of the Product of an Array

@@ -3458,6 +3458,21 @@ int majorityElement(int* nums, int numsSize)
     }
     return major;
 }
+int majorityElement(vector<int>& nums)
+{
+    int major = nums[0], count = 1;
+    for (int i = 0; i < (int)nums.size(); i++) {
+        if (major == nums[i])
+            count++;
+        else
+            count--;
+        if (count < 0) {
+            count = 1;
+            major = nums[i];
+        }
+    }
+    return major;
+}
 
 // 187. Repeated DNA Sequences
 //int getbase(char c)
@@ -5501,6 +5516,20 @@ bool canConstruct(char* ransomNote, char* magazine)
     for (i = 0; i < m; i++) {
         nums[ransomNote[i] - 'a']--;
         if (nums[ransomNote[i] - 'a'] < 0)
+            return false;
+    }
+    return true;
+}
+bool canConstruct(string ransomNote, string magazine)
+{
+    int counts[26] = { 0 };
+    int i;
+    for (i = 0; i < (int)magazine.size(); i++) {
+        counts[magazine[i] - 'a']++;
+    }
+    for (i = 0; i < (int)ransomNote.size(); i++) {
+        counts[ransomNote[i] - 'a']--;
+        if (counts[ransomNote[i] - 'a'] < 0)
             return false;
     }
     return true;
@@ -8848,6 +8877,12 @@ bool validateBinaryTreeNodes(int n, int* leftChild, int leftChildSize, int* righ
     return true;
 }
 
+// 1425. Constrained Subsequence Sum
+int constrainedSubsetSum(int* nums, int numsSize, int k)
+{
+    return 0;
+}
+
 // 1431. Kids With the Greatest Number of Candies
 bool* kidsWithCandies(int* candies, int candiesSize, int extraCandies, int* returnSize)
 {
@@ -9274,6 +9309,26 @@ char* mergeAlternately(char* word1, char* word2)
         memcpy(&result[pos], &word2[len1], len2 - len1);
     }
     return result;
+}
+
+// 1793. Maximum Score of a Good Subarray
+int maximumScore(int* nums, int numsSize, int k)
+{
+    int left = k, right = k;
+    int minval = nums[k];
+    int maxscore = minval;
+    while (left > 0 || right < numsSize - 1) {
+        if (left == 0 || (right < numsSize - 1 && nums[right + 1] > nums[left - 1]))
+            right++;
+        else
+            left--;
+        minval = minval > nums[left] ? nums[left] : minval;
+        minval = minval > nums[right] ? nums[right] : minval;
+        int score = minval * (right - left + 1);
+        maxscore = maxscore > score ? maxscore : score;
+    }
+
+    return maxscore;
 }
 
 // 1799. Maximize Score After N Operations
