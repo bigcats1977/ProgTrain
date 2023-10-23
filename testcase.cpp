@@ -40,6 +40,7 @@ FUNCNAME g_tFuncName[] = {
     {113,   TestCase_113 },
     {118,   TestCase_118 },
     {120,   TestCase_120 },
+    {125,   TestCase_125 },
     {130,   TestCase_130 },
     {136,   TestCase_136 },
     {142,   TestCase_142 },
@@ -149,6 +150,12 @@ FUNCNAME g_tFuncName[] = {
     {9999,  TestCase_9999},
 };
 
+void TestCase_125()
+{
+    string s = "0P";
+
+    isPalindrome(&*s.begin());
+}
 void TestCase_342()
 {
     int n;

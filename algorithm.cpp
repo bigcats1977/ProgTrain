@@ -2604,6 +2604,27 @@ int maxProfit(vector<int>& prices)
     return maxprofile;
 }
 
+// 125. Valid Palindrome
+bool isPalindrome(char* s)
+{
+    int left = 0, right = (int)strlen(s)-1;
+    while (left < right) {
+        while (left < right && !isalpha(s[left]) && !isdigit(s[left]))
+            left++;
+        while (left < right && !isalpha(s[right]) && !isdigit(s[right]))
+            right--;
+        if (s[left] != s[right]) {
+            char c1 = s[left], c2 = s[right];
+            c1 -= isupper(c1) ? 'A' : 'a';
+            c2 -= isupper(c2) ? 'A' : 'a';
+            if (c1 != c2)
+                return false;
+        }
+        left++, right--;
+    }
+    return true;
+}
+
 // 130. Surrounded Regions
 int regions[4][2] = { {-1,0},{1,0},{0,-1},{0,1} };
 void regiondfs(char** board, bool** visited, int m, int n, int curx, int cury)
