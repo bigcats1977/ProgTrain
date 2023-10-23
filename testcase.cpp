@@ -75,6 +75,7 @@ FUNCNAME g_tFuncName[] = {
     {322,   TestCase_322 },
     {332,   TestCase_332 },
     {334,   TestCase_334 },
+    {342,   TestCase_342 },
     {344,   TestCase_344 },
     {349,   TestCase_349 },
     {350,   TestCase_350 },
@@ -147,6 +148,14 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_342()
+{
+    int n;
+
+    n = 8;
+    isPowerOfFour(n);
+}
 
 void TestCase_42()
 {

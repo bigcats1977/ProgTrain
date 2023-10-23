@@ -164,6 +164,7 @@ vector<int> getRow(int rowIndex);
 int minimumTotal(int** triangle, int triangleSize, int* triangleColSize);
 // 121. Best Time to Buy and Sell Stock
 int maxProfit(int* prices, int pricesSize);
+int maxProfit(vector<int>& prices);
 // 130. Surrounded Regions
 void solve(char** board, int boardSize, int* boardColSize);
 // 131. Palindrome Partitioning
@@ -218,6 +219,7 @@ int majorityElement(vector<int>& nums);
 char** findRepeatedDnaSequences(char* s, int* returnSize);
 // 189. Rotate Array
 void rotate(int* nums, int numsSize, int k);
+void rotate(vector<int>& nums, int k);
 // 190. Reverse Bits
 uint32_t reverseBits(uint32_t n);
 // 191. Number of 1 Bits
@@ -325,7 +327,9 @@ bool increasingTriplet(int* nums, int numsSize);
 // 338. Counting Bits
 int* countBits(int n, int* returnSize);
 // 341. Flatten Nested List Iterator
- 
+
+// 342. Power of Four
+bool isPowerOfFour(int n);
 // 343. Integer Break
 int integerBreak(int n);
 // 344. Reverse String

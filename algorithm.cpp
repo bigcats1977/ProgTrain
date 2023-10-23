@@ -2589,7 +2589,20 @@ int maxProfit(int* prices, int pricesSize)
 
     return max;
 }
-
+int maxProfit(vector<int>& prices)
+{
+    int i, n = (int)prices.size();
+    vector<int> maxprice(n, 0);
+    maxprice[n - 1] = prices[n - 1];
+    for (i = n - 2; i >= 0; i--) {
+        maxprice[i] = max(maxprice[i + 1], prices[i]);
+    }
+    int maxprofile = 0;
+    for (i = 0; i < n - 1; i++) {
+        maxprofile = max(maxprofile, maxprice[i] - prices[i]);
+    }
+    return maxprofile;
+}
 
 // 130. Surrounded Regions
 int regions[4][2] = { {-1,0},{1,0},{0,-1},{0,1} };
@@ -3568,6 +3581,24 @@ void rotate(int* nums, int numsSize, int k)
         nums[fast] = temp;
     }*/
 #endif
+}
+void inverse(vector<int>& nums, int begin, int end)
+{
+    while (begin < end) {
+        nums[begin] ^= nums[end];
+        nums[end] ^= nums[begin];
+        nums[begin++] ^= nums[end--];
+    }
+}
+void rotate(vector<int>& nums, int k)
+{
+    int sizes = (int)nums.size();
+    k = k % sizes;
+    if (k == 0)
+        return;
+    inverse(nums, 0, sizes - 1);
+    inverse(nums, 0, k - 1);
+    inverse(nums, k, sizes - 1);
 }
 
 // 190. Reverse Bits
@@ -5298,6 +5329,27 @@ void nestedIterFree(struct NestedIterator* iter) {
         iter = iter->next;
         free(node);
     }
+}
+
+// 342. Power of Four
+bool isPowerOfFour(int n)
+{
+    int k = 0;
+    long comp = 1;
+    int count = 0;
+    if (n <= 0)
+        return false;
+    while (n) {
+        if (n & comp) {
+            count++;
+            if (k % 2 || count > 1)
+                return false;
+            n ^= comp;
+        }
+        k++;
+        comp <<= 1;
+    }
+    return true;
 }
 
 // 343. Integer Break

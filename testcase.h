@@ -74,6 +74,7 @@ void TestCase_316();
 void TestCase_322();
 void TestCase_332();
 void TestCase_334();
+void TestCase_342();
 void TestCase_344();
 void TestCase_349();
 void TestCase_350();
