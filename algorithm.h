@@ -270,6 +270,8 @@ int computeArea(int ax1, int ay1, int ax2, int ay2, int bx1, int by1, int bx2, i
 struct TreeNode* invertTree(struct TreeNode* root);
 // 227. Basic Calculator II
 int calculate(char* s);
+// 228. Summary Ranges
+char** summaryRanges(int* nums, int numsSize, int* returnSize);
 // 229. Majority Element II
 int* majorityElement(int* nums, int numsSize, int* returnSize);
 // 230. Kth Smallest Element in a BST

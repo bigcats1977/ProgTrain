@@ -62,6 +62,7 @@ FUNCNAME g_tFuncName[] = {
     {216,   TestCase_216 },
     {217,   TestCase_217 },
     {227,   TestCase_227 },
+    {228,   TestCase_228 },
     {229,   TestCase_229 },
     {239,   TestCase_239 },
     {240,   TestCase_240 },
@@ -149,6 +150,18 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_228()
+{
+    vector<int> nums;
+    int count;
+    nums.clear();
+    summaryRanges(nums.data(), (int)nums.size(), &count);
+
+    nums = { 0,1,2,4,5,7 };
+    summaryRanges(nums.data(), (int)nums.size(), &count);
+
+}
 
 void TestCase_125()
 {

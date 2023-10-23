@@ -4350,6 +4350,43 @@ int calculate(char* s)
     return ans;
 }
 
+// 228. Summary Ranges
+char** summaryRanges(int* nums, int numsSize, int* returnSize)
+{
+    int start = 0, end = 0;
+    int count = 0;
+    char buff[25] = { 0 };
+    long diff = 0;
+    char** res = (char**)malloc(numsSize * sizeof(char*));
+    *returnSize = 0;
+    if (numsSize == 0)
+        return res;
+
+    start = end = nums[0];
+    for (int i = 1; i <= numsSize; i++) {
+        if(i<numsSize)
+            diff = (long)nums[i] - end;
+        if(i==numsSize || nums[i] -end > 1){
+            if(start == end)
+                sprintf(buff, "%d", start);
+            else
+                sprintf(buff, "%d->%d", start, end);
+            res[count] = (char*)calloc(strlen(buff)+1,sizeof(char));
+            strcpy(res[count], buff);
+            count++;
+            if (i < numsSize) {
+                start = nums[i];
+                end = nums[i];
+            }
+        }
+        else {
+            end++;
+        }
+    }
+    *returnSize = count;
+    return res;
+}
+
 // 229. Majority Element II
 int majorityCmp(const void* a, const void* b)
 {
