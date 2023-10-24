@@ -241,6 +241,7 @@ bool isHappy(int n);
 ListNode* removeElements(ListNode* head, int val);
 // 205. Isomorphic Strings
 bool isIsomorphic(char* s, char* t);
+bool isIsomorphic(string s, string t);
 // 206. Reverse Linked List
 struct ListNode* reverseList(struct ListNode* head);
 ListNode* reverseList2(ListNode* head);

@@ -3854,6 +3854,19 @@ bool isIsomorphic(char* s, char* t)
 
     return true;
 }
+bool isIsomorphic(string s, string t)
+{
+    vector<int> swS(128, 0), swT(128, 0);
+    for (int i = 0; i < (int)s.size(); i++) {
+        if (swS[s[i]] == 0 && swT[t[i]] == 0) {
+            swS[s[i]] = t[i];
+            swT[t[i]] = s[i];
+        }
+        else if (swS[s[i]] != t[i] || swT[t[i]] != s[i])
+            return false;
+    }
+    return true;
+}
 
 // 206. Reverse Linked List
 struct ListNode* reverseList(struct ListNode* head)
