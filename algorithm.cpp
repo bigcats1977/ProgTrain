@@ -3854,17 +3854,42 @@ bool isIsomorphic(char* s, char* t)
 
     return true;
 }
+// for uchar u0061 some 
 bool isIsomorphic(string s, string t)
 {
-    vector<int> swS(128, 0), swT(128, 0);
-    for (int i = 0; i < (int)s.size(); i++) {
-        if (swS[s[i]] == 0 && swT[t[i]] == 0) {
-            swS[s[i]] = t[i];
-            swT[t[i]] = s[i];
-        }
-        else if (swS[s[i]] != t[i] || swT[t[i]] != s[i])
-            return false;
+    int lens = s.length();
+    int lent = t.length();
+
+    if (lens != lent) {
+        return false;
     }
+
+    unordered_map<char, char> ms;
+    set<char> st; //stores unq characters of t, needed to make sure no duplicate values case, 
+                 //badc baba case
+
+    for (int i = 0; i < lens; i++) {
+        st.insert(t[i]);
+        // s[i] not in map
+        if (!ms[s[i]]) { // alternatively can do this, ms.find(s[i]) == ms.end()
+            ms[s[i]] = t[i];
+        }
+
+        else {
+            // if s[i] in map then check if mapping is
+            // consistent or not
+            if (ms[s[i]] != t[i]) {
+                return false;
+            }
+        }
+
+        // avoiding different keys mapped to same value case
+        if (st.size() != ms.size()) {
+            return false;
+        }
+    }
+
+    return true;
     return true;
 }
 
