@@ -1508,6 +1508,19 @@ int uniquePaths(int m, int n)
     free(dp);
     return ans;
 }
+int uniquePaths2(int m, int n)
+{
+    int i, j;
+    vector<vector<int>> dp(m, vector<int>(n, 0));
+    for (i = 1; i < m; i++)
+        dp[i][0] = 1;
+    for (j = 1; j < n; j++)
+        dp[0][j] = 1;
+    for (i = 1; i < m; i++)
+        for (j = 1; j < n; j++)
+            dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+    return dp[m - 1][n - 1];
+}
 
 // 63. Unique Paths II
 int uniquePathsWithObstacles(int** obstacleGrid, int obstacleGridSize, int* obstacleGridColSize)
@@ -1539,6 +1552,23 @@ int uniquePathsWithObstacles(int** obstacleGrid, int obstacleGridSize, int* obst
         free(dp[i]);
     free(dp);
     return ans;
+}
+int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid)
+{
+    int i, j;
+    int m = (int)obstacleGrid.size(), n = (int)obstacleGrid[0].size();
+    vector<vector<int>> dp(m, vector<int>(n, 0));
+    for (i = 0; i < m && obstacleGrid[i][0] == 0; i++)
+        dp[i][0] = 1;
+    for (j = 0; j < n && obstacleGrid[0][j] == 0; j++)
+        dp[0][j] = 1;
+
+    for (i = 1; i < m; i++)
+        for (j = 1; j < n; j++)
+            if (0 == obstacleGrid[i][j])
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+
+    return dp[m-1][n-1];
 }
 
 // 69. Sqrt(x)
@@ -2088,6 +2118,22 @@ int* inorderTraversal(struct TreeNode* root, int* returnSize)
     inorder(root, ans, &index);
     *returnSize = index;
     return ans;
+}
+
+// 96. Unique Binary Search Trees
+int numTrees(int n)
+{
+    int* dp = (int*)calloc(n + 1, sizeof(int));
+    dp[0] = 1;
+   for (int i = 1; i <= n; i++) {
+       for (int j = 1; j <= i; j++) {
+           dp[i] += dp[j - 1] * dp[i - j];
+       }
+
+    }
+    int res = dp[n];
+    free(dp);
+    return res;
 }
 
 // 98. Validate Binary Search Tree
@@ -3857,8 +3903,8 @@ bool isIsomorphic(char* s, char* t)
 // for uchar u0061 some 
 bool isIsomorphic(string s, string t)
 {
-    int lens = s.length();
-    int lent = t.length();
+    int lens = (int)s.length();
+    int lent = (int)t.length();
 
     if (lens != lent) {
         return false;
@@ -5461,6 +5507,16 @@ int integerBreak(int n)
     int ans = dp[n];
     free(dp);
     return ans;
+}
+int integerBreak2(int n)
+{
+    vector<int> dp(n + 1, 0);
+    dp[2] = 1;
+    for (int i = 3; i <= n; i++) {
+        for (int j = 1; j <= (i + 1) / 2; j++)
+            dp[i] = max(dp[i], max(j * (i - j), j * dp[i - j]));
+    }
+    return dp[n];
 }
 
 // 344. Reverse String

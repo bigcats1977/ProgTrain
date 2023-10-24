@@ -89,8 +89,10 @@ int** insert(int** intervals, int intervalsSize, int* intervalsColSize, int* new
 int** generateMatrix(int n, int* returnSize, int** returnColumnSizes);
 // 62. Unique Paths
 int uniquePaths(int m, int n);
+int uniquePaths2(int m, int n);
 // 63. Unique Paths II
 int uniquePathsWithObstacles(int** obstacleGrid, int obstacleGridSize, int* obstacleGridColSize);
+int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid);
 // 69. Sqrt(x)
 int mySqrt(int x);
 // 70. Climbing Stairs
@@ -126,6 +128,8 @@ int numDecodings(char* s);
 ListNode* reverseBetween(ListNode* head, int left, int right);
 // 94. Binary Tree Inorder Traversal
 int* inorderTraversal(struct TreeNode* root, int* returnSize);
+// 96. Unique Binary Search Trees
+int numTrees(int n);
 // 98. Validate Binary Search Tree
 bool isValidBST(struct TreeNode* root);
 // 100. Same Tree
@@ -337,6 +341,7 @@ int* countBits(int n, int* returnSize);
 bool isPowerOfFour(int n);
 // 343. Integer Break
 int integerBreak(int n);
+int integerBreak2(int n);
 // 344. Reverse String
 void reverseString(char* s, int sSize);
 // 345. Reverse Vowels of a String;
