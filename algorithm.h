@@ -408,6 +408,8 @@ int* findMode(struct TreeNode* root, int* returnSize);
 int* nextGreaterElements(int* nums, int numsSize, int* returnSize);
 // 509. Fibonacci Number
 int fib(int n);
+// 515. Find Largest Value in Each Tree Row
+int* largestValues(struct TreeNode* root, int* returnSize);
 // 516. Longest Palindromic Subsequence
 int longestPalindromeSubseq(char* s);
 // 523. Continuous Subarray Sum

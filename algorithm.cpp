@@ -6550,6 +6550,34 @@ int fib(int n)
     return ans;
 }
 
+// 515. Find Largest Value in Each Tree Row
+int* largestValues(struct TreeNode* root, int* returnSize)
+{
+    int* res = (int*)malloc(sizeof(int)*10000);
+    struct TreeNode** qu = (struct TreeNode**)malloc(sizeof(struct TreeNode*) * 10000);
+    int front = 0, end = 0, count;
+    *returnSize = 0;
+    if (root) {
+        qu[front++] = root;
+    }
+    while (front > end) {
+        struct TreeNode* node;
+        int max = INT_MIN;
+        count = front - end;
+        for (int i = 0; i < count; i++) {
+            node = qu[end++];
+            max = node->val > max ? node->val : max;
+            if (node->left)
+                qu[front++] = node->left;
+            if (node->right)
+                qu[front++] = node->right;
+        }
+        res[(*returnSize)++] = max;
+    }
+    free(qu);
+    return res;
+}
+
 // 516. Longest Palindromic Subsequence
 int longestPalindromeSubseq(char* s)
 {
