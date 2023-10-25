@@ -504,6 +504,8 @@ int minCostClimbingStairs(vector<int>& cost);
 int* partitionLabels(char* s, int* returnSize);
 // 766. Toeplitz Matrix
 bool isToeplitzMatrix(int** matrix, int matrixSize, int* matrixColSize);
+// 779. K-th Symbol in Grammar
+int kthGrammar(int n, int k);
 // 784. Letter Case Permutation
 char** letterCasePermutation(char* s, int* returnSize);
 // 785. Is Graph Bipartite ?

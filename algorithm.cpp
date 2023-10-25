@@ -7918,6 +7918,18 @@ bool isToeplitzMatrix(int** matrix, int matrixSize, int* matrixColSize)
     return true;
 }
 
+// 779. K-th Symbol in Grammar
+int kthGrammar(int n, int k)
+{
+    if (n == 1 && k == 1)
+        return 0;
+    int mid = pow(2, n - 1) / 2;
+    if (k <= mid)
+        return kthGrammar(n - 1, k);
+    else
+        return !kthGrammar(n - 1, k - mid);
+}
+
 // 784. Letter Case Permutation
 /*
 * Input: s = "a1b2"
