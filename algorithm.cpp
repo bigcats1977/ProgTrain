@@ -241,6 +241,23 @@ int maxArea(vector<int>& height)
     return area;
 }
 
+// 12. Integer to Roman
+char* intToRoman(int num)
+{
+    int val[13] = { 1000,900,500,400,100,90,50,40,10,9,5,4,1 };
+    char Roman[13][3] = { "M","CM","D","CD", "C","XC","L","XL","X","IX","V","IV","I" };
+    char* res = (char*)calloc(16, sizeof(char));
+    int pos = 0;
+    for (int i = 0; i < 13; i++) {
+        while (num >= val[i]) {
+            num -= val[i];
+            strcpy(&res[pos], Roman[i]);
+            pos += (int)strlen(Roman[i]);
+        }
+    }
+    return res;
+}
+
 // 14. Longest Common Prefix
 char* longestCommonPrefix(char** strs, int strsSize)
 {
