@@ -69,6 +69,42 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2)
     return prior;
 }
 
+ListNode* addTwoNumbers2(ListNode* l1, ListNode* l2)
+{
+    ListNode* Dummy = new ListNode();
+    Dummy->next = l1;
+    ListNode* per = Dummy;
+    int sum = 0;
+    while (l1 && l2) {
+        sum += l1->val + l2->val;
+        l1->val = sum % 10;
+        sum /= 10;
+        per = l1;
+        l1 = l1->next;
+        l2 = l2->next;
+    }
+    if (l2) {
+        per->next = l2;
+        l1 = l2;
+    }
+    while (l1 && sum) {
+        sum += l1->val;
+        l1->val = sum % 10;
+        sum /= 10;
+        per = l1;
+        l1 = l1->next;
+    }
+    if (sum) {
+        ListNode* node = new ListNode();
+        node->next = NULL;
+        node->val = sum;
+        per->next = node;
+    }
+    per = Dummy->next;
+    free(Dummy);
+    return per;
+}
+
 // 3. Longest Substring Without Repeating Characters
 int lengthOfLongestSubstring(char* s)
 {
@@ -1418,6 +1454,22 @@ int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* retu
     *returnSize = count + 1;
 
     return ans;
+}
+vector<vector<int>> merge(vector<vector<int>>& intervals)
+{
+    vector<vector<int>> res;
+    sort(intervals.begin(), intervals.end());
+
+    res.push_back(intervals[0]);
+    for (size_t i = 1; i < intervals.size(); i++) {
+        size_t pos = res.size() - 1;
+        if (intervals[i][0] <= res[pos][1])
+            res[pos][1] = max(intervals[i][1], res[pos][1]);
+        else
+            res.push_back(intervals[i]);
+    }
+
+    return res;
 }
 
 // 57. Insert Interval
@@ -7933,6 +7985,18 @@ bool isToeplitzMatrix(int** matrix, int matrixSize, int* matrixColSize)
     }
 
     return true;
+}
+
+// 779. K-th Symbol in Grammar
+int kthGrammar(int n, int k)
+{
+    if (n == 1 && k == 1)
+        return 0;
+    int mid = (int)pow(2, n - 1) / 2;
+    if (k <= mid)
+        return kthGrammar(n - 1, k);
+    else
+        return !kthGrammar(n - 1, k - mid);
 }
 
 // 784. Letter Case Permutation

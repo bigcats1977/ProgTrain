@@ -6,6 +6,7 @@
 int* twoSum(int* nums, int numsSize, int target, int* returnSize);
 // 2. Add Two Numbers
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2);
+ListNode* addTwoNumbers2(ListNode* l1, ListNode* l2);
 // 3. Longest Substring Without Repeating Characters
 int lengthOfLongestSubstring(char* s);
 // 4. Median of Two Sorted Arrays
@@ -85,6 +86,7 @@ int* spiralOrder(int** matrix, int matrixSize, int* matrixColSize, int* returnSi
 bool canJump(int* nums, int numsSize);
 // 56. Merge Intervals
 int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* returnSize, int** returnColumnSizes);
+vector<vector<int>> merge(vector<vector<int>>& intervals);
 // 57. Insert Interval
 int** insert(int** intervals, int intervalsSize, int* intervalsColSize, int* newInterval, int newIntervalSize, int* returnSize, int** returnColumnSizes);
 // 59. Spiral Matrix II
@@ -506,6 +508,8 @@ int minCostClimbingStairs(vector<int>& cost);
 int* partitionLabels(char* s, int* returnSize);
 // 766. Toeplitz Matrix
 bool isToeplitzMatrix(int** matrix, int matrixSize, int* matrixColSize);
+// 779. K-th Symbol in Grammar
+int kthGrammar(int n, int k);
 // 784. Letter Case Permutation
 char** letterCasePermutation(char* s, int* returnSize);
 // 785. Is Graph Bipartite ?
