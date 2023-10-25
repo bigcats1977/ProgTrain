@@ -309,6 +309,8 @@ char** binaryTreePaths(struct TreeNode* root, int* returnSize);
 bool isUgly(int n);
 // 268. Missing Number
 int missingNumber(int* nums, int numsSize);
+// 274. H-Index
+int hIndex(int* citations, int citationsSize);
 // 278. First Bad Version
 int firstBadVersion(int n);
 // 283. Move Zeroes

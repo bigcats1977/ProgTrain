@@ -4927,6 +4927,22 @@ int missingNumber(int* nums, int numsSize)
     return (int)sum;
 }
 
+// 274. H-Index
+int hcmpfun(const void* a, const void* b)
+{
+    return *(int*)a - *(int*)b;
+}
+int hIndex(int* citations, int citationsSize)
+{
+    qsort(citations, citationsSize, sizeof(int), hcmpfun);
+    for (int i = 0; i < citationsSize; i++) {
+        if (citations[i] >= citationsSize - i) {
+            return citationsSize - i;
+        }
+    }
+    return 0;
+}
+
 // 278. First Bad Version
 bool isBadVersion(int version)
 {

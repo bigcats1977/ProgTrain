@@ -68,6 +68,7 @@ FUNCNAME g_tFuncName[] = {
     {240,   TestCase_240 },
     {242,   TestCase_242 },
     {268,   TestCase_268 },
+    {274,   TestCase_274 },
     {283,   TestCase_283 },
     {287,   TestCase_287 },
     {290,   TestCase_290 },
@@ -150,6 +151,17 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_274()
+{
+    vector<int> nums;
+
+    nums = { 4,4,0,0 };
+    hIndex(nums.data(), (int)nums.size());
+
+    nums = { 3,0,6,1,5 };
+    hIndex(nums.data(), (int)nums.size());
+}
 
 void TestCase_228()
 {
