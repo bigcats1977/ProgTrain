@@ -101,6 +101,8 @@ int uniquePathsWithObstacles(int** obstacleGrid, int obstacleGridSize, int* obst
 int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid);
 // 69. Sqrt(x)
 int mySqrt(int x);
+// 66. Plus One
+int* plusOne(int* digits, int digitsSize, int* returnSize);
 // 70. Climbing Stairs
 int climbStairs(int n);
 // 72. Edit Distance

@@ -1681,6 +1681,25 @@ int mySqrt(int x)
     return right;
 }
 
+// 66. Plus One
+int* plusOne(int* digits, int digitsSize, int* returnSize)
+{
+    int* res = (int*)malloc((digitsSize + 1) * sizeof(int));
+    int sum = 1;
+    for (int i = digitsSize - 1; i >= 0; i--) {
+        sum += digits[i];
+        res[i + 1] = sum % 10;
+        sum /= 10;
+    }
+    *returnSize = digitsSize;
+    if (sum > 0) {
+        res[0] = sum;
+        (*returnSize)++;
+        return &res[0];
+    }
+    return &res[1];
+}
+
 // 70. Climbing Stairs
 int climbStairs(int n)
 {
