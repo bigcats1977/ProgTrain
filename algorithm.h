@@ -522,6 +522,8 @@ int numMatchingSubseq(char* s, char** words, int wordsSize);
 int** allPathsSourceTarget(int** graph, int graphSize, int* graphColSize, int* returnSize, int** returnColumnSizes);
 // 799. Champagne Tower
 double champagneTower(int poured, int query_row, int query_glass);
+// 823. Binary Trees With Factors
+int numFactoredBinaryTrees(int* arr, int arrSize);
 // 841. Keys and Rooms
 bool canVisitAllRooms(int** rooms, int roomsSize, int* roomsColSize);
 // 844. Backspace String Compare

@@ -8231,6 +8231,38 @@ double champagneTower(int poured, int query_row, int query_glass)
     return res = res > 1 ? 1 : res;
 }
 
+// 823. Binary Trees With Factors
+int numFactoredBinaryTrees(int* arr, int arrSize)
+{
+    const long mod = (long)1e9 + 7;
+    long* dp = (long*)malloc(arrSize * sizeof(long));
+    qsort(arr, arrSize, sizeof(int), cmpfun);
+    dp[0] = 1;
+    int res = dp[0];
+    for (int i = 1; i < arrSize; i++) {
+        int left = 0, right = i - 1;
+        long ways = 1;
+        while (left <= right) {
+            long multi = (long)arr[left] * arr[right];
+            if (multi == arr[i]) {
+                if (left == right)
+                    ways += (dp[left] * dp[right]) % mod;
+                else
+                    ways += (dp[left] * dp[right] * 2) % mod;
+                left++;
+                right--;
+            }
+            else if (multi < arr[i])
+                left++;
+            else
+                right--;
+        }
+        dp[i] = ways;
+        res = (res + dp[i]) % mod;
+    }
+    return res;
+}
+
 // 841. Keys and Rooms
 void dfsroom(int** rooms, int* roomsColSize, int cur, bool* visited)
 {
