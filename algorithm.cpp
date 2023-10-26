@@ -1344,7 +1344,7 @@ double myPow(double x, int n)
         return 0;
     if (n < 0) {
         x = 1 / x;
-        n = fabs(n);
+        n = (int)fabs(n);
         // n == INT_MIN C how to resolve
     }
     double temp = myPow(x, n / 2);
@@ -3817,6 +3817,32 @@ int rob(int* nums, int numsSize)
     free(robval);
     return ans;
 }
+/*
+Input: nums = [1,2,3,1]
+Output: 4
+Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+Total amount you can rob = 1 + 3 = 4.
+Example 2:
+
+Input: nums = [2,7,9,3,1]
+Output: 12
+Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
+Total amount you can rob = 2 + 9 + 1 = 12.
+*/
+int rob(vector<int>& nums)
+{
+    size_t n = nums.size();
+    vector<int> dp(n, 0);
+    dp[0] = nums[0];
+    if (n > 1) {
+        dp[1] = max(nums[0], nums[1]);
+        for (size_t i = 2; i < n; i++) {
+            dp[i] = max(dp[i - 1], nums[i] + dp[i - 2]);
+        }
+    }
+
+    return dp[n-1];
+}
 
 // 199. Binary Tree Right Side View
 int* rightSideView(struct TreeNode* root, int* returnSize)
@@ -4273,6 +4299,24 @@ int robCCC(vector<int>& nums) {
     int result1 = robRange(nums, 0, (int)nums.size() - 2); // 情况二
     int result2 = robRange(nums, 1, (int)nums.size() - 1); // 情况三
     return max(result1, result2);
+}
+int robrange(vector<int>& nums, int start)
+{
+    size_t n = nums.size();
+    vector<int> dp(n - 1);
+    dp[0] = nums[start];
+    dp[1] = max(nums[start], nums[start + 1]);
+    for (size_t i = 2; i < n - 1; i++) {
+        dp[i] = max(dp[i - 1], dp[i - 2] + nums[start + i]);
+    }
+    return dp[n - 2];
+}
+int robCAA(vector<int>& nums) {
+    if (nums.size() == 1)
+        return nums[0];
+    if (nums.size() == 2)
+        return max(nums[0], nums[1]);
+    return max(robrange(nums, 0), robrange(nums, 1));
 }
 
 // 215. Kth Largest Element in an Array
@@ -5501,6 +5545,26 @@ bool increasingTriplet(int* nums, int numsSize)
 #endif
     return false;
 }
+
+// 337. House Robber III
+void robTree(struct TreeNode* node, int* noRob, int* Rob)
+{
+    int left[2] = { 0 }, right[2] = { 0 };
+    if (!node)  {
+        *noRob = 0, * Rob = 0;
+        return;
+    }
+    robTree(node->left, &left[0], &left[1]);
+    robTree(node->right, &right[0], &right[1]);
+    *noRob = (left[0] > left[1] ? left[0] : left[1]) + (right[0] > right[1] ? right[0] : right[1]);
+    *Rob = node->val + left[0] + right[0];
+}
+int rob(struct TreeNode* root)
+{
+    int noRob, Rob;
+    robTree(root, &noRob, &Rob);
+    return noRob > Rob ? noRob : Rob;
+} 
 
 // 338. Counting Bits
 int countBit(int n)

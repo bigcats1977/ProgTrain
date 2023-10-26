@@ -240,6 +240,7 @@ uint32_t reverseBits(uint32_t n);
 int hammingWeight(uint32_t n);
 // 198. House Robber
 int rob(int* nums, int numsSize);
+int rob(vector<int>& nums);
 // 199. Binary Tree Right Side View
 int* rightSideView(struct TreeNode* root, int* returnSize);
 vector<int> rightSideView(TreeNode* root);
@@ -343,6 +344,8 @@ struct ListNode* oddEvenList(struct ListNode* head);
 vector<string> findItinerary(vector<vector<string>>&tickets);
 // 334. Increasing Triplet Subsequence
 bool increasingTriplet(int* nums, int numsSize);
+// 337. House Robber III
+int rob(struct TreeNode* root);
 // 338. Counting Bits
 int* countBits(int n, int* returnSize);
 // 341. Flatten Nested List Iterator
