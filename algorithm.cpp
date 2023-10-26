@@ -3061,8 +3061,40 @@ RNode* copyRandomList(RNode* head)
     return newhead->next;
 }
 
-
 // 139. Word Break
+bool findwords(char* target, char** wordDict, int wordDictSize)
+{
+    for (int i = 0; i < wordDictSize; i++) {
+        if (strlen(target) == strlen(wordDict[i])) {
+            if (0 == strcmp(target, wordDict[i]))
+                return true;
+        }
+    }
+    return false;
+}
+bool wordBreak(char* s, char** wordDict, int wordDictSize)
+{
+    int len = (int)strlen(s);
+    bool* dp = (bool*)calloc(len + 1, sizeof(bool));
+    bool res = false;
+    char target[21] = { 0 };
+    dp[0] = true;
+    for (int i = 1; i <= len; i++) {
+        for (int j = i - 1; j >= 0 && j >= i - 20; j--) {
+            if (dp[j]) {
+                strncpy(target, &s[j], i - j);
+                target[i - j] = '\0';
+                if (findwords(target, wordDict, wordDictSize)) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+    }
+    res = dp[len];
+    free(dp);
+    return res;
+}
 bool wordBreak(string s, vector<string>& wordDict)
 {
     if (wordDict.size() == 0) return false;

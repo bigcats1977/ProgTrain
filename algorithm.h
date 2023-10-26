@@ -194,6 +194,7 @@ int singleNumberII(int* nums, int numsSize);
 // 138. Copy List with Random Pointer
 Node* copyRandomList(Node* head);
 // 139. Word Break
+bool wordBreak(char* s, char** wordDict, int wordDictSize);
 bool wordBreak(string s, vector<string>&wordDict);
 // 141. Linked List Cycle
 bool hasCycle(struct ListNode* head);
