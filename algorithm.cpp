@@ -1333,6 +1333,27 @@ bool isValidSudoku(char** board, int boardSize, int* boardColSize)
     return true;
 }
 
+// 50. Pow(x, n)
+double myPow(double x, int n)
+{
+    if (x == 1)
+        return 1;
+    if (n == 0)
+        return 1;
+    if (n == INT_MIN)
+        return 0;
+    if (n < 0) {
+        x = 1 / x;
+        n = fabs(n);
+        // n == INT_MIN C how to resolve
+    }
+    double temp = myPow(x, n / 2);
+    temp *= temp;
+    if (n % 2)
+        temp *= x;
+    return temp;
+}
+
 // 53. Maximum Subarray
 int maxSubArray(int* nums, int numsSize)
 {

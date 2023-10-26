@@ -78,6 +78,8 @@ int** permuteUnique(int* nums, int numsSize, int* returnSize, int** returnColumn
 void rotate(int** matrix, int matrixSize, int* matrixColSize);
 // 49. Group Anagrams
 char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnColumnSizes);
+// 50. Pow(x, n)
+double myPow(double x, int n);
 // 53. Maximum Subarray
 int maxSubArray(int* nums, int numsSize);
 // 54. Spiral Matrix
