@@ -5380,6 +5380,20 @@ int lengthOfLIS(int* nums, int numsSize)
     }
     return dpLIS(nums, numsSize, dp, 0, -1);
 }
+int lengthOfLIS(vector<int>& nums)
+{
+    int n = (int)nums.size();
+    vector<int> dp(n, 1);
+    int res = 1;
+    for (int i = 1; i < n; i++) {
+        for (int j = 0; j < i; j++) {
+            if (nums[i] > nums[j])
+                dp[i] = max(dp[i], dp[j] + 1);
+        }
+        res = max(res, dp[i]);
+    }
+    return res;
+}
 
 // 316. Remove Duplicate Letters
 char* removeDuplicateLetters(char* s)
