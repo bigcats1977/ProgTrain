@@ -1720,6 +1720,40 @@ int* plusOne(int* digits, int digitsSize, int* returnSize)
     return &res[1];
 }
 
+// 67. Add Binary
+char* addBinary(char* a, char* b)
+{
+    int lena = (int)strlen(a);
+    int lenb = (int)strlen(b);
+    int len = lena > lenb ? lena : lenb;
+    char* res = (char*)calloc(len + 2, sizeof(char));
+    int sum = 0;
+    int pos = len;
+
+    while (lena > 0 && lenb > 0) {
+        sum += a[lena - 1] - '0' + b[lenb - 1] - '0';
+        res[pos--] = sum % 2 + '0';
+        sum /= 2;
+        lena--, lenb--;
+    }
+    while (lena > 0) {
+        sum += a[lena - 1] - '0';
+        res[pos--] = sum % 2 + '0';
+        sum /= 2;
+        lena--;
+    }
+    while (lenb > 0) {
+        sum += b[lenb - 1] - '0';
+        res[pos--] = sum % 2 + '0';
+        sum /= 2;
+        lenb--;
+    }
+    if (sum > 0)
+        res[pos--] = '1';
+
+    return &res[pos+1];
+}
+
 // 70. Climbing Stairs
 int climbStairs(int n)
 {
