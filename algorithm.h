@@ -14,6 +14,7 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
 // 5. Longest Palindromic Substring
 char* longestPalindromeI(char* s);
 string longestPalindromeI(string s);
+string longestPalindromeDP(string s);
 // 7. Reverse Integer
 int reverse(int x);
 // 8. String to Integer (atoi)
@@ -180,6 +181,7 @@ int* getRow(int rowIndex, int* returnSize);
 vector<int> getRow(int rowIndex);
 // 120. Triangle
 int minimumTotal(int** triangle, int triangleSize, int* triangleColSize);
+int minimumTotal(vector<vector<int>>& triangle);
 // 121. Best Time to Buy and Sell Stock
 int maxProfit(int* prices, int pricesSize);
 int maxProfit(vector<int>& prices);
@@ -477,6 +479,8 @@ struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2);
 int leastInterval(char* tasks, int tasksSize, int n);
 // 643. Maximum Average Subarray I
 double findMaxAverage(int* nums, int numsSize, int k);
+// 647. Palindromic Substrings
+int countSubstrings(string s);
 // 649. Dota2 Senate
 char* predictPartyVictory(char* senate);
 // 653. Two Sum IV - Input is a BST

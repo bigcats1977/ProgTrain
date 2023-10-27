@@ -209,6 +209,12 @@ string longestPalindromeI(string s)
     }
     return s.substr(start, maxlen);
 }
+string longestPalindromeDP(string s)
+{
+    int n = (int)s.size();
+    vector<vector<int>> dp(n, vector<int>(n, 0));
+    return 0;
+}
 
 // 7. Reverse Integer
 int reverse(int x)
@@ -2786,14 +2792,6 @@ vector<int> getRow(int rowIndex)
 }
 
 // 120. Triangle
-//[[-1], [2, 3], [1, -1, -3]]
-//int minTotalUtil(int** triangle, int m, int h, int j)
-//{
-//    if (h == m) {
-//        return 0;
-//    }
-//    return triangle[h][j] + (int)fmin(minTotalUtil(triangle, m, h + 1, j), minTotalUtil(triangle, m, h + 1, j + 1));
-//}
 int minimumTotal(int** triangle, int triangleSize, int* triangleColSize)
 {
     //return minTotalUtil(triangle, triangleSize, 0, 0);
@@ -2821,6 +2819,27 @@ int minimumTotal(int** triangle, int triangleSize, int* triangleColSize)
         free(total[i]);
     free(total);
     return sum;
+}
+int minimumTotal(vector<vector<int>>& triangle)
+{
+    vector<vector<int>> dp;
+    vector<int> sums;
+    sums.push_back(triangle[0][0]);
+    dp.push_back(sums);
+    for (size_t i = 1; i < triangle.size(); i++) {
+        sums.clear();
+        for (size_t j = 0; j < triangle[i].size(); j++) {
+            if (j == 0)
+                sums.push_back(dp[i - 1][j] + triangle[i][j]);
+            else if (j == triangle[i].size() - 1)
+                sums.push_back(dp[i - 1][j - 1] + triangle[i][j]);
+            else
+                sums.push_back(min(dp[i - 1][j - 1], dp[i - 1][j]) + triangle[i][j]);
+        }
+        dp.push_back(sums);
+    }
+
+    return *min_element(dp[triangle.size()-1].begin(), dp[triangle.size()-1].end());
 }
 
 // 121. Best Time to Buy and Sell Stock
@@ -7572,6 +7591,49 @@ double findMaxAverage(int* nums, int numsSize, int k)
         maxave = maxave < sum ? sum : maxave;
     }
     return maxave / k;
+}
+
+// 647. Palindromic Substrings
+int extend(string s, int left, int right)
+{
+    int res = 0;
+    while (left >= 0 && right < s.size() && s[left] == s[right]) {
+        res++;
+        left--;
+        right++;
+    }
+    return res;
+}
+int countSubstrings(string s)
+{
+    int result = 0;
+    for (int i = 0; i < s.size(); i++) {
+        result += extend(s, i, i);
+        result += extend(s, i, i + 1);
+    }
+    return result;
+#if 0
+    int n = s.size();
+    int result = 0;
+    vector<vector<bool>> dp(n, vector<bool>(n, false));
+    for (int i = n-1; i >=0; i--) {
+        for (int j = i; j < n; j++) {
+            if (s[i] == s[j]) {
+                if (j - i <= 1)
+                {
+                    result++;
+                    dp[i][j] = true;
+                }
+                else if (dp[i + 1][j - 1])
+                {
+                    result++;
+                    dp[i][j] = true;
+                }
+            }
+        }
+    }
+    return result;
+#endif
 }
 
 // 649. Dota2 Senate
