@@ -27,6 +27,7 @@ FUNCNAME g_tFuncName[] = {
     {56,    TestCase_56  },
     {59,    TestCase_59  },
     {62,    TestCase_62  },
+    {67,    TestCase_67  },
     {69,    TestCase_69  },
     {75,    TestCase_75  },
     {76,    TestCase_76  },
@@ -151,6 +152,19 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_67()
+{
+    string a, b;
+
+    a = "1";
+    b = "111";
+    addBinary(&*a.begin(), &*b.begin());
+
+    a = "1010";
+    b = "1011";
+    addBinary(&*a.begin(), &*b.begin());
+}
 
 void TestCase_274()
 {

@@ -13,6 +13,7 @@ int lengthOfLongestSubstring(char* s);
 double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size);
 // 5. Longest Palindromic Substring
 char* longestPalindromeI(char* s);
+string longestPalindromeI(string s);
 // 7. Reverse Integer
 int reverse(int x);
 // 8. String to Integer (atoi)
@@ -103,6 +104,8 @@ int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid);
 int mySqrt(int x);
 // 66. Plus One
 int* plusOne(int* digits, int digitsSize, int* returnSize);
+// 67. Add Binary
+char* addBinary(char* a, char* b);
 // 70. Climbing Stairs
 int climbStairs(int n);
 // 72. Edit Distance
@@ -142,6 +145,7 @@ int numTrees(int n);
 bool isValidBST(struct TreeNode* root);
 // 100. Same Tree
 bool isSameTree(struct TreeNode* p, struct TreeNode* q);
+bool isSameTree2(TreeNode* p, TreeNode* q);
 // 101. Symmetric Tree
 bool isSymmetric(struct TreeNode* root);
 // 102. Binary Tree Level Order Traversal
@@ -334,6 +338,7 @@ struct TreeNode* deserialize(char* data);
 char* getHint(char* secret, char* guess);
 // 300. Longest Increasing Subsequence
 int lengthOfLIS(int* nums, int numsSize);
+int lengthOfLIS(vector<int>& nums);
 // 316. Remove Duplicate Letters
 char* removeDuplicateLetters(char* s);
 // 322. Coin Change

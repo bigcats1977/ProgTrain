@@ -189,6 +189,26 @@ char* longestPalindromeI(char* s)
     memcpy(ans, &s[start], maxlen);
     return ans;
 }
+int maxpallen(string s, int left, int right) {
+    while (left >= 0 && right < (int)s.size() && s[left] == s[right])
+        left--, right++;
+    return right - left - 1;
+}
+string longestPalindromeI(string s)
+{
+    int len = 0;
+    int maxlen = 0;
+    int start = 0;
+    for (int i = 0; i < (int)s.size(); i++) {
+        len = max(maxpallen(s, i, i), maxpallen(s, i, i + 1));
+        if (len > maxlen) {
+            maxlen = len;
+            start = i - (maxlen-1) / 2;
+
+        }
+    }
+    return s.substr(start, maxlen);
+}
 
 // 7. Reverse Integer
 int reverse(int x)
@@ -1700,6 +1720,40 @@ int* plusOne(int* digits, int digitsSize, int* returnSize)
     return &res[1];
 }
 
+// 67. Add Binary
+char* addBinary(char* a, char* b)
+{
+    int lena = (int)strlen(a);
+    int lenb = (int)strlen(b);
+    int len = lena > lenb ? lena : lenb;
+    char* res = (char*)calloc(len + 2, sizeof(char));
+    int sum = 0;
+    int pos = len;
+
+    while (lena > 0 && lenb > 0) {
+        sum += a[lena - 1] - '0' + b[lenb - 1] - '0';
+        res[pos--] = sum % 2 + '0';
+        sum /= 2;
+        lena--, lenb--;
+    }
+    while (lena > 0) {
+        sum += a[lena - 1] - '0';
+        res[pos--] = sum % 2 + '0';
+        sum /= 2;
+        lena--;
+    }
+    while (lenb > 0) {
+        sum += b[lenb - 1] - '0';
+        res[pos--] = sum % 2 + '0';
+        sum /= 2;
+        lenb--;
+    }
+    if (sum > 0)
+        res[pos--] = '1';
+
+    return &res[pos+1];
+}
+
 // 70. Climbing Stairs
 int climbStairs(int n)
 {
@@ -2277,6 +2331,18 @@ bool isSameTree(struct TreeNode* p, struct TreeNode* q)
     if (!isSameTree(p->right, q->right))
         return false;
     return true;
+}
+bool isSameTree2(TreeNode* p, TreeNode* q)
+{
+    if (!p && !q)
+        return true;
+    if ((!p && q) || (p && !q))
+        return false;
+    if (p->val != q->val)
+        return false;
+    if (!isSameTree2(p->left, q->left))
+        return false;
+    return isSameTree2(p->right, q->right);
 }
 
 // 101. Symmetric Tree
@@ -5391,6 +5457,20 @@ int lengthOfLIS(int* nums, int numsSize)
             dp[i][j] = -1;
     }
     return dpLIS(nums, numsSize, dp, 0, -1);
+}
+int lengthOfLIS(vector<int>& nums)
+{
+    int n = (int)nums.size();
+    vector<int> dp(n, 1);
+    int res = 1;
+    for (int i = 1; i < n; i++) {
+        for (int j = 0; j < i; j++) {
+            if (nums[i] > nums[j])
+                dp[i] = max(dp[i], dp[j] + 1);
+        }
+        res = max(res, dp[i]);
+    }
+    return res;
 }
 
 // 316. Remove Duplicate Letters
