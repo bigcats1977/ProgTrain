@@ -100,12 +100,14 @@ int uniquePaths2(int m, int n);
 // 63. Unique Paths II
 int uniquePathsWithObstacles(int** obstacleGrid, int obstacleGridSize, int* obstacleGridColSize);
 int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid);
-// 69. Sqrt(x)
-int mySqrt(int x);
+// 64. Minimum Path Sum
+int minPathSum(int** grid, int gridSize, int* gridColSize);
 // 66. Plus One
 int* plusOne(int* digits, int digitsSize, int* returnSize);
 // 67. Add Binary
 char* addBinary(char* a, char* b);
+// 69. Sqrt(x)
+int mySqrt(int x);
 // 70. Climbing Stairs
 int climbStairs(int n);
 // 72. Edit Distance

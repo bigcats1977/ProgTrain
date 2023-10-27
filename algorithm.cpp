@@ -1681,24 +1681,35 @@ int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid)
     return dp[m-1][n-1];
 }
 
-// 69. Sqrt(x)
-int mySqrt(int x)
+// 64. Minimum Path Sum
+int minPathSum(int** grid, int gridSize, int* gridColSize)
 {
-    int left = 1, right = x;
-    int mid = 0, val;
-    if (x <= 0)
-        return 0;
-    while (left <= right) {
-        mid = left + (right - left) / 2;
-        val = x / mid;
-        if (val == mid)
-            return mid;
-        if (val > mid)
-            left = mid + 1;
-        else
-            right = mid - 1;
+    int i, j;
+    int m = gridSize, n = gridColSize[0];
+    int** dp = (int**)malloc(m * sizeof(int*));
+    int sum = 0;
+    for (i = 0; i < m; i++) {
+        dp[i] = (int*)malloc(n * sizeof(int));
+        sum += grid[i][0];
+        dp[i][0] = sum;
     }
-    return right;
+    sum = 0;
+    for (j = 0; j < n; j++) {
+        sum += grid[0][j];
+        dp[0][j] = sum;
+    }
+    for (i = 1; i < m; i++) {
+        for (j = 1; j < n; j++) {
+            dp[i][j] = grid[i][j] + (dp[i-1][j] > dp[i][j-1] ? dp[i][j-1]:dp[i-1][j]);
+        }
+    }
+    sum = dp[m - 1][n - 1];
+
+    for (i = 0; i < m; i++)
+        free(dp[i]);
+    free(dp);    
+
+    return sum;
 }
 
 // 66. Plus One
@@ -1751,7 +1762,27 @@ char* addBinary(char* a, char* b)
     if (sum > 0)
         res[pos--] = '1';
 
-    return &res[pos+1];
+    return &res[pos + 1];
+}
+
+// 69. Sqrt(x)
+int mySqrt(int x)
+{
+    int left = 1, right = x;
+    int mid = 0, val;
+    if (x <= 0)
+        return 0;
+    while (left <= right) {
+        mid = left + (right - left) / 2;
+        val = x / mid;
+        if (val == mid)
+            return mid;
+        if (val > mid)
+            left = mid + 1;
+        else
+            right = mid - 1;
+    }
+    return right;
 }
 
 // 70. Climbing Stairs
