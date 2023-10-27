@@ -2332,6 +2332,18 @@ bool isSameTree(struct TreeNode* p, struct TreeNode* q)
         return false;
     return true;
 }
+bool isSameTree2(TreeNode* p, TreeNode* q)
+{
+    if (!p && !q)
+        return true;
+    if ((!p && q) || (p && !q))
+        return false;
+    if (p->val != q->val)
+        return false;
+    if (!isSameTree2(p->left, q->left))
+        return false;
+    return isSameTree2(p->right, q->right);
+}
 
 // 101. Symmetric Tree
 bool CompTree(struct TreeNode* left, struct TreeNode *right)

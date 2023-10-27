@@ -145,6 +145,7 @@ int numTrees(int n);
 bool isValidBST(struct TreeNode* root);
 // 100. Same Tree
 bool isSameTree(struct TreeNode* p, struct TreeNode* q);
+bool isSameTree2(TreeNode* p, TreeNode* q);
 // 101. Symmetric Tree
 bool isSymmetric(struct TreeNode* root);
 // 102. Binary Tree Level Order Traversal
