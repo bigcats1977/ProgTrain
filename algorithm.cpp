@@ -189,6 +189,26 @@ char* longestPalindromeI(char* s)
     memcpy(ans, &s[start], maxlen);
     return ans;
 }
+int maxpallen(string s, int left, int right) {
+    while (left >= 0 && right < (int)s.size() && s[left] == s[right])
+        left--, right++;
+    return right - left - 1;
+}
+string longestPalindromeI(string s)
+{
+    int len = 0;
+    int maxlen = 0;
+    int start = 0;
+    for (int i = 0; i < (int)s.size(); i++) {
+        len = max(maxpallen(s, i, i), maxpallen(s, i, i + 1));
+        if (len > maxlen) {
+            maxlen = len;
+            start = i - (maxlen-1) / 2;
+
+        }
+    }
+    return s.substr(start, maxlen);
+}
 
 // 7. Reverse Integer
 int reverse(int x)

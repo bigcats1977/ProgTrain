@@ -13,6 +13,7 @@ int lengthOfLongestSubstring(char* s);
 double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size);
 // 5. Longest Palindromic Substring
 char* longestPalindromeI(char* s);
+string longestPalindromeI(string s);
 // 7. Reverse Integer
 int reverse(int x);
 // 8. String to Integer (atoi)
