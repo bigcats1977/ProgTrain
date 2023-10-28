@@ -9329,6 +9329,29 @@ bool uniqueOccurrences(int* arr, int arrSize)
     return true;
 }
 
+// 1220. Count Vowels Permutation
+int countVowelPermutation(int n)
+{
+    int MOD = 1000000007;
+    vector<long long int> cur(5, 1);
+    vector<long long int> pre(5, 1);
+    int sum = 0, i;
+
+    for (i = 2; i <= n; i++) {
+        cur[0] = pre[1] % MOD;
+        cur[1] = (pre[0] + pre[2]) % MOD;
+        cur[2] = (pre[0] + pre[1] + pre[3] + pre[4]) % MOD;
+        cur[3] = (pre[2] + pre[4]) % MOD;
+        cur[4] = pre[0] % MOD;
+        pre = cur;
+    }
+    for (i = 0; i < 5; i++) {
+        sum = (sum + cur[i]) % MOD;
+    }
+
+    return sum;
+}
+
 // 1239. Maximum Length of a Concatenated String with Unique Characters
 int maxLength(char** arr, int arrSize)
 {
