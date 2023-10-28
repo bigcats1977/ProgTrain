@@ -1555,6 +1555,22 @@ int** insert(int** intervals, int intervalsSize, int* intervalsColSize, int* new
     return ans;
 }
 
+// 58. Length of Last Word
+int lengthOfLastWord(string s)
+{
+    int i, res = 0;
+    for (i = s.size() - 1; i >= 0; i--)
+        if (s[i] != ' ')
+            break;
+    for (; i >= 0; i--) {
+        if (s[i] == ' ')
+            break;
+        res++;
+    }
+
+    return res;
+}
+
 // 59. Spiral Matrix II
 int** generateMatrix(int n, int* returnSize, int** returnColumnSizes)
 {

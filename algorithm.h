@@ -92,6 +92,8 @@ int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* retu
 vector<vector<int>> merge(vector<vector<int>>& intervals);
 // 57. Insert Interval
 int** insert(int** intervals, int intervalsSize, int* intervalsColSize, int* newInterval, int newIntervalSize, int* returnSize, int** returnColumnSizes);
+// 58. Length of Last Word
+int lengthOfLastWord(string s);
 // 59. Spiral Matrix II
 int** generateMatrix(int n, int* returnSize, int** returnColumnSizes);
 // 62. Unique Paths
