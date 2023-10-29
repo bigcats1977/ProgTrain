@@ -319,6 +319,7 @@ int* maxSlidingWindow(int* nums, int numsSize, int k, int* returnSize);
 bool searchMatrixII(vector<vector<int>> matrix, int matrixSize, int* matrixColSize, int target);
 // 242. Valid Anagram
 bool isAnagram(char* s, char* t);
+bool isAnagram(string s, string t);
 // 257. Binary Tree Paths
 char** binaryTreePaths(struct TreeNode* root, int* returnSize);
 // 263. Ugly Number
@@ -508,6 +509,8 @@ int search(int* nums, int numsSize, int target);
 // 707. Design Linked List
 // 713. Subarray Product Less Than K
 int numSubarrayProductLessThanK(int* nums, int numsSize, int k);
+// 714. Best Time to Buy and Sell Stock with Transaction Fee
+int maxProfit(int* prices, int pricesSize, int fee);
 // MyLinkedList
 // 722. Remove Comments
 char** removeComments(char** source, int sourceSize, int* returnSize);

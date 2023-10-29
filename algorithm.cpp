@@ -2876,6 +2876,13 @@ int maxProfit(vector<int>& prices)
 int maxProfitII(int* prices, int pricesSize)
 {
     int profile = 0;
+    for (int i = 1; i < pricesSize; i++) {
+        if (prices[i] > prices[i - 1])
+            profile += prices[i] - prices[i - 1];
+    }
+    return profile;
+#if 0
+    int profile = 0;
     int prePeak = 0;
     int i, j;
     for (i = 1; i < pricesSize; i++) {
@@ -2891,6 +2898,7 @@ int maxProfitII(int* prices, int pricesSize)
         }
     }
     return profile;
+#endif
 }
 
 // 125. Valid Palindrome
@@ -5086,6 +5094,21 @@ bool isAnagram(char* s, char* t)
         if (nums[t[i]-'a'] < 0)
             return false;
     }
+    return true;
+}
+bool isAnagram(string s, string t)
+{
+    int i;
+    vector<int> freqs(26, 0), freqt(26, 0);
+    if (s.size() != t.size())
+        return false;
+    for (i = 0; i < (int)s.size(); i++) {
+        freqs[s[i] - 'a']++;
+        freqt[t[i] - 'a']++;
+    }
+    for (i = 0; i < 26; i++)
+        if (freqs[i] != freqt[i])
+            return false;
     return true;
 }
 
@@ -7930,6 +7953,24 @@ int numSubarrayProductLessThanK(int* nums, int numsSize, int k)
     }
 
     return count;
+}
+
+// 714. Best Time to Buy and Sell Stock with Transaction Fee
+int maxProfit(int* prices, int pricesSize, int fee)
+{
+    int profile = 0;
+    int* dp = (int*)malloc(pricesSize * sizeof(int));
+    dp[0] = 0;
+    int maxScore = 0 - prices[0];
+    for (int i = 1; i < pricesSize; i++) {
+        int val = prices[i] - fee + maxScore;
+        dp[i] = dp[i - 1] > val ? dp[i - 1] : val;
+        maxScore = maxScore > dp[i] - prices[i] ? maxScore : dp[i] - prices[i];
+    }
+
+    profile = dp[pricesSize - 1];
+    free(dp);
+    return profile;
 }
 
 // 722. Remove Comments
