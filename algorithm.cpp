@@ -1559,7 +1559,7 @@ int** insert(int** intervals, int intervalsSize, int* intervalsColSize, int* new
 int lengthOfLastWord(string s)
 {
     int i, res = 0;
-    for (i = s.size() - 1; i >= 0; i--)
+    for (i = (int)s.size() - 1; i >= 0; i--)
         if (s[i] != ' ')
             break;
     for (; i >= 0; i--) {
@@ -2870,6 +2870,27 @@ int maxProfit(vector<int>& prices)
         maxprofile = max(maxprofile, maxprice[i] - prices[i]);
     }
     return maxprofile;
+}
+
+// 122. Best Time to Buy and Sell Stock II
+int maxProfitII(int* prices, int pricesSize)
+{
+    int profile = 0;
+    int prePeak = 0;
+    int i, j;
+    for (i = 1; i < pricesSize; i++) {
+        if ((prices[i] > prices[i - 1]) &&
+            ((i < pricesSize - 1 && prices[i] >= prices[i + 1]) || (i == pricesSize - 1))) {
+            int minp = INT_MAX;
+            for (j = i - 1; j >= prePeak; j--) {
+                if (prices[j] < minp)
+                    minp = prices[j];
+            }
+            prePeak = i;
+            profile += prices[i] - minp;
+        }
+    }
+    return profile;
 }
 
 // 125. Valid Palindrome
