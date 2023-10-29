@@ -6776,6 +6776,21 @@ int findMinArrowShots(int** points, int pointsSize, int* pointsColSize)
     return res;
 }
 
+// 458. Poor Pigs
+int poorPigs(int buckets, int minutesToDie, int minutesToTest)
+{
+    int times = (minutesToTest / minutesToDie) + 1;
+    int used = times;
+    int count = 1;
+    if (buckets == 1)
+        return 0;
+    while (times < buckets) {
+        times = times * used;
+        count++;
+    }
+    return count;
+}
+
 // 459. Repeated Substring Pattern
 bool repeatedSubstringPattern(char* s)
 {

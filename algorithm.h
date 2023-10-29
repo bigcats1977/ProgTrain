@@ -423,6 +423,8 @@ int compress(char* chars, int charsSize);
 struct TreeNode* deleteNode(struct TreeNode* root, int key);
 // 452. Minimum Number of Arrows to Burst Balloons
 int findMinArrowShots(int** points, int pointsSize, int* pointsColSize);
+// 458. Poor Pigs
+int poorPigs(int buckets, int minutesToDie, int minutesToTest);
 // 459. Repeated Substring Pattern
 bool repeatedSubstringPattern(char* s);
 // 477. Total Hamming Distance
