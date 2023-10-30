@@ -41,6 +41,7 @@ FUNCNAME g_tFuncName[] = {
     {113,   TestCase_113 },
     {118,   TestCase_118 },
     {120,   TestCase_120 },
+    {122,   TestCase_122 },
     {125,   TestCase_125 },
     {130,   TestCase_130 },
     {136,   TestCase_136 },
@@ -133,6 +134,7 @@ FUNCNAME g_tFuncName[] = {
     {1091,  TestCase_1091},
     {1143,  TestCase_1143},
     {1207,  TestCase_1207},
+    {1220,  TestCase_1220},
     {1239,  TestCase_1239},
     {1337,  TestCase_1337},
     {1361,  TestCase_1361},
@@ -152,6 +154,20 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_122()
+{
+    vector<int> prices;
+    prices = { 5,2,3,2,6,6,2,9,1,0,7,4,5,0 };
+
+    maxProfitII(prices.data(), (int)prices.size());
+}
+
+void TestCase_1220()
+{
+    for(int i=1;i<=5;i++)
+        countVowelPermutation(i);
+}
 
 void TestCase_67()
 {

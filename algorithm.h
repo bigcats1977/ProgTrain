@@ -26,6 +26,7 @@ int maxArea(vector<int>& height);
 char* intToRoman(int num);
 // 14. Longest Common Prefix
 char* longestCommonPrefix(char** strs, int strsSize);
+string longestCommonPrefix(vector<string>& strs);
 // 15. 3Sum
 int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
 // 16. 3Sum Closest
@@ -38,6 +39,7 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n);
 bool isValid(char* s);
 // 21. Merge Two Sorted Lists
 struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2);
+ListNode* mergeTwoListsI(ListNode* list1, ListNode* list2);
 // 22. Generate Parentheses
 char** generateParenthesis(int n, int* returnSize);
 // 24. Swap Nodes in Pairs
@@ -93,6 +95,8 @@ int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* retu
 vector<vector<int>> merge(vector<vector<int>>& intervals);
 // 57. Insert Interval
 int** insert(int** intervals, int intervalsSize, int* intervalsColSize, int* newInterval, int newIntervalSize, int* returnSize, int** returnColumnSizes);
+// 58. Length of Last Word
+int lengthOfLastWord(string s);
 // 59. Spiral Matrix II
 int** generateMatrix(int n, int* returnSize, int** returnColumnSizes);
 // 62. Unique Paths
@@ -185,6 +189,8 @@ int minimumTotal(vector<vector<int>>& triangle);
 // 121. Best Time to Buy and Sell Stock
 int maxProfit(int* prices, int pricesSize);
 int maxProfit(vector<int>& prices);
+// 122. Best Time to Buy and Sell Stock II
+int maxProfitII(int* prices, int pricesSize);
 // 125. Valid Palindrome
 bool isPalindrome(char* s);
 // 130. Surrounded Regions
@@ -317,6 +323,7 @@ int* maxSlidingWindow(int* nums, int numsSize, int k, int* returnSize);
 bool searchMatrixII(vector<vector<int>> matrix, int matrixSize, int* matrixColSize, int target);
 // 242. Valid Anagram
 bool isAnagram(char* s, char* t);
+bool isAnagram(string s, string t);
 // 257. Binary Tree Paths
 char** binaryTreePaths(struct TreeNode* root, int* returnSize);
 // 263. Ugly Number
@@ -423,6 +430,8 @@ int compress(char* chars, int charsSize);
 struct TreeNode* deleteNode(struct TreeNode* root, int key);
 // 452. Minimum Number of Arrows to Burst Balloons
 int findMinArrowShots(int** points, int pointsSize, int* pointsColSize);
+// 458. Poor Pigs
+int poorPigs(int buckets, int minutesToDie, int minutesToTest);
 // 459. Repeated Substring Pattern
 bool repeatedSubstringPattern(char* s);
 // 477. Total Hamming Distance
@@ -506,6 +515,8 @@ int search(int* nums, int numsSize, int target);
 // 707. Design Linked List
 // 713. Subarray Product Less Than K
 int numSubarrayProductLessThanK(int* nums, int numsSize, int k);
+// 714. Best Time to Buy and Sell Stock with Transaction Fee
+int maxProfit(int* prices, int pricesSize, int fee);
 // MyLinkedList
 // 722. Remove Comments
 char** removeComments(char** source, int sourceSize, int* returnSize);
@@ -600,6 +611,8 @@ int longestCommonSubsequence(char* text1, char* text2);
 int maxLevelSum(struct TreeNode* root);
 // 1207. Unique Number of Occurrences
 bool uniqueOccurrences(int* arr, int arrSize);
+// 1220. Count Vowels Permutation
+int countVowelPermutation(int n);
 // 1239. Maximum Length of a Concatenated String with Unique Characters
 int maxLength(char** arr, int arrSize);
 // 1249. Minimum Remove to Make Valid Parentheses
@@ -608,6 +621,8 @@ char* minRemoveToMakeValid(char* s);
 int maximum69Number(int num);
 // 1337. The K Weakest Rows in a Matrix
 vector<int> kWeakestRows(vector<vector<int>>& mat, int k);
+// 1356. Sort Integers by The Number of 1 Bits
+int* sortByBits(int* arr, int arrSize, int* returnSize);
 // 1361. Validate Binary Tree Nodes
 bool validateBinaryTreeNodes(int n, int* leftChild, int leftChildSize, int* rightChild, int rightChildSize);
 // 1425. Constrained Subsequence Sum

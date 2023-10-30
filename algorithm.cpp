@@ -333,6 +333,19 @@ char* longestCommonPrefix(char** strs, int strsSize)
     strs[0][len] = 0;
     return strs[0];
 }
+string longestCommonPrefix(vector<string>& strs)
+{
+    size_t len = strs[0].size();
+    for (size_t i = 1; i < strs.size(); i++) {
+        size_t j = 0;
+        for (j = 0; j < strs[i].size() && j < len; j++) {
+            if (strs[i][j] != strs[0][j])
+                break;
+        }
+        len = min(len, j);
+    }
+    return strs[0].substr(0, len);
+}
 
 // 15. 3Sum
 int threeCmp(const void* a, const void* b)
@@ -578,6 +591,33 @@ struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2)
     prenode = dummy->next;
     free(dummy);
     return prenode;
+}
+ListNode* mergeTwoListsI(ListNode* list1, ListNode* list2)
+{
+    if (!list1)
+        return list2;
+    if (!list2)
+        return list1;
+    ListNode* dummy = (ListNode*)malloc(sizeof(ListNode));
+    ListNode* pre = dummy;
+    while (list1 && list2) {
+        if (list1->val <= list2->val) {
+            pre->next = list1;
+            list1 = list1->next;
+        }
+        else {
+            pre->next = list2;
+            list2 = list2->next;
+        }
+        pre = pre->next;
+    }
+    if (list1)
+        pre->next = list1;
+    if (list2)
+        pre->next = list2;
+    pre = dummy->next;
+    free(dummy);
+    return pre;
 }
 
 // 22. Generate Parentheses
@@ -1559,6 +1599,22 @@ int** insert(int** intervals, int intervalsSize, int* intervalsColSize, int* new
 
     *returnSize = count;
     return ans;
+}
+
+// 58. Length of Last Word
+int lengthOfLastWord(string s)
+{
+    int i, res = 0;
+    for (i = (int)s.size() - 1; i >= 0; i--)
+        if (s[i] != ' ')
+            break;
+    for (; i >= 0; i--) {
+        if (s[i] == ' ')
+            break;
+        res++;
+    }
+
+    return res;
 }
 
 // 59. Spiral Matrix II
@@ -2873,6 +2929,35 @@ int maxProfit(vector<int>& prices)
         maxprofile = max(maxprofile, maxprice[i] - prices[i]);
     }
     return maxprofile;
+}
+
+// 122. Best Time to Buy and Sell Stock II
+int maxProfitII(int* prices, int pricesSize)
+{
+    int profile = 0;
+    for (int i = 1; i < pricesSize; i++) {
+        if (prices[i] > prices[i - 1])
+            profile += prices[i] - prices[i - 1];
+    }
+    return profile;
+#if 0
+    int profile = 0;
+    int prePeak = 0;
+    int i, j;
+    for (i = 1; i < pricesSize; i++) {
+        if ((prices[i] > prices[i - 1]) &&
+            ((i < pricesSize - 1 && prices[i] >= prices[i + 1]) || (i == pricesSize - 1))) {
+            int minp = INT_MAX;
+            for (j = i - 1; j >= prePeak; j--) {
+                if (prices[j] < minp)
+                    minp = prices[j];
+            }
+            prePeak = i;
+            profile += prices[i] - minp;
+        }
+    }
+    return profile;
+#endif
 }
 
 // 125. Valid Palindrome
@@ -5070,6 +5155,21 @@ bool isAnagram(char* s, char* t)
     }
     return true;
 }
+bool isAnagram(string s, string t)
+{
+    int i;
+    vector<int> freqs(26, 0), freqt(26, 0);
+    if (s.size() != t.size())
+        return false;
+    for (i = 0; i < (int)s.size(); i++) {
+        freqs[s[i] - 'a']++;
+        freqt[t[i] - 'a']++;
+    }
+    for (i = 0; i < 26; i++)
+        if (freqs[i] != freqt[i])
+            return false;
+    return true;
+}
 
 // 257. Binary Tree Paths
 int  BTpath[100] = { 0 };
@@ -6779,6 +6879,21 @@ int findMinArrowShots(int** points, int pointsSize, int* pointsColSize)
     return res;
 }
 
+// 458. Poor Pigs
+int poorPigs(int buckets, int minutesToDie, int minutesToTest)
+{
+    int times = (minutesToTest / minutesToDie) + 1;
+    int used = times;
+    int count = 1;
+    if (buckets == 1)
+        return 0;
+    while (times < buckets) {
+        times = times * used;
+        count++;
+    }
+    return count;
+}
+
 // 459. Repeated Substring Pattern
 bool repeatedSubstringPattern(char* s)
 {
@@ -7940,6 +8055,24 @@ int numSubarrayProductLessThanK(int* nums, int numsSize, int k)
     }
 
     return count;
+}
+
+// 714. Best Time to Buy and Sell Stock with Transaction Fee
+int maxProfit(int* prices, int pricesSize, int fee)
+{
+    int profile = 0;
+    int* dp = (int*)malloc(pricesSize * sizeof(int));
+    dp[0] = 0;
+    int maxScore = 0 - prices[0];
+    for (int i = 1; i < pricesSize; i++) {
+        int val = prices[i] - fee + maxScore;
+        dp[i] = dp[i - 1] > val ? dp[i - 1] : val;
+        maxScore = maxScore > dp[i] - prices[i] ? maxScore : dp[i] - prices[i];
+    }
+
+    profile = dp[pricesSize - 1];
+    free(dp);
+    return profile;
 }
 
 // 722. Remove Comments
@@ -9391,6 +9524,29 @@ bool uniqueOccurrences(int* arr, int arrSize)
     return true;
 }
 
+// 1220. Count Vowels Permutation
+int countVowelPermutation(int n)
+{
+    int MOD = 1000000007;
+    vector<long long int> cur(5, 1);
+    vector<long long int> pre(5, 1);
+    int sum = 0, i;
+
+    for (i = 2; i <= n; i++) {
+        cur[0] = pre[1] % MOD;
+        cur[1] = (pre[0] + pre[2]) % MOD;
+        cur[2] = (pre[0] + pre[1] + pre[3] + pre[4]) % MOD;
+        cur[3] = (pre[2] + pre[4]) % MOD;
+        cur[4] = pre[0] % MOD;
+        pre = cur;
+    }
+    for (i = 0; i < 5; i++) {
+        sum = (sum + cur[i]) % MOD;
+    }
+
+    return sum;
+}
+
 // 1239. Maximum Length of a Concatenated String with Unique Characters
 int maxLength(char** arr, int arrSize)
 {
@@ -9485,6 +9641,35 @@ vector<int> kWeakestRows(vector<vector<int>>& mat, int k)
     for (auto x = s.begin(); k > 0; k--, x++) {
         res.push_back(x->second);
     }
+    return res;
+}
+
+// 1356. Sort Integers by The Number of 1 Bits
+int getbits(int n) {
+    int bits = 0;
+    while (n > 0) {
+        if (n & 1)
+            bits++;
+        n >>= 1;
+    }
+    return bits;
+}
+int bitcomp(const void* a, const void* b) {
+    int bitsa = getbits(*(int*)a);
+    int bitsb = getbits(*(int*)b);
+    if (bitsa == bitsb) {
+        return *(int*)a - *(int*)b;
+    }
+    else
+        return bitsa - bitsb;
+}
+int* sortByBits(int* arr, int arrSize, int* returnSize)
+{
+    int* res = (int*)malloc(arrSize * sizeof(int));
+    *returnSize = arrSize;
+    memcpy(res, arr, arrSize * sizeof(int));
+
+    qsort(res, arrSize, sizeof(int), bitcomp);
     return res;
 }
 
