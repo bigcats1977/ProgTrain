@@ -327,6 +327,19 @@ char* longestCommonPrefix(char** strs, int strsSize)
     strs[0][len] = 0;
     return strs[0];
 }
+string longestCommonPrefix(vector<string>& strs)
+{
+    size_t len = strs[0].size();
+    for (size_t i = 1; i < strs.size(); i++) {
+        size_t j = 0;
+        for (j = 0; j < strs[i].size() && j < len; j++) {
+            if (strs[i][j] != strs[0][j])
+                break;
+        }
+        len = min(len, j);
+    }
+    return strs[0].substr(0, len);
+}
 
 // 15. 3Sum
 int threeCmp(const void* a, const void* b)
@@ -572,6 +585,33 @@ struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2)
     prenode = dummy->next;
     free(dummy);
     return prenode;
+}
+ListNode* mergeTwoListsI(ListNode* list1, ListNode* list2)
+{
+    if (!list1)
+        return list2;
+    if (!list2)
+        return list1;
+    ListNode* dummy = (ListNode*)malloc(sizeof(ListNode));
+    ListNode* pre = dummy;
+    while (list1 && list2) {
+        if (list1->val <= list2->val) {
+            pre->next = list1;
+            list1 = list1->next;
+        }
+        else {
+            pre->next = list2;
+            list2 = list2->next;
+        }
+        pre = pre->next;
+    }
+    if (list1)
+        pre->next = list1;
+    if (list2)
+        pre->next = list2;
+    pre = dummy->next;
+    free(dummy);
+    return pre;
 }
 
 // 22. Generate Parentheses

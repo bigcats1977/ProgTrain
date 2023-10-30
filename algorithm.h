@@ -25,6 +25,7 @@ int maxArea(vector<int>& height);
 char* intToRoman(int num);
 // 14. Longest Common Prefix
 char* longestCommonPrefix(char** strs, int strsSize);
+string longestCommonPrefix(vector<string>& strs);
 // 15. 3Sum
 int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
 // 16. 3Sum Closest
@@ -37,6 +38,7 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n);
 bool isValid(char* s);
 // 21. Merge Two Sorted Lists
 struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2);
+ListNode* mergeTwoListsI(ListNode* list1, ListNode* list2);
 // 22. Generate Parentheses
 char** generateParenthesis(int n, int* returnSize);
 // 24. Swap Nodes in Pairs
