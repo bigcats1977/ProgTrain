@@ -9543,10 +9543,6 @@ vector<int> kWeakestRows(vector<vector<int>>& mat, int k)
 }
 
 // 1356. Sort Integers by The Number of 1 Bits
-struct numbits{
-    int val;
-    int bits;
-};
 int getbits(int n) {
     int bits = 0;
     while (n > 0) {
@@ -9557,28 +9553,21 @@ int getbits(int n) {
     return bits;
 }
 int bitcomp(const void* a, const void* b) {
-    struct numbits* pa = (struct numbits*)a;
-    struct numbits* pb = (struct numbits*)b;
-    if (pa->bits == pb->bits) {
-        return pa->val - pb->val;
+    int bitsa = getbits(*(int*)a);
+    int bitsb = getbits(*(int*)b);
+    if (bitsa == bitsb) {
+        return *(int*)a - *(int*)b;
     }
     else
-        return pa->bits - pb->bits;
+        return bitsa - bitsb;
 }
 int* sortByBits(int* arr, int arrSize, int* returnSize)
 {
-    int i;
-    struct numbits* temp = (struct numbits*)malloc(arrSize * sizeof(struct numbits));
     int* res = (int*)malloc(arrSize * sizeof(int));
     *returnSize = arrSize;
-    for (i = 0; i < arrSize; i++) {
-        temp[i].val = arr[i];
-        temp[i].bits = getbits(arr[i]);
-    }
-    qsort(temp, arrSize, sizeof(struct numbits), bitcomp);
-    for (i = 0; i < arrSize; i++)
-        res[i] = temp[i].val;
-    free(temp);
+    memcpy(res, arr, arrSize * sizeof(int));
+
+    qsort(res, arrSize, sizeof(int), bitcomp);
     return res;
 }
 
