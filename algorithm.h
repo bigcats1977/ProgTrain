@@ -615,6 +615,8 @@ char* minRemoveToMakeValid(char* s);
 int maximum69Number(int num);
 // 1337. The K Weakest Rows in a Matrix
 vector<int> kWeakestRows(vector<vector<int>>& mat, int k);
+// 1356. Sort Integers by The Number of 1 Bits
+int* sortByBits(int* arr, int arrSize, int* returnSize);
 // 1361. Validate Binary Tree Nodes
 bool validateBinaryTreeNodes(int n, int* leftChild, int leftChildSize, int* rightChild, int rightChildSize);
 // 1425. Constrained Subsequence Sum

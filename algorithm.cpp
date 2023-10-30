@@ -9542,6 +9542,46 @@ vector<int> kWeakestRows(vector<vector<int>>& mat, int k)
     return res;
 }
 
+// 1356. Sort Integers by The Number of 1 Bits
+struct numbits{
+    int val;
+    int bits;
+};
+int getbits(int n) {
+    int bits = 0;
+    while (n > 0) {
+        if (n & 1)
+            bits++;
+        n >>= 1;
+    }
+    return bits;
+}
+int bitcomp(const void* a, const void* b) {
+    struct numbits* pa = (struct numbits*)a;
+    struct numbits* pb = (struct numbits*)b;
+    if (pa->bits == pb->bits) {
+        return pa->val - pb->val;
+    }
+    else
+        return pa->bits - pb->bits;
+}
+int* sortByBits(int* arr, int arrSize, int* returnSize)
+{
+    int i;
+    struct numbits* temp = (struct numbits*)malloc(arrSize * sizeof(struct numbits));
+    int* res = (int*)malloc(arrSize * sizeof(int));
+    *returnSize = arrSize;
+    for (i = 0; i < arrSize; i++) {
+        temp[i].val = arr[i];
+        temp[i].bits = getbits(arr[i]);
+    }
+    qsort(temp, arrSize, sizeof(struct numbits), bitcomp);
+    for (i = 0; i < arrSize; i++)
+        res[i] = temp[i].val;
+    free(temp);
+    return res;
+}
+
 // 1361. Validate Binary Tree Nodes
 bool bfs1361(int n, int begin, int* left, int* right, int* visited) 
 {
