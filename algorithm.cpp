@@ -1080,6 +1080,23 @@ int jumpII(int* nums, int numsSize) {
     }
     return ans;
 }
+int jumpII(vector<int>& nums)
+{
+    int n = (int)nums.size();
+    if (n <= 1)
+        return 0;
+    int next = 0, cur = 0, res = 0;
+    for (int i = 0; i < n; i++) {
+        next = max(nums[i] + i, next);
+        if (i == cur) {
+            if (cur >= n - 1)
+                return res;
+            res++;
+            cur = next;
+        }
+    }
+    return res;
+}
 
 // 46. Permutations
 int** permuteAns;
@@ -1483,6 +1500,27 @@ bool canJump(int* nums, int numsSize)
             return true;
     }
     return false;
+}
+bool canJump(vector<int>& nums)
+{
+    int n = (int)nums.size();
+    vector<bool> dp(n, false);
+    dp[n - 1] = true;
+    for (int i = n - 2; i >= 0; i--) {
+        if (nums[i] + i >= n)
+            dp[i] = true;
+        else
+        {
+            for (int j = nums[i]; j > 0; j--) {
+                if (dp[i + j])
+                {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+    }
+    return dp[0];
 }
 
 // 56. Merge Intervals
@@ -10677,6 +10715,18 @@ char* removeStars(char* s)
             top--;
     }
     res[top] = '\0';
+    return res;
+}
+
+// 2433. Find The Original Array of Prefix Xor
+int* findArray(int* pref, int prefSize, int* returnSize)
+{
+    int* res = (int*)malloc(prefSize * sizeof(int));
+    *returnSize = prefSize;
+    res[0] = pref[0];
+    for (int i = 1; i < prefSize; i++) {
+        res[i] = pref[i] ^ pref[i-1];
+    }
     return res;
 }
 

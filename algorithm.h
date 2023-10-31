@@ -74,6 +74,7 @@ int trap(int* height, int heightSize);
 char* multiply(char* num1, char* num2);
 // 45. Jump Game II
 int jumpII(int* nums, int numsSize);
+int jumpII(vector<int>& nums);
 // 46. Permutations
 int** permute(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
 // 47. Permutations II
@@ -90,6 +91,7 @@ int maxSubArray(int* nums, int numsSize);
 int* spiralOrder(int** matrix, int matrixSize, int* matrixColSize, int* returnSize);
 // 55. Jump Game
 bool canJump(int* nums, int numsSize);
+bool canJump(vector<int>& nums);
 // 56. Merge Intervals
 int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* returnSize, int** returnColumnSizes);
 vector<vector<int>> merge(vector<vector<int>>& intervals);
@@ -699,6 +701,8 @@ int* fullBloomFlowers(int** flowers, int flowersSize, int* flowersColSize, int* 
 int equalPairs(int** grid, int gridSize, int* gridColSize);
 // 2390. Removing Stars From a String
 char* removeStars(char* s);
+// 2433. Find The Original Array of Prefix Xor
+int* findArray(int* pref, int prefSize, int* returnSize);
 // 2466. Count Ways To Build Good Strings
 int countGoodStrings(int low, int high, int zero, int one);
 // 2483. Minimum Penalty for a Shop
