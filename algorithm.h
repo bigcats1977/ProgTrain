@@ -695,6 +695,8 @@ int* fullBloomFlowers(int** flowers, int flowersSize, int* flowersColSize, int* 
 int equalPairs(int** grid, int gridSize, int* gridColSize);
 // 2390. Removing Stars From a String
 char* removeStars(char* s);
+// 2433. Find The Original Array of Prefix Xor
+int* findArray(int* pref, int prefSize, int* returnSize);
 // 2466. Count Ways To Build Good Strings
 int countGoodStrings(int low, int high, int zero, int one);
 // 2483. Minimum Penalty for a Shop

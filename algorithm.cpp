@@ -10618,6 +10618,18 @@ char* removeStars(char* s)
     return res;
 }
 
+// 2433. Find The Original Array of Prefix Xor
+int* findArray(int* pref, int prefSize, int* returnSize)
+{
+    int* res = (int*)malloc(prefSize * sizeof(int));
+    *returnSize = prefSize;
+    res[0] = pref[0];
+    for (int i = 1; i < prefSize; i++) {
+        res[i] = pref[i] ^ pref[i-1];
+    }
+    return res;
+}
+
 // 2466. Count Ways To Build Good Strings
 int mod = (int)(1e9 + 7);
 int goodstring(int target, int zero, int one, int* dp) {
