@@ -5,6 +5,7 @@
 FUNCNAME g_tFuncName[] = {
     {1,     TestCase_1   },
     {3,     TestCase_3   },
+    {5,     TestCase_5   },
     {7,     TestCase_7   },
     {15,    TestCase_15  },
     {17,    TestCase_17  },
@@ -155,6 +156,17 @@ FUNCNAME g_tFuncName[] = {
     {9999,  TestCase_9999},
 };
 
+void TestCase_5()
+{
+    string s;
+    string out;
+
+    s = "cbbd";
+    out = longestPalindromeDP(s);
+
+    s = "babad";
+    out = longestPalindromeDP(s);
+}
 void TestCase_122()
 {
     vector<int> prices;

@@ -204,7 +204,6 @@ string longestPalindromeI(string s)
         if (len > maxlen) {
             maxlen = len;
             start = i - (maxlen-1) / 2;
-
         }
     }
     return s.substr(start, maxlen);
@@ -212,8 +211,27 @@ string longestPalindromeI(string s)
 string longestPalindromeDP(string s)
 {
     int n = (int)s.size();
-    vector<vector<int>> dp(n, vector<int>(n, 0));
-    return 0;
+    int begin = 0;
+    int maxlen = 1;
+    vector<vector<bool>> dp(n, vector<bool>(n, false));
+    for (int i = n - 1; i >= 0; i--) {
+        for (int j = i; j < n; j++) {
+            if (s[i] == s[j]) {
+                if (j - i <= 1) {
+                    dp[i][j] = true;
+                }
+                else
+                {
+                    dp[i][j] = dp[i + 1][j - 1];
+                }
+            }
+            if (dp[i][j] && j - i + 1 > maxlen) {
+                maxlen = j - i + 1;
+                begin = i;
+            }
+        }
+    }
+    return s.substr(begin, maxlen);
 }
 
 // 7. Reverse Integer
