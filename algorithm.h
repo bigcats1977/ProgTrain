@@ -293,6 +293,8 @@ int findKthLargest(int* nums, int numsSize, int k);
 int** combinationSum3(int k, int n, int* returnSize, int** returnColumnSizes);
 // 217. Contains Duplicate
 bool containsDuplicate(int* nums, int numsSize);
+// 219. Contains Duplicate II
+bool containsNearbyDuplicate(vector<int>& nums, int k);
 // 222. Count Complete Tree Nodes
 int countNodes(struct TreeNode* root);
 // 223. Rectangle Area

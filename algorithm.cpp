@@ -4731,6 +4731,18 @@ bool containsDuplicate(int* nums, int numsSize)
     return false;
 }
 
+// 219. Contains Duplicate II
+bool containsNearbyDuplicate(vector<int>& nums, int k)
+{
+    unordered_map<int, int> umap;
+    for (int i = 0; i < (int)nums.size(); i++) {
+        if (umap.count(nums[i]) && fabs(i - umap[nums[i]] <= k))
+            return true;
+        umap[nums[i]] = i;
+    }
+    return false;
+}
+
 // 222. Count Complete Tree Nodes
 int countNodes(struct TreeNode* root)
 {
