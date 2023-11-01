@@ -1931,6 +1931,33 @@ int minDistance(char* word1, char* word2) {
     return ans;
 }
 
+// 73. Set Matrix Zeroes
+void setZeroes(int** matrix, int matrixSize, int* matrixColSize)
+{
+    int m = matrixSize;
+    int n = matrixColSize[0];
+    bool* cols = (bool*)calloc(n, sizeof(bool));
+    int i, j;
+    for (i = 0; i < m; i++) {
+        bool Row = false;
+        for (j = 0; j < n; j++) {
+            if (matrix[i][j] == 0) {
+                cols[j] = true;
+                Row = true;
+            }
+        }
+        if (Row)
+            memset(matrix[i], 0, n * sizeof(int));
+    }
+    for (j = 0; j < n; j++) {
+        if (cols[j]) {
+            for (i = 0; i < m; i++)
+                matrix[i][j] = 0;
+        }
+    }
+    free(cols);
+}
+
 // 74. Search a 2D Matrix
 bool searchMatrix(int** matrix, int matrixSize, int* matrixColSize, int target)
 {
@@ -7088,6 +7115,48 @@ int* findMode(struct TreeNode* root, int* returnSize)
     }
 #endif
     return result;
+}
+typedef struct {
+    int count;
+    int val;
+}PAIR;
+static bool cmpModeFunc(PAIR a, PAIR b) 
+{
+    return a.count > b.count;
+}
+void inorderMode(TreeNode* node, vector<int> &vals)
+{
+    if (!node)
+        return;
+    inorderMode(node->left, vals);
+    vals.push_back(node->val);
+    inorderMode(node->right, vals);
+}
+vector<int> findMode(TreeNode* root)
+{
+    vector<int> vals;
+    map<int, int> maps;
+
+    inorderMode(root, vals);
+    for (auto i : vals)
+    {
+        maps[i]++;
+    }
+    vector<PAIR> pairs;
+    for (auto i : maps) {
+        PAIR pair;
+        pair.count = i.second;
+        pair.val = i.first;
+        pairs.push_back(pair);
+    }
+    sort(pairs.begin(), pairs.end(), cmpModeFunc);
+    vector<int> res;
+    for (auto p : pairs) {
+        if (p.count == pairs[0].count)
+            res.push_back(p.val);
+    }
+    
+    return res;
 }
 
 // 503. Next Greater Element II

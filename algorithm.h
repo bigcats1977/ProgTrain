@@ -118,6 +118,8 @@ int mySqrt(int x);
 int climbStairs(int n);
 // 72. Edit Distance
 int minDistance(char* word1, char* word2);
+// 73. Set Matrix Zeroes
+void setZeroes(int** matrix, int matrixSize, int* matrixColSize);
 // 74. Search a 2D Matrix
 bool searchMatrix(int** matrix, int matrixSize, int* matrixColSize, int target);
 // 75. Sort Colors
@@ -442,6 +444,7 @@ int findMaxConsecutiveOnes(int* nums, int numsSize);
 int* nextGreaterElement(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize);
 // 501. Find Mode in Binary Search Tree
 int* findMode(struct TreeNode* root, int* returnSize);
+vector<int> findMode(TreeNode* root);
 // 503. Next Greater Element II
 int* nextGreaterElements(int* nums, int numsSize, int* returnSize);
 // 509. Fibonacci Number
