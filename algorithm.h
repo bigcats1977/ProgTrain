@@ -702,6 +702,8 @@ int** findDifference(int* nums1, int nums1Size, int* nums2, int nums2Size, int* 
 vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2);
 // 2251. Number of Flowers in Full Bloom
 int* fullBloomFlowers(int** flowers, int flowersSize, int* flowersColSize, int* people, int peopleSize, int* returnSize);
+// 2265. Count Nodes Equal to Average of Subtree
+int averageOfSubtree(struct TreeNode* root);
 // 2352. Equal Row and Column Pairs
 int equalPairs(int** grid, int gridSize, int* gridColSize);
 // 2390. Removing Stars From a String

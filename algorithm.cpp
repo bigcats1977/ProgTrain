@@ -10777,6 +10777,29 @@ int* fullBloomFlowers(int** flowers, int flowersSize, int* flowersColSize, int* 
     return ans;
 }
 
+// 2265. Count Nodes Equal to Average of Subtree
+void PostAverage(struct TreeNode* node, int* temp)
+{
+    int ltemp[3] = { 0 };
+    int rtemp[3] = { 0 };
+    if (!node)
+        return;
+
+    PostAverage(node->left, ltemp);
+    PostAverage(node->right, rtemp);
+    temp[1] = ltemp[1] + rtemp[1] + node->val;
+    temp[2] = ltemp[2] + rtemp[2] + 1;
+    temp[0] = ltemp[0] + rtemp[0];
+    if (node->val == temp[1] / temp[2])
+        temp[0] ++;
+}
+int averageOfSubtree(struct TreeNode* root)
+{
+    int temp[3] = { 0 };
+
+    PostAverage(root, temp);
+    return temp[0];
+}
 // 2352. Equal Row and Column Pairs
 int equalPairs(int** grid, int gridSize, int* gridColSize)
 {
