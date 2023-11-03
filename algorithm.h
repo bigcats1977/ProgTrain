@@ -393,6 +393,8 @@ int* intersect(int* nums1, int nums1Size, int* nums2, int nums2Size, int* return
 bool isPerfectSquare(int num);
 // 374. Guess Number Higher or Lower
 int guessNumber(int n);
+// 380. Insert Delete GetRandom O(1)
+
 // 383. Ransom Note
 bool canConstruct(char* ransomNote, char* magazine);
 bool canConstruct(string ransomNote, string magazine);

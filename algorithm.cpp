@@ -6251,6 +6251,36 @@ int guessNumber(int n)
     return left;
 }
 
+// 380. Insert Delete GetRandom O(1)
+vector<int> Randoms;
+void RandomizedSet() {
+    Randoms.clear();
+    srand(NULL);
+}
+bool insert(int val) {
+    if(find(Randoms.begin(), Randoms.end(), val) == Randoms.end()) {
+        Randoms.push_back(val);
+        return true;
+    }
+    else
+        return false;
+}
+bool remove(int val) {
+    vector<int>::iterator it;
+    it = find(Randoms.begin(), Randoms.end(), val);
+    if (it == Randoms.end()) {
+        return false;
+    }
+    else {
+        Randoms.erase(it);
+        return true;
+    }
+}
+int getRandom() {
+    int index = (int)(rand() *1.0f / RAND_MAX * Randoms.size());
+    return Randoms[index];
+}
+
 // 383. Ransom Note
 bool canConstruct(char* ransomNote, char* magazine)
 {
