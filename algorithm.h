@@ -322,6 +322,7 @@ struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p,
 struct TreeNode* lowestCommonAncestorBT(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q);
 // 238. Product of Array Except Self
 int* productExceptSelf(int* nums, int numsSize, int* returnSize);
+vector<int> productExceptSelf(vector<int>& nums);
 // 239. Sliding Window Maximum
 int* maxSlidingWindow(int* nums, int numsSize, int k, int* returnSize);
 // 240. Search a 2D Matrix II

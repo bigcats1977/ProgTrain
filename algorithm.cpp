@@ -5157,6 +5157,24 @@ int* productExceptSelf(int* nums, int numsSize, int* returnSize)
     ans[numsSize - 1] = prefix;
     return ans;
 }
+vector<int> productExceptSelf(vector<int>& nums)
+{
+    int i, prefix;
+    int count = (int)nums.size();
+    vector<int> res(count, 0);
+    res[count - 1] = nums[count - 1];
+    for (i = count - 2; i >= 0; i--) {
+        res[i] = res[i + 1] * nums[i];
+    }
+    prefix = nums[0];
+    res[0] = res[1];
+    for (i = 1; i < count - 1; i++) {
+        res[i] = res[i + 1] * prefix;
+        prefix *= nums[i];
+    }
+    res[count - 1] = prefix;
+    return res;
+}
 
 // 239. Sliding Window Maximum
 #define INVALIDVAL -10001
