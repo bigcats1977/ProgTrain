@@ -2475,6 +2475,81 @@ int numTrees(int n)
     return res;
 }
 
+// 97. Interleaving String
+bool calInter(char* s1, char* s2, char* s3, int i, int j, int k, int*** dp) {
+    if (i == strlen(s1) && j == strlen(s2) && k == strlen(s3))
+        return true;
+    if (i > strlen(s1) || j > strlen(s2) || k > strlen(s3))
+        return false;
+    if (dp[i][j][k] != -1)
+        return dp[i][j][k];
+    bool flag = false;
+    if (s1[i] == s3[k]) {
+        flag = flag || calInter(s1, s2, s3, i + 1, j, k + 1, dp);
+    }
+    if (s2[j] == s3[k]) {
+        flag = flag || calInter(s1, s2, s3, i, j + 1, k + 1, dp);
+    }
+    return dp[i][j][k] = flag;
+}
+bool isInterleave(char* s1, char* s2, char* s3) {
+#if 0
+    int n1 = (int)strlen(s1), n2 = (int)strlen(s2), n3 = (int)strlen(s3);
+    if (n1 + n2 != n3)
+        return false;
+
+    int*** dp = (int***)malloc((n1 + 1) * sizeof(int**));
+    int i, j;
+    for (i = 0; i <= n1; i++) {
+        dp[i] = (int**)malloc((n2 + 1) * sizeof(int*));
+        for (j = 0; j <= n2; j++) {
+            dp[i][j] = (int*)malloc((n3 + 1) * sizeof(int));
+            memset(dp[i][j], -1, sizeof(int) * n3);
+        }
+    }
+
+    bool res = calInter(s1, s2, s3, 0, 0, 0, dp);
+
+    for (i = 0; i <= n1; i++) {
+        for (j = 0; j <= n2; j++) {
+            free(dp[i][j]);
+        }
+        free(dp[i]);
+    }
+    free(dp);
+    return res;
+#endif
+    int i, j;
+    int n1 = (int)strlen(s1), n2 = (int)strlen(s2), n3 = (int)strlen(s3);
+    if (n1 + n2 != n3)
+        return false;
+    bool** dp = (bool**)malloc((n1 + 1) * sizeof(bool*));
+    for (i = 0; i <= n1; i++) {
+        dp[i] = (bool*)calloc(n2 + 1, sizeof(bool));
+        if (i == 0)
+            dp[i][0] = true;
+        else if (s1[i - 1] == s3[i - 1])
+            dp[i][0] = dp[i - 1][0];
+    }
+    for (j = 1; j <= n2; j++) {
+        if (s2[j - 1] == s3[j - 1])
+            dp[0][j] = dp[0][j - 1];
+    }
+    for (i = 1; i <= n1; i++)
+        for (j = 1; j <= n2; j++) {
+            if (s3[i + j - 1] == s1[i - 1])
+                dp[i][j] |= dp[i - 1][j];
+            if (s3[i + j - 1] == s2[j - 1])
+                dp[i][j] |= dp[i][j - 1];
+        }
+
+    bool res = dp[n1][n2];
+    for (i = 0; i <= n1; i++)
+        free(dp[i]);
+    free(dp);
+    return res;
+}
+
 // 98. Validate Binary Search Tree
 bool pretravel(struct TreeNode* root, long* preval)
 {

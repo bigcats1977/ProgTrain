@@ -152,6 +152,8 @@ ListNode* reverseBetween(ListNode* head, int left, int right);
 int* inorderTraversal(struct TreeNode* root, int* returnSize);
 // 96. Unique Binary Search Trees
 int numTrees(int n);
+// 97. Interleaving String
+bool isInterleave(char* s1, char* s2, char* s3);
 // 98. Validate Binary Search Tree
 bool isValidBST(struct TreeNode* root);
 // 100. Same Tree
