@@ -9906,6 +9906,39 @@ vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies)
     return res;
 }
 
+// 1441. Build an Array With Stack Operations
+char** buildArray(int* target, int targetSize, int n, int* returnSize)
+{
+    bool* oper = (bool*)calloc(2 * n, sizeof(bool));
+    int cur = 0;
+    int count = 0;
+    int i;
+    for (i = 1; i <= n && cur < targetSize; i++) {
+        if (target[cur] == i) {
+            oper[count++] = true;
+            cur++;
+        }
+        else {
+            oper[count++] = true;
+            oper[count++] = false;
+        }
+    }
+    *returnSize = count;
+    char** res = (char**)malloc(count * sizeof(char*));
+    for (i = 0; i < count; i++) {
+        if (oper[i]) {
+            res[i] = (char*)calloc(5, sizeof(char));
+            memcpy(res[i], "Push", 4);
+        }
+        else {
+            res[i] = (char*)calloc(4, sizeof(char));
+            memcpy(res[i], "{Pop", 3);
+        }
+    }
+    free(oper);
+    return res;
+}
+
 // 1448. Count Good Nodes in Binary Tree
 void calGoodNodes(struct TreeNode* node, int max, int* count)
 {

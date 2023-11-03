@@ -637,6 +637,8 @@ int constrainedSubsetSum(int* nums, int numsSize, int k);
 // 1431. Kids With the Greatest Number of Candies
 bool* kidsWithCandies(int* candies, int candiesSize, int extraCandies, int* returnSize);
 vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies);
+// 1441. Build an Array With Stack Operations
+char** buildArray(int* target, int targetSize, int n, int* returnSize);
 // 1448. Count Good Nodes in Binary Tree
 int goodNodes(struct TreeNode* root);
 // 1456. Maximum Number of Vowels in a Substring of Given Length
