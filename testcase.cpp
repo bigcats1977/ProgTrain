@@ -7,6 +7,7 @@ FUNCNAME g_tFuncName[] = {
     {3,     TestCase_3   },
     {5,     TestCase_5   },
     {7,     TestCase_7   },
+    {13,    TestCase_13  },
     {15,    TestCase_15  },
     {17,    TestCase_17  },
     {19,    TestCase_19  },
@@ -155,6 +156,12 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_13()
+{
+    string s = "DCXXI";
+    romanToInt(&*s.begin());
+}
 
 void TestCase_5()
 {

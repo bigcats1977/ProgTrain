@@ -24,6 +24,8 @@ int maxArea(int* height, int heightSize);
 int maxArea(vector<int>& height);
 // 12. Integer to Roman
 char* intToRoman(int num);
+// 13. Roman to Integer
+int romanToInt(char* s);
 // 14. Longest Common Prefix
 char* longestCommonPrefix(char** strs, int strsSize);
 string longestCommonPrefix(vector<string>& strs);
@@ -207,6 +209,7 @@ char*** partition(char* s, int* returnSize, int** returnColumnSizes);
 int canCompleteCircuit(int* gas, int gasSize, int* cost, int costSize);
 // 135. Candy
 int candy(vector<int>& ratings);
+int candy(int* ratings, int ratingsSize);
 // 136. Single Number
 int singleNumber(int* nums, int numsSize);
 // 137. Single Number II

@@ -338,6 +338,59 @@ char* intToRoman(int num)
     return res;
 }
 
+// 13. Roman to Integer
+int romanToInt(char* s)
+{
+    int base = 1;
+    int val = 0;
+    int res = 0;
+    
+    for (int i = (int)(strlen(s) - 1); i >= 0; i--) {
+        switch (s[i]) {
+        case 'I':
+            val = 1;
+            if (base > 1)
+                val *= -1;
+            res += val;
+            break;
+        case 'V':
+            res += 5;
+            base = 5;
+            break;
+        case 'X':
+            val = 10;
+            if (base <= 10)
+                base = 10;
+            else
+                val = -10;
+            res += val;
+            break;
+        case 'L':
+            res += 50;
+            base = 50;
+            break;
+        case 'C':
+            val = 100;
+            if (base <= 100)
+                base = 100;
+            else
+                val = -100;
+            res += val;
+            break;
+        case 'D':
+            res += 500;
+            base = 500;
+            break;
+        case 'M':
+            res += 1000;
+            base = 1000;
+            break;
+        }
+    }
+
+    return res;
+}
+
 // 14. Longest Common Prefix
 char* longestCommonPrefix(char** strs, int strsSize)
 {
@@ -3341,6 +3394,27 @@ int candy(vector<int>& ratings)
 
     for (i = 0; i < count; i++)
         sum += vec[i];
+    return sum;
+}
+int candy(int* ratings, int ratingsSize)
+{
+    int* dp = (int*)malloc(ratingsSize*sizeof(int));
+    int i, sum = 0;
+    dp[0] = 1;
+    for (i = 1; i < ratingsSize; i++) {
+        if (ratings[i] > ratings[i - 1])
+            dp[i] = dp[i - 1] + 1;
+        else
+            dp[i] = 1;
+    }
+    sum = dp[ratingsSize - 1];
+    for (i = ratingsSize - 2; i >= 0; i--) {
+        if (ratings[i] > ratings[i + 1])
+            dp[i] = dp[i] > (dp[i + 1] + 1) ? dp[i] : (dp[i + 1] + 1);
+        sum += dp[i];
+    }
+
+    free(dp);
     return sum;
 }
 
