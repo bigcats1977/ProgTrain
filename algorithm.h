@@ -656,6 +656,8 @@ int* runningSum(int* nums, int numsSize, int* returnSize);
 double average(int* salary, int salarySize);
 // 1493. Longest Subarray of 1's After Deleting One Element
 int longestSubarray(int* nums, int numsSize);
+// 1503. Last Moment Before All Ants Fall Out of a Plank
+int getLastMoment(int n, int* left, int leftSize, int* right, int rightSize);
 // 1512. Number of Good Pairs
 int numIdenticalPairs(int* nums, int numsSize);
 // 1544. Make The String Great

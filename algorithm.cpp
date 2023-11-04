@@ -10156,6 +10156,19 @@ int longestSubarray(int* nums, int numsSize)
     return 0;
 }
 
+// 1503. Last Moment Before All Ants Fall Out of a Plank
+int getLastMoment(int n, int* left, int leftSize, int* right, int rightSize)
+{
+    int i;
+    int l = INT_MIN, r = INT_MAX;
+    for (i = 0; i < leftSize; i++)
+        l = l < left[i] ? left[i] : l;
+    for (i = 0; i < rightSize; i++)
+        r = r > right[i] ? right[i] : r;
+    
+    return l > (n - r) ? l : (n - r);
+}
+
 // 1512. Number of Good Pairs
 int numIdenticalPairs(int* nums, int numsSize)
 {
