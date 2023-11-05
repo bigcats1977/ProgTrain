@@ -141,6 +141,7 @@ FUNCNAME g_tFuncName[] = {
     {1337,  TestCase_1337},
     {1361,  TestCase_1361},
     {1480,  TestCase_1480},
+    {1535,  TestCase_1535},
     {1544,  TestCase_1544},
     {1647,  TestCase_1647},
     {1657,  TestCase_1657},
@@ -156,6 +157,27 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_1535()
+{
+    vector<int> arr = { 2,1,3,5,4,6,7 };
+    int out, exp;
+
+    exp = 5;
+    out = getWinner(arr, 2);
+    COMPVALUE(exp, out);
+
+    arr = { 3,2,1 };
+    exp = 3;
+    out = getWinner(arr, 10);
+    COMPVALUE(exp, out);
+
+    arr = { 1,11,22,33,44,55,66,77,88,99 };
+    exp = 99;
+    out = getWinner(arr, 1000000000);
+    COMPVALUE(exp, out);
+
+}
 
 void TestCase_13()
 {

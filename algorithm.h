@@ -663,6 +663,8 @@ int longestSubarray(int* nums, int numsSize);
 int getLastMoment(int n, int* left, int leftSize, int* right, int rightSize);
 // 1512. Number of Good Pairs
 int numIdenticalPairs(int* nums, int numsSize);
+// 1535. Find the Winner of an Array Game
+int getWinner(vector<int>& arr, int k);
 // 1544. Make The String Great
 char* makeGood(char* s);
 // 1557. Minimum Number of Vertices to Reach All Nodes

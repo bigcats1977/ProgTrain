@@ -10258,6 +10258,27 @@ int numIdenticalPairs(int* nums, int numsSize)
     return res;
 }
 
+// 1535. Find the Winner of an Array Game
+int getWinner(vector<int>& arr, int k)
+{
+    int count = 0;
+    int winner = arr[0];
+    
+    for (size_t i = 1; i < arr.size(); i++) {
+        if (winner > arr[i]) {
+            count++;
+        }
+        else {
+            winner = arr[i];
+            count = 1;
+        }
+        if (count >= k)
+            return winner;
+    }
+
+    return winner;
+}
+
 // 1544. Make The String Great
 char* makeGood(char* s)
 {
