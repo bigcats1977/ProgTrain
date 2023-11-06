@@ -10686,6 +10686,40 @@ bool checkIfPangram(char* sentence)
     return count > 0 ? false : true;
 }
 
+// 1845. Seat Reservation Manager
+typedef struct {
+    int count;
+    int first;
+    bool* seat;
+} SeatManager;
+SeatManager* seatManagerCreate(int n) {
+    SeatManager* obj = (SeatManager*)malloc(sizeof(SeatManager));
+    obj->count = n;
+    obj->first = 1;
+    obj->seat = (bool*)calloc(n+1, sizeof(bool));
+    return obj;
+}
+int seatManagerReserve(SeatManager* obj) {
+    if (!obj || obj->first > obj->count)
+        return -1;
+    obj->seat[obj->first] = true;
+    int res = obj->first;
+    while (obj->seat[obj->first] && obj->first < obj->count)
+        obj->first++;
+    return res;    
+}
+void seatManagerUnreserve(SeatManager* obj, int seatNumber) {
+    if (!obj || seatNumber > obj->count)
+        return;
+    obj->seat[seatNumber] = false;
+    if (seatNumber < obj->first)
+        obj->first = seatNumber;
+}
+void seatManagerFree(SeatManager* obj) {
+    free(obj->seat);
+    free(obj);
+}
+
 // 2001. Number of Pairs of Interchangeable Rectangles
 long long interchangeableRectangles(vector<vector<int>>& rectangles)
 {
