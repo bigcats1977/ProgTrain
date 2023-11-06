@@ -6935,6 +6935,24 @@ bool canPartition(int* nums, int numsSize)
     free(dp);
     return ans;
 }
+bool canPartition(vector<int>& nums)
+{
+    int i, j;
+    int n = (int)nums.size();
+    int sum = accumulate(nums.begin(), nums.end(), 0);
+    if (sum % 2)
+        return false;
+    sum /= 2;
+    vector<int> dp(sum + 1, 0);
+    for (i = 0; i < n; i++)
+        for (j = sum; j >= nums[i]; j--) {
+            dp[j] = max(dp[j], dp[j - nums[i]] + nums[i]);
+        }
+    if (dp[sum] == sum)
+        return true;
+    else
+        return false;
+}
 
 // 417. Pacific Atlantic Water Flow
 int fourneight[4][2] = { {-1,0},{1,0},{0,-1},{0,1} };

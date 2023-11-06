@@ -430,6 +430,7 @@ int numberOfArithmeticSlices(int* nums, int numsSize);
 char* addStrings(char* num1, char* num2);
 // 416. Partition Equal Subset Sum
 bool canPartition(int* nums, int numsSize);
+bool canPartition(vector<int>& nums);
 // 417. Pacific Atlantic Water Flow
 int** pacificAtlantic(int** heights, int heightsSize, int* heightsColSize, int* returnSize, int** returnColumnSizes);
 // 424. Longest Repeating Character Replacement
