@@ -462,6 +462,40 @@ int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes
 
     return ans;
 }
+vector<vector<int>> threeSum(vector<int>& nums)
+{
+    vector<vector<int>> res;
+    vector<int> three;
+    int count = (int)nums.size();
+
+    sort(nums.begin(), nums.end());
+    for (int i = 0; i < count; i++) {
+        if (nums[i] > 0)
+            return res;
+        if (i > 1 && nums[i] == nums[i - 1])
+            continue;
+        int left = i + 1, right = count - 1;
+        while (left < right) {
+            int sum = nums[i] + nums[left] + nums[right];
+            if (sum < 0)
+                left++;
+            else if (sum > 0)
+                right--;
+            else {
+                three.push_back(nums[i]);
+                three.push_back(nums[left]);
+                three.push_back(nums[right]);
+                res.push_back(three);
+                three.clear();
+                while (left < right && nums[left] == nums[left + 1]) left++;
+                while (left < right && nums[right] == nums[right - 1]) right--;
+                left++;
+                right--;
+            }
+        }
+    }
+    return res;
+}
 
 // 16. 3Sum Closest
 int threeSumClosest(int* nums, int numsSize, int target)
@@ -5611,6 +5645,35 @@ bool wordPattern(char* pattern, char* s)
         sidx++;
     }
     return pidx != plen ? false : true;
+}
+bool wordPattern(string pattern, string s)
+{
+    vector<string> hash(26, "");
+    int pindex = 0,plen = (int)pattern.size();
+    string substr;
+    size_t start = 0;
+    for (size_t i = 0; i <= s.size(); i++) {
+        if (s[i] == ' ' || i == s.size()) {
+            if (pindex >= plen)
+                return false;
+            string substr = s.substr(start, i - start);
+            int hindex = pattern[pindex++] - 'a';
+            if (hash[hindex].empty()) {
+                for (size_t j = 0; j < 26; j++)
+                    if (!hash[j].empty() && hash[j].compare(substr.data()) == 0)
+                        return false;
+                hash[hindex] = substr;
+                cout << "insert " << substr << endl;
+            }
+            else {
+                cout << hash[hindex] << "," << substr << endl;
+                if (hash[hindex].compare(substr.data()) != 0)
+                    return false;
+            }
+            start = i + 1;
+        }
+    }
+    return pindex != plen ? false : true;
 }
 
 // 297. Serialize and Deserialize Binary Tree

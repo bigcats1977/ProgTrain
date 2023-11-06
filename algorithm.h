@@ -31,6 +31,7 @@ char* longestCommonPrefix(char** strs, int strsSize);
 string longestCommonPrefix(vector<string>& strs);
 // 15. 3Sum
 int** threeSum(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
+vector<vector<int>> threeSum(vector<int>& nums);
 // 16. 3Sum Closest
 int threeSumClosest(int* nums, int numsSize, int target);
 // 17. Letter Combinations of a Phone Number
@@ -352,6 +353,7 @@ void moveZeroes(int* nums, int numsSize);
 int findDuplicate(vector<int>&nums);
 // 290. Word Pattern
 bool wordPattern(char* pattern, char* s);
+bool wordPattern(string pattern, string s);
 // 297. Serialize and Deserialize Binary Tree
 /** Encodes a tree to a single string. */
 char* serialize(struct TreeNode* root);
