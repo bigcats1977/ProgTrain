@@ -135,6 +135,7 @@ FUNCNAME g_tFuncName[] = {
     {1071,  TestCase_1071},
     {1091,  TestCase_1091},
     {1143,  TestCase_1143},
+    {1192,  TestCase_1192},
     {1207,  TestCase_1207},
     {1220,  TestCase_1220},
     {1239,  TestCase_1239},
@@ -157,6 +158,18 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_1192()
+{
+    vector<int> dist, speed;
+    dist = { 1,3,4 };
+    speed = { 1,1,1 };
+    eliminateMaximum(dist.data(), 3, speed.data(), 3);
+
+    dist = { 1,4,3,1 };
+    speed = { 1,1,1,1 };
+    eliminateMaximum(dist.data(), 4, speed.data(), 4);
+}
 
 void TestCase_1535()
 {

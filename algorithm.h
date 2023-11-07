@@ -701,7 +701,8 @@ int findTheWinner(int n, int k);
 // 1832. Check if the Sentence Is Pangram
 bool checkIfPangram(char* sentence);
 // 1845. Seat Reservation Manager
-
+// 1921. Eliminate Maximum Number of Monsters
+int eliminateMaximum(int* dist, int distSize, int* speed, int speedSize);
 // 2001. Number of Pairs of Interchangeable Rectangles
 long long interchangeableRectangles(vector<vector<int>>& rectangles);
 // 2009. Minimum Number of Operations to Make Array Continuous

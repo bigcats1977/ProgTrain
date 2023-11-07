@@ -10801,6 +10801,25 @@ void seatManagerFree(SeatManager* obj) {
     free(obj);
 }
 
+// 1921. Eliminate Maximum Number of Monsters
+int dbcmpfun(const void* a, const void* b) {
+    return *(double*)a > *(double*)b ? 1 : -1;
+}
+int eliminateMaximum(int* dist, int distSize, int* speed, int speedSize)
+{
+    double* time = (double*)malloc(distSize * sizeof(double));
+    int i;
+    for (i = 0; i < distSize; i++) {
+        time[i] = dist[i] * 1.0 / speed[i];
+    }
+    qsort(time, distSize, sizeof(double), dbcmpfun);
+    for (i = 0; i < distSize; i++) {
+        if (time[i] <= i)
+            break;
+    }
+    return i;
+}
+
 // 2001. Number of Pairs of Interchangeable Rectangles
 long long interchangeableRectangles(vector<vector<int>>& rectangles)
 {
