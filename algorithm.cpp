@@ -8586,6 +8586,22 @@ int pivotIndex(int* nums, int numsSize)
     return i;
 #endif
 }
+int pivotIndex(vector<int>& nums)
+{
+    int i, total;
+    int count = (int)nums.size();
+    vector<int> sum(count + 1, 0);
+    for (i = 1; i <= count; i++) {
+        sum[i] = sum[i - 1] + nums[i - 1];
+    }
+    total = sum[count];
+    for (i = 0; i < count; i++) {
+        total -= nums[i];
+        if (total == sum[i])
+            return i;
+    }
+    return -1;
+}
 
 // 725. Split Linked List in Parts
 vector<ListNode*> splitListToParts(ListNode* head, int k)
@@ -9700,6 +9716,25 @@ int longestStrChain(vector<string>& words)
         ans = max(ans, longest);
     }
     return ans;
+}
+
+// 1049. Last Stone Weight II
+int lastStoneWeightII(int* stones, int stonesSize)
+{
+    int i, j, sum = 0, target = 0;
+    for (i = 0; i < stonesSize; i++)
+        sum += stones[i];
+    target = sum / 2;
+    int* dp = (int*)calloc(target + 1, sizeof(int));
+    for (i = 0; i < stonesSize; i++) {
+        for (j = target; j >= stones[i]; j--) {
+            int value = dp[j - stones[i]] + stones[i];
+            dp[j] = dp[j] > value ? dp[j] : value;
+        }
+    }
+    target = sum - 2 * dp[target];
+    free(dp);
+    return target;
 }
 
 // 1071. Greatest Common Divisor of Strings
@@ -11393,8 +11428,8 @@ int paintWalls(int* cost, int costSize, int* time, int timeSize)
 // 2849. Determine if a Cell Is Reachable at a Given Time
 bool isReachableAtTime(int sx, int sy, int fx, int fy, int t)
 {
-    int width = fabs(fx - sx);
-    int height = fabs(fy - sy);
+    int width = (int)fabs(fx - sx);
+    int height = (int)fabs(fy - sy);
     int minpath = width > height ? width : height;
     if (minpath == 0 && t == 1)
         return false;

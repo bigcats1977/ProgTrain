@@ -540,6 +540,7 @@ int maxProfit(int* prices, int pricesSize, int fee);
 char** removeComments(char** source, int sourceSize, int* returnSize);
 // 724. Find Pivot Index
 int pivotIndex(int* nums, int numsSize);
+int pivotIndex(vector<int>& nums);
 // 725. Split Linked List in Parts
 vector<ListNode*> splitListToParts(ListNode* head, int k);
 // 726. Number of Atoms
@@ -611,6 +612,8 @@ int lastStoneWeight(int* stones, int stonesSize);
 char* removeDuplicates(char* s);
 // 1048. Longest String Chain
 int longestStrChain(vector<string>& words);
+// 1049. Last Stone Weight II
+int lastStoneWeightII(int* stones, int stonesSize);
 // 1071. Greatest Common Divisor of Strings
 char* gcdOfStrings(char* str1, char* str2);
 string gcdOfStrings(string str1, string str2);
