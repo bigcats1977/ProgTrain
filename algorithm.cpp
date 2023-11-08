@@ -11390,6 +11390,19 @@ int paintWalls(int* cost, int costSize, int* time, int timeSize)
     return res;
 }
 
+// 2849. Determine if a Cell Is Reachable at a Given Time
+bool isReachableAtTime(int sx, int sy, int fx, int fy, int t)
+{
+    int width = fabs(fx - sx);
+    int height = fabs(fy - sy);
+    int minpath = width > height ? width : height;
+    if (minpath == 0 && t == 1)
+        return false;
+    if (minpath <= t)
+        return true;
+    return false;
+}
+
 // ½£Ö¸ Offer 05. Ìæ»»¿Õ¸ñ
 // ÊäÈë£ºs = "We are happy."
 // Êä³ö£º"We%20are%20happy."
