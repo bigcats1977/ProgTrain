@@ -1520,6 +1520,41 @@ bool isValidSudoku(char** board, int boardSize, int* boardColSize)
     }
     return true;
 }
+bool isValidSudoku(vector<vector<char>>& board)
+{
+    set<char> rows, cols;
+    int i, j, m, n;
+    for (i = 0; i < 9; i++) {
+        rows.clear();
+        cols.clear();
+        for (j = 0; j < 9; j++) {
+            if (board[i][j] != '.') {
+                if (rows.end() != rows.find(board[i][j]))
+                    return false;
+                rows.insert(board[i][j]);
+            }
+            if (board[j][i] != '.') {
+                if (cols.end() != cols.find(board[j][i]))
+                    return false;
+                cols.insert(board[j][i]);
+            }
+        }
+    }
+    for (m = 0; m < 3; m++) 
+        for (n = 0; n < 3; n++) {
+            rows.clear();
+            for (i = m * 3; i < m * 3 + 3; i++) 
+                for (j = n * 3; j < n * 3 + 3; j++) {
+                    if (board[i][j] != '.') {
+                        if (rows.end() != rows.find(board[i][j]))
+                            return false;
+                        rows.insert(board[i][j]);
+                    }
+                }
+        }
+
+    return true;
+}
 
 // 50. Pow(x, n)
 double myPow(double x, int n)

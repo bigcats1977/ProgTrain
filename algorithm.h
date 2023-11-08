@@ -67,6 +67,7 @@ vector<int> searchRange(vector<int>& nums, int target);
 int searchInsert(int* nums, int numsSize, int target);
 // 36. Valid Sudoku
 bool isValidSudoku(char** board, int boardSize, int* boardColSize);
+bool isValidSudoku(vector<vector<char>>& board);
 // 39. Combination Sum
 int** combinationSum(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes);
 // 40. Combination Sum II
