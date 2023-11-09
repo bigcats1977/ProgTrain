@@ -7358,6 +7358,11 @@ int findMaxConsecutiveOnes(int* nums, int numsSize)
     return ans;
 }
 
+// 494. Target Sum
+int findTargetSumWays(int* nums, int numsSize, int target)
+{
+}
+
 // 496. Next Greater Element I
 int* nextGreaterElement(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize)
 {
@@ -10696,6 +10701,24 @@ int largestAltitude(int* gain, int gainSize)
         ans = altitude > ans ? altitude : ans;
     }
     return ans;
+}
+
+// 1759. Count Number of Homogenous Substrings
+int countHomogenous(char* s)
+{
+    int MOD = (int)1e9 + 7;
+    long long int times = 1;
+    int res = 0;
+    for (size_t i = 0; i < strlen(s) - 1; i++) {
+        if (s[i] == s[i + 1])
+            times += 1;
+        else {
+            res = (res + times * (times + 1) / 2) % MOD;
+            times = 1;
+        }
+    }
+    res = (res + times * (times + 1) / 2) % MOD;
+    return res;
 }
 
 // 1768. Merge Strings Alternately

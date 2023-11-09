@@ -456,6 +456,8 @@ bool repeatedSubstringPattern(char* s);
 int totalHammingDistance(int* nums, int numsSize);
 // 485. Max Consecutive Ones
 int findMaxConsecutiveOnes(int* nums, int numsSize);
+// 494. Target Sum
+int findTargetSumWays(int* nums, int numsSize, int target);
 // 496. Next Greater Element I
 int* nextGreaterElement(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize);
 // 501. Find Mode in Binary Search Tree
@@ -692,6 +694,8 @@ int* findBall(int** grid, int gridSize, int* gridColSize, int* returnSize);
 struct ListNode* swapNodes(struct ListNode* head, int k);
 // 1732. Find the Highest Altitude
 int largestAltitude(int* gain, int gainSize);
+// 1759. Count Number of Homogenous Substrings
+int countHomogenous(char* s);
 // 1768. Merge Strings Alternately
 char* mergeAlternately(char* word1, char* word2);
 // 1793. Maximum Score of a Good Subarray
