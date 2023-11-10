@@ -10706,15 +10706,31 @@ int largestAltitude(int* gain, int gainSize)
 // 1743. Restore the Array From Adjacent Pairs
 vector<int> restoreArray(vector<vector<int>>& adjacentPairs)
 {
-    set<int> temp;
-    vector<int> res;
-    for (size_t i = 0; i < adjacentPairs.size(); i++) {
-        temp.insert(adjacentPairs[i][0]);
-        temp.insert(adjacentPairs[i][1]);
+    unordered_map<int, vector<int>> graph;
+
+    for (const auto& pair : adjacentPairs) {
+        graph[pair[0]].push_back(pair[1]);
+        graph[pair[1]].push_back(pair[0]);
     }
-    for (auto it = temp.begin(); it != temp.end(); it++) 
-        res.push_back(*it);
-    return res;
+
+    vector<int> result;
+
+    for (const auto& entry : graph) {
+        if (entry.second.size() == 1) {
+            result = { entry.first, entry.second[0] };
+            break;
+        }
+    }
+
+    while (result.size() < adjacentPairs.size() + 1) {
+        int last = result[result.size() - 1];
+        int prev = result[result.size() - 2];
+        const vector<int>& candidates = graph[last];
+        int nextElement = (candidates[0] != prev) ? candidates[0] : candidates[1];
+        result.push_back(nextElement);
+    }
+
+    return result;
 }
 
 // 1759. Count Number of Homogenous Substrings
