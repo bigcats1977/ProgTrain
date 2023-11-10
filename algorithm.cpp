@@ -7361,6 +7361,7 @@ int findMaxConsecutiveOnes(int* nums, int numsSize)
 // 494. Target Sum
 int findTargetSumWays(int* nums, int numsSize, int target)
 {
+    return 0;
 }
 
 // 496. Next Greater Element I
@@ -10701,6 +10702,19 @@ int largestAltitude(int* gain, int gainSize)
         ans = altitude > ans ? altitude : ans;
     }
     return ans;
+}
+// 1743. Restore the Array From Adjacent Pairs
+vector<int> restoreArray(vector<vector<int>>& adjacentPairs)
+{
+    set<int> temp;
+    vector<int> res;
+    for (size_t i = 0; i < adjacentPairs.size(); i++) {
+        temp.insert(adjacentPairs[i][0]);
+        temp.insert(adjacentPairs[i][1]);
+    }
+    for (auto it = temp.begin(); it != temp.end(); it++) 
+        res.push_back(*it);
+    return res;
 }
 
 // 1759. Count Number of Homogenous Substrings

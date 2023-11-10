@@ -694,6 +694,8 @@ int* findBall(int** grid, int gridSize, int* gridColSize, int* returnSize);
 struct ListNode* swapNodes(struct ListNode* head, int k);
 // 1732. Find the Highest Altitude
 int largestAltitude(int* gain, int gainSize);
+// 1743. Restore the Array From Adjacent Pairs
+vector<int> restoreArray(vector<vector<int>>& adjacentPairs);
 // 1759. Count Number of Homogenous Substrings
 int countHomogenous(char* s);
 // 1768. Merge Strings Alternately
