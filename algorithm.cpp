@@ -1836,6 +1836,39 @@ int** generateMatrix(int n, int* returnSize, int** returnColumnSizes)
     return ans;
 }
 
+// 61. Rotate List
+struct ListNode* rotateRight(struct ListNode* head, int k)
+{
+    if (!head)
+        return NULL;
+    int count = 0;
+    struct ListNode* dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    dummy->next = head;
+    struct ListNode* cur = dummy, *fast = head, *pre;
+    while (cur) {
+        count++;
+        cur = cur->next;
+    }
+    k = k % count;
+    fast = head, cur = dummy;
+    for (; k > 0; k--) {
+        fast = fast->next;
+        cur = cur->next;
+    }
+    pre = dummy;
+    while (fast) {
+        fast = fast->next;
+        cur = cur->next;
+        pre = pre->next;
+    }
+    cur->next = dummy->next;
+    dummy->next = pre->next;
+    pre->next = NULL;
+    cur = dummy->next;
+    free(dummy);
+    return cur;
+}
+
 // 62. Unique Paths
 int uniquePaths(int m, int n)
 {

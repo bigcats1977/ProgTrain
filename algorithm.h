@@ -105,6 +105,8 @@ int** insert(int** intervals, int intervalsSize, int* intervalsColSize, int* new
 int lengthOfLastWord(string s);
 // 59. Spiral Matrix II
 int** generateMatrix(int n, int* returnSize, int** returnColumnSizes);
+// 61. Rotate List
+struct ListNode* rotateRight(struct ListNode* head, int k);
 // 62. Unique Paths
 int uniquePaths(int m, int n);
 int uniquePaths2(int m, int n);
