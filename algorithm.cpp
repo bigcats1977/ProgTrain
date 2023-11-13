@@ -11546,6 +11546,28 @@ int paintWalls(int* cost, int costSize, int* time, int timeSize)
     return res;
 }
 
+// 2785. Sort Vowels in a String
+//bool isVowel(char c) {
+//    if (c == 'A' || c == 'a' || c == 'E' || c == 'e' || c == 'I' ||
+//        c == 'i' || c == 'O' || c == 'o' || c == 'U' || c == 'u')
+//        return true;
+//    return false;
+//}
+string sortVowels(string s)
+{
+    vector<int> temp;
+    for (auto c : s)
+        if (isVowel(c))
+            temp.push_back(c);
+    sort(temp.begin(),temp.end());
+    int k = 0;
+    for (size_t i = 0; i < s.size(); i++) {
+        if(isVowel(s[i]))
+            s[i] = temp[k++];
+    }
+    return s;
+}
+
 // 2849. Determine if a Cell Is Reachable at a Given Time
 bool isReachableAtTime(int sx, int sy, int fx, int fy, int t)
 {

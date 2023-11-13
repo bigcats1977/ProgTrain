@@ -750,6 +750,8 @@ int bestClosingTime(string customers);
 long long maxScore(int* nums1, int nums1Size, int* nums2, int nums2Size, int k);
 // 2742. Painting the Walls
 int paintWalls(int* cost, int costSize, int* time, int timeSize);
+// 2785. Sort Vowels in a String
+string sortVowels(string s);
 // 2849. Determine if a Cell Is Reachable at a Given Time
 bool isReachableAtTime(int sx, int sy, int fx, int fy, int t);
 // ½£Ö¸ Offer 05. Ìæ»»¿Õ¸ñ
