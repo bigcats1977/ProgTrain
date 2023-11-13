@@ -9,6 +9,7 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2);
 ListNode* addTwoNumbers2(ListNode* l1, ListNode* l2);
 // 3. Longest Substring Without Repeating Characters
 int lengthOfLongestSubstring(char* s);
+int lengthOfLongestSubstring(string s);
 // 4. Median of Two Sorted Arrays
 double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size);
 // 5. Longest Palindromic Substring

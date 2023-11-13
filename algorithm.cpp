@@ -125,6 +125,18 @@ int lengthOfLongestSubstring(char* s)
     }
     return max;
 }
+int lengthOfLongestSubstring(string s)
+{
+    int maxlen = 0, begin = -1;
+    vector<int> pos(256, -1);
+    for (int i = 0; i < (int)s.size(); i++) {
+        if (pos[s[i]] > begin)
+            begin = pos[s[i]];
+        pos[s[i]] = i;
+        maxlen = maxlen < i - begin ? i - begin : maxlen;
+    }
+    return maxlen;
+}
 
 // 4. Median of Two Sorted Arrays
 double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size)
