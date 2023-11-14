@@ -5086,6 +5086,57 @@ bool containsNearbyDuplicate(vector<int>& nums, int k)
     return false;
 }
 
+// 221. Maximal Square
+int maximalSquare(char** matrix, int matrixSize, int* matrixColSize)
+{
+    int m = matrixSize, n = matrixColSize[0];
+    int i, j, k;
+    int maxval = 0;
+    int** dp = (int**)malloc(m * sizeof(int*));
+    for (i = 0; i < m; i++) {
+        dp[i] = (int*)malloc(n * sizeof(int));
+        dp[i][0] = matrix[i][0] - '0';
+        maxval = maxval < dp[i][0] ? dp[i][0] : maxval;
+    }
+    for (j = 0; j < n; j++) {
+        dp[0][j] = matrix[0][j] - '0';
+        maxval = maxval < dp[0][j] ? dp[0][j] : maxval;
+    }
+
+    for (i = 1; i < m; i++) {
+        for (j = 1; j < n; j++) {
+            if (matrix[i][j] == '0') {
+                dp[i][j] = 0;
+                continue;
+            }
+            int range = dp[i - 1][j - 1];
+            if (range > 0)
+            {
+                for(k=range;k>0;k--) {
+                    if (dp[i-k][j] == 0) {
+                        range = k - 1;
+                    }
+                }
+            }
+            if (range > 0)
+            {
+                for (k = range; k > 0; k--) {
+                    if (dp[i][j-k] == 0) {
+                        range = k - 1;
+                    }
+                }
+            }
+            dp[i][j] = range + 1;
+            maxval = maxval < dp[i][j] ? dp[i][j] : maxval;
+        }
+    }
+
+    for (i = 0; i < m; i++)
+        free(dp[i]);
+    free(dp);
+    return maxval*maxval;
+}
+
 // 222. Count Complete Tree Nodes
 int countNodes(struct TreeNode* root)
 {

@@ -65,6 +65,7 @@ FUNCNAME g_tFuncName[] = {
     {213,   TestCase_213 },
     {216,   TestCase_216 },
     {217,   TestCase_217 },
+    {221,   TestCase_221 },
     {227,   TestCase_227 },
     {228,   TestCase_228 },
     {229,   TestCase_229 },
@@ -159,6 +160,35 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_221()
+{
+    vector<vector<char>> matrix = {
+        {'0','1','1','0','0','1','0','1','0','1'},
+        {'0','0','1','0','1','0','1','0','1','0'},
+        {'1','0','0','0','0','1','0','1','1','0'},
+        {'0','1','1','1','1','1','1','0','1','0'},
+        {'0','0','1','1','1','1','1','1','1','0'},
+        {'1','1','0','1','0','1','1','1','1','0'},
+        {'0','0','0','1','1','0','0','0','1','0'},
+        {'1','1','0','1','1','0','0','1','1','1'},
+        {'0','1','0','1','1','0','1','0','1','1'},
+    };
+    char** p;
+    int row = 9, col = 10;
+    p = (char**)malloc(row * sizeof(char*));
+
+    for (int i = 0; i < row; i++) {
+        p[i] = (char*)malloc(col * sizeof(char));
+        memcpy(p[i], matrix[i].data(), col);
+
+    }
+    maximalSquare(p, row, &col);
+
+    for (int i = 0; i < row; i++)
+        free(p[i]);
+    free(p);
+}
 
 void TestCase_1930()
 {
