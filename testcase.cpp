@@ -148,16 +148,23 @@ FUNCNAME g_tFuncName[] = {
     {1657,  TestCase_1657},
     {1662,  TestCase_1662},
     {1823,  TestCase_1823},
-    {8005,  TestCase_8005},
+    {1930,  TestCase_1930},
     {2001,  TestCase_2001},
     {2009,  TestCase_2009},
     {2215,  TestCase_2215},
     {2251,  TestCase_2251},
     {2483,  TestCase_2483},
     {2742,  TestCase_2742},
+    {8005,  TestCase_8005},
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_1930()
+{
+    string s = "bbcbaba";
+    countPalindromicSubsequence(&*s.begin());
+}
 
 void TestCase_1192()
 {

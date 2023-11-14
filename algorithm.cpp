@@ -10988,6 +10988,47 @@ int eliminateMaximum(int* dist, int distSize, int* speed, int speedSize)
     return i;
 }
 
+// 1930. Unique Length - 3 Palindromic Subsequences
+int countPalindromicSubsequence(char* s)
+{
+    int n = (int)strlen(s), i,j;
+    int left[26] = { 0 }, right[26] = { 0 };
+    char** st = (char**)malloc(sizeof(char*) * 10000);
+    int count = 0;
+    char palin[4] = { 0 };
+    for (i = 0; i < n; i++)
+        right[s[i] - 'a']++;
+    for (int it = 0; it < n; it++) {
+        right[s[it] - 'a']--;
+        for (i = 0; i < 26; i++) {
+            if (left[i] > 0 && right[i] > 0) {
+                char ch = i + 'a';
+                palin[0] = ch;
+                palin[1] = s[it];
+                palin[2] = ch;
+                bool bFound = false;
+                for (j = 0; j < count; j++) {
+                    if (strcmp(palin, st[j]) == 0) {
+                        bFound = true;
+                        break;
+                    }
+                }
+                if (!bFound) {
+                    st[count] = (char*)calloc(4, sizeof(char));
+                    strncpy(st[count], palin, 3);
+                    count++;
+                }
+            }
+        }
+        left[s[it] - 'a']++;
+    }
+    for (i = 0; i < count; i++)
+        free(st[i]);
+    free(st);
+    
+    return count;
+}
+
 // 2001. Number of Pairs of Interchangeable Rectangles
 long long interchangeableRectangles(vector<vector<int>>& rectangles)
 {
