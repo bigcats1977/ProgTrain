@@ -39,6 +39,7 @@ int threeSumClosest(int* nums, int numsSize, int target);
 char** letterCombinations(char* digits, int* returnSize);
 // 19. Remove Nth Node From End of List
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n);
+ListNode* removeNthFromEndII(ListNode* head, int n);
 // 20. Valid Parentheses
 bool isValid(char* s);
 // 21. Merge Two Sorted Lists
@@ -102,6 +103,7 @@ int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* retu
 vector<vector<int>> merge(vector<vector<int>>& intervals);
 // 57. Insert Interval
 int** insert(int** intervals, int intervalsSize, int* intervalsColSize, int* newInterval, int newIntervalSize, int* returnSize, int** returnColumnSizes);
+vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval);
 // 58. Length of Last Word
 int lengthOfLastWord(string s);
 // 59. Spiral Matrix II
