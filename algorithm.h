@@ -718,6 +718,8 @@ int findTheWinner(int n, int k);
 // 1832. Check if the Sentence Is Pangram
 bool checkIfPangram(char* sentence);
 // 1845. Seat Reservation Manager
+// 1846. Maximum Element After Decreasing and Rearranging
+int maximumElementAfterDecrementingAndRearranging(int* arr, int arrSize);
 // 1921. Eliminate Maximum Number of Monsters
 int eliminateMaximum(int* dist, int distSize, int* speed, int speedSize);
 // 1930. Unique Length - 3 Palindromic Subsequences

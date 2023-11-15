@@ -11082,6 +11082,20 @@ void seatManagerFree(SeatManager* obj) {
     free(obj);
 }
 
+// 1846. Maximum Element After Decreasing and Rearranging
+int maximumElementAfterDecrementingAndRearranging(int* arr, int arrSize)
+{
+    qsort(arr, arrSize, sizeof(int), cmpfun);
+
+    arr[0] = 1;
+    for (int i = 1; i < arrSize; i++) {
+        if (abs(arr[i] - arr[i - 1]) > 1) {
+            arr[i] = arr[i - 1] + 1;
+        }
+    }
+    return arr[arrSize - 1];
+}
+
 // 1921. Eliminate Maximum Number of Monsters
 int dbcmpfun(const void* a, const void* b) {
     return *(double*)a > *(double*)b ? 1 : -1;
