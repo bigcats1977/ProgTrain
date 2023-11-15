@@ -208,6 +208,8 @@ int maxProfitdp(vector<int>& prices);
 // 122. Best Time to Buy and Sell Stock II
 int maxProfitII(int* prices, int pricesSize);
 int maxProfitIIdp(vector<int>& prices);
+// 123. Best Time to Buy and Sell Stock III
+int maxProfitIII(vector<int>& prices);
 // 125. Valid Palindrome
 bool isPalindrome(char* s);
 // 130. Surrounded Regions
