@@ -266,6 +266,8 @@ int majorityElement(int* nums, int numsSize);
 int majorityElement(vector<int>& nums);
 // 187. Repeated DNA Sequences
 char** findRepeatedDnaSequences(char* s, int* returnSize);
+// 188. Best Time to Buy and Sell Stock IV
+int maxProfit(int k, vector<int>&prices);
 // 189. Rotate Array
 void rotate(int* nums, int numsSize, int k);
 void rotate(vector<int>& nums, int k);

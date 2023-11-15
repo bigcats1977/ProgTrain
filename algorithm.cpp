@@ -4382,6 +4382,22 @@ char** findRepeatedDnaSequences(char* s, int* returnSize)
     return ans;
 }
 
+// 188. Best Time to Buy and Sell Stock IV
+int maxProfit(int k, vector<int>& prices)
+{
+    int i,j, n = (int)prices.size();
+    vector<vector<int>> dp(n, vector<int>(2 * k + 1, 0));
+    for (j = 1; j < 2 * k; j += 2) 
+        dp[0][j] = -prices[0];
+    for (i = 1; i < n; i++) {
+        for (j = 0; j < 2*k - 1; j+=2) {
+            dp[i][j + 1] = max(dp[i - 1][j + 1], dp[i - 1][j] - prices[i]);
+            dp[i][j + 2] = max(dp[i - 1][j + 2], dp[i - 1][j + 1] + prices[i]);
+        }
+    }
+    return dp[n - 1][2 * k];
+}
+
 // 189. Rotate Array
 void inverse(int* nums, int begin, int end)
 {
