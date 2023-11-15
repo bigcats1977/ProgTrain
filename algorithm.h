@@ -204,8 +204,10 @@ int minimumTotal(vector<vector<int>>& triangle);
 // 121. Best Time to Buy and Sell Stock
 int maxProfit(int* prices, int pricesSize);
 int maxProfit(vector<int>& prices);
+int maxProfitdp(vector<int>& prices);
 // 122. Best Time to Buy and Sell Stock II
 int maxProfitII(int* prices, int pricesSize);
+int maxProfitIIdp(vector<int>& prices);
 // 125. Valid Palindrome
 bool isPalindrome(char* s);
 // 130. Surrounded Regions
