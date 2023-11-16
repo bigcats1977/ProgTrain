@@ -730,6 +730,8 @@ int maximumElementAfterDecrementingAndRearranging(int* arr, int arrSize);
 int eliminateMaximum(int* dist, int distSize, int* speed, int speedSize);
 // 1930. Unique Length - 3 Palindromic Subsequences
 int countPalindromicSubsequence(char* s);
+// 1980. Find Unique Binary String
+char* findDifferentBinaryString(char** nums, int numsSize);
 // 2001. Number of Pairs of Interchangeable Rectangles
 long long interchangeableRectangles(vector<vector<int>>& rectangles);
 // 2009. Minimum Number of Operations to Make Array Continuous

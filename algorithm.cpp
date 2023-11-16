@@ -11213,6 +11213,43 @@ int countPalindromicSubsequence(char* s)
     return count;
 }
 
+// 1980. Find Unique Binary String
+char* findDifferentBinaryString(char** nums, int numsSize)
+{
+    int i, j;
+    int len = (int)strlen(nums[0]);
+    int max = (int)pow(2, len);
+    int val;
+    bool* vals = (bool*)calloc(max, sizeof(bool));
+    char* res = (char*)calloc((len + 1), sizeof(char));
+    memset(res, '0', sizeof(char) * len);
+    for (i = 0; i < numsSize; i++) {
+        int flag = 1;
+        val = 0;
+        for (j = len - 1; j >= 0; j--) {
+            if (nums[i][j] == '1')
+                val += flag;
+            flag <<= 1;
+        }
+        vals[val] = true;
+    }
+    for (i = 0; i < max; i++) {
+        if (!vals[i]) {
+            val = i;
+            break;
+        }
+    }
+    j = len - 1;
+    while (val) {
+        if (val & 0x01)
+            res[j] = '1';
+        val >>= 1;
+        j--;
+    }
+    free(vals);
+    return res;
+}
+
 // 2001. Number of Pairs of Interchangeable Rectangles
 long long interchangeableRectangles(vector<vector<int>>& rectangles)
 {
