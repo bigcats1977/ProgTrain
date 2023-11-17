@@ -11153,6 +11153,18 @@ int maximumElementAfterDecrementingAndRearranging(int* arr, int arrSize)
     return arr[arrSize - 1];
 }
 
+// 1877. Minimize Maximum Pair Sum in Array
+int minPairSum(int* nums, int numsSize)
+{
+    int maxval = 0, left = 0, right = numsSize - 1;
+    qsort(nums, numsSize, sizeof(int), cmpfun);
+    while (left < right) {
+        int sum = nums[left++] + nums[right--];
+        maxval = maxval > sum ? maxval : sum;
+    }
+    return maxval;
+}
+
 // 1921. Eliminate Maximum Number of Monsters
 int dbcmpfun(const void* a, const void* b) {
     return *(double*)a > *(double*)b ? 1 : -1;
