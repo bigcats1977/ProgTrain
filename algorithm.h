@@ -283,6 +283,7 @@ int* rightSideView(struct TreeNode* root, int* returnSize);
 vector<int> rightSideView(TreeNode* root);
 // 200. Number of Islands
 int numIslands(char** grid, int gridSize, int* gridColSize);
+int numIslands(vector<vector<char>>& grid);
 // 201. Bitwise AND of Numbers Range
 int rangeBitwiseAnd(int left, int right);
 // 202. Happy Number

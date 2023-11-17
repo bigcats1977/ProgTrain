@@ -4599,6 +4599,9 @@ int numIslands(char** grid, int gridSize, int* gridColSize)
     }
     return ans;
 }
+int numIslands(vector<vector<char>>& grid)
+{
+}
 
 // 201. Bitwise AND of Numbers Range
 int rangeBitwiseAnd(int left, int right)
