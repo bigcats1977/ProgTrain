@@ -8363,6 +8363,37 @@ int leastInterval(char* tasks, int tasksSize, int n) {
     return interval;
 }
 
+// 637. Average of Levels in Binary Tree
+double* averageOfLevels(struct TreeNode* root, int* returnSize)
+{
+    *returnSize = 0;
+    if (!root)
+        return NULL;
+
+    struct TreeNode** qu = (struct TreeNode**)malloc(10000 * sizeof(struct TreeNode*));
+    double* res = (double*)malloc(10000 * sizeof(double));
+    int level = 0, count = 0;
+    int head = 0, tail = 0;
+    qu[head++] = root;
+    while (head > tail) {
+        double sum = 0.0;
+        struct TreeNode* node;
+        count = head - tail;
+        for (int i = 0; i < count; i++) {
+            node = qu[tail++];
+            sum += node->val;
+            if (node->left)
+                qu[head++] = node->left;
+            if (node->right)
+                qu[head++] = node->right;
+        }
+        res[level++] = sum / count;
+    }
+    *returnSize = level;
+    free(qu);
+    return res;
+}
+
 // 643. Maximum Average Subarray I
 double findMaxAverage(int* nums, int numsSize, int k)
 {

@@ -520,6 +520,8 @@ bool canPlaceFlowers(int* flowerbed, int flowerbedSize, int n);
 struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2);
 // 621. Task Scheduler
 int leastInterval(char* tasks, int tasksSize, int n);
+// 637. Average of Levels in Binary Tree
+double* averageOfLevels(struct TreeNode* root, int* returnSize);
 // 643. Maximum Average Subarray I
 double findMaxAverage(int* nums, int numsSize, int k);
 // 647. Palindromic Substrings
