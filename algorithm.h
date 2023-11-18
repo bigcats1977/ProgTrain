@@ -283,7 +283,6 @@ int* rightSideView(struct TreeNode* root, int* returnSize);
 vector<int> rightSideView(TreeNode* root);
 // 200. Number of Islands
 int numIslands(char** grid, int gridSize, int* gridColSize);
-int numIslands(vector<vector<char>>& grid);
 // 201. Bitwise AND of Numbers Range
 int rangeBitwiseAnd(int left, int right);
 // 202. Happy Number
@@ -724,6 +723,8 @@ int arraySign(int* nums, int numsSize);
 int findTheWinner(int n, int k);
 // 1832. Check if the Sentence Is Pangram
 bool checkIfPangram(char* sentence);
+// 1838. Frequency of the Most Frequent Element
+int maxFrequency(int* nums, int numsSize, int k);
 // 1845. Seat Reservation Manager
 // 1846. Maximum Element After Decreasing and Rearranging
 int maximumElementAfterDecrementingAndRearranging(int* arr, int arrSize);

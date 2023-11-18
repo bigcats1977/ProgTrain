@@ -4599,9 +4599,6 @@ int numIslands(char** grid, int gridSize, int* gridColSize)
     }
     return ans;
 }
-int numIslands(vector<vector<char>>& grid)
-{
-}
 
 // 201. Bitwise AND of Numbers Range
 int rangeBitwiseAnd(int left, int right)
@@ -11106,6 +11103,34 @@ bool checkIfPangram(char* sentence)
         }
     }
     return count > 0 ? false : true;
+}
+
+// 1838. Frequency of the Most Frequent Element
+int maxFrequency(int* nums, int numsSize, int k)
+{
+    int res = 1;
+    qsort(nums, numsSize, sizeof(int), cmpfun);
+    int left = numsSize - 2, right = numsSize - 1, cnt = 1;
+    int val = k;
+    while (left >= 0) {
+        while (val >= 0 && left >= 0) {
+            int diff = nums[left] - nums[right];
+            if (diff + val >= 0) {
+                cnt++;
+                val += diff;
+                left--;
+            }
+            else
+                break;
+        }
+        res = res < cnt ? cnt : res;
+        if (right > 0)
+            val += (nums[right] - nums[right - 1]) * (right - left - 1);
+        right--;
+        cnt--;
+    }
+
+    return res;
 }
 
 // 1845. Seat Reservation Manager
