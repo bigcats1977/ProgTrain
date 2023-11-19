@@ -732,6 +732,8 @@ int maxFrequency(int* nums, int numsSize, int k);
 int maximumElementAfterDecrementingAndRearranging(int* arr, int arrSize);
 // 1877. Minimize Maximum Pair Sum in Array
 int minPairSum(int* nums, int numsSize);
+// 1887. Reduction Operations to Make the Array Elements Equal
+int reductionOperations(int* nums, int numsSize);
 // 1921. Eliminate Maximum Number of Monsters
 int eliminateMaximum(int* dist, int distSize, int* speed, int speedSize);
 // 1930. Unique Length - 3 Palindromic Subsequences

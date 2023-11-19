@@ -11224,6 +11224,17 @@ int minPairSum(int* nums, int numsSize)
     return maxval;
 }
 
+// 1887. Reduction Operations to Make the Array Elements Equal
+int reductionOperations(int* nums, int numsSize)
+{
+    int count = 0, res = 0;
+    qsort(nums, numsSize, sizeof(int), cmpfun);
+    for (int i = 1; i < numsSize; i++) {
+        res += nums[i] == nums[i - 1] ? ++count : count;
+    }
+    return res;
+}
+
 // 1921. Eliminate Maximum Number of Monsters
 int dbcmpfun(const void* a, const void* b) {
     return *(double*)a > *(double*)b ? 1 : -1;
