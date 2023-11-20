@@ -11750,6 +11750,49 @@ char* removeStars(char* s)
     return res;
 }
 
+// 2391. Minimum Amount of Time to Collect Garbage
+void calctime(char* garbage, int cur, int* end, int* time)
+{
+    for (int i = 0; i < (int)strlen(garbage); i++) {
+        if (garbage[i] == 'M') {
+            end[0] = cur;
+            time[0]++;
+        }
+        else if (garbage[i] == 'P') {
+            end[1] = cur;
+            time[1]++;
+        }
+        else {
+            end[2] = cur;
+            time[2]++;
+        }
+    }
+
+}
+int garbageCollection(char** garbage, int garbageSize, int* travel, int travelSize)
+{
+    int end[3] = { -1 };//M,P,G
+    int time[3] = { 0 };
+    int total = 0;
+    int i, j;
+    for (i = 0; i < garbageSize; i++) {
+        calctime(garbage[i], i, end, time);
+    }
+    for (i = 0; i < 3; i++) {
+        if (end[i] < 0 || time[i] == 0)
+            continue;
+        total += time[i];
+        for (j = 0; j < travelSize; j++)
+        {
+            if (j >= end[i])
+                break;
+            total += travel[j];
+        }
+    }
+
+    return total;
+}
+
 // 2433. Find The Original Array of Prefix Xor
 int* findArray(int* pref, int prefSize, int* returnSize)
 {

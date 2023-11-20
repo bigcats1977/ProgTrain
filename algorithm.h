@@ -765,6 +765,8 @@ int averageOfSubtree(struct TreeNode* root);
 int equalPairs(int** grid, int gridSize, int* gridColSize);
 // 2390. Removing Stars From a String
 char* removeStars(char* s);
+// 2391. Minimum Amount of Time to Collect Garbage
+int garbageCollection(char** garbage, int garbageSize, int* travel, int travelSize);
 // 2433. Find The Original Array of Prefix Xor
 int* findArray(int* pref, int prefSize, int* returnSize);
 // 2466. Count Ways To Build Good Strings
