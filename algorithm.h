@@ -20,6 +20,8 @@ string longestPalindromeDP(string s);
 int reverse(int x);
 // 8. String to Integer (atoi)
 int myAtoi(char* s);
+// 9. Palindrome Number
+bool isPalindrome(int x);
 // 11. Container With Most Water
 int maxArea(int* height, int heightSize);
 int maxArea(vector<int>& height);
@@ -189,6 +191,8 @@ bool isBalanced(struct TreeNode* root);
 bool hasPathSum(struct TreeNode* root, int targetSum);
 // 113. Path Sum II
 int** pathSum(struct TreeNode* root, int targetSum, int* returnSize, int** returnColumnSizes);
+// 114. Flatten Binary Tree to Linked List
+void flatten(struct TreeNode* root);
 // 116. Populating Next Right Pointers in Each Node
 struct Node* connect(struct Node* root);
 // 117. Populating Next Right Pointers in Each Node II

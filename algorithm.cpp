@@ -300,6 +300,25 @@ int myAtoi(char* s) {
     return (int)ans;
 }
 
+// 9. Palindrome Number
+bool isPalindrome(int x)
+{
+    char str[11] = { 0 };
+    int len = 0;
+    if (x < 0)
+        return false;
+    while (x)
+    {
+        str[len++] = x % 10 + '0';
+        x /= 10;
+    }
+    for (int i = 0; i < len / 2; i++) {
+        if (str[i] != str[len - i - 1])
+            return false;
+    }
+    return true;
+}
+
 // 11. Container With Most Water
 int maxArea(int* height, int heightSize)
 {
@@ -3114,6 +3133,11 @@ int** pathSum(struct TreeNode* root, int targetSum, int* returnSize, int** retur
     findPath(root, targetSum, sumpath, &curlen, returnSize, returnColumnSizes);
     
     return pathSumAns;
+}
+
+// 114. Flatten Binary Tree to Linked List
+void flatten(struct TreeNode* root)
+{
 }
 
 // 116. Populating Next Right Pointers in Each Node
