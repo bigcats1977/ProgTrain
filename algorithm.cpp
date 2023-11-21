@@ -3138,6 +3138,18 @@ int** pathSum(struct TreeNode* root, int targetSum, int* returnSize, int** retur
 // 114. Flatten Binary Tree to Linked List
 void flatten(struct TreeNode* root)
 {
+    struct TreeNode* head = root, *temp;
+    while (head) {
+        if (head->left) {
+            temp = head->left;
+            while (temp->right)
+                temp = temp->right;
+            temp->right = head->right;
+            head->right = head->left;
+            head->left = NULL;
+        }
+        head = head->right;
+    }
 }
 
 // 116. Populating Next Right Pointers in Each Node
