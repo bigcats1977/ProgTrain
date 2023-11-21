@@ -1340,6 +1340,21 @@ void rotate(int** matrix, int matrixSize, int* matrixColSize)
         }
     }
 }
+void rotate(vector<vector<int>>& matrix)
+{
+    int n = (int)matrix.size();
+    int i, j;
+    for (i = 0; i < n / 2; i++) {
+        vector<int> temprow = matrix[i];
+        matrix[i] = matrix[n - i - 1];
+        matrix[n - i - 1] = temprow;
+    }
+    for (i = 0; i < n; i++) {
+        for (j = i + 1; j < n; j++) {
+            swap(matrix[i][j], matrix[j][i]);
+        }
+    }        
+}
 
 // 49. Group Anagrams
 #define HASHSZ 200
@@ -3568,6 +3583,31 @@ int canCompleteCircuit(int* gas, int gasSize, int* cost, int costSize)
     }
     return -1;
 #endif
+}
+int canCompleteCircuit(vector<int>& gas, vector<int>& cost)
+{
+    int i = 0, total = 0, n = (int)gas.size();
+    for (i = 0; i < n; i++) {
+        gas[i] -= cost[i];
+        total += gas[i];
+    }
+    if (total < 0)
+        return -1;
+    if (n == 1)
+        return 0;
+    for (i = 0; i < n; i++) {
+        if (gas[i] > 0) {
+            total = 0;
+            for (int j = i; j < i + n; j++) {
+                total += gas[j % n];
+                if (total < 0)
+                    break;
+            }
+            if (total >= 0)
+                return i;
+        }
+    }
+    return -1;
 }
 
 // 135. Candy
@@ -11077,6 +11117,29 @@ int maxScore(int* nums, int numsSize) {
     ans = dpScore(nums, numsSize, 1, 0, dp);
     free(dp);
     return ans;
+}
+
+// 1814. Count Nice Pairs in an Array
+int rev(int num)
+{
+    int res = 0;
+    while (num) {
+        res = res*10 + num % 10;
+        num /= 10;
+    }
+    return res;
+}
+int countNicePairs(vector<int>& nums)
+{
+    int mod = (long)1e9 + 7;
+    unordered_map<int, int> mp;
+    int count = 0;
+    for (auto it : nums) {
+        int r = rev(it);
+        count = (count + mp[it - r]) % mod;
+        mp[it - r]++;
+    }
+    return count;
 }
 
 // 1822. Sign of the Product of an Array

@@ -87,6 +87,7 @@ int** permute(int* nums, int numsSize, int* returnSize, int** returnColumnSizes)
 int** permuteUnique(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
 // 48. Rotate Image
 void rotate(int** matrix, int matrixSize, int* matrixColSize);
+void rotate(vector<vector<int>>& matrix);
 // 49. Group Anagrams
 char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnColumnSizes);
 // 50. Pow(x, n)
@@ -218,6 +219,7 @@ void solve(char** board, int boardSize, int* boardColSize);
 char*** partition(char* s, int* returnSize, int** returnColumnSizes);
 // 134. Gas Station
 int canCompleteCircuit(int* gas, int gasSize, int* cost, int costSize);
+int canCompleteCircuit(vector<int>& gas, vector<int>& cost);
 // 135. Candy
 int candy(vector<int>& ratings);
 int candy(int* ratings, int ratingsSize);
@@ -719,6 +721,8 @@ char* mergeAlternately(char* word1, char* word2);
 int maximumScore(int* nums, int numsSize, int k);
 // 1799. Maximize Score After N Operations
 int maxScore(int* nums, int numsSize);
+// 1814. Count Nice Pairs in an Array
+int countNicePairs(vector<int>& nums);
 // 1822. Sign of the Product of an Array
 int arraySign(int* nums, int numsSize);
 // 1823. Find the Winner of the Circular Game
