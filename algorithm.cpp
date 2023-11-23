@@ -3432,6 +3432,26 @@ int maxProfitIII(vector<int>& prices)
     return dp[n - 1][4];
 }
 
+// 124. Binary Tree Maximum Path Sum
+int postPathSum(struct TreeNode* node, int* max)
+{
+    int left, right;
+    if (!node)
+        return 0;
+    left = postPathSum(node->left, max);
+    left = (int)fmax(0, left);
+    right = postPathSum(node->right, max);
+    right = (int)fmax(0, right);
+    *max = (int)fmax(left + right + node->val, *max);
+    return (int)fmax(left, right) + node->val;
+}
+int maxPathSum(struct TreeNode* root)
+{
+    int max = -10000;
+    postPathSum(root, &max);
+    return max;
+}
+
 // 125. Valid Palindrome
 bool isPalindrome(char* s)
 {

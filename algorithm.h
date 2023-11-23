@@ -215,6 +215,8 @@ int maxProfitII(int* prices, int pricesSize);
 int maxProfitIIdp(vector<int>& prices);
 // 123. Best Time to Buy and Sell Stock III
 int maxProfitIII(vector<int>& prices);
+// 124. Binary Tree Maximum Path Sum
+int maxPathSum(struct TreeNode* root);
 // 125. Valid Palindrome
 bool isPalindrome(char* s);
 // 129. Sum Root to Leaf Numbers
