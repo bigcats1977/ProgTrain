@@ -3034,13 +3034,25 @@ struct TreeNode* sortedArrayToBST(int* nums, int numsSize)
     if (numsSize == 0)
         return NULL;
     struct TreeNode* root = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+    int mid = numsSize / 2;
+    root->val = nums[numsSize / 2];
+    root->left = sortedArrayToBST(nums, mid);
+    if (mid + 1 >= numsSize)
+        root->right = NULL;
+    else
+        root->right = sortedArrayToBST(&nums[mid+1], numsSize - mid - 1);
+    return root;
+
+    if (numsSize == 0)
+        return NULL;
+    /*struct TreeNode* root = (struct TreeNode*)malloc(sizeof(struct TreeNode));
     root->val = nums[numsSize / 2];
     root->left = sortedArrayToBST(&nums[0], numsSize / 2);
     if (numsSize / 2 + 1 > numsSize - 1)
         root->right = NULL;
     else
         root->right = sortedArrayToBST(&nums[numsSize / 2 + 1], (numsSize - 1) / 2);
-    return root;
+    return root;*/
 }
 
 // 110. Balanced Binary Tree
@@ -10893,6 +10905,34 @@ int diagonalSum(int** mat, int matSize, int* matColSize)
     if (matSize % 2 == 1)
         sum -= mat[matSize / 2][matSize / 2];
     return sum;
+}
+
+// 1630. Arithmetic Subarrays
+bool check(int* nums, int numsSize)
+{
+    qsort(nums, numsSize, sizeof(int), cmpfun);
+    if (numsSize < 2)
+        return false;
+    int diff = nums[1] - nums[0];
+    for (int i = 2; i < numsSize; i++) {
+        int diff1 = nums[i] - nums[i - 1];
+        if (diff1 != diff)
+            return false;
+    }
+    return true;
+}
+bool* checkArithmeticSubarrays(int* nums, int numsSize, int* l, int lSize, int* r, int rSize, int* returnSize)
+{
+    bool* res = (bool*)malloc(lSize * sizeof(bool));
+    int* temp = (int*)malloc(numsSize * sizeof(int));
+    for (int i = 0; i < lSize; i++) {
+        int len = r[i] - l[i] + 1;
+        memcpy(temp, &nums[l[i]], len * sizeof(int));
+        res[i] = check(temp, len);
+    }
+    *returnSize = lSize;
+    free(temp);
+    return res;
 }
 
 // 1647. Minimum Deletions to Make Character Frequencies Unique

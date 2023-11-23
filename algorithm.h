@@ -703,6 +703,8 @@ char* makeGood(char* s);
 int* findSmallestSetOfVertices(int n, int** edges, int edgesSize, int* edgesColSize, int* returnSize);
 // 1572. Matrix Diagonal Sum
 int diagonalSum(int** mat, int matSize, int* matColSize);
+// 1630. Arithmetic Subarrays
+bool* checkArithmeticSubarrays(int* nums, int numsSize, int* l, int lSize, int* r, int rSize, int* returnSize);
 // 1647. Minimum Deletions to Make Character Frequencies Unique
 int minDeletions(string s);
 // 1657. Determine if Two Strings Are Close
