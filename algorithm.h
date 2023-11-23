@@ -217,6 +217,8 @@ int maxProfitIIdp(vector<int>& prices);
 int maxProfitIII(vector<int>& prices);
 // 125. Valid Palindrome
 bool isPalindrome(char* s);
+// 129. Sum Root to Leaf Numbers
+int sumNumbers(struct TreeNode* root);
 // 130. Surrounded Regions
 void solve(char** board, int boardSize, int* boardColSize);
 // 131. Palindrome Partitioning

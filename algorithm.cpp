@@ -3453,6 +3453,26 @@ bool isPalindrome(char* s)
     return true;
 }
 
+// 129. Sum Root to Leaf Numbers
+int leafres = 0;
+int getleaf(struct TreeNode* node, int sum)
+{
+    sum = sum * 10 + node->val;
+
+    if (!node->left && !node->right) {
+        leafres += sum;
+    }
+
+    if(node->left) getleaf(node->left, sum);
+    if (node->right) getleaf(node->right, sum);
+    return leafres;
+}
+int sumNumbers(struct TreeNode* root)
+{
+    leafres = 0;
+    return getleaf(root, 0);
+}
+
 // 130. Surrounded Regions
 int regions[4][2] = { {-1,0},{1,0},{0,-1},{0,1} };
 void regiondfs(char** board, bool** visited, int m, int n, int curx, int cury)
