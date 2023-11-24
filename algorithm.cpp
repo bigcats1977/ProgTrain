@@ -2947,6 +2947,30 @@ int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes
 
     return ans;
 }
+vector<vector<int>> levelOrder(TreeNode* root)
+{
+    vector<vector<int>> res;
+    if (!root)
+        return res;
+    queue<TreeNode*> qu;
+    qu.push(root);
+    TreeNode* temp;
+    while (qu.size() > 0) {
+        int size = (int)qu.size();
+        vector<int> level;
+        for (int i = 0; i < size; i++) {
+            temp = qu.front();
+            qu.pop();
+            level.push_back(temp->val);
+            if (temp->left)
+                qu.push(temp->left);
+            if (temp->right)
+                qu.push(temp->right);
+        }
+        res.push_back(level);
+    }
+    return res;
+}
 
 // 103. Binary Tree Zigzag Level Order Traversal
 int** zigzagLevelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes)
