@@ -10933,6 +10933,17 @@ int* findSmallestSetOfVertices(int n, int** edges, int edgesSize, int* edgesColS
     return ans;
 }
 
+// 1561. Maximum Number of Coins You Can Get
+int maxCoins(int* piles, int pilesSize)
+{
+    int sum = 0;
+    qsort(piles, pilesSize, sizeof(int), Rcmpfun);
+    for (int i = 1; i < pilesSize / 3 * 2; i += 2) {
+        sum += piles[i];
+    }
+    return sum;
+}
+
 // 1572. Matrix Diagonal Sum
 int diagonalSum(int** mat, int matSize, int* matColSize)
 {

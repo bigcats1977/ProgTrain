@@ -705,6 +705,8 @@ int getWinner(vector<int>& arr, int k);
 char* makeGood(char* s);
 // 1557. Minimum Number of Vertices to Reach All Nodes
 int* findSmallestSetOfVertices(int n, int** edges, int edgesSize, int* edgesColSize, int* returnSize);
+// 1561. Maximum Number of Coins You Can Get
+int maxCoins(int* piles, int pilesSize);
 // 1572. Matrix Diagonal Sum
 int diagonalSum(int** mat, int matSize, int* matColSize);
 // 1630. Arithmetic Subarrays
