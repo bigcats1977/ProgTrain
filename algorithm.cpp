@@ -246,6 +246,28 @@ string longestPalindromeDP(string s)
     return s.substr(begin, maxlen);
 }
 
+// 6. Zigzag Conversion
+char* convert(char* s, int numRows)
+{
+    int len = (int)strlen(s);
+    if (numRows == 1 || numRows >= len)
+        return s;
+    char* res = (char*)calloc(len + 1, sizeof(char));
+    int i, j, k, step = 2 * numRows - 2, cur = 0;
+    for (i = 0; i < numRows; i++) {
+        for (j = i; j < len; j += step) {
+            res[cur++] = s[j];
+            if (i != 0 && i != numRows - 1) {
+                k = j + step - 2 * i;
+                if (k <len) {
+                    res[cur++] = s[k];
+                }
+            }
+        }
+    }
+    return res;
+}
+
 // 7. Reverse Integer
 int reverse(int x)
 {
