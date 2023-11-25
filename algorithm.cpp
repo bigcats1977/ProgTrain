@@ -11148,6 +11148,23 @@ bool arrayStringsAreEqual(char** word1, int word1Size, char** word2, int word2Si
     return true;
 }
 
+// 1685. Sum of Absolute Differences in a Sorted Array
+int* getSumAbsoluteDifferences(int* nums, int numsSize, int* returnSize)
+{
+    int* res = (int*)calloc(numsSize, sizeof(int));
+    int sum = 0, pres = 0;
+    int i;
+    for (i = 0; i < numsSize; i++)
+        sum += nums[i];
+    for (i = 0; i < numsSize; i++) {
+        res[i] = sum - (numsSize - i) * nums[i] + i * nums[i] - pres;
+        sum -= nums[i];
+        pres += nums[i];
+    }
+    *returnSize = numsSize;
+    return res;
+}
+
 // 1704. Determine if String Halves Are Alike
 bool IsVowels(char ch) {
     switch (ch) {
