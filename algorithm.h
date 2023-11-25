@@ -153,6 +153,8 @@ int removeDuplicatesII(int* nums, int numsSize);
 struct ListNode* deleteDuplicatesII(struct ListNode* head);
 // 83. Remove Duplicates from Sorted List
 struct ListNode* deleteDuplicates(struct ListNode* head);
+// 86. Partition List
+struct ListNode* partition(struct ListNode* head, int x);
 // 88. Merge Sorted Array
 void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n);
 void merge(vector<int>& nums1, int m, vector<int>& nums2, int n);

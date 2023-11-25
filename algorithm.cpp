@@ -2570,6 +2570,41 @@ struct ListNode* deleteDuplicates(struct ListNode* head)
     return prenode;
 }
 
+// 86. Partition List
+struct ListNode* partition(struct ListNode* head, int x)
+{
+    if (!head)
+        return NULL;
+    struct ListNode* dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    dummy->next = head;
+    struct ListNode* pre = dummy, * cur = head, *last;
+    while (cur && cur->val < x) {
+        pre = pre->next;
+        cur = cur->next;
+    }
+    if (cur && cur->val >= x) {
+        last = pre;
+        while (cur) {
+            if (cur->val < x) {
+                pre->next = cur->next;
+                cur->next = last->next;
+                last->next = cur;
+                last = last->next;
+                cur = pre->next;
+            }
+            else
+            {
+                pre = pre->next;
+                cur = cur->next;
+            }
+        }
+
+    }
+    cur = dummy->next;
+    free(dummy);
+    return cur;
+}
+
 // 88. Merge Sorted Array
 void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n)
 {
