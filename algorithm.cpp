@@ -4123,6 +4123,40 @@ int evalRPN(char** tokens, int tokensSize) {
     free(stack);
     return result;
 }
+int evalRPN(vector<string>& tokens)
+{
+    stack<int> st;
+    int value = 0, num1, num2;
+    for (size_t i = 0; i < tokens.size();i++) {
+        char ch = tokens[i].at(0);
+        if (tokens[i].length() != 1 || isdigit(ch)) {
+            st.push(stoi(tokens[i]));
+            continue;
+        }
+        num2 = st.top();
+        st.pop();
+        num1 = st.top();
+        st.pop();
+        switch (ch) {
+        case '+':
+            value = num1+num2;
+            break;
+        case '-':
+            value = num1 - num2;
+            break;
+        case '*':
+            value = num1 * num2;
+            break;
+        case '/':
+            value = num1 / num2;
+            break;
+        default:
+            break;
+        }
+        st.push(value);
+    }
+    return st.top();
+}
 
 // 151. Reverse Words in a String
 void removespace(char* s)

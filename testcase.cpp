@@ -852,10 +852,13 @@ void TestCase_239()
 
 void TestCase_150()
 {
-    char* result;
+    vector<string> tokens;
+    tokens = { "4","13","5","/","+" };
+    evalRPN(tokens);
+    /*char* result;
     string s = "We are happy.";
     result = replacespace(&*s.begin());
-    printf("%s\r\n%s", s.c_str(), result);
+    printf("%s\r\n%s", s.c_str(), result);*/
 }
 
 void TestCase_8005()

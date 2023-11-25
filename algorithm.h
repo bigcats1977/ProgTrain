@@ -259,6 +259,7 @@ struct ListNode* sortList(struct ListNode* head);
 int maxPoints(int** points, int pointsSize, int* pointsColSize);
 // 150. Evaluate Reverse Polish Notation
 int evalRPN(char ** tokens, int tokensSize);
+int evalRPN(vector<string>& tokens);
 // 151. Reverse Words in a String
 char* reverseWords(char* s);
 // 152. Maximum Product Subarray
