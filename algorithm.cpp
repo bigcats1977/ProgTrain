@@ -9840,6 +9840,35 @@ int* sortArrayByParity(int* nums, int numsSize, int* returnSize)
 #endif
 }
 
+// 935. Knight Dialer
+int knightDialer(int n)
+{
+    int MOD = (int)1e9 + 7;
+    const int dir[10][3] = { {4, 6}, {6, 8}, {7, 9}, {4, 8}, {3, 9, 0}, {}, {1, 7, 0}, {2, 6}, {1, 3}, {2, 4} };
+    const int size[10] = { 2, 2, 2, 2, 3, 0, 3, 2, 2, 2 };
+    int ret = 0, * prev = (int*)calloc(10, sizeof(int));
+
+    for (int i = 0; i < 10; i++)
+        prev[i] = 1;
+
+    for (int i = 1; i < n; i++) {
+        int* cur = (int*)calloc(10, sizeof(int)), * temp = prev;
+
+        for (int j = 0; j < 10; j++)
+            for (int k = 0; k < size[j]; k++)
+                cur[dir[j][k]] = (cur[dir[j][k]] % MOD + prev[j] % MOD) % MOD;
+
+        prev = cur;
+        cur = temp;
+        free(cur);
+    }
+
+    for (int i = 0; i < 10; i++)
+        ret = (ret % MOD + prev[i] % MOD) % MOD;
+    free(prev);
+
+    return ret;
+}
 
 // 944. Delete Columns to Make Sorted
 int minDeletionSize(char** strs, int strsSize)
