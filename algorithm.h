@@ -64,6 +64,7 @@ int removeElement(int* nums, int numsSize, int val);
 int removeElement(vector<int>& nums, int val);
 // 28. Find the Index of the First Occurrence in a String
 int strStr(char* haystack, char* needle);
+int strStr(string haystack, string needle);
 // 33. Search in Rotated Sorted Array
 int searchRotated(int* nums, int numsSize, int target);
 // 34. Find First and Last Position of Element in Sorted Array
@@ -151,6 +152,7 @@ bool exist(char** board, int boardSize, int* boardColSize, char* word);
 int removeDuplicatesII(int* nums, int numsSize);
 // 82. Remove Duplicates from Sorted List II
 struct ListNode* deleteDuplicatesII(struct ListNode* head);
+ListNode* deleteDuplicatesIIP(ListNode* head);
 // 83. Remove Duplicates from Sorted List
 struct ListNode* deleteDuplicates(struct ListNode* head);
 // 86. Partition List

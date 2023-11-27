@@ -1005,6 +1005,41 @@ int strStr(char* haystack, char* needle)
     }
     return -1;
 }
+void getNext(vector<int> &next, string s)
+{
+    int j = -1;
+    next[0] = j;
+    for (int i = 1; i < (int)s.size(); i++) {
+        if (j >= 0 && s[i] != s[j + 1]) {
+            j = next[j];
+        }
+        if (s[i] == s[j + 1]) {
+            j++;
+        }
+        next[i] = j;
+    }
+}
+int strStr(string haystack, string needle)
+{
+    if(needle.size() > haystack.size())
+        return -1;
+    if (needle.size() == 0)
+        return 0;
+    vector<int> next(needle.size());
+    getNext(next, needle);
+    int i = 0, j = -1;
+    for (i = 0; i < (int)haystack.size(); i++) {
+        while (j >= 0 && haystack[i] != needle[j + 1]) {
+            j = next[j];
+        }
+        if (haystack[i] == needle[j + 1]) {
+            j++;
+        }
+        if (j == needle.size() - 1)
+            return (int)(i - needle.size()+ 1);
+    }
+    return -1;
+}
 
 // 33. Search in Rotated Sorted Array
 int searchRotated(int* nums, int numsSize, int target)
@@ -2544,6 +2579,38 @@ struct ListNode* deleteDuplicatesII(struct ListNode* head)
     free(Dummy);
     return node;
 }
+ListNode* deleteDuplicatesIIP(ListNode* head)
+{
+    ListNode* dummy = new ListNode();
+    dummy->next = head;
+    ListNode* cur, * pre;
+    int preval = 1000;
+    pre = dummy, cur = head;
+    while (cur)
+    {
+        if (cur->val == preval) {
+            pre->next = cur->next;
+            delete(cur);
+            cur = pre->next;
+        }
+        else {
+            if (!cur->next)
+                break;
+            preval = cur->val;
+            if (cur->next->val == preval) {
+                pre->next = cur->next;
+                delete(cur);
+                cur = pre->next;
+            }
+            else {
+                pre = cur;
+                cur = cur->next;
+            }
+        }
+    }
+    return dummy->next;
+}
+
 
 // 83. Remove Duplicates from Sorted List
 struct ListNode* deleteDuplicates(struct ListNode* head)
