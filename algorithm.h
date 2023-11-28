@@ -41,6 +41,7 @@ vector<vector<int>> threeSum(vector<int>& nums);
 int threeSumClosest(int* nums, int numsSize, int target);
 // 17. Letter Combinations of a Phone Number
 char** letterCombinations(char* digits, int* returnSize);
+vector<string> letterCombinations(string digits);
 // 19. Remove Nth Node From End of List
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n);
 ListNode* removeNthFromEndII(ListNode* head, int n);
@@ -88,6 +89,7 @@ int jumpII(int* nums, int numsSize);
 int jumpII(vector<int>& nums);
 // 46. Permutations
 int** permute(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
+vector<vector<int>> permute(vector<int>& nums);
 // 47. Permutations II
 int** permuteUnique(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
 // 48. Rotate Image
@@ -144,6 +146,7 @@ void sortColors(int* nums, int numsSize);
 char* minWindow(char* s, char* t);
 // 77. Combinations
 int** combine(int n, int k, int* returnSize, int** returnColumnSizes);
+vector<vector<int>> combine(int n, int k);
 // 78. Subsets
 int** subsets(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
 // 79. Word Search

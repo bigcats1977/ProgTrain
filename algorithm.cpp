@@ -617,6 +617,38 @@ char** letterCombinations(char* digits, int* returnSize)
     bt_letterComb(digits, len, 0, returnSize, ans);
     return ans;
 }
+map<char, string> mDigits = {
+    {'2', "abc"}, 
+    {'3', "def"},
+    {'4', "ghi"},
+    {'5', "jkl"},
+    {'6', "mno"},
+    {'7', "pqrs"},
+    {'8', "tuv"},
+    {'9', "wxyz"}
+};
+void btLetter(int start, string digits, string &path, vector<string> &res)
+{
+    if (path.size() >= digits.size()) {
+        res.push_back(path);
+        return;
+    }
+    string alpha = mDigits[digits[start]];
+    for (size_t i = 0; i < alpha.size(); i++) {
+        path.push_back(alpha[i]);
+        btLetter(start+1, digits, path, res);
+        path.pop_back();
+    }
+}
+vector<string> letterCombinations(string digits)
+{
+    vector<string> res;
+    string path;
+    if (digits.size() == 0)
+        return res;
+    btLetter(0, digits, path, res);
+    return res;
+}
 
 // 19. Remove Nth Node From End of List
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n)
@@ -1354,6 +1386,33 @@ int** permute(int* nums, int numsSize, int* returnSize, int** returnColumnSizes)
     free(permutePath);
     free(used);
     return permuteAns;
+}
+void btPermute(vector<int> nums, vector<bool>& bSel, vector<int>& path, vector<vector<int>>& res)
+{
+    if (path.size() == nums.size()) {
+        res.push_back(path);
+        return;
+    }
+    for (size_t i = 0; i < nums.size(); i++)
+    {
+        if (!bSel[i]) {
+            bSel[i] = true;
+            path.push_back(nums[i]);
+            btPermute(nums, bSel, path, res);
+            path.pop_back();
+            bSel[i] = false;
+        }
+    }
+}
+vector<vector<int>> permute(vector<int>& nums)
+{
+    size_t n = nums.size();
+    vector<bool> bSel(n, false);
+    vector<vector<int>> res;
+    vector<int> path;
+
+    btPermute(nums, bSel, path, res);
+    return res;
 }
 
 // 47. Permutations II
@@ -2389,6 +2448,26 @@ int** combine(int n, int k, int* returnSize, int** returnColumnSizes)
     count = 0;
     BTcombine(1, n, k, Path, &len, ans, &count);
     return ans;
+}
+void comb77(int start, int n, int k, vector<int> &path, vector<vector<int>>& ans)
+{
+    if (path.size() == k) {
+        ans.push_back(path);
+        return;
+    }
+
+    for (int i = start; i <= n; i++) {
+        path.push_back(i);
+        comb77(i+1, n, k, path, ans);
+        path.pop_back();
+    }
+}
+vector<vector<int>> combine(int n, int k)
+{
+    vector<vector<int>> res;
+    vector<int> path;
+    comb77(1, n, k, path, res);
+    return res;
 }
 //int** CombAns;
 //int  CurComb;
