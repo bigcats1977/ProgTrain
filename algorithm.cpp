@@ -12017,6 +12017,61 @@ int longestPalindrome(char** words, int wordsSize)
     return longPal;
 }
 
+// 2147. Number of Ways to Divide a Long Corridor
+// dp time limmited
+/*int dfsNOW(int index, int count, char* corridor, int** dp)
+{
+    int MOD = (int)1e9 + 7;
+    if (index >= strlen(corridor))
+        return count == 2;
+    if (dp[index][count] != -1)
+        return dp[index][count];
+    int add = corridor[index] == 'S' ? 1 : 0;
+    if (count > 2)
+        return 0;
+    if (count < 2)
+        return dp[index][count] = dfsNOW(index + 1, count + add, corridor, dp) % MOD;
+
+    return dp[index][count] = (dfsNOW(index + 1, count + add, corridor, dp) +
+        dfsNOW(index + 1, add, corridor, dp)) % MOD;
+}
+int numberOfWays(char* corridor)
+{
+    int n = (int)strlen(corridor);
+    int** dp = (int**)malloc(n * sizeof(int*));
+    for (int i = 0; i < n; i++) {
+        dp[i] = (int*)malloc(4 * sizeof(int));
+        memset(dp[i], -1, 4 * sizeof(int));
+    }
+    return dfsNOW(0, 0, corridor, dp);
+}*/
+int numberOfWays(char* corridor)
+{
+    const int MOD = (int)1e9 + 7;
+    int n = (int)strlen(corridor);
+    int cntS = 0;
+    for (int i = 0; i < n; i++) {
+        if (corridor[i] == 'S') ++cntS;
+    }
+    if (cntS == 0 || cntS & 1)
+        return 0;
+    int res = 1;
+    long long pref = 0;
+    int findx = -1;
+    for (int i = 0; i < n; i++) {
+        if (corridor[i] == 'S') {
+            pref += 1;
+            if (pref == 2) {
+                findx = i;
+            }
+            else if (pref > 2) {
+                res = (res % MOD * (i - findx) % MOD) % MOD;
+                pref -= 2;
+            }
+        }
+    }
+    return res;
+}
 // 2215. Find the Difference of Two Arrays
 int diffcmp(const void* a, const void* b) {
     return (*(int*)a) - (*(int*)b);

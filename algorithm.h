@@ -784,6 +784,8 @@ int pairSum(struct ListNode* head);
 int pairSum2(ListNode* head);
 // 2131. Longest Palindrome by Concatenating Two Letter Words
 int longestPalindrome(char** words, int wordsSize);
+// 2147. Number of Ways to Divide a Long Corridor
+int numberOfWays(char* corridor);
 // 2215. Find the Difference of Two Arrays
 int** findDifference(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize, int** returnColumnSizes);
 vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2);
