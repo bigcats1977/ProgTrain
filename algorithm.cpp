@@ -5451,6 +5451,43 @@ int** combinationSum3(int k, int n, int* returnSize, int** returnColumnSizes)
 
     return ans;
 }
+bool btcom3(int start, int sum, int k, int n, vector<int>& path, vector<vector<int>> &res)
+{
+    bool bfind = false;
+    if (k == 0)
+    {
+        if (sum == n) {
+            res.push_back(path);
+            return true;
+        }
+        if (sum > n)
+            return false;
+        return true;
+    }
+
+    for (int i = start; i <= 9; i++) {
+        if (n - sum < i)
+            continue;
+        path.push_back(i);
+        sum += i;
+        bfind = btcom3(i + 1, sum, k - 1, n, path, res);
+        sum -= i;
+        path.pop_back();
+        if (!bfind)
+            break;
+    }
+    return true;
+}
+vector<vector<int>> combinationSum3(int k, int n)
+{
+    vector<vector<int>> res;
+    vector<int> path;
+    int start = 1, sum = 0;
+    if (n > 45 || k > n)
+        return res;
+    btcom3(1, 0, k, n, path, res);
+    return res;
+}
 
 // 217. Contains Duplicate
 bool quicksort4Duplicate(int* nums, int begin, int end)
@@ -5519,7 +5556,6 @@ bool containsDuplicate(int* nums, int numsSize)
     }
     return false;
 }
-
 // 219. Contains Duplicate II
 bool containsNearbyDuplicate(vector<int>& nums, int k)
 {

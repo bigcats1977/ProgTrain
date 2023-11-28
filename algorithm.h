@@ -332,6 +332,7 @@ int robCCC(vector<int>& nums);
 int findKthLargest(int* nums, int numsSize, int k);
 // 216. Combination Sum III
 int** combinationSum3(int k, int n, int* returnSize, int** returnColumnSizes);
+vector<vector<int>> combinationSum3(int k, int n);
 // 217. Contains Duplicate
 bool containsDuplicate(int* nums, int numsSize);
 // 219. Contains Duplicate II
