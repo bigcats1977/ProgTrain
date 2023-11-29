@@ -4257,7 +4257,7 @@ int maxPoints(int** points, int pointsSize, int* pointsColSize)
             int x1 = points[i][0], x2 = points[j][0];
             int y1 = points[i][1], y2 = points[j][1];
             int total = 2;
-            for (int k = 0; k < pointsSize && k != i && k != j; k++) {
+            for (int k = j+1; k < pointsSize; k++) {
                 int x = points[k][0], y = points[k][1];
                 if ((y2 - y1) * (x - x1) == (x2 - x1) * (y - y1))
                     total++;
