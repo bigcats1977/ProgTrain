@@ -285,6 +285,8 @@ vector<int> twoSum(vector<int>& numbers, int target);
 // 169. Majority Element
 int majorityElement(int* nums, int numsSize);
 int majorityElement(vector<int>& nums);
+// 172. Factorial Trailing Zeroes
+int trailingZeroes(int n);
 // 187. Repeated DNA Sequences
 char** findRepeatedDnaSequences(char* s, int* returnSize);
 // 188. Best Time to Buy and Sell Stock IV

@@ -4715,6 +4715,12 @@ int majorityElement(vector<int>& nums)
     return major;
 }
 
+// 172. Factorial Trailing Zeroes
+int trailingZeroes(int n)
+{
+    return n / 5 + n / 25 + n / 125 + n / 625 + n / 3125;
+}
+
 // 187. Repeated DNA Sequences
 //int getbase(char c)
 //{
