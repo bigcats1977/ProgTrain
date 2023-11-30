@@ -1585,6 +1585,16 @@ char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnCo
 
     return returnBuf;
 }
+vector<vector<string>> groupAnagrams(vector<string>& strs)
+{
+    map<vector<int>, vector<string>> map;
+    vector<vector<string>> res;
+    size_t i;
+    for (i = 0; i < strs.size(); i++) {
+
+    }
+    return res;
+}
 #if 0
 struct groupInfo {
     int no;
@@ -4257,7 +4267,7 @@ int maxPoints(int** points, int pointsSize, int* pointsColSize)
             int x1 = points[i][0], x2 = points[j][0];
             int y1 = points[i][1], y2 = points[j][1];
             int total = 2;
-            for (int k = 0; k < pointsSize && k != i && k != j; k++) {
+            for (int k = j+1; k < pointsSize; k++) {
                 int x = points[k][0], y = points[k][1];
                 if ((y2 - y1) * (x - x1) == (x2 - x1) * (y - y1))
                     total++;
@@ -4713,6 +4723,12 @@ int majorityElement(vector<int>& nums)
         }
     }
     return major;
+}
+
+// 172. Factorial Trailing Zeroes
+int trailingZeroes(int n)
+{
+    return n / 5 + n / 25 + n / 125 + n / 625 + n / 3125;
 }
 
 // 187. Repeated DNA Sequences
@@ -11343,6 +11359,20 @@ int diagonalSum(int** mat, int matSize, int* matColSize)
     if (matSize % 2 == 1)
         sum -= mat[matSize / 2][matSize / 2];
     return sum;
+}
+
+// 1611. Minimum One Bit Operations to Make Integers Zero
+int minimumOneBitOperations(int n)
+{
+    int res = 0;
+    int cur = 1;
+    while (cur <= n) {
+        if (n & cur) {
+            res = (cur * 2 - 1) - res;
+        }
+        cur <<= 1;
+    }
+    return res;
 }
 
 // 1630. Arithmetic Subarrays
