@@ -1585,6 +1585,16 @@ char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnCo
 
     return returnBuf;
 }
+vector<vector<string>> groupAnagrams(vector<string>& strs)
+{
+    map<vector<int>, vector<string>> map;
+    vector<vector<string>> res;
+    size_t i;
+    for (i = 0; i < strs.size(); i++) {
+
+    }
+    return res;
+}
 #if 0
 struct groupInfo {
     int no;
@@ -11288,6 +11298,20 @@ int diagonalSum(int** mat, int matSize, int* matColSize)
     if (matSize % 2 == 1)
         sum -= mat[matSize / 2][matSize / 2];
     return sum;
+}
+
+// 1611. Minimum One Bit Operations to Make Integers Zero
+int minimumOneBitOperations(int n)
+{
+    int res = 0;
+    int cur = 1;
+    while (cur <= n) {
+        if (n & cur) {
+            res = (cur * 2 - 1) - res;
+        }
+        cur <<= 1;
+    }
+    return res;
 }
 
 // 1630. Arithmetic Subarrays

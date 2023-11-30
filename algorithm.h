@@ -97,6 +97,7 @@ void rotate(int** matrix, int matrixSize, int* matrixColSize);
 void rotate(vector<vector<int>>& matrix);
 // 49. Group Anagrams
 char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnColumnSizes);
+vector<vector<string>> groupAnagrams(vector<string>& strs);
 // 50. Pow(x, n)
 double myPow(double x, int n);
 // 53. Maximum Subarray
@@ -725,6 +726,8 @@ int* findSmallestSetOfVertices(int n, int** edges, int edgesSize, int* edgesColS
 int maxCoins(int* piles, int pilesSize);
 // 1572. Matrix Diagonal Sum
 int diagonalSum(int** mat, int matSize, int* matColSize);
+// 1611. Minimum One Bit Operations to Make Integers Zero
+int minimumOneBitOperations(int n);
 // 1630. Arithmetic Subarrays
 bool* checkArithmeticSubarrays(int* nums, int numsSize, int* l, int lSize, int* r, int rSize, int* returnSize);
 // 1647. Minimum Deletions to Make Character Frequencies Unique
