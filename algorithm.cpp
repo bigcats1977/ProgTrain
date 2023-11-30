@@ -5668,6 +5668,67 @@ int computeArea(int ax1, int ay1, int ax2, int ay2, int bx1, int by1, int bx2, i
     return area1 + area2 - area3;
 }
 
+// 224. Basic Calculator
+int  stOper[16000];
+int  stNums[16000];
+int  topOper = 0;
+int  topNums = 0;
+int calculate(char* s)
+{
+    long res = 0;
+    long val = 0;
+    int flag = 1;
+    bool match = false;
+    int preFlag, preVal;
+
+    topOper = 0;
+    topNums = 0;
+    
+    for (size_t i = 0; i < strlen(s); i++) {
+        if (isdigit(s[i])) {
+            match = false;
+            val = val * 10 + s[i] - '0';
+        }
+        else {
+            switch (s[i])
+            {
+            case '(':
+                match = false;
+                stNums[topNums++] = res;
+                stOper[topOper++] = flag;
+                res = 0;
+                flag = 1;
+                break;
+            case ')':
+                match = true;
+                preFlag = stOper[--topOper];
+                preVal = stNums[--topNums];
+                res += flag * val;
+                val = 0;
+                res = preVal + preFlag * res;
+                break;
+            case '+':
+                match = false;
+                res += flag * val;
+                flag = 1;
+                val = 0;
+                break;
+            case '-':
+                match = false;
+                res += flag * val;
+                flag = -1;
+                val = 0;
+                break;
+            default:
+                break;
+            }
+        }
+    }
+    if (!match)
+        res += flag * val;
+    return res;
+}
+
 // 226. Invert Binary Tree
 struct TreeNode* invertTree(struct TreeNode* root)
 {
@@ -5717,7 +5778,7 @@ void calcuvalue(int* numstack, int *topnum, char* operstack, int *topoper, bool 
     }
     return;
 }
-int calculate(char* s)
+int calculateII(char* s)
 {
     int len = (int)strlen(s);
     int* numstack = (int*)calloc((len+1)/2, sizeof(int));

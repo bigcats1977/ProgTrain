@@ -66,6 +66,7 @@ FUNCNAME g_tFuncName[] = {
     {216,   TestCase_216 },
     {217,   TestCase_217 },
     {221,   TestCase_221 },
+    {224,   TestCase_224 },
     {227,   TestCase_227 },
     {228,   TestCase_228 },
     {229,   TestCase_229 },
@@ -160,6 +161,12 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_224()
+{
+    string s = " 2-1 + 2 ";
+    calculate(&*s.begin());
+}
 
 void TestCase_221()
 {
@@ -687,17 +694,17 @@ void TestCase_227()
 
     s = "14/3*2";
     expect = 8;
-    out = calculate(&*s.begin());
+    out = calculateII(&*s.begin());
     COMPVALUE(expect, out);
 
     s = "12-3*4";
     expect = 0;
-    out = calculate(&*s.begin());
+    out = calculateII(&*s.begin());
     COMPVALUE(expect, out);
 
     s = "3+2*2";
     expect = 7;
-    out = calculate(&*s.begin());
+    out = calculateII(&*s.begin());
     COMPVALUE(expect, out);
 }
 
