@@ -738,6 +738,7 @@ int minDeletions(string s);
 bool closeStrings(char* word1, char* word2);
 // 1662. Check If Two String Arrays are Equivalent
 bool arrayStringsAreEqual(char** word1, int word1Size, char** word2, int word2Size);
+bool arrayStringsAreEqual(vector<string>& word1, vector<string>& word2);
 // 1685. Sum of Absolute Differences in a Sorted Array
 int* getSumAbsoluteDifferences(int* nums, int numsSize, int* returnSize);
 // 1704. Determine if String Halves Are Alike

@@ -11518,6 +11518,31 @@ bool arrayStringsAreEqual(char** word1, int word1Size, char** word2, int word2Si
 
     return true;
 }
+bool arrayStringsAreEqual(vector<string>& word1, vector<string>& word2)
+{
+    size_t num1 = 0, num2 = 0;
+    size_t len1 = 0, len2 = 0;
+    char c1, c2;
+    while (num1 < word1.size() && num2 < word2.size()) {
+        c1 = word1[num1][len1++];
+        c2 = word2[num2][len2++];
+        if (c1 != c2)
+            return false;
+        if (len1 >= word1[num1].size()) {
+            len1 = 0;
+            num1++;
+        }
+        if (len2 >= word2[num2].size()) {
+            len2 = 0;
+            num2++;
+        }
+    }
+    if (num1 != word1.size() || num2 != word2.size())
+        return false;
+    if (len1 != 0 || len2 != 0)
+        return false;
+    return true;
+}
 
 // 1685. Sum of Absolute Differences in a Sorted Array
 int* getSumAbsoluteDifferences(int* nums, int numsSize, int* returnSize)
