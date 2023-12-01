@@ -45,6 +45,7 @@ FUNCNAME g_tFuncName[] = {
     {120,   TestCase_120 },
     {122,   TestCase_122 },
     {125,   TestCase_125 },
+    {128,   TestCase_128 },
     {130,   TestCase_130 },
     {136,   TestCase_136 },
     {142,   TestCase_142 },
@@ -161,6 +162,12 @@ FUNCNAME g_tFuncName[] = {
     {8058,  TestCase_8058},
     {9999,  TestCase_9999},
 };
+
+void TestCase_128()
+{
+    vector<int> nums = { 100,4,200,1,3,2 };
+    longestConsecutive(nums);
+}
 
 void TestCase_224()
 {

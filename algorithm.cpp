@@ -3710,6 +3710,26 @@ bool isPalindrome(char* s)
     return true;
 }
 
+// 128. Longest Consecutive Sequence
+int longestConsecutive(vector<int>& nums)
+{
+    unordered_set<int> hash(nums.begin(), nums.end());
+    if (nums.size() == 0)
+        return 0;
+
+    int maxlen = 0;
+    for (auto num : nums) {
+        if (hash.count(num - 1) == 0) {
+            int cur = 1;
+            while (hash.count(++num) > 0) {
+                cur++;
+            }
+            maxlen = max(cur, maxlen);
+        }
+    }
+    return maxlen;
+}
+
 // 129. Sum Root to Leaf Numbers
 int leafres = 0;
 int getleaf(struct TreeNode* node, int sum)
