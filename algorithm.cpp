@@ -10751,6 +10751,31 @@ int longestCommonSubsequence(char* text1, char* text2)
     return max;
 }
 
+// 1160. Find Words That Can Be Formed by Characters
+int countCharacters(char** words, int wordsSize, char* chars)
+{
+    int count = 0;
+    size_t i,j;
+    int freqChar[26] = { 0 };
+    int freqWord[26] = { 0 };
+    for (i = 0; i < strlen(chars); i++) {
+        freqChar[chars[i] - 'a']++;
+    }
+    for (i = 0; i < wordsSize; i++) {
+        memset(freqWord, 0, sizeof(int) * 26);
+        for (j = 0; j < strlen(words[i]); j++) {
+            freqWord[words[i][j] - 'a']++;
+        }
+        for (j = 0; j < 26; j++) {
+            if (freqWord[j] > freqChar[j])
+                break;
+        }
+        if (j == 26)
+            count += (int)strlen(words[i]);
+    }
+    return count;
+}
+
 // 1161. Maximum Level Sum of a Binary Tree
 int maxLevelSum(struct TreeNode* root)
 {

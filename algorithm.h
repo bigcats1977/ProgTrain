@@ -677,6 +677,8 @@ public:
 int findInMountainArray(int target, MountainArray& mountainArr);
 // 1143. Longest Common Subsequence
 int longestCommonSubsequence(char* text1, char* text2);
+// 1160. Find Words That Can Be Formed by Characters
+int countCharacters(char** words, int wordsSize, char* chars);
 // 1161. Maximum Level Sum of a Binary Tree
 int maxLevelSum(struct TreeNode* root);
 // 1207. Unique Number of Occurrences
