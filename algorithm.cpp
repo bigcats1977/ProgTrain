@@ -10912,6 +10912,19 @@ char* minRemoveToMakeValid(char* s)
     return result;
 }
 
+// 1266. Minimum Time Visiting All Points
+int minTimeToVisitAllPoints(int** points, int pointsSize, int* pointsColSize)
+{
+    int maxtime = 0;
+    int x,y;
+    for (int i = 1; i < pointsSize; i++) {
+        x = (int)fabs(points[i][0] - points[i - 1][0]);
+        y = (int)fabs(points[i][1] - points[i - 1][1]);
+        maxtime += (int)fmax(x, y);
+    }
+    return maxtime;
+}
+
 // 1323. Maximum 69 Number
 int maximum69Number(int num)
 {

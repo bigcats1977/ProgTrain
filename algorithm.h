@@ -689,6 +689,8 @@ int countVowelPermutation(int n);
 int maxLength(char** arr, int arrSize);
 // 1249. Minimum Remove to Make Valid Parentheses
 char* minRemoveToMakeValid(char* s);
+// 1266. Minimum Time Visiting All Points
+int minTimeToVisitAllPoints(int** points, int pointsSize, int* pointsColSize);
 // 1323. Maximum 69 Number
 int maximum69Number(int num);
 // 1337. The K Weakest Rows in a Matrix
