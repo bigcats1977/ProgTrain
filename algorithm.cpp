@@ -6444,6 +6444,45 @@ int findDuplicate(vector<int>& nums)
     return 0;
 }
 
+// 289. Game of Life
+int countLiveNum(int** board, int m, int n, int x, int y)
+{
+    int count = 0;
+    for (int i = -1; i <= 1; i++) 
+        for (int j = -1; j <= 1; j++) {
+            if (x + i < 0 || x + i >= m || y + j < 0 || y + j >= n)
+                continue;
+            if (i == 0 && j == 0)
+                continue;
+            count += board[x + i][y + j];
+        }
+    return count;
+}
+void gameOfLife(int** board, int boardSize, int* boardColSize)
+{
+    int count = 0;
+    int m = boardSize, n = boardColSize[0];
+    int** old = (int**)malloc(m * sizeof(int*));
+    for (int i = 0; i < m; i++) {
+        old[i] = (int*)malloc(n * sizeof(int));
+        memcpy(old[i], board[i], n * sizeof(int));
+    }
+    for (int i = 0; i < m; i++)
+        for (int j = 0; j < n; j++) {
+            count = countLiveNum(old, m, n, i, j);
+            if (count < 2 || count > 3) {
+                board[i][j] = 0;
+            }
+            else if (count == 3 && board[i][j] == 0) {
+                board[i][j] = 1;
+            }
+        }
+    for (int i = 0; i < m; i++) {
+        free(old[i]);
+    }
+    free(old);
+}
+
 // 290. Word Pattern
 bool wordPattern(char* pattern, char* s)
 {

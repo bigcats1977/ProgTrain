@@ -396,6 +396,8 @@ int firstBadVersion(int n);
 void moveZeroes(int* nums, int numsSize);
 // 287. Find the Duplicate Number
 int findDuplicate(vector<int>&nums);
+// 289. Game of Life
+void gameOfLife(int** board, int boardSize, int* boardColSize);
 // 290. Word Pattern
 bool wordPattern(char* pattern, char* s);
 bool wordPattern(string pattern, string s);
