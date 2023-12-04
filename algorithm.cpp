@@ -3509,6 +3509,31 @@ struct Node* connect2(struct Node* root)
     free(tempqueue);
     return root;
 }
+Node* connectII(Node* root)
+{
+    queue<Node*> qu;
+    if (!root)
+        return root;
+    qu.push(root);
+    Node* temp, *pre;
+    while (qu.size() > 0) {
+        int count = (int)qu.size();
+        pre = qu.front();
+        qu.pop();
+        if (pre->left) qu.push(pre->left);
+        if (pre->right) qu.push(pre->right);
+        for (int i = 1; i < count; i++) {
+            temp = qu.front();
+            qu.pop();
+            if (temp->left) qu.push(temp->left);
+            if (temp->right) qu.push(temp->right);
+            pre->next = temp;
+            pre = temp;
+        }
+        pre->next = NULL;
+    }
+    return root;
+}
 
 // 118. Pascal's Triangle
 int** generate(int numRows, int* returnSize, int** returnColumnSizes)
