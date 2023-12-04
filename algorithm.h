@@ -52,6 +52,8 @@ struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2);
 ListNode* mergeTwoListsI(ListNode* list1, ListNode* list2);
 // 22. Generate Parentheses
 char** generateParenthesis(int n, int* returnSize);
+// 23. Merge k Sorted Lists
+struct ListNode* mergeKLists(struct ListNode** lists, int listsSize);
 // 24. Swap Nodes in Pairs
 struct ListNode* swapPairs(struct ListNode* head);
 // 25. Reverse Nodes in k - Group

@@ -861,6 +861,63 @@ char** generateParenthesis(int n, int* returnSize) {
     return ans;
 }
 
+// 23. Merge k Sorted Lists
+void mergetwoList(struct ListNode** s_list1, struct ListNode** s_list2) {
+    struct ListNode* list1 = *s_list1, * list2 = *s_list2;
+    struct ListNode *prev = NULL, *temp;
+    
+    while (list1 && list2) {
+        if (list1->val <= list2->val) {
+            prev = list1;
+            list1 = list1->next;
+        }
+        else {
+            if (prev == NULL) {
+                temp = list2->next;
+                prev = list2;
+                list2->next = list1;
+                *s_list1 = list2;
+                list1 = list2;
+                list2 = temp;
+            } 
+            else
+            {
+                temp = list2->next;
+                prev->next = list2;
+                prev = list2;
+                list2->next = list1;
+                list2 = temp;
+            }
+        }
+    }
+    if (list2) {
+        if (prev == NULL) {
+            *s_list1 = list2;
+        }
+        else
+        {
+            prev->next = list2;
+        }
+    }
+}
+struct ListNode* mergeKLists(struct ListNode** lists, int listsSize)
+{
+    int idx1, idx2;
+    if (listsSize == 0)
+        return NULL;
+    if (listsSize == 1)
+        return lists[0];
+
+    listsSize--;
+    while (listsSize) {
+        for (idx1 = 0, idx2 = listsSize; idx1 < idx2; idx1++, idx2--) {
+            mergetwoList(&lists[idx1], &lists[idx2]);
+        }
+        listsSize /= 2;
+    }
+    return lists[0];
+}
+
 // 24. Swap Nodes in Pairs
 struct ListNode* swapPairs(struct ListNode* head)
 {
