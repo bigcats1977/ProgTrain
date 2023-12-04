@@ -12532,6 +12532,35 @@ int* fullBloomFlowers(int** flowers, int flowersSize, int* flowersColSize, int* 
     return ans;
 }
 
+// 2264. Largest 3-Same-Digit Number in String
+char* largestGoodInteger(char* num)
+{
+    char prec = num[0], goodc = 0;
+    int count = 1;
+    char* res = NULL;
+    res = (char*)calloc(4, sizeof(char));
+    for (size_t i = 1; i < strlen(num); i++) {
+        if (prec != num[i]) {
+            if (count >= 3 && prec > goodc) {
+                goodc = prec;
+            }
+            prec = num[i];
+            count = 1;
+        }
+        else
+            count++;
+    }
+
+    if (count >= 3 && prec > goodc)
+    {
+        goodc = prec;
+    }
+    if (goodc != 0) {
+        memset(res, goodc, 3);
+    }
+    return res;
+}
+
 // 2265. Count Nodes Equal to Average of Subtree
 void PostAverage(struct TreeNode* node, int* temp)
 {
