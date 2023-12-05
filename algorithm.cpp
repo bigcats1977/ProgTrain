@@ -4158,6 +4158,55 @@ RNode* copyRandomList(RNode* head)
 
     return newhead->next;
 }
+struct RNode* copyRandomListI(struct RNode* head)
+{
+    struct RNode* dummy = (struct RNode*)calloc(1, sizeof(struct RNode));
+    struct RNode* node, *cur = head, *pre = dummy;
+    int count = 0;
+    struct nodemap {
+        int randno;
+        struct RNode* oldAddr;
+        struct RNode* oldRand;
+        struct RNode* newAddr;
+    };
+    struct nodemap* map = (struct nodemap*)calloc(1000, sizeof(struct nodemap));
+    while (cur) {
+        node = (struct RNode*)calloc(1, sizeof(struct RNode));
+        node->val = cur->val;
+        pre->next = node;
+
+        map[count].oldAddr = cur;
+        map[count].newAddr = node;
+        map[count].oldRand = cur->random;
+
+        count++;
+        pre = pre->next;
+        cur = cur->next;
+    }
+    for (int i = 0; i < count; i++) {
+        if (map[i].oldRand) {
+            for (int j = 0; j < count; j++) {
+                if (map[i].oldRand == map[j].oldAddr) {
+                    map[i].randno = j;
+                    break;
+                }
+            }
+        }
+    }
+    cur = dummy->next;
+    count = 0;
+    while (cur) {
+        if (map[count].oldRand) {
+            cur->random = map[map[count].randno].newAddr;
+        }
+        count++;
+        cur = cur->next;
+    }
+    cur = dummy->next;
+    free(dummy);
+    free(map);
+    return cur;
+}
 
 // 139. Word Break
 bool findwords(char* target, char** wordDict, int wordDictSize)

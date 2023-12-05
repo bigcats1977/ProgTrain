@@ -253,6 +253,7 @@ int singleNumber(int* nums, int numsSize);
 int singleNumberII(int* nums, int numsSize);
 // 138. Copy List with Random Pointer
 Node* copyRandomList(Node* head);
+struct Node* copyRandomListI(struct Node* head);
 // 139. Word Break
 bool wordBreak(char* s, char** wordDict, int wordDictSize);
 bool wordBreak(string s, vector<string>&wordDict);
