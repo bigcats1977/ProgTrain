@@ -11740,6 +11740,12 @@ int* getSumAbsoluteDifferences(int* nums, int numsSize, int* returnSize)
     return res;
 }
 
+// 1688. Count of Matches in Tournament
+int numberOfMatches(int n)
+{
+    return n - 1;
+}
+
 // 1704. Determine if String Halves Are Alike
 bool IsVowels(char ch) {
     switch (ch) {
