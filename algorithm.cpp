@@ -11856,6 +11856,20 @@ int* findBall(int** grid, int gridSize, int* gridColSize, int* returnSize)
     return ans;
 }
 
+// 1716. Calculate Money in Leetcode Bank
+int totalMoney(int n)
+{
+    int total = 0;
+    int cur = 0;
+    for (int i = 1; i <= n; i++) {
+        if (i % 7 == 1) {
+            cur = i / 7 + 1;
+        }
+        total += cur++;
+    }
+    return total;
+}
+
 // 1721. Swapping Nodes in a Linked List
 struct ListNode* swapNodes(struct ListNode* head, int k)
 {

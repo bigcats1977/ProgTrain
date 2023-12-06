@@ -759,6 +759,8 @@ int numberOfMatches(int n);
 bool halvesAreAlike(char* s);
 // 1706. Where Will the Ball Fall
 int* findBall(int** grid, int gridSize, int* gridColSize, int* returnSize);
+// 1716. Calculate Money in Leetcode Bank
+int totalMoney(int n);
 // 1721. Swapping Nodes in a Linked List
 struct ListNode* swapNodes(struct ListNode* head, int k);
 // 1732. Find the Highest Altitude
