@@ -4394,6 +4394,44 @@ int* postorderTraversal(struct TreeNode* root, int* returnSize)
     return ans;
 }
 
+// 146. LRU Cache
+list<int> l; //doubly LL
+map<int, int> m; //key value pait
+map<int, list<int>::iterator> address; //map to store address of LL where key is stored
+int cap, LRUSize;
+void LRUCache(int capacity) {
+    cap = capacity;
+    LRUSize = 0;
+}
+int get(int key) {
+    if (m.find(key) == m.end()) return -1;
+    list<int>::iterator it = address[key];
+    l.erase(it);
+    address.erase(key);
+    l.push_front(key);
+    address[key] = l.begin();
+    return m[key];
+}
+void put(int key, int value) {
+    if (m.find(key) != m.end()) {
+        l.erase(address[key]);
+        address.erase(key);
+        m.erase(key);
+        LRUSize--;
+    }
+    if (LRUSize == cap) {
+        int k = l.back();
+        l.pop_back();
+        address.erase(k);
+        m.erase(k);
+        LRUSize--;
+    }
+    LRUSize++;
+    l.push_front(key);
+    address[key] = l.begin();
+    m[key] = value;
+}
+
 // 148. Sort List
 struct ListNode* mergeListNode(struct ListNode* l1, struct ListNode* l2)
 {
