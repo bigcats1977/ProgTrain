@@ -2347,6 +2347,38 @@ int climbStairs(int n)
     return way;    
 }
 
+// 71. Simplify Path
+string simplifyPath(string path)
+{
+    string res;
+    stack<string> st;
+    for (size_t i = 0; i < path.size(); i++) {
+        if (path[i] == '/')
+            continue;
+        string temp;
+        while (i < path.size() && path[i] != '/') {
+            temp.push_back(path[i]);
+            i++;
+        }
+
+        if (temp == ".")
+            continue;
+        else if (temp == "..") {
+            if (!st.empty())
+                st.pop();
+        }
+        else
+            st.push(temp);
+    }
+    while (!st.empty()) {
+        res = "/" + st.top() + res;
+        st.pop();
+    }
+    if (res.size() == 0)
+        res = "/";
+    return res;
+}
+
 // 72. Edit Distance
 int minsolve(int i, int j, int m, int n, char* word1, char* word2, int** dp)
 {

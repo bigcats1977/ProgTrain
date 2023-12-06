@@ -137,6 +137,8 @@ char* addBinary(char* a, char* b);
 int mySqrt(int x);
 // 70. Climbing Stairs
 int climbStairs(int n);
+// 71. Simplify Path
+string simplifyPath(string path);
 // 72. Edit Distance
 int minDistance(char* word1, char* word2);
 // 73. Set Matrix Zeroes
