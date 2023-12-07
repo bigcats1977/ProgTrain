@@ -160,8 +160,15 @@ FUNCNAME g_tFuncName[] = {
     {2742,  TestCase_2742},
     {8005,  TestCase_8005},
     {8058,  TestCase_8058},
+    {9998,  TestCase_9998},
     {9999,  TestCase_9999},
 };
+
+void TestCase_9998()
+{
+    //TranserHexAdecimal(107);
+    TranserHexAdecimal(2147483647);
+}
 
 void TestCase_128()
 {

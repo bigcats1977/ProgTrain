@@ -852,5 +852,7 @@ char* replacespace(char* s);
 // 剑指 Offer 58 - II.左旋转字符串
 string reverseLeftWords(string s, int n);
 char* reverseLeftWords(char* s, int n);
+// 9998 转换12进制，10(X),11(Y) 107 = 8Y
+char* TranserHexAdecimal(int n);
 // 9999 字符串长度 3 < n < 10000000 寻找的单词长度为3
 int FindSubFrequence(char* src, char* dest);

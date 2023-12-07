@@ -13151,8 +13151,6 @@ string reverseLeftWords(string s, int n)
     reverseString(&*s.begin(), (int)s.length());
     return s;
 }
-
-
 char* reverseLeftWords(char* s, int n)
 {
     int len = (int)strlen(s);
@@ -13160,6 +13158,30 @@ char* reverseLeftWords(char* s, int n)
     reverseString(&s[0], len - n);
     reverseString(&s[len-n], n);
     return s;
+}
+
+// 9998 ×ª»»12½øÖÆ£¬10(X),11(Y) 107 = 8Y
+char* TranserHexAdecimal(int n)
+{
+    char* res = (char*)calloc(11, sizeof(char));
+    int pos = 0;
+    while (n)
+    {
+        int val = n % 12;
+        if (val < 10)
+            res[pos++] = '0' + val;
+        else if(val ==10)
+            res[pos++] = 'X';
+        else
+            res[pos++] = 'Y';
+        n /= 12;
+    }
+    for (int i = 0; i < pos / 2; i++) {
+        res[i] ^= res[pos - 1 - i];
+        res[pos - 1 - i] ^= res[i];
+        res[i] ^= res[pos - 1 - i];
+    }
+    return res;
 }
 
 
