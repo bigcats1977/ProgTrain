@@ -12285,6 +12285,21 @@ int reductionOperations(int* nums, int numsSize)
     return res;
 }
 
+// 1903. Largest Odd Number in String
+string largestOddNumber(string num)
+{
+    int i = 0;
+    for (i = (int)(num.size() - 1); i >= 0; i--) {
+        if (atoi(&num[i]) % 2 == 0) {
+            num[i] = '\0';
+        }
+        else
+            break;
+    }
+    string res = num.substr(0, i+1);
+    return res;
+}
+
 // 1921. Eliminate Maximum Number of Monsters
 int dbcmpfun(const void* a, const void* b) {
     return *(double*)a > *(double*)b ? 1 : -1;

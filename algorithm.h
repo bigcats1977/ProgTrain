@@ -796,6 +796,8 @@ int maximumElementAfterDecrementingAndRearranging(int* arr, int arrSize);
 int minPairSum(int* nums, int numsSize);
 // 1887. Reduction Operations to Make the Array Elements Equal
 int reductionOperations(int* nums, int numsSize);
+// 1903. Largest Odd Number in String
+string largestOddNumber(string num);
 // 1921. Eliminate Maximum Number of Monsters
 int eliminateMaximum(int* dist, int distSize, int* speed, int speedSize);
 // 1930. Unique Length - 3 Palindromic Subsequences
