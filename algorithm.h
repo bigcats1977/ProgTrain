@@ -192,6 +192,7 @@ int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes
 vector<vector<int>> levelOrder(TreeNode* root);
 // 103. Binary Tree Zigzag Level Order Traversal
 int** zigzagLevelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes);
+vector<vector<int>> zigzagLevelOrder(TreeNode* root);
 // 104. Maximum Depth of Binary Tree
 int maxDepth(struct TreeNode* root);
 // 105. Construct Binary Tree from Preorder and Inorder Traversal
@@ -298,6 +299,8 @@ int majorityElement(int* nums, int numsSize);
 int majorityElement(vector<int>& nums);
 // 172. Factorial Trailing Zeroes
 int trailingZeroes(int n);
+// 173. Binary Search Tree Iterator
+
 // 187. Repeated DNA Sequences
 char** findRepeatedDnaSequences(char* s, int* returnSize);
 // 188. Best Time to Buy and Sell Stock IV

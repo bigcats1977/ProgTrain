@@ -3291,6 +3291,33 @@ int** zigzagLevelOrder(struct TreeNode* root, int* returnSize, int** returnColum
     *returnSize = height;
     return ans;
 }
+vector<vector<int>> zigzagLevelOrder(TreeNode* root)
+{
+    bool bOrder = true;
+    queue<TreeNode*> qu;
+    vector<vector<int>> res;
+    vector<int> path;
+    if (!root)
+        return res;
+    qu.push(root);
+    while (qu.size()) {
+        int count = (int)qu.size();
+        path.clear();
+        TreeNode* temp;
+        for (int i = 0; i < count; i++) {
+            temp = qu.front();
+            qu.pop();
+            path.push_back(temp->val);
+            if (temp->left) qu.push(temp->left);
+            if (temp->right) qu.push(temp->right);
+        }
+        if (!bOrder)
+            reverse(path.begin(), path.end());
+        bOrder = !bOrder;
+        res.push_back(path);
+    }
+    return res;
+}
 
 // 104. Maximum Depth of Binary Tree
 int maxDepth(struct TreeNode* root)
@@ -4950,6 +4977,43 @@ int majorityElement(vector<int>& nums)
 int trailingZeroes(int n)
 {
     return n / 5 + n / 25 + n / 125 + n / 625 + n / 3125;
+}
+
+// 173. Binary Search Tree Iterator
+typedef struct {
+    int* all;
+    int cur;
+    int count;
+
+} BSTIterator;
+
+void midtrace(struct TreeNode* root, BSTIterator* obj)
+{
+    if (!root)
+        return;
+    midtrace(root->left, obj);
+    obj->all[obj->count++] = root->val;
+    midtrace(root->right, obj);
+}
+BSTIterator* bSTIteratorCreate(struct TreeNode* root) {
+    BSTIterator* obj = (BSTIterator*)calloc(1, sizeof(BSTIterator));
+    obj->cur = -1;
+    obj->all = (int*)calloc(100000, sizeof(int));
+    midtrace(root, obj);
+    return obj;
+}
+
+int bSTIteratorNext(BSTIterator* obj) {
+    return obj->all[++obj->cur];
+}
+
+bool bSTIteratorHasNext(BSTIterator* obj) {
+    return ((obj->cur + 2) <= obj->count);
+}
+
+void bSTIteratorFree(BSTIterator* obj) {
+    free(obj->all);
+    free(obj);
 }
 
 // 187. Repeated DNA Sequences
