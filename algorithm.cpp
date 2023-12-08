@@ -9141,6 +9141,21 @@ bool canPlaceFlowers(int* flowerbed, int flowerbedSize, int n)
     return n > 0 ? false : true;
 }
 
+// 606. Construct String from Binary Tree
+string tree2str(TreeNode* root)
+{
+    string res;
+    if (!root)
+        return res;
+    res += to_string(root->val);
+    if (!root->left && !root->right)
+        return res;
+    res += "(" + tree2str(root->left) + ")";
+    if(root->right)
+        res += "(" + tree2str(root->right) + ")";
+    return res;
+}
+
 // 617. Merge Two Binary Trees
 struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2)
 {

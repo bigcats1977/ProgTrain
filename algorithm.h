@@ -558,6 +558,8 @@ int minDelDistance(char* word1, char* word2);
 int* preorder(struct Node* root, int* returnSize);
 // 605. Can Place Flowers
 bool canPlaceFlowers(int* flowerbed, int flowerbedSize, int n);
+// 606. Construct String from Binary Tree
+string tree2str(TreeNode* root);
 // 617. Merge Two Binary Trees
 struct TreeNode* mergeTrees(struct TreeNode* root1, struct TreeNode* root2);
 // 621. Task Scheduler
