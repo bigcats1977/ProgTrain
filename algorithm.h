@@ -706,6 +706,8 @@ int maxLength(char** arr, int arrSize);
 char* minRemoveToMakeValid(char* s);
 // 1266. Minimum Time Visiting All Points
 int minTimeToVisitAllPoints(int** points, int pointsSize, int* pointsColSize);
+// 1287. Element Appearing More Than 25% In Sorted Array
+int findSpecialInteger(vector<int>& arr);
 // 1323. Maximum 69 Number
 int maximum69Number(int num);
 // 1337. The K Weakest Rows in a Matrix

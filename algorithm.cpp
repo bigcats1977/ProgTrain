@@ -11244,6 +11244,21 @@ int minTimeToVisitAllPoints(int** points, int pointsSize, int* pointsColSize)
     return maxtime;
 }
 
+// 1287. Element Appearing More Than 25% In Sorted Array
+int findSpecialInteger(vector<int>& arr)
+{
+    int target = (int)arr.size() / 4;
+    int slow = 0;
+    for (int i = 0; i < (int)arr.size(); i++) {
+        if (arr[i] != arr[slow]) {
+            if (i - slow > target)
+                return arr[slow];
+            slow = i;
+        }
+    }
+    return arr[slow];
+}
+
 // 1323. Maximum 69 Number
 int maximum69Number(int num)
 {
