@@ -3004,6 +3004,20 @@ int* inorderTraversal(struct TreeNode* root, int* returnSize)
     *returnSize = index;
     return ans;
 }
+void inorderTrav(TreeNode* root, vector<int>& vals)
+{
+    if (!root)
+        return;
+    inorderTrav(root->left, vals);
+    vals.push_back(root->val);
+    inorderTrav(root->right, vals);
+}
+vector<int> inorderTraversal(TreeNode* root)
+{
+    vector<int> res;
+    inorderTrav(root, res);
+    return res;
+}
 
 // 96. Unique Binary Search Trees
 int numTrees(int n)
@@ -3112,6 +3126,22 @@ bool isValidBST(struct TreeNode* root)
 {
     long preval = LONG_MIN;
     return pretravel(root, &preval);
+}
+bool inorderBST(TreeNode* root, long& preval)
+{
+    if (!root)
+        return true;
+    if (!inorderBST(root->left, preval))
+        return false;
+    if (root->val <= preval)
+        return false;
+    preval = root->val;
+    return inorderBST(root->right, preval);
+}
+bool isValidBSTI(TreeNode* root)
+{
+    long preval = LONG_MIN;
+    return inorderBST(root, preval);
 }
 
 // 100. Same Tree

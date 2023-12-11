@@ -176,12 +176,14 @@ int numDecodings(char* s);
 ListNode* reverseBetween(ListNode* head, int left, int right);
 // 94. Binary Tree Inorder Traversal
 int* inorderTraversal(struct TreeNode* root, int* returnSize);
+vector<int> inorderTraversal(TreeNode* root);
 // 96. Unique Binary Search Trees
 int numTrees(int n);
 // 97. Interleaving String
 bool isInterleave(char* s1, char* s2, char* s3);
 // 98. Validate Binary Search Tree
 bool isValidBST(struct TreeNode* root);
+bool isValidBSTI(TreeNode* root);
 // 100. Same Tree
 bool isSameTree(struct TreeNode* p, struct TreeNode* q);
 bool isSameTree2(TreeNode* p, TreeNode* q);
