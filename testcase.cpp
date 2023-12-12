@@ -129,6 +129,7 @@ FUNCNAME g_tFuncName[] = {
     {844,   TestCase_844 },
     {904,   TestCase_904 },
     {905,   TestCase_905 },
+    {909,   TestCase_909 },
     {946,   TestCase_946 },
     {947,   TestCase_947 },
     {977,   TestCase_977 },
@@ -164,6 +165,23 @@ FUNCNAME g_tFuncName[] = {
     {9998,  TestCase_9998},
     {9999,  TestCase_9999},
 };
+
+void TestCase_909()
+{
+    vector<vector<int>> board;
+    int output;
+    board = {   {-1,-1,-1,-1,-1,-1} ,
+                {-1,-1,-1,-1,-1,-1},
+                {-1,-1,-1,-1,-1,-1},
+                {-1,35,-1,-1,13,-1},
+                {-1,-1,-1,-1,-1,-1},
+                {-1,15,-1,-1,-1,-1} };
+    output = snakesAndLadders(board);
+
+    board = {    {-1, -1},
+                {-1, 3} };
+    output = snakesAndLadders(board);
+}
 
 void TestCase_68()
 {

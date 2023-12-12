@@ -652,6 +652,9 @@ struct ListNode* middleNode(struct ListNode* head);
 int totalFruit(int* fruits, int fruitsSize);
 // 905. Sort Array By Parity
 int* sortArrayByParity(int* nums, int numsSize, int* returnSize);
+// 909. Snakes and Ladders
+int snakesAndLadders(vector<vector<int>>& board);
+int snakesAndLaddersI(vector<vector<int>>& board);
 // 935. Knight Dialer
 int knightDialer(int n);
 // 944. Delete Columns to Make Sorted

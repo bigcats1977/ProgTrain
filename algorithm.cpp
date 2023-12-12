@@ -2313,8 +2313,8 @@ char* addBinary(char* a, char* b)
 // 68. Text Justification
 vector<string> fullJustify(vector<string>& words, int maxWidth)
 {
-    size_t i, slow = 0, count = 0;
-    int totalsp, width = 0;
+    int i, slow = 0;
+    int totalsp, width = 0, count = 0;
     string line;
     vector<string> res;
     for (i = 0; i < words.size(); i++) {
@@ -10524,6 +10524,144 @@ int* sortArrayByParity(int* nums, int numsSize, int* returnSize)
         left++, right--;
     }
     return nums;
+#endif
+}
+
+// 909. Snakes and Ladders
+vector<vector<int>> All909;
+vector<int> SLPath;
+void btSnakeLadder(vector<int>& path, int cur, int n)
+{
+    int target = n * n;
+    int i;
+    if (cur == target) {
+        All909.push_back(SLPath);
+        return;
+    }
+    if (SLPath.size() > target || cur > target)
+        return;
+
+    if (path[cur] > 0)
+        cur = path[cur];
+    /*for (i = cur + 1; i <= cur + 6 && i <= target; i++) {
+        if (path[i] > 0) {
+            SLPath.push_back(i);
+            btSnakeLadder(path, i, n);
+            return;
+        }
+    }*/
+    for (i = cur + 1; i <= cur + 6 && i <= target; i++) {
+        SLPath.push_back(i);
+        if(path[i] > 0)
+            btSnakeLadder(path, path[i], n);
+        else
+            btSnakeLadder(path, i, n);
+        SLPath.pop_back();
+    }
+
+    return;
+
+}
+int snakesAndLadders(vector<vector<int>>& board)
+{
+    All909.clear();
+    SLPath.clear();
+    int ans = INT_MAX, n = (int)board.size(), i;
+    vector<int> path;
+    path.push_back(-1); // zero
+    bool flag = true;
+    for (i = n - 1; i >= 0; i--) {
+        if (!flag)
+            reverse(board[i].begin(), board[i].end());
+        path.insert(path.end(), board[i].begin(), board[i].end());
+        flag = !flag;
+    }
+    btSnakeLadder(path, 1, n);
+    for (i = 0; i < (int)All909.size(); i++) {
+        if (All909[i].size() < n * n && All909[i].size() < ans)
+            ans = (int)All909[i].size();
+    }
+    return ans == INT_MAX ? -1 : ans;
+}
+int snakesAndLaddersI(vector<vector<int>>& board)
+{
+#if 0
+    int ans = INT_MAX, n = (int)board.size(), i;
+    vector<int> path;
+    path.push_back(-1); // zero
+    bool flag = true;
+    for (i = n-1; i >=0; i--) {
+        if (!flag)
+            reverse(board[i].begin(), board[i].end());
+        path.insert(path.end(), board[i].begin(), board[i].end());
+        flag = !flag;
+    }
+    vector<bool> visited(n * n + 1, false);
+    queue<pair<int,int>> pos;
+    pos.push({ 1, 0 });
+    visited[1] = true;
+    while (!pos.empty()) {
+        auto cur = pos.front();
+        pos.pop();
+        if (cur.first == n * n)
+            return cur.second;
+        for (int i = cur.first + 1; i <= cur.first + 6 && i <= n * n; i++) {
+            if (!visited[i])
+            {
+                if (path[i] == -1) {
+                    pos.push({ i, cur.second + 1 });
+                    visited[i] = true;
+                }
+                else {
+                    pos.push({ path[i], cur.second + 1 });
+                    visited[path[i]] = true;
+                }
+            }
+        }
+    }
+    return -1;
+
+#else
+    int n = (int)board.size(), i;
+    vector<int> linearBoard;
+    unordered_set<int> visited;
+    queue<pair<int, int>> qu;
+    linearBoard.push_back(-1); // zero
+    bool flag = true;
+    for (i = n - 1; i >= 0; i--) {
+        if (!flag)
+            reverse(board[i].begin(), board[i].end());
+        linearBoard.insert(linearBoard.end(), board[i].begin(), board[i].end());
+        flag = !flag;
+    }
+
+    qu.push({ 1, 0 });
+
+    while (!qu.empty()) {
+        auto P = qu.front();
+        qu.pop();
+
+        int idx = P.first;
+        int steps = P.second;
+
+        if (idx == n * n)
+            return steps;
+
+        for (i = 1; i <= 6; i++) {
+            if (idx + i <= n * n) {
+                if (linearBoard[idx + i] == -1 and !visited.count(idx + i)) {
+                    qu.push({ idx + i, steps + 1 });
+                    visited.insert(idx + i);
+                }
+                else if (!visited.count(linearBoard[idx + i])) {
+                    qu.push({ linearBoard[idx + i], steps + 1 });
+                    visited.insert(linearBoard[idx + i]);
+                }
+            }
+        }
+    }
+
+    return -1;
 #endif
 }
 
