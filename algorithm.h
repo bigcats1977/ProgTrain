@@ -133,6 +133,8 @@ int minPathSum(int** grid, int gridSize, int* gridColSize);
 int* plusOne(int* digits, int digitsSize, int* returnSize);
 // 67. Add Binary
 char* addBinary(char* a, char* b);
+// 68. Text Justification
+vector<string> fullJustify(vector<string>& words, int maxWidth);
 // 69. Sqrt(x)
 int mySqrt(int x);
 // 70. Climbing Stairs

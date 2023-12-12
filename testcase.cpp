@@ -30,6 +30,7 @@ FUNCNAME g_tFuncName[] = {
     {59,    TestCase_59  },
     {62,    TestCase_62  },
     {67,    TestCase_67  },
+    {68,    TestCase_68  },
     {69,    TestCase_69  },
     {75,    TestCase_75  },
     {76,    TestCase_76  },
@@ -163,6 +164,25 @@ FUNCNAME g_tFuncName[] = {
     {9998,  TestCase_9998},
     {9999,  TestCase_9999},
 };
+
+void TestCase_68()
+{
+    vector<string> words;
+    int maxWidth;
+    vector<string> ans;
+
+    words = { "This", "is", "an", "example", "of", "text", "justification." };
+    maxWidth = 16;
+    ans = fullJustify(words, maxWidth);
+
+    words = { "What","must","be","acknowledgment","shall","be" };
+    maxWidth = 16;
+    ans = fullJustify(words, maxWidth);
+
+    words = { "Science", "is", "what", "we", "understand", "well", "enough", "to", "explain", "to", "a", "computer.", "Art", "is", "everything", "else", "we", "do" };
+    maxWidth = 20;
+    ans = fullJustify(words, maxWidth);
+}
 
 void TestCase_9998()
 {

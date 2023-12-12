@@ -2310,6 +2310,65 @@ char* addBinary(char* a, char* b)
     return &res[pos + 1];
 }
 
+// 68. Text Justification
+vector<string> fullJustify(vector<string>& words, int maxWidth)
+{
+    size_t i, slow = 0, count = 0;
+    int totalsp, width = 0;
+    string line;
+    vector<string> res;
+    for (i = 0; i < words.size(); i++) {
+        if (width + count + words[i].size() > maxWidth) {
+            line.clear();
+            totalsp = maxWidth - width;
+            int spnum = 1;
+            if (count > 1) {
+                spnum = totalsp / (count - 1);
+            }
+            totalsp -= spnum * (count - 1);
+            while (slow < i) {
+                line += words[slow];
+                slow++;
+                if (slow < i) {
+                    line.append(spnum, ' ');
+                    if (totalsp > 0) {
+                        line.push_back(' ');
+                        totalsp--;
+                    }
+                }
+                else if (totalsp > 0)
+                    line.append(totalsp, ' ');
+            }
+            res.push_back(line);
+            if (i < words.size()) {
+                width = (int)words[i].size();
+                count = 1;
+            }
+        }
+        else {
+            width += (int)words[i].size();
+            count++;
+        }
+    }
+    if (i == words.size() && count > 0)
+    {
+        line.clear();
+        totalsp = maxWidth - width;
+        while (slow < i) {
+            line += words[slow];
+            slow++;
+            if (slow < i) {
+                line.push_back(' ');
+                totalsp--;
+            }
+            else
+                line.append(totalsp, ' ');
+        }
+        res.push_back(line);
+    }
+    return res;
+}
+
 // 69. Sqrt(x)
 int mySqrt(int x)
 {
