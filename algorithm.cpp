@@ -11621,6 +11621,22 @@ int maxVowels(char* s, int k) {
     return maxNum;
 }
 
+// 1464. Maximum Product of Two Elements in an Array
+int maxProduct(vector<int>& nums)
+{
+    int max=0, sec = 0;
+    max = nums[0];
+    for (size_t i = 1; i < nums.size(); i++) {
+        if (nums[i] >= max) {
+            sec = max;
+            max = nums[i];
+        }
+        else if (nums[i] > sec)
+            sec = nums[i];
+    }
+    return (max - 1) * (sec - 1);
+}
+
 // 1470. Shuffle the Array
 int* shuffle(int* nums, int numsSize, int n, int* returnSize)
 {

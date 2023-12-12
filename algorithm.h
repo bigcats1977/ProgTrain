@@ -731,6 +731,8 @@ char** buildArray(int* target, int targetSize, int n, int* returnSize);
 int goodNodes(struct TreeNode* root);
 // 1456. Maximum Number of Vowels in a Substring of Given Length
 int maxVowels(char* s, int k);
+// 1464. Maximum Product of Two Elements in an Array
+int maxProduct(vector<int>& nums);
 // 1470. Shuffle the Array
 int* shuffle(int* nums, int numsSize, int n, int* returnSize);
 // 1480. Running Sum of 1d Array
