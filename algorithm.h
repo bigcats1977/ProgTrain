@@ -760,6 +760,8 @@ int* findSmallestSetOfVertices(int n, int** edges, int edgesSize, int* edgesColS
 int maxCoins(int* piles, int pilesSize);
 // 1572. Matrix Diagonal Sum
 int diagonalSum(int** mat, int matSize, int* matColSize);
+// 1582. Special Positions in a Binary Matrix
+int numSpecial(vector<vector<int>>& mat);
 // 1611. Minimum One Bit Operations to Make Integers Zero
 int minimumOneBitOperations(int n);
 // 1630. Arithmetic Subarrays

@@ -11996,6 +11996,28 @@ int diagonalSum(int** mat, int matSize, int* matColSize)
     return sum;
 }
 
+// 1582. Special Positions in a Binary Matrix
+int numSpecial(vector<vector<int>>& mat)
+{
+    int m = (int)mat.size(), n = (int)mat[0].size();
+    vector<int> row(m, 0), col(n, 0);
+    int i, j, ans = 0;
+    for(i=0;i<m;i++)
+        for (j = 0; j < n; j++) {
+            if (mat[i][j] == 1) {
+                row[i]++;
+                col[j]++;
+            }
+
+        }
+    for (i = 0; i < m; i++)
+        for (j = 0; j < n; j++) {
+            if (mat[i][j] == 1 && row[i] == 1 && col[j] == 1)
+                ans++;
+        }
+    return ans;
+}
+
 // 1611. Minimum One Bit Operations to Make Integers Zero
 int minimumOneBitOperations(int n)
 {
