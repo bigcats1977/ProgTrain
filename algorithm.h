@@ -248,6 +248,8 @@ int sumNumbers(struct TreeNode* root);
 void solve(char** board, int boardSize, int* boardColSize);
 // 131. Palindrome Partitioning
 char*** partition(char* s, int* returnSize, int** returnColumnSizes);
+// 133. Clone Graph
+GNode* cloneGraph(GNode* node);
 // 134. Gas Station
 int canCompleteCircuit(int* gas, int gasSize, int* cost, int costSize);
 int canCompleteCircuit(vector<int>& gas, vector<int>& cost);

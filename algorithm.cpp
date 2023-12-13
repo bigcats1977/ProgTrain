@@ -4127,6 +4127,36 @@ char*** partition(char* s, int* returnSize, int** returnColumnSizes) {
     return ans;
 }
 
+// 133. Clone Graph
+GNode* clonedfs(GNode* node, unordered_map<GNode*, GNode*>& mp)
+{
+    vector<GNode*> neighbour;
+    GNode* clone = new GNode(node->val);
+    mp[node] = clone;
+    for (auto it : node->neighbors) {
+        if (mp.find(it) != mp.end()) {
+            neighbour.push_back(mp[it]);
+        }
+        else {
+            neighbour.push_back(clonedfs(it, mp));
+        }
+    }
+    clone->neighbors = neighbour;
+    return clone;
+}
+GNode* cloneGraph(GNode* node)
+{
+    unordered_map<GNode*, GNode*> mp;
+    if(!node)
+        return NULL;
+    if (node->neighbors.size() == 0) {
+        GNode* clone = new GNode(node->val);
+        return clone;
+    }
+        
+    return clonedfs(node, mp);
+}
+
 // 134. Gas Station
 int canCompleteCircuit(int* gas, int gasSize, int* cost, int costSize)
 {

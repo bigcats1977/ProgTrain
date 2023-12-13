@@ -54,6 +54,12 @@ struct RNode {
     struct RNode* next;
     struct RNode* random;
 };
+struct GNode {
+    int val;
+    vector<GNode*> neighbors;
+    GNode() { val = 0, neighbors = vector<GNode*>(); }
+    GNode(int _val) { val = _val, neighbors = vector<GNode*>(); }
+};
 
 ListNode* CreateListNode(vector<int> nums);
 
