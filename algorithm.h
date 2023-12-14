@@ -859,6 +859,8 @@ int garbageCollection(char** garbage, int garbageSize, int* travel, int travelSi
 int* findArray(int* pref, int prefSize, int* returnSize);
 // 2466. Count Ways To Build Good Strings
 int countGoodStrings(int low, int high, int zero, int one);
+// 2482. Difference Between Ones and Zeros in Row and Column
+vector<vector<int>> onesMinusZeros(vector<vector<int>>& grid);
 // 2483. Minimum Penalty for a Shop
 int bestClosingTime(string customers);
 // 2542. Maximum Subsequence Score

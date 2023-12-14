@@ -13367,6 +13367,26 @@ int countGoodStrings(int low, int high, int zero, int one) {
     return ans;
 }
 
+// 2482. Difference Between Ones and Zeros in Row and Column
+vector<vector<int>> onesMinusZeros(vector<vector<int>>& grid)
+{
+    int m = (int)grid.size(), n = (int)grid[0].size(), i, j;
+    vector<vector<int>> res(m, vector<int>(n,0));
+    vector<int> rows(m, 0), cols(n, 0);
+    for (i = 0; i < m; i++)
+        for (j = 0; j < n; j++) {
+            if (grid[i][j] == 1) {
+                rows[i]++;
+                cols[j]++;
+            }
+        }
+    for (i = 0; i < m; i++)
+        for (j = 0; j < n; j++) {
+            res[i][j] = 2 * rows[i] - m + 2 * cols[j] - n;
+        }
+    return res;
+}
+
 // 2483. Minimum Penalty for a Shop
 int bestClosingTime(string customers)
 {
