@@ -2570,6 +2570,30 @@ char* minWindow(char* s, char* t)
 
     return s;
 }
+string minWindow(string s, string t)
+{
+    size_t i = 0;
+    int count = 0, slow = 0, minlen =INT_MAX, start = 0;
+    vector<int> tChar('z' + 1, 0);
+    for (i = 0; i < t.size(); i++) {
+        tChar[t[i]]++;
+        count++;
+    }
+    for (i = 0; i < s.size(); i++) {
+        if (--tChar[s[i]] >= 0)
+            count--;
+        while (tChar[s[slow]] < 0) 
+            tChar[s[slow++]]++;
+        if (count == 0 && i - slow < minlen) {
+            minlen = (int)i - slow + 1;
+            start = slow;
+        }
+    }
+    if (minlen == INT_MAX)
+        return "";
+    else
+        return s.substr(start, minlen);
+}
 
 // 77. Combinations
 void BTcombine(int begin, int n, int k, int* Path, int* len, int** result, int* cursor)

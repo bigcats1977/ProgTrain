@@ -151,6 +151,7 @@ bool searchMatrix(int** matrix, int matrixSize, int* matrixColSize, int target);
 void sortColors(int* nums, int numsSize);
 // 76. Minimum Window Substring
 char* minWindow(char* s, char* t);
+string minWindow(string s, string t);
 // 77. Combinations
 int** combine(int n, int k, int* returnSize, int** returnColumnSizes);
 vector<vector<int>> combine(int n, int k);

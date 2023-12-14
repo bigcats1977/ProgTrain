@@ -2285,6 +2285,9 @@ void TestCase_203()
 
 void TestCase_76()
 {
+    string s = "ADOBECODEBANC";
+    string t = "ABC";
+    minWindow(s, t);
     char* output;
 
     char s0[] = "ADOBECODEBANC";
