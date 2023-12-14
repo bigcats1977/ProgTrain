@@ -1644,11 +1644,15 @@ char*** groupAnagrams(char** strs, int strsSize, int* returnSize, int** returnCo
 }
 vector<vector<string>> groupAnagrams(vector<string>& strs)
 {
-    map<vector<int>, vector<string>> map;
+    unordered_map<string, vector<string>> mp;
+    for (string s : strs) {
+        string t = s;
+        sort(t.begin(), t.end());
+        mp[t].push_back(s);
+    }
     vector<vector<string>> res;
-    size_t i;
-    for (i = 0; i < strs.size(); i++) {
-
+    for (auto p : mp) {
+        res.push_back(p.second);
     }
     return res;
 }
