@@ -11797,6 +11797,21 @@ vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies)
     return res;
 }
 
+// 1436. Destination City
+string destCity(vector<vector<string>>& paths)
+{
+    unordered_map<string, string> mp;
+    for (auto path : paths) {
+        mp[path[0]] = path[1];
+    }
+    string start = paths[0][0], end = "";
+    while (mp[start] != "") {
+        end = mp[start];
+        start = end;
+    }
+    return end;
+}
+
 // 1441. Build an Array With Stack Operations
 char** buildArray(int* target, int targetSize, int n, int* returnSize)
 {
