@@ -8315,6 +8315,43 @@ int characterReplacement(char* s, int k)
     return maxlen;
 }
 
+// 433. Minimum Genetic Mutation
+int minMutation(string startGene, string endGene, vector<string>& bank)
+{
+    int count = 0;
+    unordered_map<string, int>mp;
+    vector<char> codes{ 'A', 'C', 'G', 'T' };
+
+    for (auto it : bank)
+        mp[it] = 1;
+    queue<string> q;
+    q.push(startGene);
+    mp.erase(startGene);
+    while (!q.empty()) {
+        int size = (int)q.size();
+        while(size--) {
+            string gene = q.front();
+            q.pop();
+
+            if (gene == endGene)
+                return count;
+            for (int i = 0; i < 8; i++) {
+                string tempGene = gene;
+                for (auto ch : codes) {
+                    tempGene[i] = ch;
+                    if (mp.find(tempGene) != mp.end()) {
+                        mp.erase(tempGene);
+                        q.push(tempGene);
+                    }
+                }
+            }
+        }
+        count++;
+    }
+
+    return -1;
+}
+
 // 435. Non - overlapping Intervals
 /*
 Input: intervals = [[1,2],[2,3],[3,4],[1,3]]

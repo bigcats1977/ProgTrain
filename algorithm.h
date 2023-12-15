@@ -500,6 +500,8 @@ bool canPartition(vector<int>& nums);
 int** pacificAtlantic(int** heights, int heightsSize, int* heightsColSize, int* returnSize, int** returnColumnSizes);
 // 424. Longest Repeating Character Replacement
 int characterReplacement(char* s, int k);
+// 433. Minimum Genetic Mutation
+int minMutation(string startGene, string endGene, vector<string>& bank);
 // 435. Non - overlapping Intervals
 int eraseOverlapIntervals(int** intervals, int intervalsSize, int* intervalsColSize);
 // 437. Path Sum III
