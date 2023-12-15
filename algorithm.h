@@ -481,6 +481,8 @@ bool isSubsequence(string s, string t);
 // 394. Decode String
 char* decodeString(char* s);
 string decodeString(string s);
+// 399. Evaluate Division
+vector<double> calcEquation(vector<vector<string>>& equations, vector<double>& values, vector<vector<string>>& queries);
 // 401. Binary Watch
 char** readBinaryWatch(int turnedOn, int* returnSize);
 // 404. Sum of Left Leaves

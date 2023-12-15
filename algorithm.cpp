@@ -7991,6 +7991,66 @@ string decodeString(string s)
     return res;
 }
 
+// 399. Evaluate Division
+vector<double> calcEquation(vector<vector<string>>& equations, vector<double>& values, vector<vector<string>>& queries)
+{
+    size_t i;
+    unordered_map<string, vector<pair<string, double>>> graph;
+    for (i = 0; i < equations.size(); i++)
+    {
+        // from a to b is the original value
+        graph[equations[i][0]].push_back({ equations[i][1], values[i] });
+        // from b to a is 1/original value
+        graph[equations[i][1]].push_back({ equations[i][0], 1 / values[i] });
+    }
+    // generate ans vector for the queries, initially set to -1.000
+    vector<double> ans(queries.size(), -1);
+
+    // traverse each query
+    for (i = 0; i < queries.size(); i++)
+    {
+        string op1 = queries[i][0];
+        string op2 = queries[i][1];
+        // if the strings are not part of the original graph, then dont bother
+        if (graph.find(op1) == graph.end() || graph.find(op2) == graph.end())
+            continue;
+
+        // BFS
+        queue<pair<string, double>> q;
+        // so that we do not get stuck in a loop,
+        // visit every node only ONCE per query
+        unordered_map<string, bool> history;
+        q.push({ op1, 1 });
+        while (!q.empty())
+        {
+            string cur = q.front().first;
+            double val = q.front().second;
+            q.pop();
+            if (cur == op2)
+            {
+                // means that we have reached the goal node!
+                // update the ans vector at that index with 
+                // what the queue has saved
+                ans[i] = val;
+                break;
+            }
+            else
+            {
+                // check all connected NON-VISITED nodes to 
+                // continue the search
+                for (pair<string, double>& next : graph[cur])
+                {
+                    // skip if already visited
+                    if (history.find(next.first) != history.end() || history[next.first]) continue;
+                    history[next.first] = true;
+                    q.push({ next.first, next.second * val });
+                }
+            }
+        }
+    }
+    return ans;
+}
+
 // 401. Binary Watch
 int calBitCount(int n) {
     int count = 0;
