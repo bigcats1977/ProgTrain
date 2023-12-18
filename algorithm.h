@@ -825,6 +825,8 @@ int minPairSum(int* nums, int numsSize);
 int reductionOperations(int* nums, int numsSize);
 // 1903. Largest Odd Number in String
 string largestOddNumber(string num);
+// 1913. Maximum Product Difference Between Two Pairs
+int maxProductDifference(vector<int>& nums);
 // 1921. Eliminate Maximum Number of Monsters
 int eliminateMaximum(int* dist, int distSize, int* speed, int speedSize);
 // 1930. Unique Length - 3 Palindromic Subsequences

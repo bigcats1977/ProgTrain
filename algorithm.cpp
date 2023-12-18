@@ -12829,6 +12829,15 @@ string largestOddNumber(string num)
     return res;
 }
 
+// 1913. Maximum Product Difference Between Two Pairs
+int maxProductDifference(vector<int>& nums)
+{
+    if (nums.size() < 4)
+        return 0;
+    sort(nums.begin(), nums.end());
+    return (nums[nums.size() - 2] * nums[nums.size() - 1]) - (nums[0] * nums[1]);
+}
+
 // 1921. Eliminate Maximum Number of Monsters
 int dbcmpfun(const void* a, const void* b) {
     return *(double*)a > *(double*)b ? 1 : -1;
