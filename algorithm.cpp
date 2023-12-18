@@ -1192,8 +1192,6 @@ vector<int> searchRange(vector<int>& nums, int target)
     vector<int> res(2, -1);
     int left = 0, right = (int)nums.size() - 1;
     int mid;
-    if (right < 0)
-        return res;
     while (left <= right) {
         mid = left + (right - left) / 2;
         if (nums[mid] == target)
@@ -3546,25 +3544,8 @@ bool isBalanced(struct TreeNode* root) {
 }
 
 // 112. Path Sum
-void presum(struct TreeNode* root, int sum, bool* pFind)
-{
-    if (!root)
-        return;
-    sum -= root->val;
-    if (!root->left && !root->right) {
-        if (sum == 0)
-            *pFind = true;
-        return;
-    }
-    presum(root->left, sum, pFind);
-    presum(root->right, sum, pFind);
-}
 bool hasPathSum(struct TreeNode* root, int targetSum)
 {
-    //bool bFind = false;
-    //presum(root, targetSum, &bFind);
-    //return bFind;
-
     if (!root)
         return false;
     if (!root->left && !root->right)
@@ -3574,9 +3555,7 @@ bool hasPathSum(struct TreeNode* root, int targetSum)
         else
             return false;
     }
-    if (root->left)
-
-        if (root->left && hasPathSum(root->left, targetSum - root->val))
+    if (root->left && hasPathSum(root->left, targetSum - root->val))
             return true;
     if (root->right && hasPathSum(root->right, targetSum - root->val))
         return true;

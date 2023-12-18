@@ -210,6 +210,7 @@ struct TreeNode* sortedArrayToBST(int* nums, int numsSize);
 bool isBalanced(struct TreeNode* root);
 // 112. Path Sum
 bool hasPathSum(struct TreeNode* root, int targetSum);
+bool hasPathSumI(TreeNode* root, int targetSum);
 // 113. Path Sum II
 int** pathSum(struct TreeNode* root, int targetSum, int* returnSize, int** returnColumnSizes);
 // 114. Flatten Binary Tree to Linked List
