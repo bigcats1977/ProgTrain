@@ -588,6 +588,8 @@ char* predictPartyVictory(char* senate);
 bool findTarget(struct TreeNode* root, int k);
 // 654. Maximum Binary Tree
 struct TreeNode* constructMaximumBinaryTree(int* nums, int numsSize);
+// 661. Image Smoother
+vector<vector<int>> imageSmoother(vector<vector<int>>& img);
 // 662. Maximum Width of Binary Tree
 int widthOfBinaryTree(struct TreeNode* root);
 // 669. Trim a Binary Search Tree

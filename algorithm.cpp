@@ -9586,6 +9586,33 @@ struct TreeNode* constructMaximumBinaryTree(int* nums, int numsSize)
     return node;
 }
 
+// 661. Image Smoother
+int smooth(vector<vector<int>> &img, int x, int y) 
+{
+    int m = (int)img.size(), n = (int)img[0].size();
+    int sum = 0, count = 0;
+    for(int i=x-1;i<=x+1;i++)
+        for(int j= y-1;j<=y+1;j++)
+            if (i >= 0 && i < m && j >= 0 && j < n)
+            {
+                sum += img[i][j];
+                count++;
+            }
+    if (count > 0)
+        return sum / count;
+    return 0;
+}
+vector<vector<int>> imageSmoother(vector<vector<int>>& img)
+{
+    int m = (int)img.size(), n = (int)img[0].size();
+    vector<vector<int>> res(m, vector<int>(n, 0));
+    for (int i = 0; i < m; i++) 
+        for (int j = 0; j < n; j++) {
+            res[i][j] = smooth(img, i, j);
+        }
+    return res;
+}
+
 // 662. Maximum Width of Binary Tree
 int widthOfBinaryTree(struct TreeNode* root)
 {
