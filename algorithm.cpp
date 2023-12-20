@@ -13627,6 +13627,26 @@ long long maxScore(int* nums1, int nums1Size, int* nums2, int nums2Size, int k)
     return ans;
 }
 
+// 2706. Buy Two Chocolates
+int buyChoco(vector<int>& prices, int money)
+{
+   /* int left;
+    sort(prices.begin(), prices.end());
+    left = money - prices[0] - prices[1];
+    return left >= 0 ? left : money;*/
+    int min = prices[0], secmin = INT_MAX;
+    for (size_t i = 1; i < prices.size(); i++) {
+        if (prices[i] < min) {
+            secmin = min;
+            min = prices[i];
+        }
+        else if(prices[i] < secmin)
+            secmin = prices[i];
+    }
+    int left = money - min - secmin;
+    return left >= 0 ? left : money;
+}
+
 // 2742. Painting the Walls
 int paintdp(int* cost, int costSize, int* time, int timeSize, int cindex, int tindex, int** dp)
 {
