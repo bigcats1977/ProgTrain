@@ -8589,6 +8589,23 @@ int findMinArrowShots(int** points, int pointsSize, int* pointsColSize)
     }
     return res;
 }
+static bool comp(vector<int> a, vector<int> b)
+{
+    return a[1] < b[1];
+}
+int findMinArrowShots(vector<vector<int>>& points)
+{
+    sort(points.begin(), points.end(), comp);
+    int res = 1;
+    int last = points[0][1];
+    for (size_t i = 1; i < points.size(); i++) {
+        if (points[i][0] > last) {
+            res++;
+            last = points[i][1];
+        }
+    }
+    return res;
+}
 
 // 458. Poor Pigs
 int poorPigs(int buckets, int minutesToDie, int minutesToTest)
