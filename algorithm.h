@@ -68,6 +68,8 @@ int removeElement(vector<int>& nums, int val);
 // 28. Find the Index of the First Occurrence in a String
 int strStr(char* haystack, char* needle);
 int strStr(string haystack, string needle);
+// 30. Substring with Concatenation of All Words
+vector<int> findSubstring(string s, vector<string>& words);
 // 33. Search in Rotated Sorted Array
 int searchRotated(int* nums, int numsSize, int target);
 // 34. Find First and Last Position of Element in Sorted Array

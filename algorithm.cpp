@@ -1130,6 +1130,45 @@ int strStr(string haystack, string needle)
     return -1;
 }
 
+// 30. Substring with Concatenation of All Words
+vector<int> findSubstring(string s, vector<string>& words)
+{
+    vector<int> res;
+    int slen = (int)s.size(), n = (int)words.size(), wlen = (int)words[0].size();
+    if (slen < n * wlen)
+        return res;
+    unordered_map<string, int> mp;
+    for (auto w : words)
+        mp[w]++;
+    for (int i = 0; i < wlen; i++) {
+        unordered_map<string, int> window;
+        int left = i, right = i, count = 0;
+        while (right + wlen <= slen) {
+            string word = s.substr(right, wlen);
+            right += wlen;
+            if (mp.find(word) != mp.end()) {
+                window[word]++;
+                count++;
+
+                while (window[word] > mp[word]) {
+                    string leftword = s.substr(left, wlen);
+                    left += wlen;
+                    window[leftword]--;
+                    count--;
+                }
+                if (count == n)
+                    res.push_back(left);
+            }
+            else {
+                window.clear();
+                count = 0;
+                left = right;
+            }
+        }
+    }
+    return res;
+}
+
 // 33. Search in Rotated Sorted Array
 int searchRotated(int* nums, int numsSize, int target)
 {

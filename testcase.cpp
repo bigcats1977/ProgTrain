@@ -17,6 +17,7 @@ FUNCNAME g_tFuncName[] = {
     {26,    TestCase_26  },
     {27,    TestCase_27  },
     {28,    TestCase_28  },
+    {30,    TestCase_30  },
     {34,    TestCase_34  },
     {35,    TestCase_35  },
     {39,    TestCase_39  },
@@ -165,6 +166,20 @@ FUNCNAME g_tFuncName[] = {
     {9998,  TestCase_9998},
     {9999,  TestCase_9999},
 };
+
+void TestCase_30()
+{
+    string s;
+    vector<string> words;
+    
+    s = "wordgoodgoodgoodbestword";
+    words = { "word","good","best","good" };
+    findSubstring(s, words);
+
+    s = "barfoofoobarthefoobarman";
+    words = { "bar","foo","the" };
+    findSubstring(s, words);
+}
 
 void TestCase_909()
 {
