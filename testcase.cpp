@@ -150,6 +150,7 @@ FUNCNAME g_tFuncName[] = {
     {1480,  TestCase_1480},
     {1535,  TestCase_1535},
     {1544,  TestCase_1544},
+    {1637,  TestCase_1637},
     {1647,  TestCase_1647},
     {1657,  TestCase_1657},
     {1662,  TestCase_1662},
@@ -166,6 +167,14 @@ FUNCNAME g_tFuncName[] = {
     {9998,  TestCase_9998},
     {9999,  TestCase_9999},
 };
+
+void TestCase_1637()
+{
+    vector<vector<int>> points;
+
+    points = { {8, 7} ,{9, 9},{7, 4},{9, 7} };
+    maxWidthOfVerticalArea(points);
+}
 
 void TestCase_30()
 {

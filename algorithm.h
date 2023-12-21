@@ -781,6 +781,8 @@ int numSpecial(vector<vector<int>>& mat);
 int minimumOneBitOperations(int n);
 // 1630. Arithmetic Subarrays
 bool* checkArithmeticSubarrays(int* nums, int numsSize, int* l, int lSize, int* r, int rSize, int* returnSize);
+// 1637. Widest Vertical Area Between Two Points Containing No Points
+int maxWidthOfVerticalArea(vector<vector<int>>& points);
 // 1647. Minimum Deletions to Make Character Frequencies Unique
 int minDeletions(string s);
 // 1657. Determine if Two Strings Are Close
