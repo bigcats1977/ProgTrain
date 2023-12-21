@@ -5643,6 +5643,37 @@ ListNode* reverseList2(ListNode* head)
     return head;
 }
 
+// 207. Course Schedule
+bool hasCycle(int u, vector<bool>& vis, vector<bool>& inRecur, unordered_map<int, vector<int>>& adjs) {
+    vis[u] = true;
+    inRecur[u] = true;
+    for (auto node : adjs[u]) {
+        if (!vis[node])
+        {
+            if (hasCycle(node, vis, inRecur, adjs))
+                return true;
+        }
+        else if (inRecur[node])
+            return true;
+    }
+    inRecur[u] = false;
+    return false;
+}
+bool canFinish(int numCourses, vector<vector<int>>& prerequisites)
+{
+    vector<bool> vis(numCourses, false);
+    vector<bool> inRecur(numCourses, false);
+    unordered_map<int, vector<int>> adj;
+    for (auto req : prerequisites) {
+        adj[req[0]].push_back(req[1]);
+    }
+    for (int i = 0; i < numCourses; i++) {
+        if (hasCycle(i, vis, inRecur, adj))
+            return false;
+    }
+    return true;
+}
+
 // 208. Implement Trie(Prefix Tree)
 typedef struct TrieNode {
     bool isComplete;
@@ -5745,6 +5776,42 @@ int* findOrder(int numCourses, int** prerequisites, int prerequisitesSize, int* 
             if(adj[i][j])
         }*/
 
+}
+vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites)
+{
+    unordered_map<int, vector<int>> adjs;
+    for (auto pre : prerequisites) {
+        adjs[pre[0]].push_back(pre[1]);
+    }
+
+    vector<int> indegree(numCourses, 0);
+    for (auto adj : adjs) {
+        for (auto p : adj.second) {
+            indegree[p]++;
+        }
+    }
+
+    queue<int> q;
+    for (int i = 0; i < numCourses; i++) {
+        if (indegree[i] == 0)
+            q.push(i);
+    }
+    vector<int> ans;
+    while (!q.empty()) {
+        int node = q.front();
+        q.pop();
+        ans.push_back(node);
+        for (auto ngb : adjs[node]) {
+            indegree[ngb]--;
+            if (indegree[ngb]== 0)
+                q.push(ngb);
+        }
+    }
+    reverse(ans.begin(), ans.end());
+    if (ans.size() == numCourses)
+        return ans;
+    ans.clear();
+    return ans;
 }
 
 // 212. Word Search II

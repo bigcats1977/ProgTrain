@@ -342,6 +342,8 @@ bool isIsomorphic(string s, string t);
 // 206. Reverse Linked List
 struct ListNode* reverseList(struct ListNode* head);
 ListNode* reverseList2(ListNode* head);
+// 207. Course Schedule
+bool canFinish(int numCourses, vector<vector<int>>& prerequisites);
 // 208. Implement Trie (Prefix Tree)
 
 // 209. Minimum Size Subarray Sum
@@ -349,6 +351,7 @@ int minSubArrayLen(int target, int* nums, int numsSize);
 int minSubArrayLen(int target, vector<int>& nums);
 // 210. Course Schedule II
 int* findOrder(int numCourses, int** prerequisites, int prerequisitesSize, int* prerequisitesColSize, int* returnSize);
+vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites);
 // 212. Word Search II
 char** findWords(char** board, int boardSize, int* boardColSize, char** words, int wordsSize, int* returnSize);
 // 213. House Robber II

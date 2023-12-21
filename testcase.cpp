@@ -64,6 +64,7 @@ FUNCNAME g_tFuncName[] = {
     {205,   TestCase_205 },
     {206,   TestCase_206 },
     {209,   TestCase_209 },
+    {210,   TestCase_210 },
     {212,   TestCase_212 },
     {213,   TestCase_213 },
     {216,   TestCase_216 },
@@ -168,6 +169,12 @@ FUNCNAME g_tFuncName[] = {
     {9999,  TestCase_9999},
 };
 
+void TestCase_210()
+{
+    vector<vector<int>> points;
+    points = { {1,0} ,{2,0},{3,1},{3,2} };
+    findOrder(4, points);
+}
 void TestCase_1637()
 {
     vector<vector<int>> points;
