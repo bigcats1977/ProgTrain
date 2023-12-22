@@ -148,6 +148,7 @@ FUNCNAME g_tFuncName[] = {
     {1239,  TestCase_1239},
     {1337,  TestCase_1337},
     {1361,  TestCase_1361},
+    {1422,  TestCase_1422},
     {1480,  TestCase_1480},
     {1535,  TestCase_1535},
     {1544,  TestCase_1544},
@@ -168,6 +169,12 @@ FUNCNAME g_tFuncName[] = {
     {9998,  TestCase_9998},
     {9999,  TestCase_9999},
 };
+
+void TestCase_1422()
+{
+    string s= "00111";
+    maxScore(s);
+}
 
 void TestCase_210()
 {

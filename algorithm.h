@@ -739,6 +739,8 @@ vector<int> kWeakestRows(vector<vector<int>>& mat, int k);
 int* sortByBits(int* arr, int arrSize, int* returnSize);
 // 1361. Validate Binary Tree Nodes
 bool validateBinaryTreeNodes(int n, int* leftChild, int leftChildSize, int* rightChild, int rightChildSize);
+// 1422. Maximum Score After Splitting a String
+int maxScore(string s);
 // 1424. Diagonal Traverse II
 int* findDiagonalOrder(int** nums, int numsSize, int* numsColSize, int* returnSize);
 // 1425. Constrained Subsequence Sum

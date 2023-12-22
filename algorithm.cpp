@@ -11903,6 +11903,25 @@ bool validateBinaryTreeNodes(int n, int* leftChild, int leftChildSize, int* righ
     return true;
 }
 
+// 1422. Maximum Score After Splitting a String
+int maxScore(string s)
+{
+    int i, n = (int)s.size();
+    vector<int> score(n, 0);
+    int max = 0, right, val;
+    score[0] = s[0] == '0' ? 1 : 0;
+    for (i = 1; i < n-1; i++) {
+        score[i] = score[i - 1] + (s[i] == '0' ? 1 : 0);
+    }
+    right = s[n - 1] == '1' ? 1 : 0;
+    for (i = n - 2; i >= 0; i--) {
+        val = score[i] + right;
+        right += s[i] == '1' ? 1 : 0;
+        max = max < val ? val : max;
+    }
+    return max;
+}
+
 // 1424. Diagonal Traverse II
 int* findDiagonalOrder(int** nums, int numsSize, int* numsColSize, int* returnSize)
 {
