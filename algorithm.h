@@ -161,6 +161,7 @@ vector<vector<int>> combine(int n, int k);
 int** subsets(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
 // 79. Word Search
 bool exist(char** board, int boardSize, int* boardColSize, char* word);
+bool exist(vector<vector<char>>& board, string word);
 // 80. Remove Duplicates from Sorted Array II
 int removeDuplicatesII(int* nums, int numsSize);
 // 82. Remove Duplicates from Sorted List II
@@ -354,6 +355,7 @@ int* findOrder(int numCourses, int** prerequisites, int prerequisitesSize, int* 
 vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites);
 // 212. Word Search II
 char** findWords(char** board, int boardSize, int* boardColSize, char** words, int wordsSize, int* returnSize);
+vector<string> findWords(vector<vector<char>>& board, vector<string>& words);
 // 213. House Robber II
 int rob2(int* nums, int numsSize);
 int robCCC(vector<int>& nums);

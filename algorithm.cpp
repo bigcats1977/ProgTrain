@@ -2815,6 +2815,44 @@ bool exist(char** board, int boardSize, int* boardColSize, char* word)
     }
     return false;
 }
+bool btexist(vector<vector<char>>& board, vector<vector<bool>>& visited, string& word, int begin, int x, int y)
+{
+    int m = (int)board.size(), n = (int)board[0].size();
+    int i, j;
+    if (begin == word.size())
+        return true;
+    for (int k = 0; k < 4; k++) {
+        i = x + searchpos[k][0];
+        j = y + searchpos[k][1];
+        if (i < 0 || i >= m || j < 0 || j >= n)
+            continue;
+        if (visited[i][j])
+            continue;
+        if (board[i][j] == word[begin])
+        {
+            visited[i][j] = true;
+            if (btexist(board, visited, word, begin + 1, i, j))
+                return true;
+            visited[i][j] = false;
+        }
+    }
+    return false;
+}
+bool exist(vector<vector<char>>& board, string word)
+{
+    int m = (int)board.size(), n = (int)board[0].size();
+    vector<vector<bool>> visited(m, vector<bool>(n, false));
+    for (int i = 0; i < m; i++)
+        for (int j = 0; j < n; j++) {
+            if (board[i][j] == word[0]) {
+                visited[i][j] = true;
+                if (btexist(board, visited, word, 1, i, j))
+                    return true;
+                visited[i][j] = false;
+            }
+        }
+    return false;
+}
 
 // 80. Remove Duplicates from Sorted Array II
 int removeDuplicatesII(int* nums, int numsSize)
@@ -5860,6 +5898,66 @@ char** findWords(char** board, int boardSize, int* boardColSize, char** words, i
 
     *returnSize = findnums;
     return ans;
+}
+// int  searchpos[4][2] = { {-1,0,},{1,0},{0,-1},{0,1} };
+class wordTrie {
+public:
+    map<char, wordTrie*> child;
+    bool endword = false;
+    string word;
+};
+wordTrie* root = new wordTrie();
+void insertWord(string& s) {
+    wordTrie* temp = root;
+    for (auto c : s) {
+        if (temp->child.find(c) == temp->child.end()) {
+            temp->child[c] = new wordTrie();
+        }
+        temp = temp->child[c];
+    }
+    temp->endword = true;
+    temp->word = s;
+}
+void btfindword(vector<vector<char>>& board, vector<vector<bool>>& visited, vector<string> &res, wordTrie* trie, int x, int y) {
+    if (trie->endword) {
+        if (find(res.begin(), res.end(), trie->word) == res.end())
+            res.push_back(trie->word);
+    }
+    int i, j;
+    int m = (int)board.size(), n = (int)board[0].size();
+    for (int k = 0; k < 4; k++) {
+        i = x + searchpos[k][0];
+        j = y + searchpos[k][1];
+        if (i < 0 || i >= m || j < 0 || j >= n)
+            continue;
+        if (visited[i][j])
+            continue;
+        if (trie->child.find(board[i][j]) != trie->child.end()) {
+            visited[i][j] = true;
+            btfindword(board, visited, res, trie->child[board[i][j]], i, j);
+            visited[i][j] = false;
+        }
+    }
+}
+vector<string> findWords(vector<vector<char>>& board, vector<string>& words)
+{
+    int m = (int)board.size(), n = (int)board[0].size();
+    vector<vector<bool>> visited(m, vector<bool>(n, false));
+    vector<string> res;
+
+    for (auto w : words)
+        insertWord(w);
+
+
+    for (int i = 0; i < m; i++)
+        for (int j = 0; j < n; j++) {
+            if (root->child.find(board[i][j]) != root->child.end()) {
+                visited[i][j] = true;
+                btfindword(board, visited, res, root->child[board[i][j]], i, j);
+                visited[i][j] = false;
+            }
+        }
+    return res;
 }
 
 // 213. House Robber II
