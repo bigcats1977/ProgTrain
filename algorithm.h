@@ -523,6 +523,8 @@ struct TreeNode* deleteNode(struct TreeNode* root, int key);
 // 452. Minimum Number of Arrows to Burst Balloons
 int findMinArrowShots(int** points, int pointsSize, int* pointsColSize);
 int findMinArrowShots(vector<vector<int>>& points);
+// 455. Assign Cookies
+int findContentChildren(vector<int>& g, vector<int>& s);
 // 458. Poor Pigs
 int poorPigs(int buckets, int minutesToDie, int minutesToTest);
 // 459. Repeated Substring Pattern

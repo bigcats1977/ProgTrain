@@ -8772,6 +8772,26 @@ int findMinArrowShots(vector<vector<int>>& points)
     return res;
 }
 
+// 455. Assign Cookies
+int findContentChildren(vector<int>& g, vector<int>& s)
+{
+    int res = 0;
+    size_t i = 0, j = 0;
+    if (s.size() == 0)
+        return 0;
+    sort(g.begin(), g.end());
+    sort(s.begin(), s.end());
+    for (; i < g.size() && j < s.size(); i++) {
+        while (j < s.size() && s[j] < g[i])
+            j++;
+        if (j < s.size()) {
+            j++;
+            res++;
+        }
+    }
+    return res;
+}
+
 // 458. Poor Pigs
 int poorPigs(int buckets, int minutesToDie, int minutesToTest)
 {
