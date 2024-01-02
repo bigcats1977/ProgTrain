@@ -891,6 +891,8 @@ vector<vector<int>> onesMinusZeros(vector<vector<int>>& grid);
 int bestClosingTime(string customers);
 // 2542. Maximum Subsequence Score
 long long maxScore(int* nums1, int nums1Size, int* nums2, int nums2Size, int k);
+// 2610. Convert an Array Into a 2D Array With Conditions
+vector<vector<int>> findMatrix(vector<int>& nums);
 // 2706. Buy Two Chocolates
 int buyChoco(vector<int>& prices, int money);
 // 2742. Painting the Walls

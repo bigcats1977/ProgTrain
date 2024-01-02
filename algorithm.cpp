@@ -13904,6 +13904,27 @@ long long maxScore(int* nums1, int nums1Size, int* nums2, int nums2Size, int k)
     return ans;
 }
 
+// 2610. Convert an Array Into a 2D Array With Conditions
+vector<vector<int>> findMatrix(vector<int>& nums)
+{
+    int maxrow = 0;
+    unordered_map<int, int> mp;
+    size_t i;
+
+    for (i = 0; i < nums.size(); i++) {
+        mp[nums[i]]++;
+        if (mp[nums[i]] > maxrow)
+            maxrow = mp[nums[i]];
+    }
+
+    vector<vector<int>> res(maxrow);
+    for (auto m : mp) {
+        for (i = 0; i < m.second; i++)
+            res[i].push_back(m.first);
+    }
+    return res;
+}
+
 // 2706. Buy Two Chocolates
 int buyChoco(vector<int>& prices, int money)
 {
