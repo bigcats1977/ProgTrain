@@ -13312,6 +13312,25 @@ struct ListNode* deleteMiddle(struct ListNode* head)
     return slow;
 }
 
+// 2125. Number of Laser Beams in a Bank
+int numberOfBeams(vector<string>& bank)
+{
+    int res = 0, prev = 0, cur = 0;
+    for (size_t i = 0; i < bank.size(); i++) {
+        cur = 0;
+        for (size_t j = 0; j < bank[i].size(); j++) {
+            if (bank[i][j] == '1')
+                cur++;
+        }
+        if (cur != 0) {
+            res += cur * prev;
+            prev = cur;
+        }
+    }
+        
+    return res;
+}
+
 // 2130. Maximum Twin Sum of a Linked List
 struct ListNode*  x;
 void stacktraverse(struct ListNode* half, int* ans)

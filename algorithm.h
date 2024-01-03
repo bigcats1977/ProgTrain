@@ -859,6 +859,8 @@ int minOperations(std::vector<int>& nums);
 bool winnerOfGame(char* colors);
 // 2095. Delete the Middle Node of a Linked List
 struct ListNode* deleteMiddle(struct ListNode* head);
+// 2125. Number of Laser Beams in a Bank
+int numberOfBeams(vector<string>& bank);
 // 2130. Maximum Twin Sum of a Linked List
 int pairSum(struct ListNode* head);
 int pairSum2(ListNode* head);

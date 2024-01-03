@@ -160,6 +160,7 @@ void TestCase_1832();
 void TestCase_1930();
 void TestCase_2001();
 void TestCase_2009();
+void TestCase_2125();
 void TestCase_2215();
 void TestCase_2251();
 void TestCase_2483();

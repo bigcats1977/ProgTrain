@@ -160,6 +160,7 @@ FUNCNAME g_tFuncName[] = {
     {1930,  TestCase_1930},
     {2001,  TestCase_2001},
     {2009,  TestCase_2009},
+    {2125,  TestCase_2125 },
     {2215,  TestCase_2215},
     {2251,  TestCase_2251},
     {2483,  TestCase_2483},
@@ -169,6 +170,18 @@ FUNCNAME g_tFuncName[] = {
     {9998,  TestCase_9998},
     {9999,  TestCase_9999},
 };
+
+void TestCase_2125()
+{
+    vector<string> bank;
+    int output;
+
+    bank = { "011001","000000","010100","001000" };
+    output = numberOfBeams(bank);
+
+    bank = { "000","111","000" };
+    output = numberOfBeams(bank);
+}
 
 void TestCase_1422()
 {
