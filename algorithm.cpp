@@ -4024,6 +4024,42 @@ bool isPalindrome(char* s)
     return true;
 }
 
+// 127. Word Ladder
+int ladderLength(string beginWord, string endWord, vector<string>& wordList)
+{
+    unordered_set<string> st;
+
+    for (int i = 0; i < wordList.size(); i++) {
+        st.insert(wordList[i]);
+    }
+
+    queue<pair<string, int>> q;
+    q.push({ beginWord,1 });
+
+    while (!q.empty()) {
+        string curr = q.front().first;
+        int lvl = q.front().second;
+        q.pop();
+
+        if (curr == endWord) return lvl;
+        for (int i = 0; i < curr.size(); i++) {
+            char alp = curr[i];
+
+            for (char ch = 'a'; ch <= 'z'; ch++) {
+                curr[i] = ch;
+                if (st.find(curr) != st.end()) {
+                    st.erase(curr);
+                    q.push({ curr,lvl + 1 });
+                }
+            }
+
+            curr[i] = alp;
+        }
+    }
+
+    return 0;
+}
+
 // 128. Longest Consecutive Sequence
 int longestConsecutive(vector<int>& nums)
 {
@@ -13310,6 +13346,25 @@ struct ListNode* deleteMiddle(struct ListNode* head)
     slow = dummy->next;
     free(dummy);
     return slow;
+}
+
+// 2125. Number of Laser Beams in a Bank
+int numberOfBeams(vector<string>& bank)
+{
+    int res = 0, prev = 0, cur = 0;
+    for (size_t i = 0; i < bank.size(); i++) {
+        cur = 0;
+        for (size_t j = 0; j < bank[i].size(); j++) {
+            if (bank[i][j] == '1')
+                cur++;
+        }
+        if (cur != 0) {
+            res += cur * prev;
+            prev = cur;
+        }
+    }
+        
+    return res;
 }
 
 // 2130. Maximum Twin Sum of a Linked List

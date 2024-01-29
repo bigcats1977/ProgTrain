@@ -245,6 +245,8 @@ int maxProfitIII(vector<int>& prices);
 int maxPathSum(struct TreeNode* root);
 // 125. Valid Palindrome
 bool isPalindrome(char* s);
+// 127. Word Ladder
+int ladderLength(string beginWord, string endWord, vector<string>& wordList);
 // 128. Longest Consecutive Sequence
 int longestConsecutive(vector<int>& nums);
 // 129. Sum Root to Leaf Numbers
@@ -859,6 +861,8 @@ int minOperations(std::vector<int>& nums);
 bool winnerOfGame(char* colors);
 // 2095. Delete the Middle Node of a Linked List
 struct ListNode* deleteMiddle(struct ListNode* head);
+// 2125. Number of Laser Beams in a Bank
+int numberOfBeams(vector<string>& bank);
 // 2130. Maximum Twin Sum of a Linked List
 int pairSum(struct ListNode* head);
 int pairSum2(ListNode* head);
