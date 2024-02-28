@@ -9107,6 +9107,30 @@ int fib(int n)
     return ans;
 }
 
+// 513. Find Bottom Left Tree Value
+int findBottomLeftValue(TreeNode* root)
+{
+    queue<TreeNode*> qu;
+    int blVal = INT_MAX;
+
+    if (!root)
+        return INT_MAX;
+    qu.push(root);
+    while (qu.size() > 0) {
+        size_t count = qu.size();
+        blVal = qu.front()->val;
+        for (size_t i = 0; i < count; i++) {
+            TreeNode* node = qu.front();
+            qu.pop();
+            if (node->left)
+                qu.push(node->left);
+            if (node->right)
+                qu.push(node->right);
+        }
+    }
+    return blVal;
+}
+
 // 515. Find Largest Value in Each Tree Row
 int* largestValues(struct TreeNode* root, int* returnSize)
 {
