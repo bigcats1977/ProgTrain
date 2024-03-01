@@ -14107,11 +14107,14 @@ string maximumOddBinaryNumber(string s)
 #else
     int num1 = count(s.begin(),s.end(), '1');
     int num0 = s.size() - num1;
-    string res;
-    res.insert(0, num1 - 1, '1');
-    res.insert(num1 - 1, num0, '0');
-    res.push_back('1');
-    return res;
+    string ans;
+    /*ans.insert(0, num1 - 1, '1');
+    ans.insert(num1 - 1, num0, '0');
+    ans.push_back('1');*/
+    ans.append(num1 - 1, '1');
+    ans.append(num0, '0');
+    ans.append(1, '1');
+    return ans;
 #endif
 }
 
