@@ -907,6 +907,8 @@ int paintWalls(int* cost, int costSize, int* time, int timeSize);
 string sortVowels(string s);
 // 2849. Determine if a Cell Is Reachable at a Given Time
 bool isReachableAtTime(int sx, int sy, int fx, int fy, int t);
+// 2864. Maximum Odd Binary Number
+string maximumOddBinaryNumber(string s);
 // ½£Ö¸ Offer 05. Ìæ»»¿Õ¸ñ
 char* replacespace(char* s);
 // ½£Ö¸ Offer 58 - II.×óÐý×ª×Ö·û´®

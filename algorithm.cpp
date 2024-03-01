@@ -14090,6 +14090,31 @@ bool isReachableAtTime(int sx, int sy, int fx, int fy, int t)
     return false;
 }
 
+// 2864. Maximum Odd Binary Number
+string maximumOddBinaryNumber(string s)
+{
+#if 1
+    string ans;
+    for (auto c : s) {
+        if (c == '1')
+            ans.push_back('1');
+    }
+    ans.pop_back();
+    for (size_t i = ans.size(); i < s.size() - 1; i++)
+        ans.push_back('0');
+    ans.push_back('1');
+    return ans;
+#else
+    int num1 = count(s.begin(),s.end(), '1');
+    int num0 = s.size() - num1;
+    string res;
+    res.insert(0, num1 - 1, '1');
+    res.insert(num1 - 1, num0, '0');
+    res.push_back('1');
+    return res;
+#endif
+}
+
 // 剑指 Offer 05. 替换空格
 // 输入：s = "We are happy."
 // 输出："We%20are%20happy."
