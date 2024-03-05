@@ -12878,6 +12878,23 @@ vector<int> restoreArray(vector<vector<int>>& adjacentPairs)
     return result;
 }
 
+// 1750. Minimum Length of String After Deleting Similar Ends
+int minimumLength(string s)
+{
+    int left = 0, right = (int)s.size()-1;
+    char pre, suf;
+    while (left < right)
+    {
+        pre = s[left], suf = s[right];
+        if (pre != suf)
+            break;
+        left++, right--;
+        while (left <= right && pre == s[left]) left++;
+        while (left <= right && suf == s[right]) right--;
+    }
+    return right - left + 1;
+}
+
 // 1759. Count Number of Homogenous Substrings
 int countHomogenous(char* s)
 {
