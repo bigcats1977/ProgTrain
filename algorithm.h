@@ -911,6 +911,10 @@ string sortVowels(string s);
 bool isReachableAtTime(int sx, int sy, int fx, int fy, int t);
 // 2864. Maximum Odd Binary Number
 string maximumOddBinaryNumber(string s);
+// 7001 Revise String
+string Reserve(string a);
+// 7002 Sort
+vector<int> mysort(vector<int> a, int length);
 // ½£Ö¸ Offer 05. Ìæ»»¿Õ¸ñ
 char* replacespace(char* s);
 // ½£Ö¸ Offer 58 - II.×óÐý×ª×Ö·û´®

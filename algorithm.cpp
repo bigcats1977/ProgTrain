@@ -14135,11 +14135,76 @@ string maximumOddBinaryNumber(string s)
 #endif
 }
 
+// 7001 Revise String
+string Reserve(string a)
+{
+    int len = (int)a.size();
+    for (int i = 0; i < len / 2; i++)
+    {
+        swap(a[i], a[len - 1 - i]);
+    }
+    return a;
+}
+
+// 7002 Sort
+//void mquicksort(vector<int>& a, int low, int high)
+//{
+//    int temp;
+//    if (low >= high)
+//        return;
+//    int base = a[low], i = low+1, j = high;
+//    while (i < j)
+//    {
+//        while (i<j && a[j]>base)
+//            j--;
+//        while (i < j && a[i] < base)
+//            i++;
+//        
+//        swap(a[i], a[j]);
+//    }
+//    
+//    swap(a[low], a[j]);
+//
+//    mquicksort(a, low, i - 1);
+//    mquicksort(a, i + 1, high);
+//}
+void mquicksort(vector<int>& arr, int low, int high) {
+    if (low < high) {
+        // Partition the array
+        int pivot = arr[high];
+        int i = low - 1;
+
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                swap(arr[i], arr[j]);
+            }
+        }
+
+        swap(arr[i + 1], arr[high]);
+
+        int pivotIndex = i + 1;
+
+        // Recursively sort elements before and after partition
+        mquicksort(arr, low, pivotIndex - 1);
+        mquicksort(arr, pivotIndex + 1, high);
+    }
+}
+vector<int> mysort(vector<int> a, int length)
+{
+    mquicksort(a, 0, length - 1);
+    return a;
+}
+
 // 剑指 Offer 05. 替换空格
 // 输入：s = "We are happy."
 // 输出："We%20are%20happy."
 char* replacespace(char* s)
 {
+    //int aa[2] = { 10,20 };
+    //int* ptr = &aa[0];
+    //int b = ++*ptr;
+    //int c= *ptr++;
     int i = 0, len = (int)strlen(s);
     int spacenum = 0;
     for (i = 0; i < len; i++) {

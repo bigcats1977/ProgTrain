@@ -166,12 +166,30 @@ FUNCNAME g_tFuncName[] = {
     {2251,  TestCase_2251},
     {2483,  TestCase_2483},
     {2742,  TestCase_2742},
+    {7001,  TestCase_7001},
+    {7002,  TestCase_7002},
     {8005,  TestCase_8005},
     {8058,  TestCase_8058},
     {9998,  TestCase_9998},
     {9999,  TestCase_9999},
 };
 
+
+void TestCase_7002()
+{
+    vector<int> input, output;
+    input = { 52, 234, 80, 700, 1234 };
+    output = mysort(input, (int)input.size());
+}
+void TestCase_7001()
+{
+    string input = "Hello Word!";
+    string output = Reserve(input);
+    cout << input << ";" << output << endl;
+    input = "abcdef";
+    output = Reserve(input);
+    cout << input << ";" << output << endl;
+}
 void TestCase_127()
 {
     vector<string> wordList;
