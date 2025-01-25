@@ -20,6 +20,12 @@ typedef struct {
     funcTest funcName;
 }FUNCNAME;
 
+
+struct node {
+    int value;
+    struct node* next;
+};
+
 typedef struct ListNode {
     int val;
     struct ListNode* next;

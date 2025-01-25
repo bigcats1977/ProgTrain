@@ -168,13 +168,40 @@ FUNCNAME g_tFuncName[] = {
     {2742,  TestCase_2742},
     {7001,  TestCase_7001},
     {7002,  TestCase_7002},
+    {7003,  TestCase_7003},
+    {7004,  TestCase_7004},
+    {7005,  TestCase_7005},
     {8005,  TestCase_8005},
     {8058,  TestCase_8058},
     {9998,  TestCase_9998},
     {9999,  TestCase_9999},
 };
 
+void TestCase_7005()
+{
+    int count = 0;
+    int* result = getOneBits(161, &count);
+}
 
+void TestCase_7004()
+{
+    int heights[5] = { 3,1,5,4,8};
+    int rates[5] = { 2,1,2,1,2};
+    printf("%d\r\n", maxPlanes(5, heights, 5, rates));
+}
+
+void TestCase_7003()
+{
+    int values[7] = { 3,1,5,6,7,8,3 };
+    struct node* root = createList(7, values);
+    delete_item(&root, 3);
+    while (root)
+    {
+        printf("%d ", root->value);
+        root = root->next;
+    }
+    printf("\r\n");
+}
 void TestCase_7002()
 {
     vector<int> input, output;

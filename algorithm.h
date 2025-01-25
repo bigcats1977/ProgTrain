@@ -915,6 +915,17 @@ string maximumOddBinaryNumber(string s);
 string Reserve(string a);
 // 7002 Sort
 vector<int> mysort(vector<int> a, int length);
+// 7003 delete linklist item
+struct node* createList(int count, int* values);
+void delete_item(struct node** root, int value);
+// 7004 max plane
+int maxPlanes(int startHeight_count, int* startHeight, int decentRate_ount, int* decentRate);
+struct node* createList(int count, int* values);
+// 7005 get the positions of the 1-bits and count them
+int* getOneBits(int n, int* result_count);
+// 7006 Creating a Binary Search Tree
+void createBST(int keys_count, int* keys);
+
 // ½£Ö¸ Offer 05. Ìæ»»¿Õ¸ñ
 char* replacespace(char* s);
 // ½£Ö¸ Offer 58 - II.×óÐý×ª×Ö·û´®

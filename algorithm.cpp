@@ -14196,6 +14196,129 @@ vector<int> mysort(vector<int> a, int length)
     return a;
 }
 
+// 7003 delete linklist item
+struct node* createList(int count, int* values)
+{
+    struct node* dummy = (struct node*)calloc(sizeof(struct node), 1);
+    struct node* prev = dummy, * node;
+    for (int i = 0; i < count; i++)
+    {
+        node = (struct node*)calloc(sizeof(struct node), 1);
+        node->value = values[i];
+        prev->next = node;
+        prev = node;
+    }
+    node = dummy->next;
+    free(dummy);
+    return node;
+}
+void delete_item(struct node** root, int value)
+{
+    struct node* dummy = (struct node*)calloc(sizeof(struct node), 1);
+    struct node* temp, * prev;
+    dummy->next = *root;
+    temp = *root;
+    prev = dummy;
+    while (temp)
+    {
+        if (temp->value == value)
+        {
+            prev->next = temp->next;
+            free(temp);
+            temp = prev->next;
+        }
+        else
+        {
+            prev = temp;
+            temp = temp->next;
+        }
+    }
+
+    *root = dummy->next;
+    free(dummy);
+}
+
+// 7004 max plane
+int planCmp(const void* a, const void* b)
+{
+    return (int)(*(float*)a - *(float*)b);
+}
+int maxPlanes(int startHeight_count, int* startHeight, int decentRate_ount, int* decentRate)
+{
+    int i;
+    int maxPlan = 0;
+    float* shoots = (float*)calloc(sizeof(float), startHeight_count);
+    for (i = 0; i < startHeight_count; i++)
+    {
+        shoots[i] = startHeight[i] * 1.0f / decentRate[i];
+    }
+    qsort(shoots, startHeight_count, sizeof(float),  planCmp);
+
+    for (i = 0; i < startHeight_count; i++)
+    {
+        if (maxPlan < shoots[i])
+            maxPlan++;
+        else
+            break;
+    }
+
+    free(shoots);
+    return maxPlan;
+}
+
+// 7005 get the positions of the 1-bits and count them
+// 161 10100001 => 3, 138
+int* getOneBits(int n, int* result_count)
+{
+    int count = 1;
+    int position = 1;
+    int* result = (int*)calloc(sizeof(int), 33);
+
+    for (int i = 31; i >= 0; i--)
+    {
+        if (n & 1<<i)
+        {
+            result[count++] = position;
+            //printf("%d ", position);
+        }
+        if (count > 1)
+            position++;
+    }
+    *result_count = result[0] = count - 1;
+    return result;
+    /*int count = 0;
+    int* result = (int*)calloc(sizeof(int), 33);
+    int OneBits[32] = { 0 };
+    while (n > 0)
+    {
+        if(n&1)
+        {
+            OneBits[count] = 1;
+        }
+        n >>= 1;
+        count++;
+    }
+    int pos = 0;
+    count = 1;
+    for (int i = 31; i >= 0; i--)
+    {
+        if (OneBits[i] == 1)
+        {
+            result[count++] = pos+1;
+        }
+        if (count > 1)
+            pos++;
+    }
+    *result_count = result[0] = count - 1;
+    return result;*/
+}
+
+// 7006 Creating a Binary Search Tree
+void createBST(int keys_count, int* keys)
+{
+
+}
+
 // 剑指 Offer 05. 替换空格
 // 输入：s = "We are happy."
 // 输出："We%20are%20happy."
