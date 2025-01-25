@@ -14314,9 +14314,35 @@ int* getOneBits(int n, int* result_count)
 }
 
 // 7006 Creating a Binary Search Tree
+struct TNode* allocTNode(int value, int count)
+{
+    struct TNode* node = (struct TNode*)calloc(sizeof(struct TNode), 1);
+    node->value = value;
+    printf("%d\r\n", count);
+    return node;
+}
+void insertNode(struct TNode** root, int value, int* count)
+{
+    if (*root == NULL)
+    {
+        *root = allocTNode(value, *count);
+        return;
+    }
+
+    (*count)++;
+    if (value > (*root)->value)
+        insertNode(&((*root)->right), value, count);
+    else
+        insertNode(&((*root)->left), value, count);
+}
 void createBST(int keys_count, int* keys)
 {
-
+    struct TNode* root = NULL;
+    int insertCount = 0;
+    for (int i = 0; i < keys_count; i++)
+    {
+        insertNode(&root, keys[i], &insertCount);
+    }
 }
 
 // ½£Ö¸ Offer 05. Ìæ»»¿Õ¸ñ

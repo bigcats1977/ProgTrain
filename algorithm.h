@@ -924,6 +924,8 @@ struct node* createList(int count, int* values);
 // 7005 get the positions of the 1-bits and count them
 int* getOneBits(int n, int* result_count);
 // 7006 Creating a Binary Search Tree
+struct TNode* allocTNode(int value, int count);
+void insertNode(struct TNode** root, int value, int* count);
 void createBST(int keys_count, int* keys);
 
 // ½£Ö¸ Offer 05. Ìæ»»¿Õ¸ñ

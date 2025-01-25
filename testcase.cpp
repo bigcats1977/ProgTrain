@@ -171,11 +171,22 @@ FUNCNAME g_tFuncName[] = {
     {7003,  TestCase_7003},
     {7004,  TestCase_7004},
     {7005,  TestCase_7005},
+    {7006,  TestCase_7006},
     {8005,  TestCase_8005},
     {8058,  TestCase_8058},
     {9998,  TestCase_9998},
     {9999,  TestCase_9999},
 };
+
+void TestCase_7006()
+{
+    int keys1[4] = { 2,1,3,4 };
+    createBST(4, keys1); // 0 1 2 4
+    int keys2[3] = { 2,1,3 };
+    createBST(3, keys2);  // 0 1 2
+    int keys3[3] = { 1,2,3 };
+    createBST(3, keys3);  // 0 1 3
+}
 
 void TestCase_7005()
 {

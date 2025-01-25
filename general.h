@@ -25,7 +25,11 @@ struct node {
     int value;
     struct node* next;
 };
-
+struct TNode {
+    int value;
+    struct TNode* left;
+    struct TNode* right;
+};
 typedef struct ListNode {
     int val;
     struct ListNode* next;
