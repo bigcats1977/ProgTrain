@@ -14396,30 +14396,55 @@ char* reverseLeftWords(char* s, int n)
 }
 
 // 9998 转换12进制，10(X),11(Y) 107 = 8Y
+//char* TranserHexAdecimal(int n)
+//{
+//    char* res = (char*)calloc(11, sizeof(char));
+//    int pos = 0;
+//    while (n)
+//    {
+//        int val = n % 12;
+//        if (val < 10)
+//            res[pos++] = '0' + val;
+//        else if(val ==10)
+//            res[pos++] = 'X';
+//        else
+//            res[pos++] = 'Y';
+//        n /= 12;
+//    }
+//    for (int i = 0; i < pos / 2; i++) {
+//        res[i] ^= res[pos - 1 - i];
+//        res[pos - 1 - i] ^= res[i];
+//        res[i] ^= res[pos - 1 - i];
+//    }
+//    return res;
+//}
+
+// X/ Y
 char* TranserHexAdecimal(int n)
 {
-    char* res = (char*)calloc(11, sizeof(char));
-    int pos = 0;
+    char* result = (char*)calloc(11, sizeof(char));
+    int len = 0;
     while (n)
     {
         int val = n % 12;
         if (val < 10)
-            res[pos++] = '0' + val;
-        else if(val ==10)
-            res[pos++] = 'X';
+            result[len] = val + '0';
+        else if (val == 10)
+            result[len] = 'X';
         else
-            res[pos++] = 'Y';
+            result[len] = 'Y';
+        len++;
         n /= 12;
     }
-    for (int i = 0; i < pos / 2; i++) {
-        res[i] ^= res[pos - 1 - i];
-        res[pos - 1 - i] ^= res[i];
-        res[i] ^= res[pos - 1 - i];
+    for (int i = 0; i < len / 2; i++)
+    {
+        result[i] ^= result[len - 1 - i];
+        result[len - 1 - i] ^= result[i];
+        result[i] ^= result[len - 1 - i];
     }
-    return res;
+
+    return result;
 }
-
-
 // 9999 字符串长度 3 < n < 10000000 寻找的单词长度为3
 // ABCDEFABCDEBC
 // 
@@ -14437,40 +14462,68 @@ char* TranserHexAdecimal(int n)
 
 //输出样例#2：
 //36
-const int N = 10000;
-//int mod = (int)(1e9 + 7);
+//const int N = 10000;
+////int mod = (int)(1e9 + 7);
+//int FindSubFrequence(char* s, char* word)
+//{
+//    int len, i, ans = 0;
+//    len = (int)strlen(s);
+//
+//    //for (i = 0; i < len - 2; i++)
+//    //{
+//    //    for (int m = i + 1; m < len - 1; m++)
+//    //        for (int n = m + 1; n < len; n++)
+//    //            if (s[i] == word[0] && s[m] == word[1] && s[n] == word[2])
+//    //                ans++;
+//    //}
+//    //return ans;
+//
+//    int* cnt = (int*)calloc(len, sizeof(int));
+//    for (i = 0; i < len; i++)
+//    {
+//        if (i != 0)
+//            cnt[i] = cnt[i - 1];
+//        if (s[i] == word[0])
+//            cnt[i]++;
+//    }
+//    int right = 0;
+//    // mmmdddllltql
+//    for (i = len - 1; i > 0; i--)
+//    {
+//        if (s[i] == word[2])
+//            right++;
+//        if (s[i] == word[1])
+//            ans += right * cnt[i];
+//        //ans %= mod;
+//    }
+//    free(cnt);
+//    return ans;
+//}
+
+const int NFrequence = (int)(1e9 + 7);
 int FindSubFrequence(char* s, char* word)
 {
-    int len, i, ans = 0;
-    len = (int)strlen(s);
-
-    //for (i = 0; i < len - 2; i++)
-    //{
-    //    for (int m = i + 1; m < len - 1; m++)
-    //        for (int n = m + 1; n < len; n++)
-    //            if (s[i] == word[0] && s[m] == word[1] && s[n] == word[2])
-    //                ans++;
-    //}
-    //return ans;
-
-    int* cnt = (int*)calloc(len, sizeof(int));
-    for (i = 0; i < len; i++)
+    int len = strlen(s);
+    int* left = (int*)calloc(len, sizeof(int));
+    int i = 0, ans = 0, right = 0;
+    
+    if (s[0] == word[0])
+        left[0] = 1;
+    for (i = 1; i < len; i++)
     {
-        if (i != 0)
-            cnt[i] = cnt[i - 1];
+        left[i] = left[i - 1];
         if (s[i] == word[0])
-            cnt[i]++;
+            left[i]++;
     }
-    int right = 0;
-    // mmmdddllltql
+
     for (i = len - 1; i > 0; i--)
     {
         if (s[i] == word[2])
             right++;
         if (s[i] == word[1])
-            ans += right * cnt[i];
-        //ans %= mod;
+            ans = (ans + left[i] * right) % NFrequence;
     }
-    free(cnt);
+    free(left);
+
     return ans;
 }

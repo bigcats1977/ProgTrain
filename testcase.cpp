@@ -327,8 +327,11 @@ void TestCase_68()
 
 void TestCase_9998()
 {
-    //TranserHexAdecimal(107);
-    TranserHexAdecimal(2147483647);
+    string result;
+    result = TranserHexAdecimal(107);
+    printf("%s\r\n", result.c_str());
+    result = TranserHexAdecimal(2147483647);
+    printf("%s\r\n", result.c_str());
 }
 
 void TestCase_128()
